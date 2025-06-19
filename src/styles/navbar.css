@@ -1,0 +1,220 @@
+nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 90px;
+    color: white;
+  background-color: black;
+  }
+  
+  .navbar-f{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  /* Menú centrado con posición absoluta */
+  .nav-links {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 30px;
+  }
+  
+  .nav{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    font-size: 17px;
+    font-family: "Roboto", sans-serif;
+    color: white;
+  }
+  
+  .nav-links a:hover {
+    color: #d55da5;
+  }
+  
+  .btn-escritorio {
+    padding: 15px 25px;
+    border: unset;
+    border-radius: 12px;
+    color: white;
+    z-index: 1;
+    background: black;
+    position: relative;
+    font-weight: 400;
+    font-size: 17px;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms;
+    overflow: hidden;
+    margin-left: -10rem;
+    font-family: "Roboto", sans-serif;
+   }
+   
+   .btn-escritorio::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    border-radius: 12px;
+    background-color: #d55da5;
+    z-index: -1;
+    -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+    transition: all 250ms
+   }
+   
+   button:hover {
+    color: #e8e8e8;
+   }
+   
+   button:hover::before {
+    width: 100%;
+   }
+  /* Hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+  }
+  
+  .hamburger span {
+    height: 3px;
+    width: 25px;
+    background-color: white;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  
+  
+    /********** Subhead **********/
+  
+    .subhead{
+        overflow: hidden;
+    }
+  
+    .subhead-grid{
+      padding: 1rem 5rem 1rem 5rem;
+      background-color:white;
+      display:grid;
+      grid-template-columns: 50% 50%;
+      gap: 10rem;   
+  
+    }
+  
+    /********** Subhead 1 **********/
+    .sg-1{
+      display: flex;
+      justify-content: space-around; /* Distribuye el espacio */
+      align-items: center; /* Alinea verticalmente */
+      font-family: "Roboto", sans-serif;
+      color: #c7b096;
+      font-size: 17px;
+    }
+    
+    .sg-1 i{
+      margin-right: 1rem;
+      color: #c7b096;
+    }
+  
+      /********** Subhead 2 **********/
+    .sg-2 p{
+      font-size: 17px;
+      color:  #c7b096;;
+    }
+  
+    .sg-2{
+      display: flex;
+      align-items: center; /* Alinea verticalmente */
+      font-family: "Roboto", sans-serif;
+      color: white;
+      margin-left: 7rem;
+    }
+  
+    .sg-2 ul{
+      margin-left: -1rem;
+      color:  #c7b096;
+    }
+  
+    .lista-hor li{
+      display: inline-block;
+      margin-right: 10px; /* Espaciado entre elementos */
+      color:  #c7b096;
+    }
+  
+    .usa-flag{
+      margin-left: 5rem;
+      position: absolute;
+      margin-top: -3px;
+    }
+   
+    /* Responsive */
+  @media (max-width: 800px) {
+  
+    nav{
+      padding: 1rem 2rem 1rem 2rem;
+    }
+    .nav-links,
+    .nav-button {
+      display: none;
+    }
+  
+    .hamburger {
+      display: flex;
+    }
+  
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      background-color: #222;
+      position: absolute;
+      top: 75px;
+      left: 0;
+      width: 100%;
+      padding: 20px 0;
+      z-index: 10;
+    }
+  
+    .mobile-menu a {
+      color: white;
+      margin: 10px 0;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+  
+    .mobile-menu button {
+      margin-top: 10px;
+    }
+  
+    .mobile-menu.active {
+      display: flex;
+    }
+  
+    .logo img{
+    width: 30%;
+    height: 50%;
+    }
+  
+   
+    .btn-escritorio{
+      display: none;
+    }
+  .subhead{
+    display: none;
+  }
+   
+  }
+  
+  @media screen and (min-width:900px){
+    .mobile-menu {
+      display: none;
+    }
+  
+  }
+    
