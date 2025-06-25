@@ -1,0 +1,166 @@
+.servicios{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+}
+
+
+/************ Grid **********/
+.txtgrid{
+    display: grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    padding: 4rem;
+    gap: 2rem;
+}
+
+.serviciosgrid{
+    display: grid;
+    grid-template-columns:repeat(3,minmax(0,1fr)) ;
+    padding: 4rem;
+    gap: 2rem;
+}
+
+/********** Texto **********/
+
+.txtgrid p{
+margin-right: 4rem;
+line-height: 25px;
+font-family: "Roboto", sans-serif;
+}
+
+.servicios h2{
+    font-family: "Pontano Sans", sans-serif;
+}
+
+
+
+/********** Cajas **********/
+
+.serv1{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 3rem;
+    border-radius: 26px;
+    margin-top: -4rem;
+}
+
+
+.servicios h3{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.servicios a{
+    font-family: "Roboto", sans-serif;
+    background-color:  #16c6ce;
+    display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: .6rem;
+  border-radius: 26px;
+}
+
+.serv1 p{
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 2rem;
+}
+
+/********** Vista Hospital **********/
+
+.hview-grid{
+    display: grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    gap: 2rem;
+    padding: 0 6rem 5rem 6rem;
+}
+
+/********** Imagen **********/
+
+.hv1 img{
+border-radius: 26px;
+}
+
+/********** Texto **********/
+
+.hview h2{
+    font-family: "Pontano Sans", sans-serif;
+    text-transform: uppercase;
+}
+
+.hview p{
+    margin-right: 2.6rem;
+    line-height: 25px;
+    font-family: "Roboto", sans-serif;
+    text-align: justify;
+    }
+
+    @media screen and (max-width:800px){
+        .servicios{
+            padding: 4rem 2rem;
+        }
+
+        /************ Grid **********/
+.txtgrid{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+    padding: 0;
+    gap:0;
+    margin-bottom: 2rem;
+}
+
+.serviciosgrid{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+    padding: 0;
+    gap: 2rem;
+}
+
+/********** Texto **********/
+
+.txtgrid p{
+  text-align: center;
+  margin: 0;
+    }
+    
+    .servicios h2{
+        text-align: center;
+    }
+
+    /********** Cajas **********/
+
+.serv1{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 3rem;
+    border-radius: 26px;
+    margin-top: 0;
+}
+
+    /********** Vista Hospital **********/
+
+.hview-grid{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+    gap: 2rem;
+    padding:2rem;
+}
+
+/********** Imagen **********/
+
+.hv1 img{
+   max-width: 100%;
+   height: 350px;
+    }
+
+    /********** Texto **********/
+
+.hview h2{
+ text-align: center;
+}
+
+.hview p{
+    text-align: center;
+    margin-right: 0;
+    }
+        
+    }

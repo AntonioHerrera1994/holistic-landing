@@ -1,0 +1,112 @@
+.posib{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+    background-color: #1cc6cf1b;
+    margin-bottom: 6rem;
+}
+
+
+/************ Grid **********/
+.posib-grid{
+    display: grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    gap: 2rem;
+    padding: 0 6rem;
+}
+
+/************ Texto **********/
+
+.posib p{
+
+    line-height: 25px;
+    font-family: "Roboto", sans-serif;
+    }
+    
+    .posib h2{
+        font-family: "Pontano Sans", sans-serif;
+        text-transform: uppercase;
+        margin-right: 2.6rem;
+        line-height: 25px;
+        text-align: justify;
+        font-weight: 500;
+    }
+    
+
+/************ Reserva **********/
+
+.reserva{
+    border-radius: 26px;
+    padding: 5rem 6rem;
+    background-color: #07a2bd;
+    max-width: 70%;
+    margin: 0 auto; /*Centrar */
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.reserva-cont{
+    margin: 0 10rem;
+}
+
+.reserva h2{
+    text-align: center;
+    font-family: "Pontano Sans", sans-serif;
+    color:white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.reserva p{
+    text-align: center;
+    font-family: "Roboto", sans-serif;
+    line-height: 25px;
+    color:white;
+}
+
+.reserva-btn{
+    display: flex;
+justify-content: center;
+}
+
+@media screen and (max-width:800px){
+    .posib{
+        padding: 2rem;
+    }
+
+    /************ Grid **********/
+.posib-grid{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+    gap: 2rem;
+    padding: 0;
+}
+
+/************ Texto **********/
+
+.posib p{
+
+   text-align: center;
+    }
+    
+    .posib h2{
+        text-align: center;
+        margin-right: 0;
+     
+    }
+
+    /************ Reserva **********/
+
+.reserva{
+  
+    padding: 2rem;
+    max-width: 100%;
+  
+}
+
+/************ Grid **********/
+.reserva-cont{
+    margin: 0 2rem;
+}
+    
+}

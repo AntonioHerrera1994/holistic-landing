@@ -1,0 +1,40 @@
+---
+import '../styles/hero.css'
+import HeroImage from '../assets/dr-hero.png'
+import Contador from './Contador.astro'
+---
+
+<section class="hero">
+    <div class="hero-grid">
+        <div class="hg1">
+            <h1>Holistic Cancer 24/7 treatment</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+           <!-- From Uiverse.io by KINGFRESS --> 
+<!-- From Uiverse.io by cssbuttons-io --> 
+<button class="learn-more">
+    <span class="circle" aria-hidden="true">
+    <span class="icon arrow"></span>
+    </span>
+    <span class="button-text">Contactanos</span>
+  </button>
+        </div>
+        <div class="hg2">
+            <img 
+            src={HeroImage.src}
+            width="600"
+            height="600"
+            alt="favlash-logo"/>
+        </div>
+    </div>
+</section>
+
+<section class="numbers">
+
+        <h2>Pacientes Satisfechos</h2>
+      
+            <div class="n1">
+                <Contador />
+            </div>
+      
+
+</section>

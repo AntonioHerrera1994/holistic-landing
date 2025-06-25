@@ -1,0 +1,48 @@
+---
+import '../styles/circulo.css';
+import IconoC from '../assets/clinica-icono.png';
+import PosImg1 from '../assets/img1.webp';
+import PosImg2 from '../assets/img2.webp';
+import PosImg3 from '../assets/img3.webp';
+import PosImg4 from '../assets/img4.webp';
+import PosImg5 from '../assets/img5.webp';
+import PosImg6 from '../assets/img6.webp';
+---
+
+<div class="container">
+    
+
+    <div class="center-circle">
+      <img 
+      src={IconoC.src}
+      alt="Icono"
+      width="55"
+      height="55"
+      class="casa"
+      />
+    </div>
+
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+
+    <!-- Items for ring 1 -->
+    <div class="item item-1"><img src={PosImg1.src} alt="Icon 1"></div>
+    <div class="item item-2"><img src={PosImg2.src} alt="Icon 2"></div>
+    
+
+    <!-- Items for ring 2 -->
+    <div class="item item-3"><img src={PosImg3.src} alt="Icon 4"></div>
+    <div class="item item-4"><img src={PosImg4.src} alt="Icon 5"></div>
+ 
+
+    <!-- Items for ring 3 -->
+    <div class="item item-5"><img src={PosImg5.src} alt="Icon 7"></div>
+    <div class="item item-6"><img src={PosImg6.src} alt="Icon 8"></div>
+
+  </div>
+
+
+  <script>
+    import "../scripts/circulo.js"
+</script>
