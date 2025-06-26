@@ -1,0 +1,95 @@
+.ahero{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+}
+
+/********** Grid **********/
+
+.atgrid{
+    display: grid;
+    grid-template-columns:repeat(3,minmax(0,1fr)) ;
+    padding: 1rem 4rem;
+    gap: 3rem;
+}
+
+/********** Cajas **********/
+
+
+.presentation-card {
+    flex: 0 0 calc(100% / 3 - 16.66px);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 25px;
+    border-radius: 16px;
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    background-blend-mode: overlay;
+    
+  }
+
+
+  .presentation-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  }
+  
+  .content {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+    right: 25px;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    transition: all 0.4s ease;
+  }
+
+  .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+    transform: translateY(20px);
+  }
+  .presentation-card:hover .description {
+    max-height: 300px;
+    opacity: 0.95;
+    margin-top: 15px;
+    transform: translateY(0);
+  }
+
+  .presentation-card:hover .name {
+    margin-bottom: 15px;
+  }
+
+  /* Efecto overlay al hover */
+  .presentation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .presentation-card:hover::before {
+    opacity: 1;
+  }
+
