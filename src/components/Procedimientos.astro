@@ -1,0 +1,55 @@
+---
+import '../styles/services-styles/procedimientos.css'
+---
+
+
+<section class="procedimientos">
+    <h3>txt de los procedimientos</h3>
+    <p>txt de los precidimeintos tambien</p>
+    <div class="prodgrid">
+       
+        <div class="component-container">
+            <div class="steps">
+              <div class="step active" data-image="https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/img1.webp">
+                <div class="step-number">01</div>
+                <div class="step-title">Schedule Appointment</div>
+                <div class="step-description">Book your visit online or by phone. Choose the best time for your needs.</div>
+              </div>
+              <div class="step" data-image="image2.png">
+                <div class="step-number">02</div>
+                <div class="step-title">Visit the Clinic</div>
+                <div class="step-description">Arrive a few minutes early and bring any necessary documents or ID.</div>
+              </div>
+              <div class="step" data-image="image3.png">
+                <div class="step-number">03</div>
+                <div class="step-title">Get Free Consultation</div>
+                <div class="step-description">Our experts will examine your needs and suggest a personalized solution.</div>
+              </div>
+              <div class="step" data-image="image4.png">
+                <div class="step-number">04</div>
+                <div class="step-title">Smile Brighter</div>
+                <div class="step-description">Enjoy your new confident smile with top-notch dental care.</div>
+              </div>
+            </div>
+            <div class="image-container">
+              <img id="step-image" src="image1.png" alt="Step image" />
+            </div>
+          </div>
+           
+        </div>
+    </div>
+</section>
+
+<script is:global>
+    const steps = document.querySelectorAll('.step');
+    const stepImage = document.getElementById('step-image');
+  
+    steps.forEach(step => {
+      step.addEventListener('click', () => {
+        steps.forEach(s => s.classList.remove('active'));
+        step.classList.add('active');
+        const image = step.getAttribute('data-image');
+        stepImage.src = image;
+      });
+    });
+  </script>

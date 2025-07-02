@@ -1,0 +1,32 @@
+.historia{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+}
+
+/********** Grid **********/
+.hist-grid{
+    display: grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    gap: 2rem;
+    padding: 5rem 0rem 5rem 0rem;
+}
+
+.his1 img{
+    border-radius: 26px;
+    }
+
+    /********** Texto **********/
+
+.hist2 h2{
+    font-family: "Pontano Sans", sans-serif;
+    text-transform: uppercase;
+}
+
+.hist2 p{
+    margin-right: 2.6rem;
+    line-height: 25px;
+    font-family: "Roboto", sans-serif;
+    text-align: justify;
+    }

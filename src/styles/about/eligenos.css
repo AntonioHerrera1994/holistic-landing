@@ -1,0 +1,17 @@
+.eligenos{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+}
+
+/********** Texto Principal **********/
+
+
+
+/********** Grid **********/
+.elgrid{
+    display: grid;
+    grid-template-columns:repeat(3,minmax(0,1fr)) ;
+    gap: 2rem;
+}

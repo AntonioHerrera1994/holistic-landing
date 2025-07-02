@@ -1,0 +1,80 @@
+---
+import '../styles/services-styles/faqs.css'
+import ImgDFaqs from '../assets/img3.webp'
+---
+
+<section class="faq">
+<div class="faq-cont">
+    <div class="faq-grid">
+
+      <div class="faq-izq">
+           <img 
+                        src={ImgDFaqs.src}
+                        width="600"
+                        height="450"
+                        alt="hospital"
+                        />
+      </div>
+
+        <div class="accordion">
+          <h1>
+            Preguntas <br>Frecuentes
+          </h1>
+            <div class="accordion-item active">
+              <button class="accordion-button">¿Qué necesito para colaborar con Tecno Logo?</button>
+              <div class="accordion-content">
+                Para crear tu innovación en Tecno Logo, solo necesitas proporcionar algunos datos básicos para la verificación de identidad . El proceso es rápido, digital y totalmente seguro, permitiéndote empezar a gestionar tus innovación en pocos minutos.
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">¿Cómo asegura Tecno Logo la seguridad de mis innovaciones?</button>
+              <div class="accordion-content">
+                En Tecno Logo, tomamos la seguridad muy en serio. Utilizamos tecnología de cifrado de última generación, además de implementar políticas de innovación Nuestros protocolos de seguridad están diseñados para monitorear y proteger tus innovaciones continuamente, identificando y mitigando cualquier riesgo de manera efectiva.
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">¿Puedo integrar Tecno Logo con otros servicios?</button>
+              <div class="accordion-content">
+                
+                Sí, Tecno Logo ofrece amplias opciones de integración con otros servicios. Nuestra plataforma permite conectar fácilmente una variedad de sistemas innovadores y APIs de terceros, lo que te proporciona una increíble flexibilidad para ampliar las capacidades de tu innovación según tus necesidades.
+              </div>
+            </div>
+          </div>
+
+    </div>
+
+</div>
+</section>
+
+<script type="module" >
+const accordionButtons = document.querySelectorAll('.accordion-button');
+const accordionContents = document.querySelectorAll('.accordion-content');
+
+// Activar el primer elemento al cargar la página
+accordionButtons[0].parentNode.classList.add('active');
+accordionContents[0].style.maxHeight = accordionContents[0].scrollHeight + 'px';
+
+accordionButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    const accordionItem = button.parentNode;
+    const accordionContent = accordionItem.querySelector('.accordion-content');
+
+    if (accordionItem.classList.contains('active')) {
+      accordionItem.classList.remove('active');
+      accordionContent.style.maxHeight = '0'; // Cierra con desplazamiento hacia arriba
+    } else {
+      accordionButtons.forEach(otherButton => {
+        otherButton.parentNode.classList.remove('active');
+        otherButton.parentNode.querySelector('.accordion-content').style.maxHeight = '0';
+      });
+
+      accordionItem.classList.add('active');
+
+      // Calcula la altura del contenido y aplica el desplazamiento
+      const contentHeight = accordionContent.scrollHeight;
+      accordionContent.style.maxHeight = contentHeight + 'px';
+    }
+  });
+});
+
+</script>

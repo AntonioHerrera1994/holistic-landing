@@ -1,0 +1,177 @@
+/********** Global **********/
+
+
+h4{
+    color:white;
+}
+.contactanos{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+    background-color: black;
+}
+
+
+.contactanos-grid{
+   
+    padding: 2rem;
+    display:grid;
+    grid-template-columns: 66% 34%;
+        gap: 4rem;              
+}
+
+/********** izquierda Form **********/
+
+
+.img-contactanos{
+    width: 85%;
+    height: 42rem;
+    background-image: url('https://holistic-landingpage.netlify.app/_astro/clinica2.CpS300DU.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.contacto-izq h1{
+    font-size: 3.3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.contacto-izq h4{
+    font-size: .75rem;
+    margin-bottom: -1.7rem;
+    color: #ffffff;
+    letter-spacing: .1rem;
+    font-weight: normal;
+}
+
+/********** Derecha Form **********/
+
+.hub-form{
+    margin: 4rem;
+    background-color: #191f26; 
+    padding-left:3rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    width: 130%;
+    margin-left: -15rem;
+}
+
+/********** Datos de contacto **********/
+
+.grid-datos{
+  
+    display:grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+        gap: 2rem; 
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+}
+
+.container {
+    position: relative; /* Para posicionar el texto en primer plano */
+    display: inline-block; /* Para que el contenedor se ajuste al contenido */
+  }
+  
+  .background-text {
+    font-size: 160px; /* Ajusta el tamaño según tus necesidades */
+    color: rgba(255, 255, 255, 0.061); /* Color semi-transparente */
+    font-weight: 600;
+  }
+  
+  .foreground-text {
+    position: absolute;
+    top: 50%;
+    left: 14%;
+    transform: translate(-50%, -50%); /* Centra el texto en primer plano */
+    font-size: 22px; /* Ajusta el tamaño según tus necesidades */
+    color: white;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  a{
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {
+    color: #00f0f1;
+    transition: .4s;
+  }
+  
+  /********* Movil **********/
+@media screen and (min-width:300px) and (max-width:800px) {
+    .contactanos-cont{
+        width: auto;
+        height: auto;
+        padding-left: 10px;
+        padding-right: 10px; 
+    }
+
+    .contactanos-grid{
+       
+        padding: 1rem;
+        display:grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));          
+    }
+
+/********** izquierda Form **********/
+
+
+.img-contactanos{
+    width: 100%;
+    height: 18rem;
+}
+
+.contacto-izq h1{
+    font-size: 1.7rem;
+    margin-top: 2rem;
+}
+
+/********** Derecha Form **********/
+
+.hub-form{
+    margin: 0;
+    padding-left:0;
+    padding-top: 20rem;
+    padding-bottom: 3rem;
+    width: 100%;
+    margin-left: 0;
+}
+
+/********** Datos de contacto **********/
+
+.grid-datos{
+  
+    display:grid;
+    grid-template-columns: repeat(1,minmax(0,1fr));
+        gap: 0; 
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+}
+
+.container{
+    width: 300px!important;
+ 
+}
+
+
+.background-text {
+    font-size: 90px; /* Ajusta el tamaño según tus necesidades */
+    margin-left: 5rem;
+  }
+
+  .foreground-text {
+    position: absolute;
+    margin-right:  -10rem;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra el texto en primer plano */
+    font-size: 17px; /* Ajusta el tamaño según tus necesidades */
+    color: white;
+    text-align: center;
+    font-weight: 600;
+  }
+    
+}

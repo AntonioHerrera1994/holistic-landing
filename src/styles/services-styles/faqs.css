@@ -1,0 +1,119 @@
+/********** Global **********/
+
+.faq{
+   box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+    background-color: black;
+}
+
+.faq-grid{
+    margin-top: 2rem;
+    padding: 2rem;
+    display:grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 4rem; 
+}
+
+/********** Imagen **********/
+
+.faq-img{
+        width: 100%;
+        height: 100%;
+        margin-left: -2rem;
+}
+
+/********** FAQ **********/
+
+.accordion{
+  margin-left: 3rem;
+  margin-right: 3.5rem;
+  margin-top: 2rem;
+}
+
+.accordion h1{
+color: white;
+font-size: 3.8rem;
+font-weight: 550;
+}
+
+.accordion-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.185);
+    padding-bottom: 2rem;
+  }
+  
+  .accordion-button {
+    width: 100%;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0);
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+  }
+  
+  .accordion-content {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.605);
+    padding: 0 15px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out; /* Transición suave */
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.7rem;
+
+  }
+  
+  .accordion-item.active .accordion-content {
+    height: auto; /* Altura automática cuando está activo */
+  }
+  
+  /********* Movil **********/
+  @media screen and (min-width:300px) and (max-width:800px) {
+    /********** Global **********/
+    .faq{
+      padding-bottom: 1rem;
+      padding-top: 1rem;
+    }
+
+    .faq-grid{
+      margin-top: 1rem;
+      padding: 1rem;
+      grid-template-columns: repeat(1,minmax(0,1fr));
+      gap: 1rem; 
+    }
+
+    /********** Imagen **********/
+
+    .faq-img{
+      width: 120%;
+      height: 100%;
+      margin-left:0;
+    }
+    
+  /********** FAQ **********/
+    .accordion h1{
+      font-size: 1.6rem;
+    }
+
+    .accordion{
+      margin-left: 1rem;
+      margin-right: -4rem;
+      margin-top: 1rem;
+    }
+
+    .accordion-item {
+     margin-left: -1rem;
+    }
+
+    .accordion-button {
+      font-size: 1.1rem;
+    }
+
+    .accordion-content {
+      font-size: .9rem;
+    }
+  }

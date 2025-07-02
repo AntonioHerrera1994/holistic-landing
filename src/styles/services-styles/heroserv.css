@@ -1,0 +1,42 @@
+.servhero{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 4rem 6rem 4rem 6rem;
+    overflow: hidden;
+    
+}
+
+/********** Grid **********/
+.servhgrid{
+    display: grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    gap: 2rem;
+}
+
+/********** Slide de imagenes **********/
+.slider-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    height: 400px;
+  }
+  
+  .slider {
+    display: flex;
+    height: 100%;
+    transition: transform 0.8s ease-in-out; /* más fluido */
+  }
+  
+  .slide {
+    flex: 0 0 100%;
+    height: 100%;
+  }
+  
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
