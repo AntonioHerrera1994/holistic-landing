@@ -29,6 +29,7 @@ max-width: 95%;
     font-family: "Pontano Sans", sans-serif;
     font-size: 65px;
     color: #16c6ce;
+        font-weight: 500;
 }
 
 .hg1 p{
@@ -58,6 +59,7 @@ border-radius: 50px;
     color: white;
     font-family: "Pontano Sans", sans-serif;
     font-size: 32px;
+        font-weight: 500;
 }
 
 .n1{

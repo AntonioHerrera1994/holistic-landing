@@ -20,6 +20,7 @@
     line-height: 60px;
     font-family: "Pontano Sans", sans-serif;
     text-transform: capitalize;
+        font-weight: 500;
 }
 
 .ahero p{

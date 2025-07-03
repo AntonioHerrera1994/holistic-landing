@@ -13,6 +13,7 @@
     font-size: 44px;
       line-height: 60px;
       text-transform: capitalize;
+          font-weight: 500;
 }
 
 /********** Grid **********/
@@ -36,6 +37,7 @@
     font-family: "Pontano Sans", sans-serif;
     font-size: 22px;
     font-weight: 700;
+        font-weight: 500;
 }
 
 .elgrid p{
