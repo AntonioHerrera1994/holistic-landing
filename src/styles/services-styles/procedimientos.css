@@ -1,8 +1,29 @@
 .procedimientos{
     box-sizing: border-box;
     margin: 0;
-    padding: 4rem 6rem 4rem 6rem;
+    padding: 2rem 6rem 4rem 6rem;
     overflow: hidden;
+}
+/********** Texto **********/
+
+.procedimientos p{
+margin-right: 12rem;
+margin-left: 12rem;
+font-family: "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.53);
+    line-height: 30px;
+    font-size: 17px;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.procedimientos h2{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 44px;
+    line-height: 60px;
+    margin-top: 1rem;
+        font-weight: 500;
+        text-align: center;
 }
 
 
@@ -16,7 +37,7 @@
 
 .component-container {
     display: flex;
-    max-width: 1100px;
+    max-width: 100%;
     background: white;
     border-radius: 16px;
     overflow: hidden;
@@ -26,7 +47,7 @@
   .steps {
     flex: 1;
     padding: 40px;
-    border-right: 2px solid #e0f2ff;
+    border-right: 2px solid #1cc6cf3b;;
   }
 
   .step {
@@ -38,6 +59,7 @@
     font-weight: bold;
     color: #888;
     font-size: 18px;
+    font-family: "Roboto", sans-serif;
   }
 
   .step-title {
@@ -45,13 +67,17 @@
     font-weight: bold;
     margin: 10px 0 5px;
     color: #0d456b;
+    font-family: "Pontano Sans", sans-serif;
   }
 
   .step-description {
-    color: #555;
-    font-size: 15px;
+   
+     color: rgba(0, 0, 0, 0.53);
+    line-height: 30px;
+    font-size: 17px;
     display: none;
     max-width: 90%;
+    font-family: "Roboto", sans-serif;
   }
 
   .step.active .step-description {
@@ -60,7 +86,7 @@
 
   .image-container {
     flex: 1;
-    background: #f3faff;
+   background-color: #1cc6cf1b;
     display: flex;
     align-items: center;
     justify-content: center;

@@ -4,31 +4,41 @@ import '../styles/services-styles/procedimientos.css'
 
 
 <section class="procedimientos">
-    <h3>txt de los procedimientos</h3>
-    <p>txt de los precidimeintos tambien</p>
+    <h2>Your Journey to Wellness: <br>Our <span style="color: #16c6ce;">Holistic Treatment </span> Procedures</h2>
+    <p>Our comprehensive procedures are meticulously designed to ensure every aspect of your well-being is addressed, from precise diagnostics to integrated therapies and ongoing support. We believe in transparency and collaboration, empowering you with a clear understanding of each step on your path to recovery and renewed health.</p>
     <div class="prodgrid">
        
         <div class="component-container">
             <div class="steps">
               <div class="step active" data-image="https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/img1.webp">
                 <div class="step-number">01</div>
-                <div class="step-title">Schedule Appointment</div>
-                <div class="step-description">Book your visit online or by phone. Choose the best time for your needs.</div>
+                <div class="step-title">Comprehensive Holistic Assessment</div>
+                <div class="step-description">Your journey begins with a thorough evaluation of your medical history, current health status, lifestyle, and emotional well-being. This in-depth analysis forms the foundation for your highly personalized treatment plan.</div>
               </div>
-              <div class="step" data-image="image2.png">
+              <div class="step" data-image="https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/clinica2.webp">
                 <div class="step-number">02</div>
-                <div class="step-title">Visit the Clinic</div>
-                <div class="step-description">Arrive a few minutes early and bring any necessary documents or ID.</div>
+                <div class="step-title">Advanced Diagnostic & Biomarker Testing</div>
+                <div class="step-description">We utilize state-of-the-art diagnostic tools and specialized biomarker tests to gain precise insights into your cancer's unique characteristics. This data-driven approach guides the selection of the most effective and targeted therapies for you.</div>
               </div>
-              <div class="step" data-image="image3.png">
+              <div class="step" data-image="https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/img1.webp">
                 <div class="step-number">03</div>
-                <div class="step-title">Get Free Consultation</div>
-                <div class="step-description">Our experts will examine your needs and suggest a personalized solution.</div>
+                <div class="step-title">Personalized Integrative Treatment Plan Development</div>
+                <div class="step-description">Following your assessment and diagnostics, our expert team collaborates to design an individualized treatment strategy. This plan seamlessly combines conventional therapies with complementary holistic approaches, tailored specifically to your needs.</div>
               </div>
-              <div class="step" data-image="image4.png">
+              <div class="step" data-image="https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/clinica2.webp">
                 <div class="step-number">04</div>
-                <div class="step-title">Smile Brighter</div>
-                <div class="step-description">Enjoy your new confident smile with top-notch dental care.</div>
+                <div class="step-title">Targeted IV & Supportive Therapies</div>
+                <div class="step-description">We administer specialized intravenous therapies, detoxification protocols, and natural compounds to directly support your body's healing processes, enhance immune function, and address specific cancer pathways with precision.</div>
+              </div>
+                <div class="step" data-image="https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/img1.webp">
+                <div class="step-number">05</div>
+                <div class="step-title">Nutritional & Lifestyle Optimization</div>
+                <div class="step-description">A cornerstone of holistic health, this procedure involves creating tailored dietary plans, providing expert nutritional counseling, and offering guidance on exercise and stress management to foster an optimal internal environment for healing and recovery.</div>
+              </div>
+                <div class="step" data-image="https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/clinica2.webp">
+                <div class="step-number">06</div>
+                <div class="step-title">Mind-Body & Emotional Well-being Support</div>
+                <div class="step-description">Recognizing the profound link between mind and body, we offer vital support through clinical psychology, meditation, biofeedback, and other integrative practices designed to reduce stress, enhance mental clarity, and build emotional resilience throughout your journey.</div>
               </div>
             </div>
             <div class="image-container">
@@ -42,14 +52,20 @@ import '../styles/services-styles/procedimientos.css'
 
 <script is:global>
     const steps = document.querySelectorAll('.step');
-    const stepImage = document.getElementById('step-image');
-  
-    steps.forEach(step => {
-      step.addEventListener('click', () => {
-        steps.forEach(s => s.classList.remove('active'));
-        step.classList.add('active');
-        const image = step.getAttribute('data-image');
-        stepImage.src = image;
-      });
+  const stepImage = document.getElementById('step-image');
+
+  // Inicializar la imagen con el activo al cargar
+  const activeStep = document.querySelector('.step.active');
+  if (activeStep && stepImage) {
+    stepImage.src = activeStep.getAttribute('data-image');
+  }
+
+  steps.forEach(step => {
+    step.addEventListener('click', () => {
+      steps.forEach(s => s.classList.remove('active'));
+      step.classList.add('active');
+      const image = step.getAttribute('data-image');
+      stepImage.src = image;
     });
+  });
   </script>

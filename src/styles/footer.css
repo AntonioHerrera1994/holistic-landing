@@ -31,9 +31,9 @@ li{
 }
 
 .footer p{
-    font-family: "Roboto", sans-serif;
-   color: rgba(255, 255, 255, 0.779);
-    text-align: justify;
+   font-family: "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.342);
+    line-height: 30px;
     font-size: 17px;
 }
 

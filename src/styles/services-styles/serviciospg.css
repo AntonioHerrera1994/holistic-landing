@@ -1,7 +1,7 @@
 .serviciospg{
     box-sizing: border-box;
     margin: 0;
-    padding: 4rem 6rem 4rem 6rem;
+    padding: 1rem 6rem 4rem 6rem;
     overflow: hidden;
 }
 
@@ -22,18 +22,24 @@
 
 /********** Texto **********/
 
-.txtgridpg p{
-    margin-right: 4rem;
-    line-height: 25px;
-    font-family: "Roboto", sans-serif;
-    }
-    
-    .txtgridpg h2{
-        font-family: "Pontano Sans", sans-serif;
-    }
+.serviciospg p{
+margin-right: 4rem;
+font-family: "Roboto", sans-serif;
+  color: rgba(0, 0, 0, 0.53);
+    line-height: 30px;
+    font-size: 17px;
+}
+
+.serviciospg h2{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 44px;
+    line-height: 60px;
+    margin-top: 1rem;
+        font-weight: 500;
+}
 
 
-    /********** Cajas **********/
+/********** Cajas **********/
 
 .serv1pg{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -43,13 +49,14 @@
 }
 
 
-.serviciospg h3{
+.serv1pg h3{
     font-family: "Pontano Sans", sans-serif;
     font-size: 22px;
-    font-weight: 400;
+    font-weight: 700;
+        font-weight: 500;
 }
 
-.serviciospg a{
+.serv1pg a{
     font-family: "Roboto", sans-serif;
     background-color:  #16c6ce;
     display: flex;
@@ -57,11 +64,16 @@
   align-items: center; 
   padding: .6rem;
   border-radius: 26px;
+  color: white;
 }
 
 .serv1pg p{
     font-family: "Roboto", sans-serif;
     margin-bottom: 2rem;
+     color: rgba(0, 0, 0, 0.53);
+    line-height: 30px;
+    font-size: 17px;
+    margin-right: 0;
 }
 
 @media screen and (max-width:800px){
