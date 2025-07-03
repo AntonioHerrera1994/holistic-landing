@@ -22,16 +22,19 @@
 
     line-height: 25px;
     font-family: "Roboto", sans-serif;
+     color: rgba(0, 0, 0, 0.53);
+    line-height: 30px;
+    font-size: 17px;
     }
     
     .posib h2{
         font-family: "Pontano Sans", sans-serif;
-        text-transform: uppercase;
         margin-right: 2.6rem;
-        line-height: 25px;
-        text-align: justify;
-        font-weight: 500;
+         font-size: 44px;
+    line-height: 60px;
     }
+
+    
     
 
 /************ Reserva **********/
@@ -52,16 +55,27 @@
 .reserva h2{
     text-align: center;
     font-family: "Pontano Sans", sans-serif;
-    color:white;
-    text-transform: uppercase;
-    font-weight: 500;
+    color:white;;
+   font-size: 31px;
 }
 
 .reserva p{
     text-align: center;
     font-family: "Roboto", sans-serif;
-    line-height: 25px;
+      line-height: 30px;
+    font-size: 17px;
     color:white;
+}
+
+.reserva a{
+    font-family: "Roboto", sans-serif;
+    background-color:  white;
+    display: flex;
+  justify-content: center; 
+  align-items: center; 
+  padding: .6rem;
+  border-radius: 26px;
+ color: #07a2bd;
 }
 
 .reserva-btn{

@@ -3,15 +3,45 @@
     margin: 0;
     padding: 4rem 6rem 4rem 6rem;
     overflow: hidden;
+    background-color: #1cc6cf1b;
 }
 
 /********** Texto Principal **********/
 
-
+.eligenos h2{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 44px;
+      line-height: 60px;
+      text-transform: capitalize;
+}
 
 /********** Grid **********/
 .elgrid{
     display: grid;
     grid-template-columns:repeat(3,minmax(0,1fr)) ;
     gap: 2rem;
+}
+
+/************ Cajas ***********/
+
+.elcaja1{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 3rem;
+    border-radius: 26px;
+    background-color: white;
+    margin-top: 1rem;
+}
+
+.elgrid h3{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.elgrid p{
+     font-family: "Roboto", sans-serif;
+    margin-bottom: 2rem;
+     color: rgba(0, 0, 0, 0.53);
+    line-height: 30px;
+    font-size: 17px;
 }
