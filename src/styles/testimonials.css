@@ -80,6 +80,10 @@
     margin-bottom: 2rem;
     }
 
+    .testim h2{
+        font-size: 40px;
+    }
+
         /************ Grid **********/
 .test-grid{
     display: grid;

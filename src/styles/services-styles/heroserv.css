@@ -58,4 +58,44 @@
     object-fit: cover;
     border-radius: 26px;
   }
+
+  @media screen and (min-width:801px){
+    .servhtxtmovil{
+      display: none;
+    }
+  }
   
+  @media screen and (max-width:800px){
+    .servhero{
+ box-sizing: border-box;
+        margin: 0;
+        overflow: hidden;
+        padding: 2rem 2rem 0 2rem;
+    
+}
+
+/************ Texto **********/
+
+.servhero p{
+   text-align: center;
+    }
+    
+    .servhero h1{
+ 
+         font-size: 40px;
+    text-align: center;
+    }
+
+    .servhtxt{
+      display: none;
+    }
+
+
+/********** Grid **********/
+.servhgrid{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+    gap: 2rem;
+}
+
+  }

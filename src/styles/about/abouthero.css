@@ -113,3 +113,33 @@
     opacity: 1;
   }
 
+  @media screen and (max-width:800px){
+     .ahero{
+        box-sizing: border-box;
+        margin: 0;
+        overflow: hidden;
+        padding: 2rem 2rem 0 2rem;
+    }
+
+    /********** Texto **********/
+.ahero h1{
+  font-size: 40px;
+text-align: center;
+}
+
+.ahero p{
+   margin-right: 0;
+  
+    text-align: center;
+ 
+}
+
+/********** Grid **********/
+
+.atgrid{
+    display: grid;
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+    padding: 2rem 2rem;
+    gap: 3rem;
+}
+  }

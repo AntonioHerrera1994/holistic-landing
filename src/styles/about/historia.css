@@ -128,3 +128,52 @@ button {
    button:hover .button-text {
     color: #fff;
    }
+   
+   @media screen and (min-width:801px){
+.movil img{
+   display: none;
+    }
+   }
+
+   @media screen and (max-width:800px){
+     .historia{
+        box-sizing: border-box;
+        margin: 0;
+        overflow: hidden;
+        padding: 2rem 2rem 0 2rem;
+    }
+
+    /********** Grid **********/
+.hist-grid{
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+  margin-top: -2rem;
+    padding: 0;
+    padding-bottom: 3rem;
+}
+
+ /********** Imagen **********/
+.movil img{
+    border-radius: 26px;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 2rem;
+    }
+
+    .his1 img{
+  display: none;
+    }
+
+
+    /********** Texto **********/
+
+.hist2 h2{
+  text-align: center;
+    font-size: 40px;
+
+}
+
+.hist2 p{
+     margin-right: 0;
+text-align: center;
+    }
+   }

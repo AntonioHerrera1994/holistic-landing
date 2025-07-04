@@ -86,13 +86,15 @@ color: #16c6ce;
   @media screen and (min-width:300px) and (max-width:800px) {
     /********** Global **********/
     .faq{
-      padding-bottom: 1rem;
-      padding-top: 1rem;
+         box-sizing: border-box;
+        margin: 0;
+        overflow: hidden;
+        padding: 5rem 2rem 2rem 2rem;
     }
 
     .faq-grid{
       margin-top: 1rem;
-      padding: 1rem;
+      padding: 0;
       grid-template-columns: repeat(1,minmax(0,1fr));
       gap: 1rem; 
     }
@@ -100,19 +102,21 @@ color: #16c6ce;
     /********** Imagen **********/
 
     .faq-img{
-      width: 120%;
+      width: 100%;
       height: 100%;
       margin-left:0;
     }
     
   /********** FAQ **********/
     .accordion h1{
-      font-size: 1.6rem;
+        font-size: 40px;
+text-align: center;
+margin-top: 2rem;
     }
 
     .accordion{
       margin-left: 1rem;
-      margin-right: -4rem;
+      margin-right: -1rem;
       margin-top: 1rem;
     }
 
@@ -125,6 +129,6 @@ color: #16c6ce;
     }
 
     .accordion-content {
-      font-size: .9rem;
+      font-size: 1rem;
     }
   }

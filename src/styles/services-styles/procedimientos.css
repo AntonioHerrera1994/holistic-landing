@@ -1,7 +1,7 @@
 .procedimientos{
     box-sizing: border-box;
     margin: 0;
-    padding: 2rem 6rem 4rem 6rem;
+    padding: 1rem 6rem 4rem 6rem;
     overflow: hidden;
 }
 /********** Texto **********/
@@ -98,7 +98,33 @@ font-family: "Roboto", sans-serif;
     border-radius: 10px;
   }
 
-  @media (max-width: 768px) {
+
+
+  @media screen and (max-width: 800px) {
+
+      .procedimientos{
+        box-sizing: border-box;
+        margin: 0;
+        overflow: hidden;
+        padding: 2rem 2rem 2rem 2rem;
+    }
+
+    /********** Texto **********/
+
+.procedimientos p{
+margin-right: 0;
+margin-left: 0;
+
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.procedimientos h2{
+   
+    font-size: 40px;
+
+}
+    
     .component-container {
       flex-direction: column;
     }
