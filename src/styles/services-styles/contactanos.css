@@ -43,12 +43,19 @@
 
 .hub-form{
     margin: 4rem;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    width: 130%;
-    margin-left: -15rem;
+    padding-top: 8rem;
+
+    margin-left: -18rem;
+}
+#mc_embed_signup{
+ border-radius: 18px;
+ padding-top: 1rem;
+  padding-bottom: 2rem;
 }
 
+.refferal_badge{
+  display: none!important;
+}
 /********** Datos de contacto **********/
 
 .grid-datos{
