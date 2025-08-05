@@ -41,23 +41,6 @@
     height: 400px;
   }
   
-  .slider {
-    display: flex;
-    height: 100%;
-    transition: transform 0.8s ease-in-out; /* más fluido */
-  }
-  
-  .slide {
-    flex: 0 0 100%;
-    height: 100%;
-  }
-  
-  .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 26px;
-  }
 
   @media screen and (min-width:801px){
     .servhtxtmovil{

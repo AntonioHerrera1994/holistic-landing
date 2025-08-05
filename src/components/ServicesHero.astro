@@ -14,33 +14,7 @@ import HospitalS3 from '../assets/img3.webp'
             <p>Our approach extends beyond conventional treatment, embracing a holistic philosophy that nurtures your physical, mental, and emotional well-being. Explore our diverse offerings, each meticulously crafted to provide personalized care, enhance your healing, and empower you on your path to optimal health and recovery.</p>
         </div>
             <div class="slider-container">
-                <div class="slider">
-                    <div class="slide">
-                        <img 
-                        src={HospitalS.src}
-                        width="600"
-                        height="450"
-                        alt="hospital"
-                        />
-                    </div>
-                    <div class="slide">
-                        <img 
-                        src={HospitalS2.src}
-                        width="600"
-                        height="450"
-                        alt="hospital"
-                        />
-                    </div>
-                    <div class="slide">
-                        <img 
-                        src={HospitalS3.src}
-                        width="600"
-                        height="450"
-                        alt="hospital"
-                        />
-                    </div>
-                    <!-- Puedes añadir más slides según necesites -->
-                </div>
+            <iframe width="560" height="350" src="https://www.youtube.com/embed/GjxPLiM5sL4?autoplay=1&amp;si=W5xeVnmm-2iRvdQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
         </div>
         <div class="servhtxt">
@@ -51,30 +25,3 @@ import HospitalS3 from '../assets/img3.webp'
     </div>
 </section>
 
-<script is:global>
-document.addEventListener('DOMContentLoaded', function() {
-  const slider = document.querySelector('.slider');
-  const slides = document.querySelectorAll('.slide');
-  const totalSlides = slides.length;
-  let currentSlide = 0;
-  const slideInterval = 3000;
-
-  function goToSlide(index) {
-    slider.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    goToSlide(currentSlide);
-  }
-
-  let sliderTimer = setInterval(nextSlide, slideInterval);
-
-  const sliderContainer = document.querySelector('.slider-container');
-  sliderContainer.addEventListener('mouseenter', () => clearInterval(sliderTimer));
-  sliderContainer.addEventListener('mouseleave', () => {
-    sliderTimer = setInterval(nextSlide, slideInterval);
-  });
-});
-
-</script>
