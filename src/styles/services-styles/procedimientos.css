@@ -1,7 +1,7 @@
 .procedimientos {
   box-sizing: border-box;
-  padding: 4rem 5rem 4rem 5rem;
-  background-color: #1cc6cf0e;
+  padding: 4rem 4rem 4rem 4rem;
+  background-color: #1cc6cf1b;
 }
 
 .procedimientos h2 {
@@ -27,19 +27,29 @@
   max-width: 100%;
   border-radius: 16px;
   overflow: hidden;
+ 
 
 }
 
 .steps {
   flex: 1;
   padding: 40px;
- 
+  border-right: 2px solid #e0f7fa;
   overflow-y: auto;
   max-height: 600px;
 }
 
 .step {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+
+}
+
+.step-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 2rem;
 }
 
 .step-number {
@@ -47,14 +57,26 @@
   color: #16c6ce;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
+  margin-right: 10px;
 }
 
 .step-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: bold;
-  margin: 8px 0 5px;
   color: #0d456b;
   font-family: "Pontano Sans", sans-serif;
+  flex: 1;
+
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+  color: #16c6ce;
+}
+
+.step.active .arrow {
+  transform: rotate(180deg);
 }
 
 .step-description {
@@ -63,12 +85,22 @@
   font-size: 16px;
   max-width: 90%;
   font-family: "Roboto", sans-serif;
-  text-align: justify;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0;
+      margin-top: -1rem;
+      text-align: justify;
+}
+
+.step.active .step-description {
+  max-height: 600px; /* suficiente para texto largo */
+  padding: 10px 0 15px;
 }
 
 .image-container {
   flex: 1;
- 
+  
   display: flex;
   align-items: center;
   justify-content: center;
