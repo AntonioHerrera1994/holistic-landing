@@ -73,6 +73,7 @@
     transition: max-height 0.3s ease-out; /* Transición suave */
     font-family: "Plus Jakarta Sans", sans-serif;
     font-optical-sizing: auto;
+    text-align: justify;
   }
   
   .accordion-item.active .accordion-content {

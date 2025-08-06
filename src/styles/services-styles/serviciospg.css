@@ -1,7 +1,7 @@
 .serviciospg{
     box-sizing: border-box;
     margin: 0;
-    padding: 1rem 6rem 4rem 6rem;
+    padding: 4rem 6rem 4rem 6rem;
     overflow: hidden;
     margin-top: -6rem;
 }
@@ -29,6 +29,7 @@ font-family: "Roboto", sans-serif;
   color: rgba(0, 0, 0, 0.53);
     line-height: 30px;
     font-size: 17px;
+    text-align: justify;
 }
 
 .serviciospg h2{

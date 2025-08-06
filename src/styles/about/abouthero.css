@@ -1,8 +1,18 @@
 .ahero{
     box-sizing: border-box;
     margin: 0;
-    padding: 4rem 6rem 4rem 6rem;
+    padding: 4rem 6rem 3rem 6rem;
     overflow: hidden;
+    background-image: url('/src/assets/puntos.png');
+    background-size:  cover;
+    background-position: center;
+}
+
+.ateam{
+  padding-bottom: 4rem;
+   background-image: url('/src/assets/puntos.png');
+    background-size:  cover;
+    background-position: center;
 }
 
 /********** Grid **********/
@@ -120,6 +130,9 @@
         padding: 2rem 2rem 0 2rem;
     }
 
+    .ateam{
+  padding-bottom: 2rem;
+    }
     /********** Texto **********/
 .ahero h1{
   font-size: 39px;
