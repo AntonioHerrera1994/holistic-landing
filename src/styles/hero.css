@@ -4,11 +4,11 @@
     overflow: hidden;
     padding: 4rem 6rem 0 6rem;
     background-color: #1cc6cf1b;
-    background-image:   linear-gradient(rgba(0, 0, 0, 0.705), rgba(0,0,0,.04)), 
+    background-image:   linear-gradient(rgba(0, 0, 0, 0.79), rgba(0, 0, 0, 0.36)), 
     url('../assets/clinica2.webp');
     background-size: cover;
     background-position: center;
-    height: 90vh;
+    height: 83vh;
 }
 /********** Grid **********/
 .hero-grid{
@@ -49,7 +49,7 @@ max-width: 95%;
 /********** Numeros **********/
 
 .numbers{
-padding: 3rem 3rem 1rem 3rem;
+padding: 1rem 3rem 0rem 3rem;
 max-width: 100%;
 height: 37vh;
 background-color: #07a2bd;
@@ -68,7 +68,7 @@ margin-top: -3rem;
 }
 
 .n1{
-    margin-top: -2rem;
+    margin-top: -3rem;
 }
 
 
@@ -172,7 +172,8 @@ button {
         box-sizing: border-box;
         margin: 0;
         overflow: hidden;
-        padding: 6rem 2rem 0 2rem;
+        padding: 7.7rem 2rem 1rem 2rem;
+           height: 68vh;
     }
 
     /********** Grid **********/
@@ -215,16 +216,16 @@ height: 60%;
 /********** Numeros **********/
 
 .numbers{
-    padding: 2rem;
+    padding: 1.6rem;
     max-width: 100%;
-    height: 62vh;
+    height: 61vh;
     }
 
     .numbers h2{
     text-align: center;
     color: white;
     font-family: "Pontano Sans", sans-serif;
-    font-size: 30px;
+    font-size: 27px;
         font-weight: 500;
 }
 

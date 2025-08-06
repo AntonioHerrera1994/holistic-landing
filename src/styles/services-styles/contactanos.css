@@ -140,7 +140,7 @@
 }
 
 .contacto-izq h1{
-    font-size: 40px;
+    font-size: 38px;
     text-align: center;
 }
 
@@ -150,12 +150,15 @@
 .hub-form{
     margin: 0;
     padding-left:0;
-    padding-top: 20rem;
+    padding-top: 10rem;
     padding-bottom: 3rem;
-    width: 100%;
+    max-width: 100%;
     margin-left: 0;
 }
 
+#mc_embed_signup{
+  max-width: 100%;
+}
 /********** Datos de contacto **********/
 
 .grid-datos{
@@ -163,9 +166,9 @@
     display:grid;
     grid-template-columns: repeat(1,minmax(0,1fr));
         gap: 0; 
-        margin-top: 22rem;
+        margin-top: -2rem;
         margin-bottom: 1rem;
-          margin-left: 2.7rem;
+          margin-left: 1.8rem;
 }
 
 .container{

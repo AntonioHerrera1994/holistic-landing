@@ -108,7 +108,7 @@ justify-content: center;
     .posib h2{
         text-align: center;
         margin-right: 0;
-     font-size: 40px;
+     font-size: 32px;
     }
 
     /************ Reserva **********/
@@ -122,12 +122,12 @@ justify-content: center;
 
 /************ Grid **********/
 .reserva-cont{
-    margin: 0 2rem;
+    margin: 1.2rem;
 }
 
 .reserva h2{
 
-   font-size: 30px;
+   font-size: 27px;
      
 }
     

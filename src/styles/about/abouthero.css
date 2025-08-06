@@ -36,7 +36,6 @@
 
 
 .presentation-card {
-    flex: 0 0 calc(100% / 3 - 16.66px);
     background-size: cover;
     background-position: center;
     color: white;
@@ -123,16 +122,15 @@
 
     /********** Texto **********/
 .ahero h1{
-  font-size: 40px;
+  font-size: 39px;
 text-align: center;
 }
 
 .ahero p{
    margin-right: 0;
-  
     text-align: center;
- 
 }
+
 
 /********** Grid **********/
 
@@ -140,6 +138,7 @@ text-align: center;
     display: grid;
     grid-template-columns:repeat(1,minmax(0,1fr)) ;
     padding: 2rem 2rem;
-    gap: 3rem;
+    gap: 0;
+
 }
   }
