@@ -2,13 +2,13 @@
     box-sizing: border-box;
     margin: 0;
     overflow: hidden;
-    padding: 4rem 6rem 0 6rem;
+    padding: 4rem 6rem 8rem 6rem;
     background-color: #1cc6cf1b;
     background-image:   linear-gradient(rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.449)), 
     url('../assets/clinica2.webp');
     background-size: cover;
     background-position: center;
-    height: 83vh;
+    
 }
 /********** Grid **********/
 .hero-grid{
@@ -173,8 +173,8 @@ button {
         box-sizing: border-box;
         margin: 0;
         overflow: hidden;
-        padding: 7.7rem 2rem 1rem 2rem;
-           height: 68vh;
+        padding: 7.7rem 2rem 6rem 2rem;
+           
     }
 
     /********** Grid **********/
