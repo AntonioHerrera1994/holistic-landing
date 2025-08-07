@@ -13,14 +13,14 @@
 .counter-title {
     
     margin-bottom: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-family: "Pontano Sans", sans-serif;
     color: white;
         font-weight: 500;
 }
 
 .counter {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: bold;
     color: #2c3e50;
     transition: color 0.3s;
@@ -48,4 +48,8 @@
         justify-content: center;
         font-size: 1rem;
     }
+
+    .counter {
+    font-size: 1.6rem;
+}
 }

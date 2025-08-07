@@ -49,15 +49,19 @@ max-width: 95%;
 
 /********** Numeros **********/
 
+.bajo{
+    display: flex;
+    justify-content: center;
+}
 .numbers{
 padding: 1rem 3rem 0rem 3rem;
-max-width: 100%;
-
+max-width: 80%;
+display: flex;
+align-items: center;
 background-color: #07a2bd;
 border-radius: 50px;
 z-index: 10;
 margin-top: -3rem;
-
 }
 
 .numbers h2{
@@ -218,7 +222,7 @@ height: 60%;
 
 .numbers{
     padding: 1.6rem;
-
+display: block;
     
     }
 
@@ -226,7 +230,7 @@ height: 60%;
     text-align: center;
     color: white;
     font-family: "Pontano Sans", sans-serif;
-    font-size: 26px;
+    font-size: 24px;
         font-weight: 500;
 }
 
