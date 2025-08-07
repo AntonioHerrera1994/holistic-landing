@@ -174,13 +174,13 @@ button {
     /********** Texto **********/
 
 .hist2 h2{
-  text-align: center;
-    font-size: 32px;
+line-height: 50px;
+         font-size: 30px;
 
 }
 
 .hist2 p{
      margin-right: 0;
-text-align: center;
+
     }
    }

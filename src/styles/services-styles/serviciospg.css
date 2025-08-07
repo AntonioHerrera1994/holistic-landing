@@ -102,20 +102,20 @@ gap: 2rem;
 /********** Texto **********/
 
 .txtgridpg p{
-text-align: center;
+
 margin: 0;
 }
 
 .serviciospg h2{
-    text-align: center;
-    font-size: 32px;
+     line-height: 50px;
+         font-size: 30px;
 }
 
 /********** Cajas **********/
 
 .serv1pg{
 box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-padding: 3rem;
+padding: 2rem;
 border-radius: 26px;
 margin-top: 0;
 }

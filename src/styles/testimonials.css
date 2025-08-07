@@ -82,8 +82,10 @@
     }
 
     .testim h2{
-        font-size: 32px;
-        text-align: justify;
+       line-height: 50px;
+         font-size: 30px;
+        text-align: left;
+ 
     }
 
 

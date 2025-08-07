@@ -253,15 +253,15 @@ button {
     }
     
     .servicios h2{
-   
-         font-size: 32px;
+     line-height: 50px;
+         font-size: 30px;
     }
 
     /********** Cajas **********/
 
 .serv1{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 2rem;
+    padding: 1.9rem;
     border-radius: 26px;
     margin-top: 0;
 }
@@ -286,7 +286,8 @@ button {
 
 .hview h2{
 
-  font-size: 32px;
+  line-height: 50px;
+         font-size: 30px;
   
 }
 
