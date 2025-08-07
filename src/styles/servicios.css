@@ -248,12 +248,12 @@ button {
 /********** Texto **********/
 
 .txtgrid p{
-  text-align: center;
+ 
   margin: 0;
     }
     
     .servicios h2{
-        text-align: center;
+   
          font-size: 32px;
     }
 
@@ -261,7 +261,7 @@ button {
 
 .serv1{
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 3rem;
+    padding: 2rem;
     border-radius: 26px;
     margin-top: 0;
 }
@@ -285,21 +285,19 @@ button {
     /********** Texto **********/
 
 .hview h2{
- text-align: center;
+
   font-size: 32px;
+  
 }
 
 .hview p{
-    text-align: center;
+
     margin-right: 0;
     }
 
-     .hv2 h3{
-       text-align: center;
-    }
 
-    .hv2 li{
-        text-align: left;
-    }
+button{
+    margin-top: 2rem;
+}
         
     }

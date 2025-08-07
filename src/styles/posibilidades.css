@@ -89,7 +89,7 @@ justify-content: center;
 
 @media screen and (max-width:800px){
     .posib{
-        padding: 2rem;
+         padding: 2rem 2rem 4rem 2rem;
     }
 
     /************ Grid **********/
@@ -104,11 +104,11 @@ justify-content: center;
 
 .posib p{
    margin-right: 0;
-   text-align: center;
+
     }
     
     .posib h2{
-        text-align: center;
+  
         margin-right: 0;
      font-size: 32px;
     }
@@ -117,19 +117,19 @@ justify-content: center;
 
 .reserva{
   
-    padding: 2rem;
+    padding: 1rem;
     max-width: 100%;
   
 }
 
 /************ Grid **********/
 .reserva-cont{
-    margin: 1.2rem;
+    margin: 1.1rem;
 }
 
 .reserva h2{
 
-   font-size: 27px;
+   font-size: 26px;
      
 }
     
