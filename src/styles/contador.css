@@ -13,14 +13,14 @@
 .counter-title {
     
     margin-bottom: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-family: "Pontano Sans", sans-serif;
     color: white;
         font-weight: 500;
 }
 
 .counter {
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
     color: #2c3e50;
     transition: color 0.3s;
@@ -35,8 +35,16 @@
 @media screen and (max-width:800px){
     .contadorgrid{
         display: grid;
-        grid-template-columns:repeat(1,minmax(0,1fr)) ;
-        padding: 4rem;
-        gap: 2rem;
+        grid-template-columns:repeat(3,minmax(0,1fr)) ;
+        padding: 2rem;
+        gap: 3rem;
+        margin-top: 4rem;
+    }
+
+    .counter-title {
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
