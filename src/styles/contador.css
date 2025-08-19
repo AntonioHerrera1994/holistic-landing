@@ -19,6 +19,10 @@
         font-weight: 500;
 }
 
+.counter.con-signo::before {
+    content: '+';
+}
+
 .counter {
     font-size: 3rem;
     font-weight: bold;

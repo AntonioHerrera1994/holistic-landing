@@ -1,0 +1,49 @@
+---
+import '../../styles/navbar.css'
+import ImageLogo from '../../assets/holistic-logo.png';
+---
+
+<section class="navbar-f">
+
+<nav>
+
+  <div class="logo">
+    <a href="/">
+    <img 
+    src={ImageLogo.src}
+    width="14%"
+    height="50%"
+    alt="favlash-logo"/>
+    </a>
+  </div>
+
+  <div class="nav-links">
+    <a href="/">Inicio</a>
+    <a href="/about-us">Nosotros</a>
+    <a href="/treatments">Tratamientos</a>
+    <a href="/contact-us">Contacto</a>
+  
+  </div>
+
+<!-- From Uiverse.io by alexroumi --> 
+<a href="https://wa.link/nai5wo" target="_blank"><button class="btn-escritorio">Agenda una Cita</button>
+</a>
+
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="/">Home</a>
+  <a href="/about-us">About Us</a>
+  <a href="/treatments">Treatments</a>
+  <a href="/contact-us">Contact</a>
+  <button class="nav-button">Agenda Tu Cita</button>
+</div>
+</section>
+<script>
+    import "../../scripts/menu"
+</script>
