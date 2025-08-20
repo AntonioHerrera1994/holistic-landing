@@ -1,10 +1,7 @@
 ---
-import Navbar from '../components/Navbar.astro';
-import ServicesHero from '../components/ServicesHero.astro';
-import ServiciosPG from'../components/ServiciosPg.astro';
-import Procedimientos from '../components/Procedimientos.astro';
-import Footer from '../components/Footer.astro';
-import Faqs from '../components/Faqs.astro';
+import NavBarEsp from'../components/espanol/NavbarEsp.astro'
+import FooterEsp from '../components/espanol/FooterEsp.astro'
+import TratamientosEsp from '../components/espanol/TratamientosEsp.astro'
 ---
 
 <!doctype html>
@@ -29,18 +26,16 @@ import Faqs from '../components/Faqs.astro';
 			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 			</style>
 		<title>Tratamientos - Holistic Cancer Treatment</title>
-		<meta name="description" content="Discover a comprehensive and compassionate approach to cancer care that integrates traditional and alternative therapies.">
+		<meta name="description" content="Descubra un enfoque integral y humano para el cuidado del cáncer que combina tratamientos convencionales con terapias alternativas.">
 		  <meta property="og:image" content="https://holisticancercoach.com/_astro/clinica2.CpS300DU.webp"> 
   			<meta property="og:url" content="https://holisticancercoach.com/_astro/clinica2.CpS300DU.webp"> 
   		<meta property="og:type" content="website">
 	</head>
 	<body>
-		<Navbar />
-		<ServicesHero />
-		<ServiciosPG />
-		<Procedimientos />
-		<Faqs />
-		<Footer />
+	     <NavBarEsp />
+         <TratamientosEsp />
+        <FooterEsp />
+           
 	</body>
 </html>
 
