@@ -63,6 +63,9 @@ li{
 .footergrid2{
     margin-left: 8rem;
 }
+.footergrid2 .bi{
+    margin-left: -2rem;
+}
 
 .footergrid3{
     margin-left: 5rem;
