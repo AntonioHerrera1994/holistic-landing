@@ -1,0 +1,93 @@
+---
+import '../../styles/services-styles/faqs.css'
+import ImgDFaqs from '../../assets/img3.webp'
+---
+
+<section class="faq">
+<div class="faq-cont">
+    <div class="faq-grid">
+
+      <div class="faq-izq">
+           <img 
+                        src={ImgDFaqs.src}
+                        width="600"
+                        height="450"
+                        alt="hospital"
+                        />
+      </div>
+
+        <div class="accordion">
+          <h1>
+           Preguntas  <br><span style="color: #16c6ce;">Frecuentes </span>
+
+          </h1>
+            <div class="accordion-item active">
+              <button class="accordion-button"> ¿El tratamiento holístico del cáncer es una alternativa a las terapias convencionales?</button>
+              <div class="accordion-content">
+                No. Nuestros tratamientos holísticos están diseñados para complementar y potenciar las terapias convencionales contra el cáncer, no para reemplazarlas. Nos enfocamos en integrar ambos enfoques para apoyar su bienestar integral y fortalecer su cuerpo durante el tratamiento.
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-button">¿Qué debo saber para viajar a su clínica en Tijuana?</button>
+              <div class="accordion-content">
+            Nuestra clínica cuenta con una ubicación conveniente en Tijuana, Baja California, México. Entendemos que viajar para recibir tratamiento puede ser abrumador, por lo que nuestro equipo puede brindarle orientación sobre la organización del viaje, opciones de hospedaje e información local para asegurar que su visita sea cómoda y sin contratiempos.              </div>
+            </div>
+        
+             <div class="accordion-item">
+              <button class="accordion-button">¿La clínica acepta seguro médico para los tratamientos?</button>
+              <div class="accordion-content">
+                
+                    Aunque muchos tratamientos holísticos no suelen estar cubiertos por los planes de seguro médico estándar, le proporcionaremos toda la documentación necesaria para que usted pueda solicitar un posible reembolso a su proveedor. Además, ofrecemos diversas opciones de pago y analizamos todos los costos de forma transparente desde el principio.              </div>
+            </div>
+             <div class="accordion-item">
+              <button class="accordion-button">¿Qué puedo esperar durante mi primera consulta?</button>
+              <div class="accordion-content">
+                
+                 Su consulta inicial consiste en una revisión exhaustiva de su historial médico, su estado de salud actual y sus objetivos de salud. Es una oportunidad para analizar las posibles opciones de tratamiento, aclarar todas sus dudas y determinar, junto a nuestro equipo médico, el camino más personalizado a seguir.
+              </div>
+            </div>
+             <div class="accordion-item">
+              <button class="accordion-button">¿Cuál es la duración típica de los programas de tratamiento holístico?</button>
+              <div class="accordion-content">
+                La duración del tratamiento varía considerablemente según el diagnóstico individual, la complejidad del caso y la respuesta del paciente a las terapias. Durante su consulta, le proporcionaremos un cronograma claro y personalizado donde se detallará la duración recomendada para su programa.
+              </div>
+            </div>
+          </div>
+
+    </div>
+
+</div>
+</section>
+
+<script type="module" >
+const accordionButtons = document.querySelectorAll('.accordion-button');
+const accordionContents = document.querySelectorAll('.accordion-content');
+
+// Activar el primer elemento al cargar la página
+accordionButtons[0].parentNode.classList.add('active');
+accordionContents[0].style.maxHeight = accordionContents[0].scrollHeight + 'px';
+
+accordionButtons.forEach((button, index) => {
+  button.addEventListener('click', () => {
+    const accordionItem = button.parentNode;
+    const accordionContent = accordionItem.querySelector('.accordion-content');
+
+    if (accordionItem.classList.contains('active')) {
+      accordionItem.classList.remove('active');
+      accordionContent.style.maxHeight = '0'; // Cierra con desplazamiento hacia arriba
+    } else {
+      accordionButtons.forEach(otherButton => {
+        otherButton.parentNode.classList.remove('active');
+        otherButton.parentNode.querySelector('.accordion-content').style.maxHeight = '0';
+      });
+
+      accordionItem.classList.add('active');
+
+      // Calcula la altura del contenido y aplica el desplazamiento
+      const contentHeight = accordionContent.scrollHeight;
+      accordionContent.style.maxHeight = contentHeight + 'px';
+    }
+  });
+});
+
+</script>
