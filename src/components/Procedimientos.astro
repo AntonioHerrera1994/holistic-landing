@@ -1,5 +1,6 @@
 ---
 import '../styles/services-styles/procedimientos.css'
+import '../styles/services-styles/procedimientosnew.css'
 import Imgdr from '../assets/dr-enriquez.png'
 ---
 <section class="procedimientos">
@@ -11,108 +12,179 @@ import Imgdr from '../assets/dr-enriquez.png'
     Our comprehensive procedures are meticulously designed to ensure every aspect of your well-being is addressed, from precise diagnostics to integrated therapies and ongoing support. We believe in transparency and collaboration, empowering you with a clear understanding of each step on your path to recovery and renewed health.
   </p>
 
-  <div class="component-container">
-    <!-- Lado Izquierdo: Pasos -->
-    <div class="steps">
-      <div class="step active">
-        <div class="step-header">
-          <div class="step-number">01</div>
-          <div class="step-title">Whole-Body Hyperthermia</div>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="step-description">
-          Whole-Body Hyperthermia (WBH) is a type of treatment for cancer and other non-malignant conditions such as Lyme Disease. In oncology, WBH uses an external heat source to increase tissue temperature and may help inhibit cancer cell growth or stop their further growth.
-          <br><br>
-          The term ‘hyperthermia’ applies to the use of different techniques in combination with other cancer treatments (particularly chemotherapy and radiation therapy).
-          <br><br>
-          In the case of cancer, it is well known they have a higher metabolic rate than normal cells, which makes them very sensitive to high temperatures. There are other characteristics that are important to mention that explain why hyperthermia is effective: 1) Blood vessels within malignant tumors lack the potential to dilate in order to dissipate heat. 2) Blood vessels within tumors are tortuous which make the circulation slower than in normal tissues, thus prolonging intra-tumoral heat exposure. 3) The death of malignant cells will induce changes in the cytoplasma of adjacent malignant cells which will cause metabolic changes and lead them to their own death.
-        </div>
-      </div>
+  <div class="tabs-container">
+  <div class="tab-buttons">
+    <button class="tab-btn active" data-tab="wholebody">Whole-Body Hyperthermia</button>
+    <button class="tab-btn" data-tab="chelation">Chelation Therapy</button>
+    <button class="tab-btn" data-tab="anticancer">Anti-Cancer Program</button>
+    <button class="tab-btn" data-tab="stemecell">Stem Cell Therapy</button>
+    <button class="tab-btn" data-tab="autoinmune">Autoimmune Disorder Therapy</button>
+    <button class="tab-btn" data-tab="extracorporeal">Extracorporeal Photopheresis</button>
+  </div>
 
-      <div class="step">
-        <div class="step-header">
-          <div class="step-number">02</div>
-          <div class="step-title">Chelation Therapy</div>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="step-description">
-          Chelation (key-LAY-shun) is the process of removing or eliminating toxic metals and minerals in the body. The most common and effective chelation process uses EDTA (ethylene diamine tetra-acetic acid, also known as edetic acid or tetra acetic acid), which is a synthetic amino acid. It has been used for over 65 years to effectively treat lead poisoning and to remove plaque from the arteries, veins, and tissue that contributes to strokes and heart attacks.
-          <br><br>
-          Plaques can also form within the connective tissue of neuro pathways that can cause a host of disorders, conditions, and diseases such as MS, Alzheimer's, autism, and autoimmune diseases. IWHC uses EDTA chelation in combination with the administration of proteolytic enzymes as well as detoxification, nutrition, and immune system stimulation.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-header">
-          <div class="step-number">03</div>
-          <div class="step-title">Anti-Cancer Program</div>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="step-description">
-          The Anti-Cancer Program itself includes, but is not limited to, Laetrile, DMSO, vitamins, minerals, amino acids, enzymes, antioxidants, etc. We combine all this with whole-body hyperthermia (8 sessions in 4 weeks), hyperbaric oxygen (8 sessions in 4 weeks), Extracorporeal photopheresis (where we obtain certain type of white cells to develop Autologous Dendritic cell vaccines that patients will take home and inject subcutaneously for 6 months) done twice.
-          <br><br>
-          Live-cell therapy is given to provide immune stimulation, connective tissue support and fibroblasts for body repair. We also do the Alpha-2010 Spa System which provides heat therapy, lymphatic massage and detoxification. IPT utilizing low doses of chemotherapy are also offered in my clinic for those who request it, although by using DMSO we achieve exactly the same purpose but there is no need to induce glucose changes to the patient. Stem-cells are available and used whenever necessary.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-header">
-          <div class="step-number">04</div>
-          <div class="step-title">Stem Cell Therapy</div>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="step-description">
-          Stem cell therapy is a cutting-edge medical procedure that utilizes the body's own regenerative potential to promote healing and restore function. Stem cells are unique cells that have the remarkable ability to develop into many different types of cells, from muscle and bone to nerve and blood cells. They are essentially the body's repair system.
-          <br><br>
-          We believe in supporting the body's natural healing processes. Stem cell therapy aligns with this philosophy by using these powerful cells to aid in recovery and improve overall wellness. The procedure involves collecting stem cells, often from the patient's own bone marrow or fat tissue, and then reintroducing them into the body. This helps to reduce inflammation, repair damaged tissues, and support the body in its fight against disease.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-header">
-          <div class="step-number">05</div>
-          <div class="step-title">Autoimmune Disorder Therapy</div>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="step-description">
-          At our clinic, we apply the same integrative philosophy we use in cancer treatment to effectively address autoimmune disorders. Our approach combines various treatments designed not only to manage symptoms but also to rectify the condition at its root.
-<br><br>
-We understand that navigating the insurance system can be a challenge. Many policies cover second opinions or alternative treatments. To facilitate this process, our US liaison is available to guide you step-by-step in filing a claim and helping you understand your coverage benefits.
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-header">
-          <div class="step-number">06</div>
-          <div class="step-title">Extracorporeal Photopheresis</div>
-          <span class="arrow">▼</span>
-        </div>
-        <div class="step-description">
-          Apheresis is a procedure where blood is taken (like when donating blood) and processed to separate the various components that make up the blood utilizing only the part that will create an Autologous Dendritic Cell Vaccine (ADCV) through the process of Extra-corporeal Photopheresis (ECPP).
-          <br><br>
-          ECPP develops one type of anticancer vaccine which become "smart bombs" developed from the patient's own blood. These autologous (own self) cells attack malignant cells by culturing killer cells with the same genetic make up as the cancer cells. Once mature enough, they are injected into the patient. Like a "seek and target" missile, these super cells set out to target their sick genetic twins.
-        </div>
-      </div>
-    </div>
-
-    <!-- Lado Derecho: Imagen Estática -->
-    <div class="image-container">
-              <img 
+  <div class="tab-content active" id="wholebody">
+    <div class="tabp-grid">
+<div>
+    <img 
                         src={Imgdr.src}
                         width="100%"
                         height="610"
                         alt="hospital"
                         />
+</div>
+<div>
+  <div class="desc-proc">
+
+      <p style="text-align: justify; margin:0;">
+   <b> Whole-Body Hyperthermia (WBH)</b> is a type of treatment for cancer and other non-malignant conditions such as Lyme Disease. In oncology, WBH uses an external heat source to increase tissue temperature and may help inhibit cancer cell growth or stop their further growth.
+    <br>
+    The term ‘hyperthermia’ applies to the use of different techniques in combination with other cancer treatments (particularly chemotherapy and radiation therapy).
+<br><br>
+    In the case of cancer, it is well known they have a higher metabolic rate than normal cells, which makes them very sensitive to high temperatures. There are other characteristics that are important to mention that explain why hyperthermia is effective: 
+    <br>
+    <ul>
+      <li><b>1)</b> Blood vessels within malignant tumors lack the potential to dilate in order to dissipate heat. </li>
+      <li><b>2)</b> Blood vessels within tumors are tortuous which make the circulation slower than in normal tissues, thus prolonging intra-tumoral heat exposure. </li>
+      <li><b>3)</b> The death of malignant cells will induce changes in the cytoplasma of adjacent malignant cells which will cause metabolic changes and lead them to their own death.</li>
+    </ul>
+   
+  </p>
+  </div>
+
+</div>
     </div>
   </div>
+
+
+  <div class="tab-content" id="chelation">
+ <div class="tabp-grid">
+<div>
+    <img 
+                        src={Imgdr.src}
+                        width="100%"
+                        height="610"
+                        alt="hospital"
+                        />
+</div>
+<div>
+  <div class="desc-proc">
+
+      <p style="text-align: justify; margin:0;">
+        <b>Chelation (key-LAY-shun)</b> is the process of removing or eliminating toxic metals and minerals in the body. The most common and effective chelation process uses EDTA (ethylene diamine tetra-acetic acid, also known as edetic acid or tetra acetic acid), which is a synthetic amino acid. It has been used for over 65 years to effectively treat lead poisoning and to remove plaque from the arteries, veins, and tissue that contributes to strokes and heart attacks.
+        <br>    <br>
+        Plaques can also form within the connective tissue of neuro pathways that can cause a host of disorders, conditions, and diseases such as MS, Alzheimer's, autism, and autoimmune diseases. IWHC uses EDTA chelation in combination with the administration of proteolytic enzymes as well as detoxification, nutrition, and immune system stimulation.
+  </p>
+  </div>
+
+</div>
+    </div>
+  </div>
+
+    <div class="tab-content" id="anticancer">
+ <div class="tabp-grid">
+<div>
+    <img 
+                        src={Imgdr.src}
+                        width="100%"
+                        height="610"
+                        alt="hospital"
+                        />
+</div>
+<div>
+  <div class="desc-proc">
+
+      <p style="text-align: justify; margin:0;">
+       The <b>Anti-Cancer Program</b> itself includes, but is not limited to, Laetrile, DMSO, vitamins, minerals, amino acids, enzymes, antioxidants, etc.
+       <br>
+       We combine all this with whole-body hyperthermia <b>(8 sessions in 4 weeks)</b>, hyperbaric oxygen <b>(8 sessions in 4 weeks)</b>, Extracorporeal photopheresis (where we obtain certain type of white cells to develop Autologous Dendritic cell vaccines that patients will take home and inject subcutaneously for 6 months) done twice.
+<br><br>
+       <b> Live-cell therapy</b> is given to provide immune stimulation, connective tissue support and fibroblasts for body repair. We also do the Alpha-2010 Spa System which provides heat therapy, lymphatic massage and detoxification. IPT utilizing low doses of chemotherapy are also offered in my clinic for those who request it, although by using DMSO we achieve exactly the same purpose but there is no need to induce glucose changes to the patient. Stem-cells are available and used whenever necessary.    
+  </p>
+  </div>
+
+</div>
+    </div>
+  </div>
+
+    <div class="tab-content" id="stemecell">
+<div class="tabp-grid">
+<div>
+    <img 
+                        src={Imgdr.src}
+                        width="100%"
+                        height="610"
+                        alt="hospital"
+                        />
+</div>
+<div>
+  <div class="desc-proc">
+
+      <p style="text-align: justify; margin:0;">
+        <b>Stem cell therapy</b> is a cutting-edge medical procedure that utilizes the body's own regenerative potential to promote healing and restore function. Stem cells are unique cells that have the remarkable ability to develop into many different types of cells, from muscle and bone to nerve and blood cells. They are essentially the body's repair system.
+<br><br>
+      We believe in supporting the body's natural healing processes. <br>
+      <b>Stem cell therapy</b> aligns with this philosophy by using these powerful cells to aid in recovery and improve overall wellness. The procedure involves collecting stem cells, often from the patient's own bone marrow or fat tissue, and then reintroducing them into the body. This helps to reduce inflammation, repair damaged tissues, and support the body in its fight against disease. 
+  </p>
+  </div>
+
+</div>
+    </div>
+  </div>
+
+    <div class="tab-content" id="autoinmune">
+<div class="tabp-grid">
+<div>
+    <img 
+                        src={Imgdr.src}
+                        width="100%"
+                        height="610"
+                        alt="hospital"
+                        />
+</div>
+<div>
+  <div class="desc-proc">
+
+      <p style="text-align: justify; margin:0;">
+
+     At our clinic, we apply the same integrative philosophy we use in cancer treatment to effectively address autoimmune disorders. Our approach combines various treatments designed not only to manage symptoms but also to rectify the condition at its root.
+<br><br>
+      We understand that navigating the insurance system can be a challenge. Many policies cover second opinions or alternative treatments. To facilitate this process, our US liaison is available to guide you step-by-step in filing a claim and helping you understand your coverage benefits. 
+  </p>
+  </div>
+
+</div>
+    </div>
+  </div>
+
+    <div class="tab-content" id="extracorporeal">
+<div class="tabp-grid">
+<div>
+    <img 
+                        src={Imgdr.src}
+                        width="100%"
+                        height="610"
+                        alt="hospital"
+                        />
+</div>
+<div>
+  <div class="desc-proc">
+
+      <p style="text-align: justify; margin:0;">
+
+Apheresis is a procedure where blood is taken (like when donating blood) and processed to separate the various components that make up the blood utilizing only the part that will create an Autologous Dendritic Cell Vaccine (ADCV) through the process of Extra-corporeal Photopheresis (ECPP).
+<br><br>
+ECPP develops one type of anticancer vaccine which become "smart bombs" developed from the patient's own blood. These autologous (own self) cells attack malignant cells by culturing killer cells with the same genetic make up as the cancer cells. Once mature enough, they are injected into the patient. Like a "seek and target" missile, these super cells set out to target their sick genetic twins.
+  </div>
+
+</div>
+    </div>
+  </div>
+</div>
+
+    <script>
+    import "../scripts/paquetes.js"
+</script>
+
 </section>
 
 
-<script type="module">
-document.querySelectorAll(".step-header").forEach(header => {
-  header.addEventListener("click", () => {
-    const step = header.parentElement;
-    step.classList.toggle("active");
-  });
-});
-</script>

@@ -13,14 +13,7 @@
   text-align: center;
 }
 
-.procedimientos p {
-  font-family: "Roboto", sans-serif;
-  color: rgba(0, 0, 0, 0.53);
-  line-height: 30px;
-  font-size: 17px;
-  margin: 0 12rem 3rem 12rem;
-  text-align: center;
-}
+
 
 .component-container {
   display: flex;
