@@ -44,7 +44,7 @@
 
 .reserva{
     border-radius: 26px;
-    padding: 5rem 6rem;
+    padding: 3.5rem 4.5rem;
     background-color: #07a2bd;
     max-width: 70%;
     margin: 0 auto; /*Centrar */
@@ -52,11 +52,13 @@
 }
 
 .reserva-cont{
-    margin: 0 8rem;
+   display: grid;
+    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    gap: 4rem;
 }
 
 .reserva h2{
-    text-align: center;
+ 
     font-family: "Pontano Sans", sans-serif;
     color:white;
    font-size: 31px;
@@ -64,7 +66,7 @@
 }
 
 .reserva p{
-    text-align: center;
+    text-align: justify;
     font-family: "Roboto", sans-serif;
       line-height: 30px;
     font-size: 17px;
@@ -74,17 +76,21 @@
 .reserva a{
     font-family: "Roboto", sans-serif;
     background-color:  white;
-    display: flex;
-  justify-content: center; 
-  align-items: center; 
+
   padding: .6rem;
   border-radius: 26px;
  color: #07a2bd;
 }
 
 .reserva-btn{
-    display: flex;
-justify-content: center;
+  margin-top: 2.5rem;
+}
+
+.img-dra{
+    background-image: url('../assets/dra-dent.webp');
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px;
 }
 
 @media screen and (max-width:800px){
@@ -119,25 +125,28 @@ justify-content: center;
 .reserva{
   
     padding: 1rem;
-    max-width: 100%;
+    max-width: 90%;
   
 }
 
 /************ Grid **********/
 .reserva-cont{
-    margin: 1.1rem;
+
+    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+
 }
+
 
 .reserva h2{
 
    font-size: 26px;
-     
+     text-align: center;
 }
 
-.ps2{
-    display: flex;
-    justify-content: center;
-
+.reserva-btn{
+  display: flex;
+  justify-content: center;
 }
+
     
 }

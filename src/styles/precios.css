@@ -1,9 +1,8 @@
 
   .pricing-container {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 4rem 2rem;
-   
     min-height: 100vh;
   }
 
@@ -15,7 +14,7 @@
 
   .main-title {
 font-family: "Pontano Sans", sans-serif;
-    margin-right: 4.7rem;
+
     font-size: 44px;
     line-height: 60px;
     font-weight: 500;
@@ -389,24 +388,17 @@ font-family: "Pontano Sans", sans-serif;
     }
   }
 
-  @media (max-width: 900px) {
-    .pricing-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-    }
-  }
 
-  @media (max-width: 768px) {
+
+  @media (max-width: 801px) {
     .pricing-container {
       padding: 2rem 1rem;
     }
 
-    .pricing-grid {
-      grid-template-columns: 1fr;
+   .pricing-grid {
+      grid-template-columns: repeat(1, 1fr);
       gap: 1.5rem;
-      min-height: 500px;
     }
-
     .prices-comparison {
       flex-direction: column;
       gap: 0.5rem;
@@ -434,4 +426,15 @@ font-family: "Pontano Sans", sans-serif;
     .page-indicator {
       order: -1;
     }
+
+     .main-title {
+
+    font-size: 30px;
+        line-height: 35px;
+   
+  }
+
+    .procedure-name {
+text-align: center;
+  }
   }
