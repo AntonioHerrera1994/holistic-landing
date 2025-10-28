@@ -4,99 +4,291 @@ import '../styles/precios.css'
 // Datos de precios dentales
 const procedures = [
   {
-    name: "New Patient",
-    nameEs: "Paciente Nuevo",
+    nameEs: "New Patient",
     biodental: 50,
     us: 100,
     savings: 50,
-    icon: "👤"
+ 
   },
   {
-    name: "Panoramic radiographic image",
-    nameEs: "Radiografía panorámica",
+    nameEs: "Panoramic radiographic image",
     biodental: 50,
     us: 100,
     savings: 50,
-    icon: "📸"
+
   },
   {
-    name: "Full Mouth 3D CT Scan",
-    nameEs: "Tomografía 3D boca completa",
+    nameEs: "Full Mouth 3D CT Scan",
     biodental: 200,
     us: 500,
-    savings: 60,
-    icon: "🔬"
+    savings: 300,
+
   },
   {
-    name: "Prophylaxis (Cleaning)",
-    nameEs: "Profilaxis (Limpieza)",
+    nameEs: "Prophylaxis (Cleaning)",
     biodental: 50,
     us: 80,
-    savings: 37,
-    icon: "✨"
+    savings: 30,
+
   },
   {
-    name: "Resin-based composite filling",
-    nameEs: "Resina composite (hasta 3 superficies)",
+    nameEs: "Resin-based composite filling)",
     biodental: 100,
     us: 150,
-    savings: 33,
-    icon: "🦷"
+    savings: 50,
+
   },
   {
-    name: "Safe mercury removal with filling",
-    nameEs: "Remoción segura de amalgama",
+    nameEs: "Safe mercury removal with filling",
     biodental: 100,
     us: 300,
-    savings: 66,
-    icon: "⚕️"
+    savings: 200,
+
   },
   {
-    name: "Inlay - porcelain/ceramic",
-    nameEs: "Incrustación porcelana/cerámica",
+    nameEs: "Inlay - porcelain/ceramic",
     biodental: 430,
     us: 650,
-    savings: 33,
-    icon: "💎"
+    savings: 220,
+
   },
   {
-    name: "Onlay - porcelain/ceramic",
-    nameEs: "Onlay porcelana/cerámica",
+    nameEs: "Onlay - porcelain/ceramic",
     biodental: 430,
     us: 650,
-    savings: 33,
-    icon: "💎"
+    savings: 220,
+
   },
   {
-    name: "Crown - porcelain/ceramic (Emax)",
-    nameEs: "Corona porcelana/cerámica (Emax)",
+    nameEs: "Crown - porcelain/ceramic (Emax)",
     biodental: 480,
     us: 1000,
-    savings: 52,
-    icon: "👑"
+    savings: 520,
+
   },
   {
-    name: "Crown - porcelain/ceramic (Zirconia)",
-    nameEs: "Corona porcelana/cerámica (Zirconia)",
+    nameEs: "Crown - porcelain/ceramic (Zirconia)",
     biodental: 480,
     us: 1200,
-    savings: 60,
-    icon: "👑"
+ 
   },
   {
-    name: "Temporary crown",
-    nameEs: "Corona temporal",
+    nameEs: "Temporary crow",
     biodental: 75,
     us: 100,
     savings: 25,
-    icon: "🔧"
+   
+  },
+  {
+    nameEs: "Post and or build up",
+    biodental: 120,
+    us: 250,
+    savings: 130,
+
+  },
+  {
+    nameEs: "Endodontic therapy, premolar or molar tooth (excluding final restoration)",
+    biodental: 330,
+    us: 750,
+    savings: 420,
+ 
+  },
+  {
+    nameEs: "Endodontic therapy, premolar or molar tooth",
+    biodental: 350,
+    us: 900,
+    savings: 550,
+  
+  },
+  {
+    nameEs: "Deep cleaning per quad",
+    biodental: 100,
+    us: 135,
+    savings: 35,
+
+  },
+  {
+    nameEs: "Periodontal surgery per queadrant",
+    biodental: 500,
+    us: 600,
+    savings: 100,
+
+  },
+  {
+    nameEs: "Bone replacement graft first site in quadrant",
+    biodental: 350,
+    us: 500,
+    savings: 150,
+
+  },
+  {
+    nameEs: "Biologic materials to aid in soft and osseous tissue regeneration per tooth (prp-prf)",
+    biodental: 100,
+    us: 100,
+    savings: 0,
+
+  },
+  {
+    nameEs: "Complete denture maxillary",
+    biodental: 650,
+    us: 1500,
+    savings: 850,
+  
+  },
+  {
+    nameEs: "Complete denture mandibular",
+    biodental: 650,
+    us: 1500,
+    savings: 850,
+ 
+  },
+  {
+    nameEs: "Immediate denture maxillary",
+    biodental: 350,
+    us: 600,
+    savings: 250,
+
+  },
+  {
+    nameEs: "Immediate denture mandibular",
+    biodental: 350,
+    us: 600,
+    savings: 250,
+
+  },
+  {
+    nameEs: "Surgical placement of implant body: endosteal implant",
+    biodental: 900,
+    us: 2000,
+    savings: 1100,
+
+  },
+  {
+    nameEs: "Semi-precision attachment abutment",
+    biodental: 350,
+    us: 500,
+    savings: 150,
+
+  },
+  {
+    nameEs: "Implant abutment",
+    biodental: 350,
+    us: 650,
+    savings: 300,
+  
+  },
+  {
+    nameEs: "Custom fabricated abutment",
+    biodental: 400,
+    us: 800,
+    savings: 400,
+
+  },
+  {
+    nameEs: "Implant crown porcelain/ceramic crown (Emax)",
+    biodental: 500,
+    us: 1200,
+    savings: 700,
+
+  },
+  {
+    nameEs: "Implant crown porcelain/ceramic crown (Zirconia)",
+    biodental: 500,
+    us: 1500,
+    savings: 1000,
+
+  },
+  {
+    nameEs: "Simple extraction front tooth",
+    biodental: 100,
+    us: 200,
+    savings: 100,
+
+  },
+  {
+    nameEs: "Simple extraction",
+    biodental: 120,
+    us: 200,
+    savings: 80,
+
+  },
+  {
+    nameEs: "Extractions with cavitation, plasma and ozone",
+    biodental: 350,
+    us: 600,
+    savings: 250,
+
+  },
+  {
+    nameEs: "Wisdom tooth extraction",
+    biodental: 150,
+    us: 200,
+    savings: 50,
+
+  },
+  {
+    nameEs: "Wisdom Tooth extractions partially bony",
+    biodental: 230,
+    us: 240,
+    savings: 10,
+
+  },
+  {
+    nameEs: "Wisdom Tooth extractions completely bony",
+    biodental: 300,
+    us: 500,
+    savings: 200,
+
+  },
+  {
+    nameEs: "Night guard",
+    biodental: 120,
+    us: 200,
+    savings: 80,
+
+  },
+  {
+    nameEs: "Root canal including cleaning, post-build-up, and a zirconia crown",
+    biodental: 880,
+    us: 2500,
+    savings: 1620,
+
+  },
+  {
+    nameEs: "Veneers",
+    biodental: 480,
+    us: 1000,
+    savings: 520,
+
+  },
+  {
+    nameEs: "Gingivectomy or gingivoplasty",
+    biodental: 300,
+    us: 200,
+    savings: -100,
+
+  },
+  {
+    nameEs: "Sinus augmentation with bone or bone substitutes via a lateral open approach",
+    biodental: 1300,
+    us: 2500,
+    savings: 1200,
+ 
+  },
+  {
+    nameEs: "Sinus augmentation via a vertical approach",
+    biodental: 900,
+    us: 1500,
+    savings: 600,
+
   }
 ];
+
 ---
 
 <div class="pricing-container">
   <div class="header-section">
-    <h1 class="main-title">Affordable Dentist Prices in Tijuana, Mexico</h1>
+    <h1 class="main-title">Affordable Holistic Dentist Prices in Tijuana, Mexico</h1>
     <p class="subtitle">Save up to 66% on dental procedures with world-class quality</p>
   </div>
 
@@ -129,15 +321,15 @@ const procedures = [
         data-index={index}
         style={`animation-delay: ${(index % 2) * 0.15}s`}
       >
-        <div class="card-icon">{procedure.icon}</div>
+        <div class="card-icon"></div>
         
         <div class="card-content">
           <h3 class="procedure-name">{procedure.nameEs}</h3>
-          <p class="procedure-name-en">{procedure.name}</p>
+
           
           <div class="prices-comparison">
             <div class="price-block biodental">
-              <span class="price-label">BioDental</span>
+              <span class="price-label">Our Price</span>
               <span class="price-value">${procedure.biodental}</span>
             </div>
             
@@ -146,15 +338,15 @@ const procedures = [
             </div>
             
             <div class="price-block us">
-              <span class="price-label">U.S. Price</span>
+              <span class="price-label">US Price</span>
               <span class="price-value">${procedure.us}</span>
             </div>
           </div>
           
           <div class="savings-badge">
-            <span class="savings-icon">💰</span>
-            <span class="savings-text">Save {procedure.savings}%</span>
-            <span class="savings-amount">${procedure.us - procedure.biodental}</span>
+         
+            <span class="savings-text">Save ${procedure.savings}</span>
+            
           </div>
         </div>
         
@@ -184,12 +376,14 @@ const procedures = [
   </div>
 
   <div class="cta-section">
-    <button class="cta-button">
+   <a href="https://wa.link/nai5wo" target="_blank">
+     <button class="cta-button">
       <span>Schedule Your Appointment</span>
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
         <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
     </button>
+    </a>
   </div>
 </div>
 
