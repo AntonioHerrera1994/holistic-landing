@@ -29,8 +29,8 @@ const { frontmatter } = Astro.props;
 			</style>
 		<title>Holistic Cancer Treatment</title>
 		<meta name="description" content="Discover a comprehensive and compassionate approach to cancer care that integrates traditional and alternative therapies.">
-		  <meta property="og:image" content="https://holisticancercoach.com/_astro/clinica2.CpS300DU.webp"> 
-  			<meta property="og:url" content="https://holisticancercoach.com/_astro/clinica2.CpS300DU.webp"> 
+		  <meta property="og:image" content={frontmatter.image.url}> 
+  			<meta property="og:url" content={frontmatter.description}> 
   		<meta property="og:type" content="website">
 	</head>
 	<body>
