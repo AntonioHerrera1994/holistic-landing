@@ -44,6 +44,9 @@ const { frontmatter } = Astro.props;
                 <h2 style="font-size:2rem;">{frontmatter.title}</h2>
                 <p style="font-size:1rem;font-weight:bold;text-align: center;color:#07a2bd;">{frontmatter.author}</p>
              
+				<div class="audio">
+
+				
 			{frontmatter.audio && (
 				<div class="audio-player">
 					<div class="audio-header">
@@ -56,6 +59,7 @@ const { frontmatter } = Astro.props;
 					</audio>
 				</div>
 			)}
+			</div>
                 <slot />
             </div>
 	<Footer />

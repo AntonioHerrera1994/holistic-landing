@@ -49,6 +49,19 @@
   margin-bottom: 1rem;
 }
 
+.audio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio span{
+  font-family: "Roboto", sans-serif;
+    text-align: center;
+    line-height: 30px;
+    font-size: 17px;
+}
+
 @media screen and (min-width:300px) and (max-width:800px) {
   .postcontent{
     padding-top: 1.3rem;
