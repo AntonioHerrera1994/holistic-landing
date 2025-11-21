@@ -43,7 +43,19 @@ const { frontmatter } = Astro.props;
                 
                 <h2 style="font-size:2rem;">{frontmatter.title}</h2>
                 <p style="font-size:1rem;font-weight:bold;text-align: center;color:#07a2bd;">{frontmatter.author}</p>
-              
+             
+			{frontmatter.audio && (
+				<div class="audio-player">
+					<div class="audio-header">
+						<i class="bi bi-headphones"></i>
+						<span>Escucha este artículo</span>
+					</div>
+					<audio controls preload="metadata">
+						<source src={frontmatter.audio} type="audio/mpeg" />
+						Tu navegador no soporta el elemento de audio.
+					</audio>
+				</div>
+			)}
                 <slot />
             </div>
 	<Footer />

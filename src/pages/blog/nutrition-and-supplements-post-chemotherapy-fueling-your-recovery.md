@@ -6,6 +6,7 @@ date: 'Noviembre 21, 2025'
 pubDate: '2025-21-11'
 description: 'Finishing chemotherapy is a huge milestone, but your body is now entering a critical phase of recovery and rebuilding.'
 author: 'Holistic Cancer Treatment'
+audio: '/assets/blog/blog1.wav'
 image:
     url: 'https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/blog/Blog1.webp'
     alt: 'Blog'
