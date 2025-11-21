@@ -1,0 +1,76 @@
+.postcontent{
+    margin: 0 auto;
+  overflow: hidden;
+  padding-right: 10rem;
+  padding-left: 10rem;
+  padding-top: 3rem;
+  padding-bottom: 4rem;
+  margin-left: -8px;
+  margin-right: -8px;
+}
+
+.postcontent h2{
+  text-align: center;
+  font-family: "Pontano Sans", sans-serif;
+}
+
+.postcontent h3{
+ font-weight: 700;
+  font-family: "Pontano Sans", sans-serif;
+  color: #07a2bd;;
+}
+
+.postcontent li{
+ font-family: "Roboto", sans-serif;
+    
+    line-height: 30px;
+    font-size: 17px;
+    text-align: justify;
+}
+
+
+.postcontent p{
+   font-family: "Roboto", sans-serif;
+    
+    line-height: 30px;
+    font-size: 17px;
+    text-align: justify;
+    
+}
+
+.img-cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.postcontent img{
+  max-width: 75%;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+}
+
+@media screen and (min-width:300px) and (max-width:800px) {
+  .postcontent{
+    padding-top: 1.3rem;
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+img{
+  width: 100%;
+}
+}
+
+/*************** Iphone *************/
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: portrait) {
+    .postcontent{
+    width: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+}
