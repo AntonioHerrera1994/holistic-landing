@@ -16,7 +16,7 @@
 .postcontent h3{
  font-weight: 700;
   font-family: "Pontano Sans", sans-serif;
-  color: #07a2bd;;
+  color: #07a2bd;
 }
 
 .postcontent li{
@@ -61,6 +61,18 @@
     font-size: 17px;
 }
 
+.breadcrumb{
+   font-family: "Roboto", sans-serif;
+ margin-left: -5rem;
+   font-size: 17px;
+    color: #07a2bd;
+}
+
+.breadcrumb a{
+ color: black;
+  text-decoration: none;
+}
+
 @media screen and (min-width:300px) and (max-width:800px) {
   .postcontent{
     padding-top: 1.3rem;
@@ -73,6 +85,18 @@
 img{
   width: 100%;
 }
+.footer-logo img{
+    max-width: 50%;
+}
+
+.breadcrumb{
+   font-family: "Roboto", sans-serif;
+ margin-left: 0;
+   font-size: 13px;
+    color: #07a2bd;
+    
+}
+
 }
 
 /*************** Iphone *************/

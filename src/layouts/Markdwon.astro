@@ -35,8 +35,10 @@ const { frontmatter } = Astro.props;
 	</head>
 	<body>
 		<Navbar />
+
+		
     <div class="postcontent">
-             
+             <span class="breadcrumb"><a href="/blog">Blog</a> / {frontmatter.title}</span>
 				<div class="img-cont">
 <img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} style="margin-top:2rem;"/>
 				</div>
