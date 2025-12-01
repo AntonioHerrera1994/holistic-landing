@@ -1,286 +1,247 @@
 ---
 
-import '../styles/precios.css'
+import '../../styles/precios.css'
 // Datos de precios dentales
 const procedures = [
   {
-    nameEs: "New Patient",
+    nameEs: "Paciente Nuevo",
     biodental: 50,
     us: 100,
     savings: 50,
- 
   },
   {
-    nameEs: "Panoramic radiographic image",
+    nameEs: "Radiografía Panorámica",
     biodental: 50,
     us: 100,
     savings: 50,
-
   },
   {
-    nameEs: "Full Mouth 3D CT Scan",
+    nameEs: "Tomografía 3D de Boca Completa",
     biodental: 200,
     us: 500,
     savings: 300,
-
   },
   {
-    nameEs: "Prophylaxis (Cleaning)",
+    nameEs: "Profilaxis (Limpieza)",
     biodental: 50,
     us: 80,
     savings: 30,
-
   },
   {
-    nameEs: "Resin-based composite filling)",
+    nameEs: "Resina Compuesta",
     biodental: 100,
     us: 150,
     savings: 50,
-
   },
   {
-    nameEs: "Safe mercury removal with filling",
+    nameEs: "Remoción Segura de Mercurio con Empaste",
     biodental: 100,
     us: 300,
     savings: 200,
-
   },
   {
-    nameEs: "Inlay - porcelain/ceramic",
+    nameEs: "Incrustación - Porcelana/Cerámica",
     biodental: 430,
     us: 650,
     savings: 220,
-
   },
   {
-    nameEs: "Onlay - porcelain/ceramic",
+    nameEs: "Onlay - Porcelana/Cerámica",
     biodental: 430,
     us: 650,
     savings: 220,
-
   },
   {
-    nameEs: "Crown - porcelain/ceramic (Emax)",
+    nameEs: "Corona - Porcelana/Cerámica (Emax)",
     biodental: 480,
     us: 1000,
     savings: 520,
-
   },
   {
-    nameEs: "Crown - porcelain/ceramic (Zirconia)",
+    nameEs: "Corona - Porcelana/Cerámica (Zirconia)",
     biodental: 480,
     us: 1200,
- 
+    savings: 720,
   },
   {
-    nameEs: "Temporary crow",
+    nameEs: "Corona Temporal",
     biodental: 75,
     us: 100,
     savings: 25,
-   
   },
   {
-    nameEs: "Post and or build up",
+    nameEs: "Poste y/o Reconstrucción",
     biodental: 120,
     us: 250,
     savings: 130,
-
   },
   {
-    nameEs: "Endodontic therapy, premolar or molar tooth (excluding final restoration)",
+    nameEs: "Endodoncia Premolar o Molar (sin restauración final)",
     biodental: 330,
     us: 750,
     savings: 420,
- 
   },
   {
-    nameEs: "Endodontic therapy, premolar or molar tooth",
+    nameEs: "Endodoncia Premolar o Molar",
     biodental: 350,
     us: 900,
     savings: 550,
-  
   },
   {
-    nameEs: "Deep cleaning per quad",
+    nameEs: "Limpieza Profunda por Cuadrante",
     biodental: 100,
     us: 135,
     savings: 35,
-
   },
   {
-    nameEs: "Periodontal surgery per queadrant",
+    nameEs: "Cirugía Periodontal por Cuadrante",
     biodental: 500,
     us: 600,
     savings: 100,
-
   },
   {
-    nameEs: "Bone replacement graft first site in quadrant",
+    nameEs: "Injerto de Hueso Primer Sitio por Cuadrante",
     biodental: 350,
     us: 500,
     savings: 150,
-
   },
   {
-    nameEs: "Biologic materials to aid in soft and osseous tissue regeneration per tooth (prp-prf)",
+    nameEs: "Materiales Biológicos para Regeneración de Tejidos (PRP-PRF)",
     biodental: 100,
     us: 100,
     savings: 0,
-
   },
   {
-    nameEs: "Complete denture maxillary",
+    nameEs: "Dentadura Completa Superior",
     biodental: 650,
     us: 1500,
     savings: 850,
-  
   },
   {
-    nameEs: "Complete denture mandibular",
+    nameEs: "Dentadura Completa Inferior",
     biodental: 650,
     us: 1500,
     savings: 850,
- 
   },
   {
-    nameEs: "Immediate denture maxillary",
+    nameEs: "Dentadura Inmediata Superior",
     biodental: 350,
     us: 600,
     savings: 250,
-
   },
   {
-    nameEs: "Immediate denture mandibular",
+    nameEs: "Dentadura Inmediata Inferior",
     biodental: 350,
     us: 600,
     savings: 250,
-
   },
   {
-    nameEs: "Surgical placement of implant body: endosteal implant",
+    nameEs: "Colocación Quirúrgica de Implante Dental",
     biodental: 900,
     us: 2000,
     savings: 1100,
-
   },
   {
-    nameEs: "Semi-precision attachment abutment",
+    nameEs: "Pilar de Semi-Precisión",
     biodental: 350,
     us: 500,
     savings: 150,
-
   },
   {
-    nameEs: "Implant abutment",
+    nameEs: "Pilar de Implante",
     biodental: 350,
     us: 650,
     savings: 300,
-  
   },
   {
-    nameEs: "Custom fabricated abutment",
+    nameEs: "Pilar Personalizado",
     biodental: 400,
     us: 800,
     savings: 400,
-
   },
   {
-    nameEs: "Implant crown porcelain/ceramic crown (Emax)",
+    nameEs: "Corona sobre Implante Porcelana/Cerámica (Emax)",
     biodental: 500,
     us: 1200,
     savings: 700,
-
   },
   {
-    nameEs: "Implant crown porcelain/ceramic crown (Zirconia)",
+    nameEs: "Corona sobre Implante Porcelana/Cerámica (Zirconia)",
     biodental: 500,
     us: 1500,
     savings: 1000,
-
   },
   {
-    nameEs: "Simple extraction front tooth",
+    nameEs: "Extracción Simple Diente Frontal",
     biodental: 100,
     us: 200,
     savings: 100,
-
   },
   {
-    nameEs: "Simple extraction",
+    nameEs: "Extracción Simple",
     biodental: 120,
     us: 200,
     savings: 80,
-
   },
   {
-    nameEs: "Extractions with cavitation, plasma and ozone",
+    nameEs: "Extracciones con Cavitación, Plasma y Ozono",
     biodental: 350,
     us: 600,
     savings: 250,
-
   },
   {
-    nameEs: "Wisdom tooth extraction",
+    nameEs: "Extracción de Muela del Juicio",
     biodental: 150,
     us: 200,
     savings: 50,
-
   },
   {
-    nameEs: "Wisdom Tooth extractions partially bony",
+    nameEs: "Extracción de Muela del Juicio Parcialmente Retenida",
     biodental: 230,
     us: 240,
     savings: 10,
-
   },
   {
-    nameEs: "Wisdom Tooth extractions completely bony",
+    nameEs: "Extracción de Muela del Juicio Completamente Retenida",
     biodental: 300,
     us: 500,
     savings: 200,
-
   },
   {
-    nameEs: "Night guard",
+    nameEs: "Guarda Nocturna",
     biodental: 120,
     us: 200,
     savings: 80,
-
   },
   {
-    nameEs: "Root canal including cleaning, post-build-up, and a zirconia crown",
+    nameEs: "Endodoncia con Limpieza, Poste y Corona de Zirconia",
     biodental: 880,
     us: 2500,
     savings: 1620,
-
   },
   {
-    nameEs: "Veneers",
+    nameEs: "Carillas",
     biodental: 480,
     us: 1000,
     savings: 520,
-
   },
   {
-    nameEs: "Gingivectomy or gingivoplasty",
+    nameEs: "Gingivectomía o Gingivoplastia",
     biodental: 300,
     us: 200,
     savings: -100,
-
   },
   {
-    nameEs: "Sinus augmentation with bone or bone substitutes via a lateral open approach",
+    nameEs: "Elevación de Seno Maxilar con Hueso (Abordaje Lateral)",
     biodental: 1300,
     us: 2500,
     savings: 1200,
- 
   },
   {
-    nameEs: "Sinus augmentation via a vertical approach",
+    nameEs: "Elevación de Seno Maxilar (Abordaje Vertical)",
     biodental: 900,
     us: 1500,
     savings: 600,
-
   }
 ];
 
@@ -288,8 +249,8 @@ const procedures = [
 
 <div class="pricing-container">
   <div class="header-section">
-    <h1 class="main-title">Affordable Holistic Dentist Prices in Tijuana, Mexico</h1>
-    <p class="subtitle">Save up to 66% on dental procedures with world-class quality</p>
+    <h1 class="main-title">Odontología Holística a Precios Accesibles en Tijuana, México</h1>
+    <p class="subtitle">Ahorra hasta 66% en procedimientos dentales con calidad de clase mundial</p>
   </div>
 
   <div class="pagination-controls top-controls">
@@ -297,7 +258,7 @@ const procedures = [
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span>Previous</span>
+      <span>Anterior</span>
     </button>
     
     <div class="page-indicator">
@@ -307,7 +268,7 @@ const procedures = [
     </div>
     
     <button class="nav-button next-button" id="nextBtn">
-      <span>Next</span>
+      <span>Siguiente</span>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -329,7 +290,7 @@ const procedures = [
           
           <div class="prices-comparison">
             <div class="price-block biodental">
-              <span class="price-label">Our Price</span>
+              <span class="price-label">Nuestro Precio</span>
               <span class="price-value">${procedure.biodental}</span>
             </div>
             
@@ -338,14 +299,14 @@ const procedures = [
             </div>
             
             <div class="price-block us">
-              <span class="price-label">US Price</span>
+              <span class="price-label">Precio USA</span>
               <span class="price-value">${procedure.us}</span>
             </div>
           </div>
           
           <div class="savings-badge">
          
-            <span class="savings-text">Save ${procedure.savings}</span>
+            <span class="savings-text">Ahorro ${procedure.savings}</span>
             
           </div>
         </div>
@@ -360,7 +321,7 @@ const procedures = [
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <span>Previous</span>
+      <span>Anterior</span>
     </button>
     
     <div class="page-dots" id="pageDots">
@@ -368,7 +329,7 @@ const procedures = [
     </div>
     
     <button class="nav-button next-button" id="nextBtnBottom">
-      <span>Next</span>
+      <span>Siguiente</span>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
         <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
@@ -390,5 +351,5 @@ const procedures = [
 
 
     <script>
-    import "../scripts/precios.js"
+    import "../../scripts/precios.js"
 </script>
