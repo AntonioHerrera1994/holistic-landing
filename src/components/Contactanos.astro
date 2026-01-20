@@ -40,10 +40,11 @@ import '../styles/services-styles/contactanos.css'
   <p>
     <label>Message <textarea name="message" required></textarea></label>
   </p>
-  </div>
-  <p>
+    <p>
     <button type="submit">Send</button>
   </p>
+  </div>
+
 </form>
 
 
@@ -77,43 +78,6 @@ import '../styles/services-styles/contactanos.css'
     </div>
 </section>
 
-<script is:inline>
-
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault(); // Previene la redirección
-  
-  const form = e.target;
-  const formData = new FormData(form);
-  const button = form.querySelector('button[type="submit"]');
-  
-  // Deshabilita el botón durante el envío
-  button.disabled = true;
-  button.textContent = 'Enviando...';
-  
-  try {
-    const response = await fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
-    });
-    
-    if (response.ok) {
-      // Oculta los campos del formulario
-      document.getElementById('formFields').style.display = 'none';
-      
-      // Muestra el mensaje de éxito
-      document.getElementById('successMessage').style.display = 'block';
-      
-      // Resetea el formulario
-      form.reset();
-    } else {
-      throw new Error('Error en el envío');
-    }
-  } catch (error) {
-    alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
-    button.disabled = false;
-    button.textContent = 'Enviar';
-  }
-});
-
+<script>
+import '../scripts/formulario'
 </script>

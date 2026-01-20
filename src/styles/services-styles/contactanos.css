@@ -316,23 +316,25 @@ form[name="contact"] button[type="submit"]:active {
 /* Mensaje de éxito */
 .success-message {
   text-align: center;
-  padding: 2rem;
+  padding: 3rem 2rem;
   background: rgba(72, 187, 120, 0.1);
-  border: 2px solid #48bb78;
-  border-radius: 12px;
+  border: 3px solid #48bb78;
+  border-radius: 20px;
   animation: slideDown 0.5s ease;
 }
 
 .success-message h3 {
   color: #22543d;
-  font-size: 1.75rem;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 .success-message p {
   color: #2f855a;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin: 0;
+  line-height: 1.6;
 }
 
 @keyframes slideDown {
