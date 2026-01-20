@@ -17,9 +17,14 @@ import '../styles/services-styles/contactanos.css'
 
          <div>
                 <div class="hub-form">
-<form name="contact" method="POST" data-netlify="true">
+<form name="contact" method="POST" data-netlify="true" id="contactForm">
   <input type="hidden" name="form-name" value="contact" />
-  
+    <!-- Mensaje de éxito (oculto inicialmente) -->
+  <div class="success-message" id="successMessage" style="display: none;">
+    <h3>Thank you for contacting us!</h3>
+    <p>We have received your message and will respond shortly.</p>
+  </div>
+  <div id="formFields">
   <p>
     <label>Name <input type="text" name="name" required /></label>
   </p>
@@ -35,9 +40,9 @@ import '../styles/services-styles/contactanos.css'
   <p>
     <label>Message <textarea name="message" required></textarea></label>
   </p>
-  
+  </div>
   <p>
-    <button type="submit">Enviar</button>
+    <button type="submit">Send</button>
   </p>
 </form>
 
@@ -71,3 +76,44 @@ import '../styles/services-styles/contactanos.css'
 </div>
     </div>
 </section>
+
+<script is:inline>
+
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault(); // Previene la redirección
+  
+  const form = e.target;
+  const formData = new FormData(form);
+  const button = form.querySelector('button[type="submit"]');
+  
+  // Deshabilita el botón durante el envío
+  button.disabled = true;
+  button.textContent = 'Enviando...';
+  
+  try {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    });
+    
+    if (response.ok) {
+      // Oculta los campos del formulario
+      document.getElementById('formFields').style.display = 'none';
+      
+      // Muestra el mensaje de éxito
+      document.getElementById('successMessage').style.display = 'block';
+      
+      // Resetea el formulario
+      form.reset();
+    } else {
+      throw new Error('Error en el envío');
+    }
+  } catch (error) {
+    alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+    button.disabled = false;
+    button.textContent = 'Enviar';
+  }
+});
+
+</script>
