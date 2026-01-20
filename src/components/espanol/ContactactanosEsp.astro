@@ -18,39 +18,36 @@ import '../../styles/services-styles/contactanos.css'
          <div>
                 <div class="hub-form">
 
-<div id="mc_embed_shell">
-      <link href="//cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css">
-  <style type="text/css">
-        #mc_embed_signup{background:#fff; false;clear:left; font:14px Helvetica,Arial,sans-serif; width: 500px;}
-        /* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-           We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style>
-<div id="mc_embed_signup">
-    <form action="https://gmail.us16.list-manage.com/subscribe/post?u=ff7d8147b67e2062ff8bb036e&amp;id=ed02bfacac&amp;f_id=00c5c2e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-       
-            <div class="indicates-required"><span class="asterisk">*</span> indicates required</div>
-            <div class="mc-field-group"><label for="mce-EMAIL">E-Mail <span class="asterisk">*</span></label><input type="email" name="EMAIL" class="required email" id="mce-EMAIL" required="" value=""></div><div class="mc-field-group"><label for="mce-FNAME">Name <span class="asterisk">*</span></label><input type="text" name="FNAME" class="required text" required="" id="mce-FNAME" value=""></div><div class="mc-field-group"><label for="mce-PHONE">Phone Number <span class="asterisk">*</span></label><input type="text" name="PHONE" class="required REQ_CSS" id="mce-PHONE" required="" value=""></div><div class="mc-field-group"><label for="mce-MMERGE8">Treatments Required <span class="asterisk">*</span></label><select name="MMERGE8" class="required" required="" id="mce-MMERGE8"><option value=""></option><option value="Cancer Treatments">Cancer Treatments</option><option value="Stem Cells Treatments">Stem Cells Treatments</option><option value="Nutrition Therapy">Nutrition Therapy</option><option value="Thanatology Sessions">Thanatology Sessions</option></select></div>
-        <div id="mce-responses" class="clear foot">
-            <div class="response" id="mce-error-response" style="display: none;"></div>
-            <div class="response" id="mce-success-response" style="display: none;"></div>
-        </div>
-    <div aria-hidden="true" style="position: absolute; left: -5000px;">
-        /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
-        <input type="text" name="b_ff7d8147b67e2062ff8bb036e_ed02bfacac" tabindex="-1" value="">
-    </div>
-        <div class="optionalParent">
-            <div class="clear foot">
-                <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Subscribe">
-                <p style="margin: 0px auto;"><a href="http://eepurl.com/ji0DFk" title="Mailchimp: marketing por correo electrónico fácil y divertido"><span style="display: inline-block; background-color: transparent; border-radius: 4px;"><img class="refferal_badge" src="https://digitalasset.intuit.com/render/content/dam/intuit/mc-fe/en_us/images/intuit-mc-rewards-text-dark.svg" alt="Intuit Mailchimp" style="width: 220px; height: 40px; display: flex; padding: 2px 0px; justify-content: center; align-items: center;"></span></a></p>
-            </div>
-        </div>
-    </div>
+
+<form name="contact" method="POST" data-netlify="true" id="contactForm">
+  <input type="hidden" name="form-name" value="contact" />
+    <!-- Mensaje de éxito (oculto inicialmente) -->
+  <div class="success-message" id="successMessage" style="display: none;">
+    <h3>¡Gracias por contactarnos!</h3>
+    <p>Hemos recibido tu mensaje y te responderemos pronto.</p>
+  </div>
+  <div id="formFields">
+  <p>
+    <label>Nombre <input type="text" name="name" required /></label>
+  </p>
+  
+  <p>
+    <label>Email <input type="email" name="email" required /></label>
+  </p>
+  
+  <p>
+    <label>Teléfono <input type="tel" name="phone" /></label>
+  </p>
+  
+  <p>
+    <label>Mensaje <textarea name="message" required></textarea></label>
+  </p>
+    <p>
+    <button type="submit">Enviar</button>
+  </p>
+  </div>
+
 </form>
-</div>
-<script type="text/javascript" src="//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script><script type="text/javascript">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[4]='PHONE';ftypes[4]='phone';fnames[7]='MMERGE7';ftypes[7]='text';fnames[8]='MMERGE8';ftypes[8]='dropdown';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[5]='BIRTHDAY';ftypes[5]='birthday';fnames[6]='COMPANY';ftypes[6]='text';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>
-
-
-
                     </div>
             </div>
         </div>
@@ -79,3 +76,7 @@ import '../../styles/services-styles/contactanos.css'
 </div>
     </div>
 </section>
+
+<script>
+import '../../scripts/formulario'
+</script>
