@@ -6,15 +6,16 @@ date: 'April 14, 2026'
 pubDate: '2026-14-04'
 description: 'The human body has a natural ability to repair itself—something we often overlook.'
 author: 'Holistic Cancer Treatment'
-audio: '/assets/blog/blog1.wav'
+audio: '/assets/blog/blog2.wav'
 image:
-    url: 'https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/blog/Blog1.webp'
+    url: 'https://github.com/AntonioHerrera1994/holistic-landing/blob/main/src/assets/blog/blog%20holistic2.webp?raw=true'
     alt: 'Blog'
 tags: ["analisis"]
 category: Blog
 breadcrumb: Blog
 ---
 
+<h3>Did you know your body can regenerate damaged tissue?</h3>
 <p style="font-weight: bold;">The human body has a natural ability to repair itself—something we often overlook. Every day, millions of cells work to maintain balance, repair damage, and regenerate tissue. However, in complex conditions such as chronic illnesses or cancer-related processes, this ability can become limited.
 <br><br>
 This is where regenerative medicine comes in—one of the most advanced and promising fields in modern healthcare.
