@@ -2,7 +2,7 @@
 layout: ../../layouts/Markdwon.astro
 
 title: 'Nutrition and Supplements Post-Chemotherapy: Fueling Your Recovery'
-date: 'Noviembre 21, 2025'
+date: 'November 21, 2025'
 pubDate: '2025-21-11'
 description: 'Finishing chemotherapy is a huge milestone, but your body is now entering a critical phase of recovery and rebuilding.'
 author: 'Holistic Cancer Treatment'
