@@ -1,25 +1,45 @@
 ---
 import '../../styles/about/eligenos.css'
+
+const items = [
+    {
+        number: "01",
+        accent: "cyan",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>`,
+        title: "El Tratamiento de la Persona como un Todo",
+        text: "A diferencia de los enfoques convencionales, que a menudo se centran únicamente en la enfermedad, el tratamiento holístico aborda al paciente de forma integral."
+    },
+    {
+        number: "02",
+        accent: "pink",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.7 0-3 .8-4 2-1-1.2-2.3-2-4-2A4.5 4.5 0 0 0 5 8.5c0 2.2 1.5 4 3 5.5l6 6z"></path></svg>`,
+        title: "Optimización de Resultados y Reducción de Efectos Secundarios",
+        text: "Las terapias holísticas están diseñadas para trabajar en armonía con sus tratamientos médicos principales, no en su contra."
+    },
+    {
+        number: "03",
+        accent: "cyan",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"></path></svg>`,
+        title: "Fortalecimiento de la Salud y Resiliencia a Futuro",
+        text: "El cuidado holístico integrado lo empodera con los conocimientos y las herramientas necesarias para un bienestar a largo plazo, incluso después de haber concluido la fase activa de su tratamiento."
+    }
+];
 ---
 
 <section class="eligenos">
     <div class="eltxt">
-            <h2>El Valor Fundamental de la <span style="color: #16c6ce;">Atención Holística </span> Integral</h2>
+        <span class="eyebrow">Por Qué Funciona</span>
+        <h2>El Valor Fundamental de la <span class="highlight-text">Atención Holística</span> Integral</h2>
     </div>
 
     <div class="elgrid">
-
-        <div class="elcaja1">
-            <h3> El Tratamiento de la Persona <br>como un Todo</h3>
-            <p>A diferencia de los enfoques convencionales, que a menudo se centran únicamente en la enfermedad, el tratamiento holístico aborda al paciente de forma integral.</p>
-        </div>
-        <div class="elcaja1">
-            <h3> Optimización de Resultados y Reducción de Efectos Secundarios</h3>
-            <p>Las terapias holísticas están diseñadas para trabajar en armonía con sus tratamientos médicos principales, no en su contra.</p>
-        </div>
-        <div class="elcaja1">
-            <h3> Fortalecimiento de la Salud y <br>Resiliencia a Futuro</h3>
-            <p>El cuidado holístico integrado lo empodera con los conocimientos y las herramientas necesarias para un bienestar a largo plazo, incluso después de haber concluido la fase activa de su tratamiento.</p>
-        </div>
+        {items.map((item) => (
+            <div class="elcaja1" data-accent={item.accent}>
+                <span class="ghost-number">{item.number}</span>
+                <div class="icon-wrap" set:html={item.icon} />
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+            </div>
+        ))}
     </div>
 </section>

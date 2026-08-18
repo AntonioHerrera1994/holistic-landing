@@ -2,84 +2,147 @@
     box-sizing: border-box;
     margin: 0;
     overflow: hidden;
-    padding: 4rem 6rem 8rem 6rem;
-    background-color: #1cc6cf1b;
-    background-image:   linear-gradient(rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.449)), 
+    position: relative;
+    padding: 9rem 6rem 8rem 6rem;
+    background-color: #091E3D;
+    background-image: linear-gradient(135deg, rgba(9,30,61,0.93) 20%, rgba(9,30,61,0.6) 60%, rgba(9,30,61,0.35) 100%),
     url('../assets/clinica2.webp');
     background-size: cover;
     background-position: center;
-    
-}
-/********** Grid **********/
-.hero-grid{
-    display: grid;
-    grid-template-columns:repeat(2,minmax(0,1fr)) ;
-    gap: 2rem;
 }
 
+/********** Blobs decorativos **********/
+.hero-blob{
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+}
+.blob-1{
+    width: 420px;
+    height: 420px;
+    background: #16C6CE;
+    top: -120px;
+    left: -100px;
+    animation: float1 18s ease-in-out infinite;
+}
+.blob-2{
+    width: 360px;
+    height: 360px;
+    background: #ED1B97;
+    bottom: -100px;
+    right: 8%;
+    animation: float2 22s ease-in-out infinite;
+}
+@keyframes float1{
+    0%,100%{ transform: translate(0,0); }
+    50%{ transform: translate(60px,40px); }
+}
+@keyframes float2{
+    0%,100%{ transform: translate(0,0); }
+    50%{ transform: translate(-50px,-30px); }
+}
+
+/********** Grid **********/
+.hero-grid{
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 2rem;
+    align-items: center;
+}
 
 .hg2{
     display: flex;
-justify-content: center;
-background-color:white#54d6eb;
-border-radius: 50%;
-max-width: 95%;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: flex-end;
+    justify-content: center;
 }
 
 /********** Texto **********/
+.eyebrow{
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    background: rgba(237,27,151,0.15);
+    border: 1px solid #ED1B97;
+    color: #ED1B97;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    font-family: "Roboto", sans-serif;
+}
 
 .hg1 h1{
-   margin-top: 3rem;
+    margin-top: 0;
     font-family: "Pontano Sans", sans-serif;
     font-size: 68px;
     color: white;
-        font-weight: 500;
+    font-weight: 500;
+    line-height: 1.1;
 }
+
 
 .hg1 p{
     font-family: "Roboto", sans-serif;
     color: white;
-    max-width: 80%;
+    max-width: 90%;
     line-height: 30px;
     font-size: 20px;
     margin-bottom: 2rem;
-    margin-top: -1rem;
+    margin-top: 1.2rem;
     text-align: justify;
 }
 
-/********** Numeros **********/
-
-.bajo{
+/********** Chips **********/
+.chip{
+    position: relative;
     display: flex;
-    justify-content: center;
-}
-.numbers{
-padding: 1rem 3rem 0rem 3rem;
-max-width: 80%;
-display: flex;
-align-items: center;
-background-color: #07a2bd;
-border-radius: 50px;
-z-index: 10;
-margin-top: -3rem;
-}
-
-.numbers h2{
-    text-align: center;
+    align-items: center;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
     color: white;
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
     font-family: "Pontano Sans", sans-serif;
-    font-size: 32px;
-        font-weight: 500;
+    font-size: 1rem;
+    font-weight: 500;
+    animation: floaty 5s ease-in-out infinite;
+}
+.chip::before{
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #16C6CE;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+.chip-1{ animation-delay: 0s; }
+.chip-2{ animation-delay: 0.5s; margin-right: 2rem; }
+.chip-2::before{ background: #ED1B97; }
+.chip-3{ animation-delay: 1s; }
+
+@keyframes floaty{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-12px); }
 }
 
-.n1{
-    margin-top: -3rem;
+/********** Botones **********/
+.hero-buttons{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
-
-/*********** Boton **********/
-/* From Uiverse.io by KINGFRESS */ 
-/* From Uiverse.io by cssbuttons-io */ 
 button {
     position: relative;
     display: inline-block;
@@ -91,44 +154,43 @@ button {
     background: transparent;
     padding: 0;
     font-size: inherit;
-    font-family: inherit;
     font-family: "Roboto", sans-serif;
-   }
-   
-   button.learn-more {
+}
+
+button.learn-more {
     width: 12rem;
     height: auto;
-   }
-   
-   button.learn-more .circle {
+}
+
+button.learn-more .circle {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: relative;
     display: block;
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: #16c6ce;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
     border-radius: 1.625rem;
-   }
-   
-   button.learn-more .circle .icon {
+}
+
+button.learn-more .circle .icon {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
     background: #fff;
-   }
-   
-   button.learn-more .circle .icon.arrow {
+}
+
+button.learn-more .circle .icon.arrow {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     left: 0.625rem;
     width: 1.125rem;
     height: 0.125rem;
     background: none;
-   }
-   
-   button.learn-more .circle .icon.arrow::before {
+}
+
+button.learn-more .circle .icon.arrow::before {
     position: absolute;
     content: "";
     top: -0.29rem;
@@ -138,9 +200,9 @@ button {
     border-top: 0.125rem solid #fff;
     border-right: 0.125rem solid #fff;
     transform: rotate(45deg);
-   }
-   
-   button.learn-more .button-text {
+}
+
+button.learn-more .button-text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
@@ -149,102 +211,133 @@ button {
     bottom: 0;
     padding: 0.75rem 0;
     margin: 0 0 0 1.85rem;
-    color: white;
+    color: white!important;
     font-weight: 700;
     line-height: 1.6;
     text-align: center;
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
-   }
-   
-   button:hover .circle {
+}
+
+button:hover .circle {
     width: 100%;
-   }
-   
-   button:hover .circle .icon.arrow {
+}
+
+button:hover .circle .icon.arrow {
     background: #fff;
     transform: translate(1rem, 0);
-   }
-   
-   button:hover .button-text {
+}
+
+button:hover .button-text {
     color: #fff;
-   }
-    
-
-   @media screen and (max-width:800px){
-
-    .hero{
-        box-sizing: border-box;
-        margin: 0;
-        overflow: hidden;
-        padding: 7.7rem 2rem 6rem 2rem;
-           
-    }
-
-    /********** Grid **********/
-.hero-grid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    gap: 2rem;
 }
 
-.hg1{
-    margin-top: -7rem;
-    
+.ghost-button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.9rem 2rem;
+    border: 2px solid rgba(255,255,255,0.5);
+    border-radius: 2rem;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.ghost-button:hover{
+    border-color: #16C6CE;
+    background: rgba(22,198,206,0.1);
 }
 
-.hg2{
-    display: flex;
-justify-content: center;
-background-color: #54d6eb;
-border-radius: 50%;
-max-width: 100%;
-height: 60%;
-}
-
-button {
-   margin-left: 4rem!important;
-}
-
-
-/********** Texto **********/
-
-.hg1 h1{
-   text-align: center;
-   font-size: 45px;
- }
- 
- .hg1 p{
-    text-align: center!important;
-    max-width: 100%;
- }
-
-.learn-more{
-    margin-left: 6rem;
-}
- 
 /********** Numeros **********/
-
+.bajo{
+    display: flex;
+    justify-content: center;
+}
 .numbers{
-    padding: 1.6rem;
-display: block;
-    
-    }
+    padding: 2rem 3rem;
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(9,30,61,0.75);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(22,198,206,0.3);
+    border-radius: 32px;
+    z-index: 10;
+    margin-top: -4rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
 
-    .numbers h2{
+.numbers h2{
     text-align: center;
     color: white;
     font-family: "Pontano Sans", sans-serif;
-    font-size: 24px;
-        font-weight: 500;
+    font-size: 32px;
+    font-weight: 500;
 }
 
 .n1{
-    margin-top: -5rem;
+    margin-top: 0;
 }
 
+@media screen and (max-width:800px){
+    .hero{
+        padding: 8.5rem 1.5rem 6rem 1.5rem;
+    }
 
-   }
+    .hero-blob{
+        opacity: 0.2;
+    }
 
+    .hero-grid{
+        display: grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        gap: 2.5rem;
+    }
 
+    .hg1{ margin-top: 0; }
 
+    .eyebrow{
+        display: block;
+        text-align: center;
+        width: fit-content;
+        margin: 0 auto 1.2rem;
+    }
+
+    .hg1 h1{
+        text-align: center;
+        font-size: 40px;
+    }
+
+    .hg1 p{
+        text-align: center !important;
+        max-width: 100%;
+    }
+
+    .hero-buttons{
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    button.learn-more{ margin: 0 !important; }
+
+    .hg2{
+        align-items: center;
+    }
+    .chip-2{ margin-right: 0; }
+
+    .numbers{
+        padding: 1.6rem;
+        max-width: 92%;
+        margin-top: 2rem;
+    }
+
+    .numbers h2{
+        font-size: 22px;
+    }
+}

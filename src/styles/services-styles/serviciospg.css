@@ -4,29 +4,37 @@
     padding: 4rem 6rem 4rem 6rem;
     overflow: hidden;
     margin-top: -6rem;
+    background-color: white;
 }
 
 /************ Grid **********/
 .txtgridpg{
     display: grid;
-    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    grid-template-columns: repeat(2,minmax(0,1fr));
     padding: 4rem;
     gap: 2rem;
 }
 
 .serviciosgridpg{
     display: grid;
-    grid-template-columns:repeat(3,minmax(0,1fr)) ;
+    grid-template-columns: repeat(3,minmax(0,1fr));
     padding: 4rem;
     gap: 2rem;
 }
 
 /********** Texto **********/
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
+}
 
 .serviciospg p{
-margin-right: 4rem;
-font-family: "Roboto", sans-serif;
-  color: rgba(0, 0, 0, 0.53);
+    margin-right: 4rem;
+    font-family: "Roboto", sans-serif;
+    color: rgba(9,30,61,0.62);
     line-height: 30px;
     font-size: 17px;
     text-align: justify;
@@ -37,45 +45,82 @@ font-family: "Roboto", sans-serif;
     font-size: 44px;
     line-height: 60px;
     margin-top: 1rem;
-        font-weight: 500;
+    color: #091E3D;
+    font-weight: 500;
 }
-
 
 /********** Cajas **********/
-
 .serv1pg{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 3rem;
+    position: relative;
+    box-shadow: rgba(9, 30, 61, 0.08) 0px 7px 29px 0px;
+    border: 1px solid rgba(9,30,61,0.06);
+    padding: 3rem 2.2rem 2.2rem 2.2rem;
     border-radius: 26px;
     margin-top: -4rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.serv1pg::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.serv1pg.in-view::before{
+    transform: scaleX(1);
+}
+
+.serv1pg[data-accent="cyan"]::before{
+    background: linear-gradient(90deg, #16C6CE, #091E3D);
+}
+.serv1pg[data-accent="pink"]::before{
+    background: linear-gradient(90deg, #ED1B97, #091E3D);
+}
+
+.serv1pg:hover{
+    transform: translateY(-6px);
+    box-shadow: rgba(9, 30, 61, 0.14) 0px 14px 36px 0px;
+}
+
+.icon-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+}
+
+.serv1pg[data-accent="cyan"] .icon-wrap{
+    background: rgba(22,198,206,0.12);
+}
+.serv1pg[data-accent="pink"] .icon-wrap{
+    background: rgba(237,27,151,0.12);
+}
 
 .serv1pg h3{
     font-family: "Pontano Sans", sans-serif;
     font-size: 22px;
-    font-weight: 700;
-        font-weight: 500;
-}
-
-.serv1pg a{
-    font-family: "Roboto", sans-serif;
-    background-color:  #16c6ce;
-    display: flex;
-  justify-content: center; 
-  align-items: center; 
-  padding: .6rem;
-  border-radius: 26px;
-  color: white;
+    color: #091E3D;
+    font-weight: 500;
 }
 
 .serv1pg p{
     font-family: "Roboto", sans-serif;
-    margin-bottom: 2rem;
-     color: rgba(0, 0, 0, 0.53);
+    margin-bottom: 0;
+    margin-right: 0;
+    color: rgba(9,30,61,0.62);
     line-height: 30px;
     font-size: 17px;
-    margin-right: 0;
+    text-align: justify;
 }
 
 @media screen and (max-width:800px){
@@ -83,41 +128,32 @@ font-family: "Roboto", sans-serif;
         padding: 4rem 2rem;
     }
 
-    /************ Grid **********/
-.txtgridpg{
-display: grid;
-grid-template-columns:repeat(1,minmax(0,1fr)) ;
-padding: 0;
-gap:0;
-margin-bottom: 2rem;
-}
+    .txtgridpg{
+        display: grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        padding: 0;
+        gap: 0;
+        margin-bottom: 2rem;
+    }
 
-.serviciosgridpg{
-display: grid;
-grid-template-columns:repeat(1,minmax(0,1fr)) ;
-padding: 0;
-gap: 2rem;
-}
+    .serviciosgridpg{
+        display: grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        padding: 0;
+        gap: 2rem;
+    }
 
-/********** Texto **********/
+    .txtgridpg p{
+        margin: 0;
+    }
 
-.txtgridpg p{
+    .serviciospg h2{
+        line-height: 50px;
+        font-size: 30px;
+    }
 
-margin: 0;
-}
-
-.serviciospg h2{
-     line-height: 50px;
-         font-size: 30px;
-}
-
-/********** Cajas **********/
-
-.serv1pg{
-box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-padding: 2rem;
-border-radius: 26px;
-margin-top: 0;
-}
-    
+    .serv1pg{
+        padding: 2.4rem 1.6rem 1.9rem 1.6rem;
+        margin-top: 0;
+    }
 }

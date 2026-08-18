@@ -1,38 +1,56 @@
 ---
 import '../styles/about/historia.css'
-import HospitalH from '../assets/grupo.jpeg'
+import VideoThumb from '../assets/preview.jpeg'
 ---
 
 <section class="historia">
-
     <div class="hist-grid">
         <div class="his1">
-        <iframe width="560" height="550" src="https://www.youtube.com/embed/hFV4AbnKdzU?si=yUes9t5wwQK7FD35" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         
+            <button class="video-facade" id="openVideoModal" aria-haspopup="dialog" aria-label="Play clinic tour video">
+                <img
+                    src={VideoThumb.src}
+                    alt="Integrative Whole Health Clinic — video tour"
+                    class="video-thumb"
+                    loading="lazy"
+                />
+                <span class="play-btn" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                </span>
+            </button>
         </div>
 
-      
         <div class="hist2">
-            <h2>Our Journey of <span style="color: #16c6ce;">Holistic Healing </span> and Innovation</h2>
+            <h2>Our Journey of <span class="highlight-text">Holistic Healing</span> and Innovation</h2>
             <p>Founded in 2008 by a visionary team of medical professionals, Holistic Cancer Treatments Coach was established with a singular mission: to provide a compassionate and comprehensive approach to cancer care that transcended conventional methods. Recognizing the critical need for integrated treatments that address the whole person—mind, body, and spirit—our founders pioneered a unique model of holistic oncology right here in Tijuana, Baja California.</p>
-           
-            <p>Today, we stand proud as a leading center for holistic cancer treatment, continually innovating and expanding our reach while upholding the founding principles of empathy, expertise, and personalized healing that have defined our journey since the very start. We are dedicated to building on our legacy, guiding more patients toward renewed health and vitality.</p>
-            
-              <!-- From Uiverse.io by KINGFRESS --> 
-<!-- From Uiverse.io by cssbuttons-io --> 
-<button class="learn-more">
-    <span class="circle" aria-hidden="true">
-    <span class="icon arrow"></span>
-    </span>
-    <a href="https://wa.link/nai5wo" target="_blank">
-    <span class="button-text">schedule an appointment</span>
-    </a>
-  </button>
 
-       <div class="movil">
-          <iframe width="560" height="550" src="https://www.youtube.com/embed/hFV4AbnKdzU?si=yUes9t5wwQK7FD35" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         
-        </div>
+            <p>Today, we stand proud as a leading center for holistic cancer treatment, continually innovating and expanding our reach while upholding the founding principles of empathy, expertise, and personalized healing that have defined our journey since the very start. We are dedicated to building on our legacy, guiding more patients toward renewed health and vitality.</p>
+
+            <a href="https://wa.link/nai5wo" target="_blank">
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Schedule an Appointment</span>
+                </button>
+            </a>
         </div>
     </div>
 </section>
+
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="video-modal-backdrop" id="modalBackdrop"></div>
+    <div class="video-modal-content">
+        <button class="modal-close" id="closeVideoModal" aria-label="Close video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="video-modal-player" id="videoModalPlayer"></div>
+    </div>
+</div>
+
+<script>
+    import "../scripts/historia.js"
+</script>

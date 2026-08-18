@@ -1,143 +1,281 @@
-.procedimientos {
-  box-sizing: border-box;
-  padding: 4rem 4rem 4rem 4rem;
-  background-color: #1cc6cf1b;
+.procedimientos{
+    box-sizing: border-box;
+    padding: 5rem 6rem;
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(9,30,61,0.06) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
 }
 
-.procedimientos h2 {
-  font-family: "Pontano Sans", sans-serif;
-  font-size: 44px;
-  line-height: 60px;
-  margin: 1rem 0;
-  font-weight: 500;
-  text-align: center;
+/********** Encabezado **********/
+.eyebrow{
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    background: rgba(237,27,151,0.1);
+    border: 1px solid #ED1B97;
+    color: #ED1B97;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: "Roboto", sans-serif;
 }
 
-
-
-.component-container {
-  display: flex;
-  max-width: 100%;
-  border-radius: 16px;
-  overflow: hidden;
- 
-
+.eyebrow-wrap{
+    text-align: center;
+    margin-bottom: 1.2rem;
 }
 
-.steps {
-  flex: 1;
-  padding: 40px;
-  border-right: 2px solid #e0f7fa;
-  overflow-y: auto;
-  max-height: 600px;
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
 }
 
-.step {
-  margin-bottom: 20px;
-
+.procedimientos h2{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 42px;
+    line-height: 56px;
+    margin: 0 0 1.2rem 0;
+    color: #091E3D;
+    font-weight: 500;
+    text-align: center;
 }
 
-.step-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  cursor: pointer;
-  margin-bottom: 2rem;
+.procedimientos > p{
+    font-family: "Roboto", sans-serif;
+    color: rgba(9,30,61,0.6);
+    line-height: 30px;
+    font-size: 17px;
+    margin: 0 auto 3rem auto;
+    max-width: 780px;
+    text-align: center;
 }
 
-.step-number {
-  font-weight: bold;
-  color: #16c6ce;
-  font-size: 18px;
-  font-family: "Roboto", sans-serif;
-  margin-right: 10px;
+/********** Tabs **********/
+.tabs-container{
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.step-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #0d456b;
-  font-family: "Pontano Sans", sans-serif;
-  flex: 1;
-
+.tab-buttons{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
 }
 
-.arrow {
-  transition: transform 0.3s ease;
-  margin-left: 10px;
-  color: #16c6ce;
+.tab-btn{
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: white;
+    color: #091E3D;
+    border: 1px solid rgba(9,30,61,0.12);
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Roboto", sans-serif;
+    box-shadow: rgba(9,30,61,0.05) 0px 2px 8px 0px;
 }
 
-.step.active .arrow {
-  transform: rotate(180deg);
+.tab-icon{
+    display: flex;
+    align-items: center;
+    color: #16C6CE;
 }
 
-.step-description {
-  color: rgba(0, 0, 0, 0.53);
-  line-height: 28px;
-  font-size: 16px;
-  max-width: 90%;
-  font-family: "Roboto", sans-serif;
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  padding: 0;
-      margin-top: -1rem;
-      text-align: justify;
+.tab-btn.active{
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 20px rgba(22,198,206,0.3);
 }
 
-.step.active .step-description {
-  max-height: 600px; /* suficiente para texto largo */
-  padding: 10px 0 15px;
+.tab-btn.active .tab-icon{
+    color: white;
 }
 
-.image-container {
-  flex: 1;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
+.tab-btn:hover:not(.active){
+    border-color: #16C6CE;
+    color: #16C6CE;
 }
 
-.image-container img {
-  width: 100%;
-  max-width: 550px;
-  border-radius: 12px;
+/********** Contenido **********/
+.tab-content{
+    display: none;
+    animation: fadeInTab 0.4s ease;
 }
 
-/* Responsive */
-@media screen and (max-width: 801px) {
-  .procedimientos {
-    padding: 2rem;
-  }
-  .procedimientos p {
-    margin: 0 0 2rem 0;
-  }
-  .component-container {
-    flex-direction: column;
-  }
-  .steps {
-    border-right: none;
-    border-top: 2px solid #e0f7fa;
-    max-height: unset;
-  }
-  .image-container {
-    order: -1;
-    padding: 20px;
-  }
-
-  .step-description {
-
-  max-width: 100%;
+.tab-content.active{
+    display: block;
 }
-  .procedimientos h2{
-        line-height: 50px;
-         font-size: 30px;
-         text-align: left;
-  }
 
-  .procedimientos p{
+@keyframes fadeInTab{
+    from{ opacity: 0; transform: translateY(10px); }
+    to{ opacity: 1; transform: translateY(0); }
+}
+
+.tabp-grid{
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 3rem;
+    background: white;
+    border-radius: 26px;
+    padding: 2.5rem;
+    box-shadow: rgba(9,30,61,0.08) 0px 10px 34px 0px;
+    border: 1px solid rgba(9,30,61,0.06);
+    align-items: start;
+}
+
+.tabp-image img{
+    width: 100%;
+    border-radius: 18px;
+    display: block;
+    box-shadow: 0 15px 35px rgba(9,30,61,0.15);
+}
+
+/********** Fact chips **********/
+.fact-row{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.fact-chip{
+    background: rgba(22,198,206,0.08);
+    color: #091E3D;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: 1px solid rgba(22,198,206,0.25);
+}
+
+/********** Texto descripción **********/
+.desc-proc{
+    color: rgba(9,30,61,0.65);
+    line-height: 28px;
+    font-size: 16px;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 1.6rem;
+}
+
+.desc-proc b{
+    color: #091E3D;
+}
+
+.desc-proc ul{
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0 0;
+}
+
+.desc-proc li{
+    color: rgba(9,30,61,0.65) !important;
+    line-height: 28px;
+    font-size: 16px;
     text-align: justify;
-  }
+    margin-bottom: 0.6rem;
+    padding-left: 1.4rem;
+    position: relative;
+}
+
+.desc-proc li::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #16C6CE;
+}
+
+/********** Botón compartir **********/
+.share-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    border: 2px solid rgba(9,30,61,0.15);
+    color: #091E3D;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 0.7rem 1.3rem;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.share-btn:hover{
+    border-color: #ED1B97;
+    color: #ED1B97;
+}
+
+.share-btn.copied{
+    border-color: #16C6CE;
+    color: #16C6CE;
+}
+
+/********** Disclaimer **********/
+.disclaimer{
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    color: rgba(9,30,61,0.45);
+    text-align: center;
+    max-width: 800px;
+    margin: 3rem auto 0 auto;
+    line-height: 22px;
+}
+
+/********** Responsive **********/
+@media screen and (max-width: 800px){
+    .procedimientos{
+        padding: 3rem 1.5rem;
+    }
+
+    .procedimientos h2{
+        font-size: 28px;
+        line-height: 38px;
+        text-align: left;
+    }
+
+    .procedimientos > p{
+        text-align: justify;
+        margin-bottom: 2rem;
+    }
+
+    .tab-buttons{
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn{
+        flex-shrink: 0;
+        font-size: 14px;
+        padding: 0.7rem 1.2rem;
+    }
+
+    .tabp-grid{
+        grid-template-columns: 1fr;
+        padding: 1.6rem;
+        gap: 1.6rem;
+    }
+
+    .tabp-image{
+        order: -1;
+    }
 }

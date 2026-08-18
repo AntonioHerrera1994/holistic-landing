@@ -1,82 +1,106 @@
 ---
 import '../../styles/services-styles/contactanos.css'
+import ClinicaImg from '../../assets/clinica2.webp'
 ---
 
 <section class="contactanos">
     <div class="contactanos-cont">
+        <span class="eyebrow">Contáctanos</span>
+        <h1>Déjenos sus <span class="highlight-text">datos</span> y nos pondremos en <span class="highlight-text">contacto</span> a la brevedad</h1>
+
         <div class="contactanos-grid">
 
             <div class="contacto-izq">
-               
-                <h1>Déjenos sus  <span style="color: #16c6ce;">datos</span> y nos <br>pondremos en <span style="color: #16c6ce;">contacto</span> a la brevedad</h1>
                 <div class="img-contactanos">
-
+                    <img src={ClinicaImg.src} alt="Clínica Holistic Cancer Treatments Coach" loading="lazy" />
                 </div>
-              
+
+                <div class="contact-cards">
+                    <a href="tel:+16641942723" class="contact-card">
+                        <span class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </span>
+                        <div>
+                            <span class="contact-label">Llámanos</span>
+                            <span class="contact-value">(664) 194-2723</span>
+                        </div>
+                    </a>
+
+                    <a href="mailto:holisticancertreatment@gmail.com" class="contact-card">
+                        <span class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 6c0-1.1-.9-2-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6z"></path>
+                                <path d="m22 6-10 7L2 6"></path>
+                            </svg>
+                        </span>
+                        <div>
+                            <span class="contact-label">Escríbenos</span>
+                            <span class="contact-value">holisticancertreatment@gmail.com</span>
+                        </div>
+                    </a>
+
+                    <a href="https://maps.google.com/?q=Tijuana,Baja California,Mexico" target="_blank" class="contact-card">
+                        <span class="contact-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </span>
+                        <div>
+                            <span class="contact-label">Visítanos</span>
+                            <span class="contact-value">Tijuana, Baja California, México</span>
+                        </div>
+                    </a>
+                </div>
             </div>
 
-         <div>
-                <div class="hub-form">
+            <div class="hub-form">
+                <form name="contact" method="POST" data-netlify="true" id="contactForm">
+                    <input type="hidden" name="form-name" value="contact" />
 
-
-<form name="contact" method="POST" data-netlify="true" id="contactForm">
-  <input type="hidden" name="form-name" value="contact" />
-    <!-- Mensaje de éxito (oculto inicialmente) -->
-  <div class="success-message" id="successMessage" style="display: none;">
-    <h3>¡Gracias por contactarnos!</h3>
-    <p>Hemos recibido tu mensaje y te responderemos pronto.</p>
-  </div>
-  <div id="formFields">
-  <p>
-    <label>Nombre <input type="text" name="name" required /></label>
-  </p>
-  
-  <p>
-    <label>Email <input type="email" name="email" required /></label>
-  </p>
-  
-  <p>
-    <label>Teléfono <input type="tel" name="phone" /></label>
-  </p>
-  
-  <p>
-    <label>Mensaje <textarea name="message" required></textarea></label>
-  </p>
-    <p>
-    <button type="submit">Enviar</button>
-  </p>
-  </div>
-
-</form>
+                    <div class="success-message" id="successMessage" style="display: none;">
+                        <h3>¡Gracias por contactarnos!</h3>
+                        <p>Hemos recibido tu mensaje y te responderemos pronto.</p>
                     </div>
+
+                    <div id="formFields">
+                        <p class="field-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" required placeholder="Tu nombre completo" />
+                        </p>
+
+                        <p class="field-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="tu@ejemplo.com" />
+                        </p>
+
+                        <p class="field-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(opcional)" />
+                        </p>
+
+                        <p class="field-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" required placeholder="¿Cómo podemos ayudarte?"></textarea>
+                        </p>
+
+                        <p>
+                            <button type="submit">
+                                Solicitar una Consulta
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M5 12h14M13 6l6 6-6 6"></path>
+                                </svg>
+                            </button>
+                        </p>
+                    </div>
+                </form>
             </div>
         </div>
-
-        <div class="datossss">
-        <div class="grid-datos ">
-
-            <div class="container">
-                <span class="background-text">01</span>
-                <span class="foreground-text"><a href="tel:+526647549475">+52-664-754-9475</a></span>
-              </div>
-
-              <div class="container">
-                <span class="background-text">02</span>
-                <span class="foreground-text">Rosarito <br>Baja California,<br> México
-                </span>
-              </div>
-
-              <div class="container">
-                <span class="background-text">03</span>
-                <span class="foreground-text"><a href="tel:holisticancertreatment@gmail.com">holisticancertreatment@gmail.com</a></span>
-              </div>
-      
-
-        </div>
-</div>
     </div>
 </section>
 
 <script>
-import '../../scripts/formulario'
+    import "../../scripts/formulario"
 </script>

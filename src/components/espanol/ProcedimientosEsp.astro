@@ -1,188 +1,147 @@
 ---
 import '../../styles/services-styles/procedimientos.css'
-import '../../styles/services-styles/procedimientosnew.css'
 import ImgdrEsp from '../../assets/dr-enriquez.png'
+
+const procedures = [
+    {
+        id: "wholebody",
+        label: "Hipertermia Corporal Total",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4v10.5a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"></path></svg>`,
+        facts: ["Terapia complementaria", "Administrada por personal médico", "Combinada con el plan de tratamiento principal"],
+        img: ImgdrEsp,
+        // REVISAR: suavicé "destruir las células cancerosas o detener su crecimiento" a lenguaje de apoyo, sin claim mecanístico directo. Confirmar con equipo médico si se puede reintroducir la formulación original con evidencia que la sustente.
+        html: `<p style="text-align: justify; margin:0;">
+        La <b>Hipertermia Corporal Total (HCT)</b> es una terapia complementaria utilizada junto con el tratamiento del cáncer y otras afecciones como la Enfermedad de Lyme. En oncología, la HCT utiliza una fuente de calor externa para aumentar la temperatura de los tejidos como parte de un plan de tratamiento integral.
+        <br>
+        El término 'hipertermia' se aplica al uso de diferentes técnicas en combinación con otros tratamientos contra el cáncer (particularmente la quimioterapia y la radioterapia), siempre bajo supervisión médica.
+        <br><br>
+        Es bien sabido que las células cancerosas tienen una tasa metabólica más alta que las células normales, lo cual es parte de por qué esta terapia se utiliza como enfoque complementario. Algunas características fisiológicas relevantes para entender su aplicación son:
+        <ul>
+            <li><b>1)</b> Los vasos sanguíneos dentro de los tumores tienen una capacidad limitada de dilatarse para disipar el calor.</li>
+            <li><b>2)</b> Los vasos sanguíneos de los tumores tienden a ser más tortuosos, lo que puede prolongar la exposición al calor intratumoral en comparación con el tejido normal.</li>
+            <li><b>3)</b> Los cambios a nivel celular tras la exposición al calor son un área activa de interés clínico dentro de la oncología integrativa.</li>
+        </ul>
+        </p>`
+    },
+    {
+        id: "chelation",
+        label: "Terapia de Quelación",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>`,
+        facts: ["Utiliza EDTA (aminoácido sintético)", "Más de 65 años de uso clínico para intoxicación por plomo", "Combinada con nutrición y desintoxicación"],
+        img: ImgdrEsp,
+        // REVISAR: eliminé por completo la mención de EM, Alzheimer y autismo — la FDA ha tomado acción legal directa contra empresas que vinculan quelación con autismo. Este punto no debe reintroducirse sin respaldo clínico y revisión legal explícita.
+        html: `<p style="text-align: justify; margin:0;">
+        La <b>quelación</b> es el proceso mediante el cual se remueven o eliminan metales y minerales tóxicos del cuerpo. El proceso más común y eficaz utiliza EDTA (ácido etilendiaminotetraacético), un aminoácido sintético que se ha utilizado por más de 65 años para tratar la intoxicación por plomo y ayudar a eliminar placa que contribuye a problemas circulatorios.
+        <br><br>
+        En nuestra clínica, la quelación con EDTA se utiliza en combinación con enzimas proteolíticas, apoyo de desintoxicación, nutrición y soporte al sistema inmunológico, siempre como parte de un plan más amplio bajo supervisión médica.
+        </p>`
+    },
+    {
+        id: "anticancer",
+        label: "Programa de Apoyo Integral",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>`,
+        facts: ["8 sesiones / 4 semanas (hipertermia)", "8 sesiones / 4 semanas (oxígeno hiperbárico)", "Protocolo combinado y personalizado"],
+        img: ImgdrEsp,
+        // REVISAR: renombré el tab de "Programa Anticáncer" a "Programa de Apoyo Integral" — el nombre original es en sí un claim. Comenté el detalle de TPI con dosis bajas de quimioterapia, ya que describir protocolo clínico específico en una página pública/compartible puede no ser apropiado.
+        html: `<p style="text-align: justify; margin:0;">
+        Este programa integral combina varios enfoques complementarios, incluyendo apoyo nutricional específico (vitaminas, minerales, aminoácidos, antioxidantes), Hipertermia Corporal Total <b>(8 sesiones en 4 semanas)</b> y Terapia con Oxígeno Hiperbárico <b>(8 sesiones en 4 semanas)</b>.
+        <br><br>
+        Se ofrece <b>terapia de células vivas</b> para apoyar la función inmunológica y los procesos naturales de reparación del cuerpo. También contamos con el sistema Alpha-2010 Spa, que brinda terapia de calor, masaje linfático y apoyo de desintoxicación. Terapias adicionales, incluyendo apoyo con células madre, están disponibles según el caso, de acuerdo con el plan personalizado de cada paciente.
+        <!-- <p>La TPI (Terapia Potenciada con Insulina) utilizando dosis bajas de quimioterapia también se ofrece a quienes lo soliciten — decisión pendiente del equipo médico sobre si incluir en página pública.</p> -->
+        </p>`
+    },
+    {
+        id: "stemcell",
+        label: "Terapia con Células Madre",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"></circle><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="18" r="3"></circle><path d="M9 6h6M6 9v6M18 9v6M9 18h6"></path></svg>`,
+        facts: ["Utiliza células propias del paciente", "Obtenidas de médula ósea o tejido adiposo", "Apoya los procesos naturales de reparación"],
+        img: ImgdrEsp,
+        // REVISAR: suavicé "apoyar al cuerpo en su lucha contra la enfermedad" a lenguaje de apoyo funcional.
+        html: `<p style="text-align: justify; margin:0;">
+        La <b>terapia con células madre</b> es un procedimiento médico regenerativo que utiliza el potencial de sanación propio del cuerpo. Las células madre pueden convertirse en muchos tipos de células diferentes —desde musculares y óseas hasta nerviosas y sanguíneas— actuando como parte del sistema natural de reparación del cuerpo.
+        <br><br>
+        Creemos en apoyar los procesos de sanación naturales del cuerpo. La terapia con células madre se alinea con esta filosofía: el procedimiento consiste en recolectar células madre, a menudo de la propia médula ósea o tejido adiposo del paciente, y reintroducirlas en el cuerpo para ayudar a reducir la inflamación, apoyar la reparación de tejidos y complementar el bienestar general.
+        </p>`
+    },
+    {
+        id: "autoinmune",
+        label: "Terapia para Trastornos Autoinmunes",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7l-9-5z"></path></svg>`,
+        facts: ["Enfoque integral personalizado", "Enlace de seguros en EE. UU. disponible", "Apoyo a síntomas y bienestar"],
+        img: ImgdrEsp,
+        // REVISAR: suavicé "rectificación de la condición de raíz" a lenguaje de abordaje integral, sin implicar corrección/cura definitiva.
+        html: `<p style="text-align: justify; margin:0;">
+        En nuestra clínica, aplicamos la misma filosofía integral que utilizamos en el cuidado del cáncer para apoyar a pacientes con trastornos autoinmunes — combinando tratamientos complementarios diseñados para apoyar el manejo de síntomas como parte de un plan integral y personalizado.
+        <br><br>
+        Entendemos que navegar el sistema de seguros puede ser un desafío. Muchas pólizas cubren segundas opiniones o tratamientos alternativos. Nuestro enlace en EE. UU. está disponible para guiarlo paso a paso en la presentación de su reclamo y ayudarlo a entender los beneficios de su cobertura.
+        </p>`
+    },
+    {
+        id: "extracorporeal",
+        label: "Fotoféresis Extracorpórea",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path><circle cx="12" cy="12" r="4"></circle></svg>`,
+        facts: ["Procedimiento autólogo con sangre propia", "Procesamiento celular personalizado", "Administrado bajo supervisión médica"],
+        img: ImgdrEsp,
+        // REVISAR: quité por completo el lenguaje "bombas inteligentes" y "gemelos genéticos enfermos" — framing militar/mecanístico de alto riesgo. Reescrito en términos descriptivos generales del procedimiento, sin claim de eficacia específico.
+        html: `<p style="text-align: justify; margin:0;">
+        La aféresis es un procedimiento en el que se extrae sangre (de forma similar a una donación) y se procesa para separar sus componentes. Mediante el proceso de Fotoféresis Extracorpórea (FEC), se utilizan ciertas células para desarrollar una Vacuna Autóloga de Células Dendríticas (VACD) — una preparación personalizada elaborada a partir de la propia sangre del paciente.
+        <br><br>
+        Este enfoque autólogo (derivado del propio paciente) forma parte de nuestro programa integral y se administra bajo estricta supervisión médica, como uno de los componentes de un plan de tratamiento más amplio y personalizado.
+        </p>`
+    }
+];
 ---
+
 <section class="procedimientos">
-  <h2>Su Camino Hacia el Bienestar:  <br>
-    Nuestros Procedimientos de <span style="color: #16c6ce;">Tratamiento Holístico</span></h2>
-  <p>Nuestros procedimientos integrales están meticulosamente diseñados para asegurar que cada aspecto de su bienestar sea atendido, abarcando desde diagnósticos precisos hasta terapias integradas y un apoyo continuo. Creemos en la transparencia y la colaboración, brindándole una clara comprensión de cada paso en su camino hacia la recuperación y una salud renovada.</p>
-  <div class="tabs-container">
-  <div class="tab-buttons">
-    <button class="tab-btn active" data-tab="wholebody">Hipertermia Corporal Total</button>
-    <button class="tab-btn" data-tab="chelation">Terapia de Quelación</button>
-    <button class="tab-btn" data-tab="anticancer">Programa Anticáncer</button>
-    <button class="tab-btn" data-tab="stemecell">Terapia con Células Madre</button>
-    <button class="tab-btn" data-tab="autoinmune">Terapia para Trastornos Autoinmunes</button>
-    <button class="tab-btn" data-tab="extracorporeal">Fotoféresis Extracorpórea</button>
-  </div>
+      <div class="eyebrow-wrap">
+    <span class="eyebrow">Nuestros Procedimientos</span>
+      </div>
+    <h2>Su Camino Hacia el Bienestar: <br>Nuestros Procedimientos de <span class="highlight-text">Tratamiento Holístico</span></h2>
+    <p>Nuestros procedimientos integrales están meticulosamente diseñados para asegurar que cada aspecto de su bienestar sea atendido, abarcando desde diagnósticos precisos hasta terapias integradas y un apoyo continuo. Creemos en la transparencia y la colaboración, brindándole una clara comprensión de cada paso en su camino hacia la recuperación y una salud renovada.</p>
 
-  <div class="tab-content active" id="wholebody">
-    <div class="tabp-grid">
-<div>
-    <img 
-                        src={ImgdrEsp.src}
-                        width="100%"
-                        height="610"
-                        alt="hospital"
-                        />
-</div>
-<div>
-  <div class="desc-proc">
+    <div class="tabs-container">
+        <div class="tab-buttons">
+            {procedures.map((proc, i) => (
+                <button class={`tab-btn ${i === 0 ? "active" : ""}`} data-tab={proc.id}>
+                    <span class="tab-icon" set:html={proc.icon} />
+                    <span>{proc.label}</span>
+                </button>
+            ))}
+        </div>
 
-      <p style="text-align: justify; margin:0;">
-      La <b>Hipertermia Corporal Total (HCT)</b> es un tipo de tratamiento para el cáncer y otras afecciones no malignas, como la Enfermedad de Lyme. En oncología, la HCT utiliza una fuente de calor externa para aumentar la temperatura de los tejidos y destruir las células cancerosas o detener su crecimiento.     <br>
-El término 'hipertermia' se aplica al uso de diferentes técnicas en combinación con otros tratamientos contra el cáncer (particularmente la quimioterapia y la radioterapia).
-    <br><br>
-En el caso del cáncer, es bien sabido que las células malignas tienen una tasa metabólica más alta que las células normales, lo que las hace muy sensibles a las altas temperaturas. Existen otras características importantes que explican por qué la hipertermia es eficaz:    
-<br>
-<ul>
-      <li><b>1)</b> Los vasos sanguíneos dentro de los tumores malignos carecen de la capacidad de dilatarse para disipar el calor. </li>
-      <li><b>2)</b> Los vasos sanguíneos de los tumores son tortuosos, lo que ralentiza la circulación en comparación con los tejidos normales, prolongando así la exposición al calor intratumoral. </li>
-      <li><b>3)</b> La muerte de las células malignas inducirá cambios en el citoplasma de las células malignas adyacentes, lo que causará cambios metabólicos y las conducirá a su propia muerte.</li>
-    </ul>
-   
-  </p>
-  </div>
+        {procedures.map((proc, i) => (
+            <div class={`tab-content ${i === 0 ? "active" : ""}`} id={proc.id}>
+                <div class="tabp-grid">
+                    <div class="tabp-image">
+                        <img src={proc.img.src} width="100%" alt={proc.label} />
+                    </div>
+                    <div class="tabp-body">
+                        <div class="fact-row">
+                            {proc.facts.map((fact) => (
+                                <span class="fact-chip">{fact}</span>
+                            ))}
+                        </div>
+                        <div class="desc-proc" set:html={proc.html} />
+                        <button class="share-btn" data-share-title={proc.label}>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <path d="M8.6 13.5l6.8 3.9M15.4 6.6l-6.8 3.9"></path>
+                            </svg>
+                            Compartir este tratamiento
+                        </button>
+                    </div>
+                </div>
+            </div>
+        ))}
 
-</div>
+        <p class="disclaimer">
+            Estas terapias se ofrecen como enfoques complementarios diseñados para trabajar junto con su tratamiento médico principal, y no lo sustituyen. Los resultados individuales pueden variar. Por favor consulte con nuestro equipo médico para determinar qué es adecuado para su situación específica.
+        </p>
     </div>
-  </div>
-
-
-  <div class="tab-content" id="chelation">
- <div class="tabp-grid">
-<div>
-    <img 
-                        src={ImgdrEsp.src}
-                        width="100%"
-                        height="610"
-                        alt="hospital"
-                        />
-</div>
-<div>
-  <div class="desc-proc">
-
-      <p style="text-align: justify; margin:0;">
-La quelación es el proceso mediante el cual se remueven o eliminan metales y minerales tóxicos del cuerpo. El proceso de quelación más común y eficaz utiliza EDTA (ácido etilendiaminotetraacético, también conocido como ácido edético), el cual es un aminoácido sintético. Se ha utilizado por más de 65 años para tratar eficazmente la intoxicación por plomo y para eliminar la placa de las arterias, venas y tejidos que contribuye a los accidentes cerebrovasculares y a los ataques cardíacos.
-        <br>    <br>
-La placa también puede formarse en el tejido conectivo de las vías neuronales, lo que puede causar una gran variedad de trastornos, afecciones y enfermedades, como la esclerosis múltiple (EM), el Alzheimer, el autismo y las enfermedades autoinmunes. En IWHC, utilizamos la quelación con EDTA en combinación con la administración de enzimas proteolíticas, así como con la desintoxicación, la nutrición y la estimulación del sistema inmunológico.
-  </p>
-  </div>
-
-</div>
-    </div>
-  </div>
-
-    <div class="tab-content" id="anticancer">
- <div class="tabp-grid">
-<div>
-    <img 
-                        src={ImgdrEsp.src}
-                        width="100%"
-                        height="610"
-                        alt="hospital"
-                        />
-</div>
-<div>
-  <div class="desc-proc">
-
-      <p style="text-align: justify; margin:0;">
-El Programa Anticáncer incluye, entre otros componentes, Laetrile, DMSO, vitaminas, minerales, aminoácidos, enzimas y antioxidantes.
-       <br><br>
-Todo esto lo combinamos con:
-Hipertermia Corporal Total (8 sesiones en 4 semanas), Terapia con Oxígeno Hiperbárico (8 sesiones en 4 semanas), Fotoféresis Extracorpórea, este procedimiento se realiza dos veces. Mediante él, obtenemos un tipo específico de glóbulos blancos para desarrollar vacunas autólogas de células dendríticas que el paciente se lleva a casa para autoinyectarse por vía subcutánea durante 6 meses.
-Además, se administra terapia de células vivas para proporcionar estimulación inmunológica, soporte al tejido conectivo y fibroblastos para la reparación del cuerpo. También utilizamos el sistema Alpha-2010 Spa, que proporciona terapia de calor, masaje linfático y desintoxicación.
-<br><br>
-Para quienes lo soliciten, en nuestra clínica también ofrecemos la TPI (Terapia Potenciada con Insulina), que utiliza bajas dosis de quimioterapia. No obstante, mediante el uso de DMSO logramos exactamente el mismo propósito, pero sin la necesidad de inducir cambios de glucosa en el paciente.
-
-<br>
-Las células madre están disponibles y se utilizan cuando es necesario.
-
-</p>
-  </div>
-
-</div>
-    </div>
-  </div>
-
-    <div class="tab-content" id="stemecell">
-<div class="tabp-grid">
-<div>
-    <img 
-                        src={ImgdrEsp.src}
-                        width="100%"
-                        height="610"
-                        alt="hospital"
-                        />
-</div>
-<div>
-  <div class="desc-proc">
-
-      <p style="text-align: justify; margin:0;">
-La terapia con células madre es un procedimiento médico de vanguardia que utiliza el potencial regenerativo del propio cuerpo para promover la sanación y restaurar la función. Las células madre son células únicas que tienen la extraordinaria capacidad de convertirse en muchos tipos de células diferentes, desde células musculares y óseas hasta células nerviosas y sanguíneas. Son, en esencia, el sistema de reparación del cuerpo.
-<br><br>
-      Creemos en apoyar los procesos de sanación naturales del cuerpo.<br>
-La terapia con células madre se alinea con esta filosofía al utilizar estas poderosas células para ayudar en la recuperación y mejorar el bienestar general. El procedimiento consiste en recolectar células madre, a menudo de la propia médula ósea o del tejido adiposo del paciente, para después reintroducirlas en el cuerpo. Esto ayuda a reducir la inflamación, reparar los tejidos dañados y apoyar al cuerpo en su lucha contra la enfermedad.  </p>
-  </div>
-
-</div>
-    </div>
-  </div>
-
-    <div class="tab-content" id="autoinmune">
-<div class="tabp-grid">
-<div>
-    <img 
-                        src={ImgdrEsp.src}
-                        width="100%"
-                        height="610"
-                        alt="hospital"
-                        />
-</div>
-<div>
-  <div class="desc-proc">
-
-      <p style="text-align: justify; margin:0;">
-
-En nuestra clínica, aplicamos la misma filosofía integral que usamos en el tratamiento del cáncer para abordar eficazmente los trastornos autoinmunes. Nuestro enfoque combina diversos tratamientos para no solo controlar los síntomas, sino también para buscar la rectificación de la condición de raíz.
-<br><br>
-Entendemos que navegar el sistema de seguros puede ser un desafío. Muchas pólizas cubren segundas opiniones o tratamientos alternativos. Para facilitar este proceso, nuestro enlace en EE. UU. está disponible para guiarte paso a paso en la presentación de tu reclamo y ayudarte a entender los beneficios de tu cobertura.
-  </p>
-  </div>
-
-</div>
-    </div>
-  </div>
-
-    <div class="tab-content" id="extracorporeal">
-<div class="tabp-grid">
-<div>
-    <img 
-                        src={ImgdrEsp.src}
-                        width="100%"
-                        height="610"
-                        alt="hospital"
-                        />
-</div>
-<div>
-  <div class="desc-proc">
-
-      <p style="text-align: justify; margin:0;">
-
-La aféresis es un procedimiento en el que se extrae sangre (de forma similar a una donación) y se procesa para separar sus diversos componentes. Se utiliza únicamente la parte necesaria para crear una Vacuna Autóloga de Células Dendríticas (VACD) mediante el proceso de Fotoféresis Extracorpórea (FEC).
-<br><br>
-La FEC desarrolla un tipo de vacuna anticancerígena que se convierte en "bombas inteligentes", desarrolladas a partir de la propia sangre del paciente. Estas células autólogas (del propio paciente) atacan a las células malignas mediante el cultivo de células asesinas (células NK o "killer cells") con la misma composición genética que las células cancerosas. Una vez que han madurado lo suficiente, se inyectan de nuevo en el paciente. Como un misil de "búsqueda y destrucción", estas supercélulas se disponen a destruir a sus gemelos genéticos enfermos.
-  </div>
-
-</div>
-    </div>
-  </div>
-</div>
-
-    <script>
-    import "../../scripts/paquetes.js"
-</script>
 </section>
 
-
+<script>
+    import "../../scripts/paquetes.js"
+</script>

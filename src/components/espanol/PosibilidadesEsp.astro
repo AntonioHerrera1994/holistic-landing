@@ -1,46 +1,49 @@
 ---
 import '../../styles/posibilidades.css'
-import Circulo from '../../components/Circulo.astro'
+import PilaresEsp from '../espanol/CirculoEs.astro'
+import ImgDent from '../../assets/dra-dent.webp'
 ---
 
 <section class="posib">
     <div class="posib-grid">
-       <div class="ps1">
-        <h2>Fortalezca Su Sanación:<br>El Poder de un Enfoque<span style="color: #16c6ce;">Holístico </span> y Complementario</h2>
-        <p>En Holistic Cancer Treatment, creemos en un enfoque integral para el cuidado del cáncer que va más allá de los tratamientos convencionales. Nuestras terapias alternativas y holísticas están diseñadas para trabajar en sinergia con su plan de tratamiento médico principal, ofreciendo un poderoso acompañamiento que atiende su bienestar integral: mente, cuerpo y espíritu.</p>
-                              <!-- From Uiverse.io by KINGFRESS --> 
-<!-- From Uiverse.io by cssbuttons-io --> 
-<button class="learn-more">
-    <span class="circle" aria-hidden="true">
-    <span class="icon arrow"></span>
-    </span>
-    <a href="/contact-us">
-    <span class="button-text">Contáctanos</span>
-    </a>
-  </button>
-    </div> 
-    <div class="ps2">
-        <Circulo />
+        <div class="ps1">
+            <h2>Fortalezca Su Sanación: El Poder de un Enfoque <span class="highlight-text">Holístico</span> y Complementario</h2>
+            <p>En Holistic Cancer Treatment, creemos en un enfoque integral para el cuidado del cáncer que va más allá de los tratamientos convencionales. Nuestras terapias alternativas y holísticas están diseñadas para trabajar en sinergia con su plan de tratamiento médico principal, ofreciendo un poderoso acompañamiento que atiende su bienestar integral: mente, cuerpo y espíritu.</p>
+            <a href="/contacto">
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Contáctanos</span>
+                </button>
+            </a>
+        </div>
+        <div class="ps2">
+            <PilaresEsp />
+        </div>
     </div>
-    </div>
- 
 </section>
 
 <section class="reserva">
-
-
-    <div class="reserva-cont">
-        <div>
-    <h2>Cuidado Dental Premium a Precios Inmejorables: Explora Nuestros Servicios
-</h2>
-        <p>Descubre por qué miles de pacientes confían en Biodental para su salud dental. Nuestra clínica moderna en Tijuana, Baja California, te ofrece tratamientos de la misma calidad que en Estados Unidos, pero ahorrando hasta un 70%. Agenda tu visita para conocer a nuestro equipo de expertos, recorrer nuestras instalaciones de vanguardia y comprobar por qué somos tu mejor opción.</p>
-        <div class="reserva-btn">
-            <a href="https://holisticancercoach.com/servicios-dentales/" style="text-decoration: none;font-weight: 600;">Ver Precios Dentales</a>
+    <div class="reserva-inner">
+        <div class="reserva-cont">
+            <div class="reserva-txt">
+                <span class="save-badge">Ahorra hasta un 70%<sup>*</sup></span>
+                <h2>Cuidado Dental Premium a Precios Inmejorables: Explora Nuestros Servicios</h2>
+                <p>Descubre por qué miles de pacientes confían en Biodental para su salud dental. Nuestra clínica moderna en Tijuana, Baja California, te ofrece tratamientos de la misma calidad que en Estados Unidos, pero ahorrando hasta un 70%. Agenda tu visita para conocer a nuestro equipo de expertos, recorrer nuestras instalaciones de vanguardia y comprobar por qué somos tu mejor opción.</p>
+                <div class="reserva-btn">
+                    <a href="https://holisticancercoach.com/servicios-dentales/" class="dental-cta">
+                        <span>Ver Precios Dentales</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14M13 6l6 6-6 6"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="disclaimer">*Ahorro en comparación con precios promedio en EE. UU.; el ahorro real varía según el tratamiento.</p>
+            </div>
+            <div class="img-dra">
+                <img src={ImgDent.src} alt="Profesional dental en la clínica Biodental" />
+            </div>
         </div>
-        </div>
-        <div class="img-dra">
-                 
-        </div>
-
     </div>
 </section>

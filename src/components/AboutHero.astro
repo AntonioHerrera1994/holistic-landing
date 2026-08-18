@@ -1,54 +1,78 @@
 ---
 import '../styles/about/abouthero.css'
-import Team1 from '../assets/doctor.webp'
+import DrHenriquez from '../assets/doctor.webp'
+import Nutritionist from '../assets/equipo2.png'
+import Gloria from '../assets/gloria.png'
+import DraDentista from '../assets/equipo1.png'
+
+const team = [
+    {
+        img: DrHenriquez,
+        role: "Medical Director & Holistic Cancer Specialist",
+        name: "Dr. Jose A. Henriquez",
+        badge: "Medical Director",
+        bio: "Dr. Jose A. Henriquez is internationally recognized for his many years of work in metabolic therapies for cancer and other diseases, and is a proven leader in the field of Whole Body Hyperthermia."
+    },
+    {
+        img: Nutritionist,
+        role: "Nutritionist",
+        name: "RDN. Melissa Rivera",
+        badge: "Nutrition",
+        bio: "Certified in Nutrigenomics by the Instituto Nutrigenómica of Spain and certified in Nutrition Applied to Immunology, endorsed by the Colegio Mexicano de Nutriólogos."
+    },
+    {
+        img: Gloria,
+        role: "Treatment Advisor Clinic",
+        name: "LCC. Gloría Alejo",
+        badge: "Patient Care",
+        bio: "With years of dedicated experience in patient care coordination, Gloría ensures every patient receives compassionate guidance and access to the right medical resources throughout their treatment journey."
+    },
+    {
+        img: DraDentista,
+        role: "Holistic Dentistry",
+        name: "Dr. Gisselle Heredia",
+        badge: "Dentistry",
+        bio: "This holistic dental practice merges modern dentistry with natural, biocompatible methods, focusing on the mouth-body connection through minimally invasive, non-toxic treatments."
+    }
+];
 ---
 
 <section class="ahero">
-    <h1>Meet the Pillars of Your <span style="color: #16c6ce;">Healing </span> Journey</h1>
-
+    <span class="eyebrow">Our Team</span>
+    <h1>Meet the Pillars of Your <span class="highlight-text">Healing</span> Journey</h1>
     <p>We are more than just a clinic; we are a dedicated family committed to your holistic well-being. Our multidisciplinary professionals bring together a wealth of experience in medical treatment, psychological support, and seamless administrative care, all united by a singular goal: to guide you with integrity and empathy through your cancer journey.</p>
+
+    <div class="trust-chips">
+        <span>Multidisciplinary Team</span>
+        <span>Personalized Care Plans</span>
+        <span>Bilingual Support</span>
+    </div>
+
+    <div class="ahero-buttons">
+        <a href="/contact-us" class="primary-cta">Schedule a Consultation</a>
+        <a href="/treatments" class="ghost-cta">View Our Treatments</a>
+    </div>
 </section>
 
 <section class="ateam">
     <div class="atgrid">
-        <div class="presentation-card" style="background-image: url('https://raw.githubusercontent.com/AntonioHerrera1994/holistic-landing/refs/heads/main/src/assets/doctor.webp')">
-            <div class="content">
-              <h2 class="name">Medical Director & Holistic Cancer Specialist<br><span style="font-size:17px;">Dr. Jose A. Henriquez</span></h2>
-              <p class="description">Dr. Jose A. Henriquez is internationally recognized for his many years of work in metabolic therapies treating cancer and other diseases. A proven leader in the field of Whole Body Hyperthermia.
-
-
-
-      
-      </p>
+        {team.map((member) => (
+            <div class="presentation-card" style={`background-image: url('${member.img.src}')`}>
+                <span class="specialty-badge">{member.badge}</span>
+                <button class="tap-hint" aria-label="Show bio">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 5v14M5 12h14"></path>
+                    </svg>
+                </button>
+                <div class="content">
+                    <h2 class="name">{member.role}<br /><span>{member.name}</span></h2>
+                    <p class="description">{member.bio}</p>
+                </div>
             </div>
-          </div>
-          <div class="presentation-card" style="background-image: url('https://github.com/AntonioHerrera1994/holistic-landing/blob/main/src/assets/equipo2.png?raw=true')">
-            <div class="content">
-              <h2 class="name">Nutritionist<br><span style="font-size:17px;">RDN. Melissa Rivera</span></h2>
-              <p class="description">
-
-      She is certified in Nutrigenomics by the Instituto Nutrigenómica of Spain and is certified
-in Nutrition Applied to Immunology, endorsed by the Colegio Mexicano de Nutriólogos
-(Mexican Colleague of Nutritionists).
-      </p>
-            </div>
-          </div>
-          <div class="presentation-card" style="background-image: url('https://github.com/AntonioHerrera1994/holistic-landing/blob/main/src/assets/gloria.png?raw=true')">
-            <div class="content">
-              <h2 class="name">Treatment Advisor Clinic<br><span style="font-size:17px;">LCC. Gloría Alejo</span></h2>
-              <p class="description">She has many medical resources that can help you. She has been the medical field for many years. She had intergrity. 
-      
-      </p>
-            </div>
-          </div>
-
-               <div class="presentation-card" style="background-image: url('https://github.com/AntonioHerrera1994/holistic-landing/blob/main/src/assets/equipo1.png?raw=true')">
-            <div class="content">
-              <h2 class="name">Holistic Dentistry<br><span style="font-size:17px;">Dr. Gisselle Heredia</span></h2>
-              <p class="description">This holistic dental practice merges modern dentistry with natural, biocompatible methods. The focus is on the mouth-body connection, using minimally invasive, non-toxic treatments to promote a healthy smile and overall well-being. 
-      
-      </p>
-            </div>
-          </div>
+        ))}
     </div>
 </section>
+
+<script>
+    import "../scripts/abouthero.js"
+</script>

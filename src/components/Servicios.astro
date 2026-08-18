@@ -8,40 +8,46 @@ import Icono3 from '../assets/icono3.png'
 
 <section class="servicios">
     <div class="txtgrid">
-        <h2>Our Integrated <br><span style="color: #16c6ce;">Holistic</span> Treatments</h2>
+        <h2>Our Integrated <br><span class="highlight-text">Holistic</span> Treatments</h2>
         <p>Our integrated services blend advanced medical knowledge with holistic principles, empowering your body's natural healing abilities. We believe in treating the whole person – mind, body, and spirit – to optimize your health and well-being through every step of your journey.</p>
     </div>
 
     <div class="serviciosgrid">
-        <div class="serv1">
-            <img 
-            src={Icono1.src}
-            width="55"
-            height="55"
-            alt="hospital"/>
-                <h3>Personalized Holistic Treatment</h3>
+        <div class="serv1" data-accent="cyan">
+            <div class="icon-wrap">
+                <img
+                src={Icono1.src}
+                width="34"
+                height="34"
+                alt="hospital"/>
+            </div>
+            <h3>Personalized Holistic Treatment</h3>
             <p>We develop individualized treatment plans that integrate cutting-edge therapies with natural and complementary modalities. Our focus is on strengthening your immune system</p>
-            <a href="/treatments" style="text-decoration: none;">Learn More</a>
+            <a href="/treatments">Learn More</a>
         </div>
-        <div class="serv1">
-            <img 
-            src={Icono2.src}
-            width="55"
-            height="55"
-            alt="hospital"/>
+        <div class="serv1" data-accent="pink">
+            <div class="icon-wrap">
+                <img
+                src={Icono2.src}
+                width="34"
+                height="34"
+                alt="hospital"/>
+            </div>
             <h3>Integrative Rehabilitation & Wellness</h3>
-            <p>Our specialized rehabilitation programs are designed to restore your vitality and improve quality of life. We offer comprehensive support through nutritional counseling. and physical therapy</p>
-            <a href="/treatments" style="text-decoration: none;">Explore Programs</a>
+            <p>Our specialized rehabilitation programs are designed to restore your vitality and improve quality of life. We offer comprehensive support through nutritional counseling and physical therapy</p>
+            <a href="/treatments">Explore Programs</a>
         </div>
-        <div class="serv1">
-            <img 
-            src={Icono3.src}
-            width="55"
-            height="55"
-            alt="hospital"/>
+        <div class="serv1" data-accent="cyan">
+            <div class="icon-wrap">
+                <img
+                src={Icono3.src}
+                width="34"
+                height="34"
+                alt="hospital"/>
+            </div>
             <h3>Supportive Therapies & Nutritional Guidance</h3>
             <p>Complement your healing process with our range of supportive therapies, including carefully selected natural supplements, detoxification protocols, and personalized nutritional plans.</p>
-            <a href="/treatments" style="text-decoration: none;">Discover Therapies</a>
+            <a href="/treatments">Discover Therapies</a>
         </div>
     </div>
 </section>
@@ -49,27 +55,38 @@ import Icono3 from '../assets/icono3.png'
 <section class="hview">
     <div class="hview-grid">
         <div class="hv1">
-            <img 
+            <img
             src={Hospital.src}
             width="620"
             height="580"
             alt="hospital"
             />
-         
         </div>
         <div class="hv2">
-            <h2>Experience Premier <br><span style="color: #16c6ce;">Holistic Care</span> in Tijuana</h2>
+            <h2>Experience Premier <br><span class="highlight-text">Holistic Care</span> in Tijuana</h2>
             <p>Located in the thriving city of Tijuana, Baja California, our dedicated holistic cancer treatment center offers a unique and transformative healing environment. We believe that optimal recovery thrives in a setting of focused, personalized attention.</p>
             <h3>Benefits of In-Person Treatment at Our Tijuana Center</h3>
-      
-                  <ul>
-                <li><p><i class="bi bi-check-circle"></i>Direct & Immersive Healing Environment</p></li>
-                <li><p><i class="bi bi-check-circle"></i>Personalized, Hands-On Treatment</p></li>
-                <li><p><i class="bi bi-check-circle"></i>Access to Advanced Therapies & Technology</p></li>
-                <li><p><i class="bi bi-check-circle"></i>Expert Medical Guidance from Specialized Doctors</p></li>
-                <li><p><i class="bi bi-check-circle"></i>omprehensive Support System</p></li>
+
+            <ul>
+                <li><span class="check-icon"></span>Direct & Immersive Healing Environment</li>
+                <li><span class="check-icon"></span>Personalized, Hands-On Treatment</li>
+                <li><span class="check-icon"></span>Access to Advanced Therapies & Technology</li>
+                <li><span class="check-icon"></span>Expert Medical Guidance from Specialized Doctors</li>
+                <li><span class="check-icon"></span>Comprehensive Support System</li>
             </ul>
 
+            <a href="/about-us">
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Learn More</span>
+                </button>
+            </a>
         </div>
     </div>
 </section>
+
+<script>
+    import '../scripts/servicios'
+</script>

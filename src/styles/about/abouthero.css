@@ -1,50 +1,151 @@
 .ahero{
     box-sizing: border-box;
     margin: 0;
-    padding: 4rem 6rem 3rem 6rem;
+    padding: 9rem 6rem 3.5rem 6rem;
     overflow: hidden;
-    background-image: url('/src/assets/puntos.png');
-    background-size:  cover;
-    background-position: center;
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(9,30,61,0.07) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
 }
 
 .ateam{
-  padding-bottom: 4rem;
-   background-image: url('/src/assets/puntos.png');
-    background-size:  cover;
-    background-position: center;
+    padding-bottom: 4.5rem;
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(9,30,61,0.07) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
 }
 
-/********** Grid **********/
+/********** Eyebrow / Texto **********/
+.eyebrow{
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    background: rgba(237,27,151,0.1);
+    border: 1px solid #ED1B97;
+    color: #ED1B97;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    font-family: "Roboto", sans-serif;
+}
 
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
+}
+
+.ahero h1{
+    font-size: 44px;
+    line-height: 60px;
+    font-family: "Pontano Sans", sans-serif;
+    color: #091E3D;
+    font-weight: 500;
+    max-width: 900px;
+}
+
+.ahero p{
+    margin-right: 5rem;
+    font-family: "Roboto", sans-serif;
+    text-align: justify;
+    color: rgba(9,30,61,0.6);
+    line-height: 30px;
+    font-size: 17px;
+    max-width: 800px;
+}
+
+/********** Trust chips **********/
+.trust-chips{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin: 1.8rem 0;
+}
+
+.trust-chips span{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(22,198,206,0.08);
+    color: #091E3D;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0.55rem 1.1rem;
+    border-radius: 999px;
+}
+
+.trust-chips span::before{
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #16C6CE;
+}
+
+/********** Botones **********/
+.ahero-buttons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.primary-cta{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    min-height: 44px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.primary-cta:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(22,198,206,0.3);
+}
+
+.ghost-cta{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid rgba(9,30,61,0.2);
+    color: #091E3D;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    min-height: 44px;
+    transition: all 0.3s ease;
+}
+
+.ghost-cta:hover{
+    border-color: #16C6CE;
+    color: #16C6CE;
+}
+
+/********** Grid equipo **********/
 .atgrid{
     display: grid;
-    grid-template-columns:repeat(4,minmax(0,1fr)) ;
+    grid-template-columns: repeat(4,minmax(0,1fr));
     padding: 1rem 4rem;
     gap: 3rem;
 }
 
-/********** Texto **********/
-.ahero h1{
-  font-size: 44px;
-    line-height: 60px;
-    font-family: "Pontano Sans", sans-serif;
-    text-transform: capitalize;
-        font-weight: 500;
-}
-
-.ahero p{
-   margin-right: 5rem;
-    font-family: "Roboto", sans-serif;
-    text-align: justify;
-     color: rgba(0, 0, 0, 0.53);
-    line-height: 30px;
-    font-size: 17px;
-}
-
 /********** Cajas **********/
-
-
 .presentation-card {
     background-size: cover;
     background-position: center;
@@ -57,33 +158,78 @@
     cursor: pointer;
     transition: all 0.4s ease;
     background-blend-mode: overlay;
-    
-  }
+}
 
-
-  .presentation-card:hover {
+.presentation-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-  }
-  
-  .content {
+}
+
+.specialty-badge{
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    background: rgba(9,30,61,0.65);
+    backdrop-filter: blur(6px);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.4rem 0.9rem;
+    border-radius: 999px;
+    z-index: 2;
+}
+
+/* Botón de tap solo visible en mobile */
+.tap-hint{
+    display: none;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.9);
+    color: #091E3D;
+    border: none;
+    border-radius: 50%;
+    z-index: 3;
+    transition: transform 0.3s ease;
+}
+
+.presentation-card.active .tap-hint{
+    transform: rotate(45deg);
+}
+
+.content {
     position: absolute;
     bottom: 25px;
     left: 25px;
     right: 25px;
-  }
+}
 
-  .name {
-    font-size: 1.5rem;
+.name {
+    font-size: 1.4rem;
     margin-bottom: 10px;
     font-weight: 700;
     text-shadow: 0 2px 4px rgba(0,0,0,0.4);
     transition: all 0.4s ease;
     font-family: "Pontano Sans", sans-serif;
-  }
+}
 
-  .description {
-    font-size: 1rem;
+.name span{
+    font-size: 15px;
+    font-weight: 400;
+    display: block;
+    margin-top: 4px;
+    color: #16C6CE;
+}
+
+.description {
+    font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
     text-shadow: 0 1px 3px rgba(0,0,0,0.4);
@@ -93,65 +239,78 @@
     transition: all 0.6s cubic-bezier(0.65, 0, 0.35, 1);
     transform: translateY(20px);
     font-family: "Roboto", sans-serif;
-  }
-  .presentation-card:hover .description {
+}
+
+.presentation-card:hover .description,
+.presentation-card.active .description {
     max-height: 300px;
     opacity: 0.95;
     margin-top: 15px;
     transform: translateY(0);
-  }
+}
 
-  .presentation-card:hover .name {
+.presentation-card:hover .name,
+.presentation-card.active .name {
     margin-bottom: 15px;
-  }
+}
 
-  /* Efecto overlay al hover */
-  .presentation-card::before {
+.presentation-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(9,30,61,0.55);
     opacity: 0;
     transition: opacity 0.4s ease;
-  }
+}
 
-  .presentation-card:hover::before {
+.presentation-card:hover::before,
+.presentation-card.active::before {
     opacity: 1;
-  }
+}
 
-  @media screen and (max-width:800px){
-     .ahero{
-        box-sizing: border-box;
-        margin: 0;
-        overflow: hidden;
-        padding: 2rem 2rem 0 2rem;
+@media screen and (max-width:800px){
+    .ahero{
+        padding: 3rem 1.5rem 0 1.5rem;
     }
 
     .ateam{
-  padding-bottom: 2rem;
+        padding-bottom: 2rem;
     }
-    /********** Texto **********/
-.ahero h1{
-  font-size: 39px;
-text-align: center;
+
+    .ahero h1{
+        font-size: 34px;
+        line-height: 44px;
+        text-align: center;
+        max-width: 100%;
+    }
+
+    .ahero p{
+        margin-right: 0;
+        text-align: justify;
+        max-width: 100%;
+    }
+
+    .trust-chips,
+    .ahero-buttons{
+        justify-content: center;
+    }
+
+    .ahero-buttons{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .primary-cta, .ghost-cta{
+        width: 100%;
+    }
+
+    .atgrid{
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        padding: 2rem 1.5rem;
+        gap: 1.6rem;
+    }
+
+    .tap-hint{
+        display: flex;
+    }
 }
-
-.ahero p{
-   margin-right: 0;
-    
-}
-
-
-/********** Grid **********/
-
-.atgrid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    padding: 2rem 2rem;
-    gap: 1.6rem;
-
-}
-  }

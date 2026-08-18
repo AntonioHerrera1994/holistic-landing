@@ -1,42 +1,20 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const rings = [
-    // Primer anillo: ahora con 2 items
-    { radius: 125, items: 2, speed: 0.005, angle: 0 },
-    // Segundo anillo: ahora con 2 items
-    { radius: 175, items: 2, speed: -0.003, angle: 0 },
-    // Tercer anillo: ahora con 2 items
-    { radius: 225, items: 2, speed: 0.002, angle: 0 }
-  ];
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.pilar-panel');
 
-  const centerX = 250;
-  const centerY = 250;
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => {
+                t.classList.remove('active');
+                t.setAttribute('aria-selected', 'false');
+            });
+            panels.forEach(p => p.classList.remove('active'));
 
-  function animate() {
-    rings.forEach((ring, ringIndex) => {
-      ring.angle += ring.speed;
+            tab.classList.add('active');
+            tab.setAttribute('aria-selected', 'true');
 
-      for (let i = 0; i < ring.items; i++) {
-        const itemAngle = ring.angle + (i * (2 * Math.PI / ring.items));
-        // El cálculo del índice del item sigue siendo el mismo,
-        // pero ahora solo generará hasta item-2, item-4, item-6
-        const item = document.querySelector(`.item-${ringIndex * rings[0].items + i + 1}`);
-
-        const x = centerX + ring.radius * Math.cos(itemAngle) - 30;
-        const y = centerY + ring.radius * Math.sin(itemAngle) - 30;
-
-        if (item) {
-          item.style.left = `${x}px`;
-          item.style.top = `${y}px`;
-        }
-      }
+            const target = tab.getAttribute('data-tab');
+            document.querySelector(`.pilar-panel[data-panel="${target}"]`)?.classList.add('active');
+        });
     });
-
-    requestAnimationFrame(animate);
-  }
-
-  window.addEventListener("unhandledrejection", event => {
-    console.warn("⚠️ Promesa sin .catch() o await con error:", event.reason);
-  });
-  
-  animate();
 });

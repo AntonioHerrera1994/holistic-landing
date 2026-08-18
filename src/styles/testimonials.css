@@ -3,109 +3,241 @@
     margin: 0;
     padding: 6rem 6rem 6rem 6rem;
     overflow: hidden;
+    position: relative;
 }
 
-/************ Grid **********/
-.test-grid{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 1rem;
-    margin: 0 auto;
-    justify-content: center;
-    padding: 0 3rem;
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
 }
-
-/************ Caja **********/
-
-.test1{
-    max-width: 70%;
-    padding: 2.5rem;
-    border: solid;
-    border-width: 1px;
-    border-color: rgba(0, 0, 0, 0.061);
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    border-radius: 25px;
-    margin-bottom: 2rem;
-}
-
-.test-grid p{
-    margin: 0!important;
-    text-align: left!important;
-}
-
 
 /************ Texto **********/
-
 .testim p{
-
-       color: rgba(0, 0, 0, 0.53);
+    color: rgba(9,30,61,0.6);
     line-height: 30px;
     font-size: 17px;
     font-family: "Roboto", sans-serif;
     text-align: center;
-    margin-right: 18rem;
-    margin-left: 18rem;
-    margin-bottom: 2rem;
-    }
-    
-    .testim h2{
-        font-family: "Pontano Sans", sans-serif;
-      font-size: 44px;
+    margin: 0 22rem 1rem 22rem;
+}
+
+.testim h2{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 44px;
     line-height: 60px;
-        text-align: justify;
-        font-weight: 500;
-        text-align: center;
-        margin-bottom: 1rem;
-    }
-
-    .testim h4{
-       font-family: "Pontano Sans", sans-serif;
-    }
-
-    @media screen and (max-width:800px){
-        .testim{
-            padding: 2rem;
-        }
-
-        /************ Texto **********/
-
-.testim p{
-
-    line-height: 25px;
-    font-family: "Roboto", sans-serif;
+    font-weight: 500;
     text-align: center;
-    margin-right: 0;
-    margin-left: 0;
-    margin-bottom: 2rem;
-      text-align: justify;
+    color: #091E3D;
+    margin-bottom: 0.5rem;
+}
+
+.testim h4{
+    font-family: "Pontano Sans", sans-serif;
+    color: #091E3D;
+    margin-top: 1rem;
+}
+
+/************ Controles (flechas) **********/
+.slider-controls{
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    max-width: 700px;
+    margin: 2rem auto 1rem auto;
+}
+
+.arrow-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(9,30,61,0.12);
+    background: white;
+    color: #091E3D;
+    cursor: pointer;
+    box-shadow: rgba(9,30,61,0.08) 0px 4px 12px;
+    transition: all 0.3s ease;
+}
+
+.arrow-btn:hover{
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+}
+
+/************ Slider **********/
+.slider-viewport{
+    overflow: hidden;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.slider-track{
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.slide{
+    min-width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0 0.5rem;
+    gap: 20px;
+}
+
+/************ Caja **********/
+.test1{
+    position: relative;
+    width: 100%;
+    padding: 3rem 2.8rem 2.2rem 2.8rem;
+    border: 1px solid rgba(9,30,61,0.06);
+    box-shadow: rgba(9,30,61,0.08) 0px 10px 30px 0px;
+    border-radius: 26px;
+    background: white;
+}
+
+.quote-mark{
+    position: absolute;
+    top: 0.5rem;
+    left: 1.8rem;
+    font-family: "Pontano Sans", serif;
+    font-size: 64px;
+    color: #16C6CE;
+    opacity: 0.35;
+    line-height: 1;
+}
+
+.test1 p{
+    margin: 0 !important;
+    text-align: left !important;
+    color: rgba(9,30,61,0.65);
+    line-height: 29px;
+    font-size: 17px;
+}
+
+.test1 h4{
+    margin-top: 1.2rem;
+    font-size: 16px;
+}
+
+/************ Dots **********/
+.dots{
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+}
+
+.dot{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(9,30,61,0.15);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+.dot.active{
+    width: 26px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #ED1B97, #16C6CE);
+}
+
+@media screen and (max-width:800px){
+    .testim{
+        padding: 3rem 1.5rem;
+    }
+
+    .testim p{
+        line-height: 25px;
+        margin: 0 0 1.5rem 0;
+        text-align: justify;
     }
 
     .testim h2{
-       line-height: 50px;
-         font-size: 30px;
-        text-align: left;
- 
+        line-height: 44px;
+        font-size: 28px;
+        text-align: center;
     }
 
-
-.test1{
-
-    padding: 2rem;
-
-
-}
-
-        /************ Grid **********/
-.test-grid{
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 1rem;
+    .slider-controls{
+        max-width: 100%;
+        margin: 1.5rem 0 1rem 0;
+    }
+.slider-viewport{
+    overflow: hidden;
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 0;
-    margin-left: 1rem;
 }
 
+.slider-track{
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+}
 
+.slide{
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+    padding: 0 0.5rem;
+}
+
+    .test1{
+        padding: 2.4rem 1.6rem 1.8rem 1.6rem;
     }
+
+    .quote-mark{
+        font-size: 50px;
+        left: 1.2rem;
+    }
+}
+
+@media screen and (max-width:800px){
+    .testim{
+        padding: 3rem 1.5rem;
+    }
+
+    .testim p{
+        line-height: 25px;
+        margin: 0 0 1.5rem 0;
+        text-align: justify;
+    }
+
+    .testim h2{
+        line-height: 44px;
+        font-size: 28px;
+        text-align: center;
+    }
+
+    .slider-controls{
+        max-width: 100%;
+        margin: 1.5rem 0 1rem 0;
+    }
+
+    .slider-viewport{
+        max-width: 100%;
+    }
+
+    .slide{
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .test1{
+        padding: 2.4rem 1.6rem 1.8rem 1.6rem;
+    }
+
+    .quote-mark{
+        font-size: 50px;
+        left: 1.2rem;
+    }
+}

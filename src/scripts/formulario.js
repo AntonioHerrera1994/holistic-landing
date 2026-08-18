@@ -1,23 +1,22 @@
-
 document.getElementById('contactForm').addEventListener('submit', async function(e) {
   e.preventDefault();
-  
+
   const form = e.target;
   const formData = new FormData(form);
   const button = form.querySelector('button[type="submit"]');
   const formFields = document.getElementById('formFields');
   const successMessage = document.getElementById('successMessage');
-  
+  const originalHTML = button.innerHTML;
+
   button.disabled = true;
-  button.textContent = 'Enviando...';
-  
+  button.textContent = 'Sending...';
+
   try {
-    // IMPORTANTE: Enviar como formulario, no como JSON
     const response = await fetch('/', {
       method: 'POST',
-      body: formData  // ← Cambio clave: enviar FormData directamente
+      body: formData
     });
-    
+
     if (response.ok) {
       formFields.style.display = 'none';
       successMessage.style.display = 'block';
@@ -26,8 +25,8 @@ document.getElementById('contactForm').addEventListener('submit', async function
       throw new Error('Error en el envío');
     }
   } catch (error) {
-    alert('Hubo un error al enviar el formulario. Por favor, intenta de nuevo.');
+    alert('There was an error sending your message. Please try again.');
     button.disabled = false;
-    button.textContent = 'Enviar';
+    button.innerHTML = originalHTML;
   }
 });

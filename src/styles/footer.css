@@ -1,111 +1,129 @@
 .footer{
-    margin: auto 0;
-    padding-top: 2rem;
-    padding-bottom: 1rem;
-    background-color: #1cc6cf1b;
+    background-color: #091E3D;
+    padding-top: 4.5rem;
 }
 
+/************ Grid principal **********/
 .footer-grid{
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(1, 1fr);
-    gap: 32px;
-    padding: 1rem 3rem 1rem 7rem;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding: 0 6rem 3.5rem 6rem;
 }
 
-
-
-.footergrid1 p{
-    color: black!important;
-}
-
-li{
-    color: black!important;
-}
-
-.footer h3{
-    font-family: "Syne", sans-serif;
-    text-transform: uppercase;
-    color:  #07a2bd;
-
-}
-
-.footer p{
-   font-family: "Roboto", sans-serif;
-  color: rgba(0, 0, 0, 0.342);
-    line-height: 30px;
-    font-size: 17px;
-}
-
-.footer li{
+/************ Marca **********/
+.footer-brand p{
     font-family: "Roboto", sans-serif;
-   color: rgba(255, 255, 255, 0.713);
-    text-align: justify;
+    color: rgba(255,255,255,0.55);
+    line-height: 27px;
+    font-size: 15px;
+    margin: 1.4rem 0 1.6rem 0;
+    max-width: 90%;
+}
+
+.social-row{
+    display: flex;
+    gap: 0.8rem;
+}
+
+.social-row a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    color: white;
     font-size: 16px;
-    text-transform: capitalize;
-   margin-right: -2rem;
-    line-height: 34px;
-
+    transition: all 0.3s ease;
 }
 
-.footergrid3 li{
-    display: inline-block;
-    margin-right: 10px; /* Espaciado entre elementos */
-    
+.social-row a:hover{
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    transform: translateY(-3px);
 }
 
-.footer ul{
-    list-style-type: none;
+/************ Columnas **********/
+.footer-col h3{
+    font-family: "Pontano Sans", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 15px;
+    color: #16C6CE;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.footer-col ul{
+    list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.footergrid2{
-    margin-left: 8rem;
-}
-.footergrid2 .bi{
-    margin-left: -2rem;
-}
-
-.footergrid3{
-    margin-left: 5rem;
+.footer-col li{
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
 }
 
-.footer .bi{
-    color: #07a2bd;
-    margin-right: 1rem;
+.footer-col li a,
+.footer-col li span{
+    font-family: "Roboto", sans-serif;
+    color: rgba(255,255,255,0.65);
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 22px;
+    transition: color 0.3s ease;
 }
 
+.footer-col li a:hover{
+    color: #16C6CE;
+}
+
+.footer-col .bi{
+    color: #ED1B97;
+    font-size: 15px;
+    margin-top: 3px;
+    flex-shrink: 0;
+}
+
+/************ Bottom bar **********/
+.footer-bottom{
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 1.6rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-bottom p{
+    font-family: "Roboto", sans-serif;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+    margin: 0;
+}
 
 @media screen and (max-width:800px){
-
     .footer{
-        margin: auto 0;
-        padding-top: 1.8rem;
-        padding-bottom: 1rem;
-        background-color: #1cc6cf1b;
+        padding-top: 3rem;
     }
 
     .footer-grid{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-        gap: 32px;
-        padding: 2rem;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 0 2rem 2.5rem 2rem;
     }
 
-    .footergrid2{
-        margin-left: 0;
-        margin-right: 2rem;
-    }
-    
-    .footergrid3{
-        margin-left: 0;
+    .footer-brand p{
+        max-width: 100%;
     }
 
-
-.footergrid2 .bi{
-    margin-left: 0;
-}
-    
+    .footer-bottom{
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+        padding: 1.4rem 2rem;
+    }
 }

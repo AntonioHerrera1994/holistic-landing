@@ -1,48 +1,70 @@
 ---
-import '../styles/circulo.css';
-import IconoC from '../assets/clinica-icono.png';
-import PosImg1 from '../assets/img1.webp';
-import PosImg2 from '../assets/img2.webp';
-import PosImg3 from '../assets/img3.webp';
-import PosImg4 from '../assets/img4.webp';
-import PosImg5 from '../assets/img5.webp';
-import PosImg6 from '../assets/img6.webp';
+import '../styles/circulo.css'
 ---
 
-<div class="container">
-    
-
-    <div class="center-circle">
-      <img 
-      src={IconoC.src}
-      alt="Icono"
-      width="55"
-      height="55"
-      class="casa"
-      />
+<div class="pilares-card">
+    <div class="pilares-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="mente" role="tab" aria-selected="true">
+            <span class="tab-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.5 2a5.5 5.5 0 0 0-5.5 5.5c0 1.4.5 2.6 1.3 3.6-.8 1-1.3 2.2-1.3 3.6A5.5 5.5 0 0 0 9.5 20h5A5.5 5.5 0 0 0 20 14.5c0-1.4-.5-2.6-1.3-3.6.8-1 1.3-2.2 1.3-3.6A5.5 5.5 0 0 0 14.5 2h-5z"></path>
+                </svg>
+            </span>
+            <span>Mind</span>
+        </button>
+        <button class="tab-btn" data-tab="cuerpo" role="tab" aria-selected="false">
+            <span class="tab-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="5" r="2"></circle>
+                    <path d="M12 7v6M8 21l2-6M16 21l-2-6M8 11l4-1 4 1"></path>
+                </svg>
+            </span>
+            <span>Body</span>
+        </button>
+        <button class="tab-btn" data-tab="espiritu" role="tab" aria-selected="false">
+            <span class="tab-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2C9 6 6 9 6 13a6 6 0 0 0 12 0c0-4-3-7-6-11z"></path>
+                    <path d="M12 13v9"></path>
+                </svg>
+            </span>
+            <span>Spirit</span>
+        </button>
     </div>
 
-    <div class="ring ring-1"></div>
-    <div class="ring ring-2"></div>
-    <div class="ring ring-3"></div>
+    <div class="pilares-content">
+        <div class="pilar-panel active" data-panel="mente">
+            <h3>Mind</h3>
+            <p>We support emotional well-being through mindfulness practices and compassionate psychological guidance that help you navigate your journey with clarity and calm.</p>
+            <div class="chips">
+                <span>Guided Meditation</span>
+                <span>Psychological Support</span>
+                <span>Music Therapy</span>
+            </div>
+        </div>
 
-    <!-- Items for ring 1 -->
-    <div class="item item-1"><img src={PosImg1.src} alt="Icon 1"></div>
-    <div class="item item-2"><img src={PosImg2.src} alt="Icon 2"></div>
-    
+        <div class="pilar-panel" data-panel="cuerpo">
+            <h3>Body</h3>
+            <p>Complementary therapies designed to work alongside your primary medical plan, supporting your body's natural resilience through nutrition and integrative care.</p>
+            <div class="chips">
+                <span>Personalized Nutrition</span>
+                <span>Detox Protocols</span>
+                <span>Physical Therapy</span>
+            </div>
+        </div>
 
-    <!-- Items for ring 2 -->
-    <div class="item item-3"><img src={PosImg3.src} alt="Icon 4"></div>
-    <div class="item item-4"><img src={PosImg4.src} alt="Icon 5"></div>
- 
+        <div class="pilar-panel" data-panel="espiritu">
+            <h3>Spirit</h3>
+            <p>Practices that nurture inner balance and connection, offering a sense of peace and grounding throughout your treatment experience.</p>
+            <div class="chips">
+                <span>Sound Therapy</span>
+                <span>Gratitude Practices</span>
+                <span>Spiritual Companionship</span>
+            </div>
+        </div>
+    </div>
+</div>
 
-    <!-- Items for ring 3 -->
-    <div class="item item-5"><img src={PosImg5.src} alt="Icon 7"></div>
-    <div class="item item-6"><img src={PosImg6.src} alt="Icon 8"></div>
-
-  </div>
-
-
-  <script>
+<script>
     import "../scripts/circulo.js"
 </script>

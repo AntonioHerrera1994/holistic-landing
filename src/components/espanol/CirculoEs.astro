@@ -1,0 +1,70 @@
+---
+import '../../styles/circulo.css'
+---
+
+<div class="pilares-card">
+    <div class="pilares-tabs" role="tablist">
+        <button class="tab-btn active" data-tab="mente" role="tab" aria-selected="true">
+            <span class="tab-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.5 2a5.5 5.5 0 0 0-5.5 5.5c0 1.4.5 2.6 1.3 3.6-.8 1-1.3 2.2-1.3 3.6A5.5 5.5 0 0 0 9.5 20h5A5.5 5.5 0 0 0 20 14.5c0-1.4-.5-2.6-1.3-3.6.8-1 1.3-2.2 1.3-3.6A5.5 5.5 0 0 0 14.5 2h-5z"></path>
+                </svg>
+            </span>
+            <span>Mente</span>
+        </button>
+        <button class="tab-btn" data-tab="cuerpo" role="tab" aria-selected="false">
+            <span class="tab-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="5" r="2"></circle>
+                    <path d="M12 7v6M8 21l2-6M16 21l-2-6M8 11l4-1 4 1"></path>
+                </svg>
+            </span>
+            <span>Cuerpo</span>
+        </button>
+        <button class="tab-btn" data-tab="espiritu" role="tab" aria-selected="false">
+            <span class="tab-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2C9 6 6 9 6 13a6 6 0 0 0 12 0c0-4-3-7-6-11z"></path>
+                    <path d="M12 13v9"></path>
+                </svg>
+            </span>
+            <span>Espíritu</span>
+        </button>
+    </div>
+
+    <div class="pilares-content">
+        <div class="pilar-panel active" data-panel="mente">
+            <h3>Mente</h3>
+            <p>Apoyamos el bienestar emocional a través de prácticas de mindfulness y acompañamiento psicológico compasivo, enfocados en brindar claridad y calma.</p>
+            <div class="chips">
+                <span>Meditación Guiada</span>
+                <span>Apoyo Psicológico</span>
+                <span>Musicoterapia</span>
+            </div>
+        </div>
+
+        <div class="pilar-panel" data-panel="cuerpo">
+            <h3>Cuerpo</h3>
+            <p>Terapias complementarias diseñadas para trabajar junto a su plan de tratamiento médico principal, apoyando la resiliencia natural del cuerpo a través de la nutrición y el cuidado integrativo.</p>
+            <div class="chips">
+                <span>Nutrición Personalizada</span>
+                <span>Protocolos de Desintoxicación</span>
+                <span>Fisioterapia</span>
+            </div>
+        </div>
+
+        <div class="pilar-panel" data-panel="espiritu">
+            <h3>Espíritu</h3>
+            <p>Prácticas que nutren el equilibrio interior y la conexión, ofreciendo una sensación de paz y arraigo tanto en mente como en espíritu.</p>
+            <div class="chips">
+                <span>Terapia de Sonido</span>
+                <span>Prácticas de Gratitud</span>
+                <span>Acompañamiento Espiritual</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    import "../../scripts/circulo.js"
+</script>

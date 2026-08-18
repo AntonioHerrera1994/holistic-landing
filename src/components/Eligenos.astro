@@ -1,25 +1,45 @@
 ---
 import '../styles/about/eligenos.css'
+
+const items = [
+    {
+        number: "01",
+        accent: "cyan",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"></circle><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"></path></svg>`,
+        title: "Treating the Whole Person",
+        text: "Unlike conventional approaches that often focus solely on the disease, holistic treatment addresses you as a complete individual."
+    },
+    {
+        number: "02",
+        accent: "pink",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0 0 17.5 4c-1.7 0-3 .8-4 2-1-1.2-2.3-2-4-2A4.5 4.5 0 0 0 5 8.5c0 2.2 1.5 4 3 5.5l6 6z"></path></svg>`,
+        title: "Optimizing Conventional Outcomes & Reducing Side Effects",
+        text: "Holistic therapies are designed to work in harmony with your primary medical treatments, not against them."
+    },
+    {
+        number: "03",
+        accent: "cyan",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"></path></svg>`,
+        title: "Empowering Long-Term Health & Resilience",
+        text: "Integrated holistic care empowers you with knowledge and tools for sustainable well-being far beyond your active treatment."
+    }
+];
 ---
 
 <section class="eligenos">
     <div class="eltxt">
-            <h2>The Essential Value of Integrated <span style="color: #16c6ce;">Holistic Care </span></h2>
+        <span class="eyebrow">Why It Works</span>
+        <h2>The Essential Value of Integrated <span class="highlight-text">Holistic Care</span></h2>
     </div>
 
     <div class="elgrid">
-
-        <div class="elcaja1">
-            <h3> Treating the <br>Whole Person</h3>
-            <p>Unlike conventional approaches that often focus solely on the disease, holistic treatment addresses you as a complete individual.</p>
-        </div>
-        <div class="elcaja1">
-            <h3> Optimizing Conventional Outcomes & Reducing Side Effects</h3>
-            <p>Holistic therapies are designed to work in harmony with your primary medical treatments, not against them.</p>
-        </div>
-        <div class="elcaja1">
-            <h3> Empowering Long-Term Health <br>& Resilience </h3>
-            <p>Integrated holistic care empowers you with knowledge and tools for sustainable well-being far beyond your active treatment.</p>
-        </div>
+        {items.map((item) => (
+            <div class="elcaja1" data-accent={item.accent}>
+                <span class="ghost-number">{item.number}</span>
+                <div class="icon-wrap" set:html={item.icon} />
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+            </div>
+        ))}
     </div>
 </section>

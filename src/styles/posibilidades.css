@@ -1,152 +1,312 @@
 .posib{
     box-sizing: border-box;
     margin: 0;
-    padding: 4rem 6rem 4rem 6rem;
+    padding: 4rem 4rem 4rem 4rem;
     overflow: hidden;
-    background-color: #1cc6cf1b;
+    background-color: rgba(22,198,206,0.07);
     margin-bottom: 6rem;
 }
-
 
 /************ Grid **********/
 .posib-grid{
     display: grid;
-    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    grid-template-columns: repeat(2,minmax(0,1fr));
     gap: 2rem;
     padding: 0 6rem;
+    align-items: center;
 }
 
 /************ Texto **********/
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
+}
 
 .posib p{
-
-    
     font-family: "Roboto", sans-serif;
-     color: rgba(0, 0, 0, 0.53);
+    color: rgba(9,30,61,0.6);
     line-height: 30px;
     font-size: 17px;
     text-align: justify;
     margin-right: 1rem;
-    }
-    
-    .posib h2{
-        font-family: "Pontano Sans", sans-serif;
-        margin-right: 4.7rem;
-         font-size: 44px;
-    line-height: 60px;
-        font-weight: 500;
-    }
+}
 
-    
-    
+.posib h2{
+    font-family: "Pontano Sans", sans-serif;
+    margin-right: 4.7rem;
+    font-size: 44px;
+    line-height: 60px;
+    color: #091E3D;
+    font-weight: 500;
+}
+
+/*********** Boton contacto **********/
+button {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    font-size: inherit;
+    font-family: "Roboto", sans-serif;
+}
+
+button.learn-more {
+    width: 12rem;
+    height: auto;
+    margin-top: 1.5rem;
+}
+
+button.learn-more .circle {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: relative;
+    display: block;
+    margin: 0;
+    width: 3rem;
+    height: 3rem;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    border-radius: 1.625rem;
+}
+
+button.learn-more .circle .icon {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: #fff;
+}
+
+button.learn-more .circle .icon.arrow {
+    left: 0.625rem;
+    width: 1.125rem;
+    height: 0.125rem;
+    background: none;
+}
+
+button.learn-more .circle .icon.arrow::before {
+    position: absolute;
+    content: "";
+    top: -0.29rem;
+    right: 0.0625rem;
+    width: 0.625rem;
+    height: 0.625rem;
+    border-top: 0.125rem solid #fff;
+    border-right: 0.125rem solid #fff;
+    transform: rotate(45deg);
+}
+
+button.learn-more .button-text {
+    transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.75rem 0;
+    margin: 0 0 0 1.85rem;
+    color: #091E3D;
+    font-weight: 700;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Roboto", sans-serif;
+}
+
+button:hover .circle { width: 100%; }
+button:hover .circle .icon.arrow {
+    background: #fff;
+    transform: translate(1rem, 0);
+}
+button:hover .button-text { color: #fff; }
 
 /************ Reserva **********/
-
 .reserva{
-    border-radius: 26px;
-    padding: 3.5rem 4.5rem;
-    background-color: #07a2bd;
-    max-width: 70%;
-    margin: 0 auto; /*Centrar */
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 0 6rem;
+}
+
+.reserva-inner{
+    border-radius: 30px;
+    padding: 3.5rem;
+    background: linear-gradient(135deg, #091E3D 0%, #0f3a63 45%, #0a7d8c 100%);
+    max-width: 1100px;
+    margin: 0 auto;
+    box-shadow: 0 25px 60px rgba(9,30,61,0.25);
+    position: relative;
+    overflow: hidden;
 }
 
 .reserva-cont{
-   display: grid;
-    grid-template-columns:repeat(2,minmax(0,1fr)) ;
-    gap: 4rem;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.save-badge{
+    display: inline-block;
+    background: rgba(237,27,151,0.18);
+    border: 1px solid #ED1B97;
+    color: #ED1B97;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1.2rem;
 }
 
 .reserva h2{
- 
     font-family: "Pontano Sans", sans-serif;
-    color:white;
-   font-size: 31px;
-       font-weight: 500;
+    color: white;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 500;
+    margin: 0 0 1.2rem;
 }
 
 .reserva p{
     text-align: justify;
     font-family: "Roboto", sans-serif;
-      line-height: 30px;
-    font-size: 17px;
-    color:white;
-}
-
-.reserva a{
-    font-family: "Roboto", sans-serif;
-    background-color:  white;
-
-  padding: .6rem;
-  border-radius: 26px;
- color: #07a2bd;
+    line-height: 29px;
+    font-size: 16px;
+    color: rgba(255,255,255,0.82);
 }
 
 .reserva-btn{
-  margin-top: 2.5rem;
+    margin-top: 2rem;
+}
+
+.dental-cta{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: white;
+    color: #091E3D;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 0rem 1.7rem;
+    border-radius: 999px;
+    min-height: 44px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dental-cta span{
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.dental-cta svg{
+    position: relative;
+    z-index: 1;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.dental-cta::before{
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+}
+
+.dental-cta:hover::before{
+    transform: scaleX(1);
+}
+
+.dental-cta:hover span,
+.dental-cta:hover svg{
+    color: white;
+}
+
+.dental-cta:hover svg{
+    transform: translateX(4px);
 }
 
 .img-dra{
-    background-image: url('../assets/dra-dent.webp');
-    background-size: cover;
-    background-position: center;
-    border-radius: 16px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.img-dra img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 @media screen and (max-width:800px){
     .posib{
-         padding: 2rem 2rem 4rem 2rem;
+        padding: 2rem 2rem 4rem 2rem;
     }
 
-    /************ Grid **********/
-.posib-grid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    gap: 2rem;
-    padding: 0;
-}
-
-/************ Texto **********/
-
-.posib p{
-   margin-right: 0;
-
+    .posib-grid{
+        display: grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        gap: 2rem;
+        padding: 0;
     }
-    
+
+    .posib p{ margin-right: 0; }
+
     .posib h2{
-  
         margin-right: 0;
-      line-height: 50px;
-         font-size: 30px;
+        line-height: 50px;
+        font-size: 30px;
     }
 
-    /************ Reserva **********/
+    .reserva{
+        padding: 0 1.2rem;
+    }
 
-.reserva{
-  
-    padding: 1rem;
-    max-width: 90%;
-  
-}
+    .reserva-inner{
+        padding: 1.8rem;
+        border-radius: 22px;
+    }
 
-/************ Grid **********/
-.reserva-cont{
+    .reserva-cont{
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        gap: 2rem;
+    }
 
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
+    .reserva h2{
+        font-size: 24px;
+        text-align: center;
+    }
 
-}
+    .save-badge{
+        display: block;
+        width: fit-content;
+        margin: 0 auto 1.2rem;
+    }
 
+    .reserva p{
+        text-align: center;
+    }
 
-.reserva h2{
+    .reserva-btn{
+        display: flex;
+        justify-content: center;
+    }
 
-   font-size: 26px;
-     text-align: center;
-}
-
-.reserva-btn{
-  display: flex;
-  justify-content: center;
-}
-
-    
+    .img-dra{
+        order: -1;
+    }
 }

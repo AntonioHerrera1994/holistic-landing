@@ -1,29 +1,40 @@
 ---
 import '../styles/services-styles/heroserv.css'
-import HospitalS from '../assets/clinica2.webp'
-import HospitalS2 from '../assets/img-hospital.png'
-import HospitalS3 from '../assets/img3.webp'
+import VideoThumbServ from '../assets/img-hospital.png'
 ---
 
-
 <section class="servhero">
-    <div class="servhgrid">
-        <div class="servhcarr">
-             <div class="servhtxtmovil">
-            <h1>Holistic Complementary <span style="color: #16c6ce;">Treatments </span> for Your Complete Well-Being</h1>
-            <p>We offer an integrative care model that honors the connection between body, mind, and spirit. Our services are designed to work alongside your conventional medical treatment, providing specialized nutritional support, stress management, physical rehabilitation therapies, and emotional guidance throughout your journey.
-</p>
+    <div class="servh-inner">
+        <h1>Holistic Complementary <span class="highlight-text">Treatments</span> for Your Complete Well-Being</h1>
+        <p>We offer an integrative care model that honors the connection between body, mind, and spirit. Our services are designed to work alongside your conventional medical treatment, providing specialized nutritional support, stress management, physical rehabilitation therapies, and emotional guidance throughout your journey.</p>
+
+        <div class="servh-buttons">
+    <div class="servh-buttons">
+    <a href="/contact-us" class="primary-cta">Book a Consultation</a>
+    <button class="ghost-cta" id="openServVideoModalBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M8 5v14l11-7z"></path>
+        </svg>
+        Watch Overview
+    </button>
+</div>
         </div>
-            <div class="slider-container">
-            <iframe width="560" height="350" src="https://www.youtube.com/embed/GjxPLiM5sL4?autoplay=1&amp;si=W5xeVnmm-2iRvdQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="servhtxt">
-              <h1>Holistic Complementary <span style="color: #16c6ce;">Treatments </span> for Your Complete Well-Being</h1>
-            <p>We offer an integrative care model that honors the connection between body, mind, and spirit. Our services are designed to work alongside your conventional medical treatment, providing specialized nutritional support, stress management, physical rehabilitation therapies, and emotional guidance throughout your journey.
-</p>
-        </div>
-        
+
     </div>
 </section>
 
+<div class="video-modal" id="servVideoModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="video-modal-backdrop" id="servModalBackdrop"></div>
+    <div class="video-modal-content">
+        <button class="modal-close" id="closeServVideoModal" aria-label="Close video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="video-modal-player" id="servVideoModalPlayer"></div>
+    </div>
+</div>
+
+<script>
+    import "../scripts/heroserv.js"
+</script>

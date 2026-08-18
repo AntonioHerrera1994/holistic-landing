@@ -8,40 +8,46 @@ import Icono3 from '../../assets/icono3.png'
 
 <section class="servicios">
     <div class="txtgrid">
-        <h2>Nuestros Servicios <br><span style="color: #16c6ce;">Holísticos</span> e Integrales</h2>
+        <h2>Nuestros Servicios <br><span class="highlight-text">Holísticos</span> e Integrales</h2>
         <p>Nuestros servicios integrales fusionan los conocimientos médicos de vanguardia con principios holísticos, potenciando así la capacidad de sanación natural de su cuerpo. Creemos en tratar a la persona como un todo en mente, cuerpo y espíritu para optimizar su salud y bienestar en cada paso de su camino.</p>
     </div>
 
     <div class="serviciosgrid">
-        <div class="serv1">
-            <img 
-            src={Icono1.src}
-            width="55"
-            height="55"
-            alt="hospital"/>
-             <h3>Tratamiento Holístico Personalizado</h3>
+        <div class="serv1" data-accent="cyan">
+            <div class="icon-wrap">
+                <img
+                src={Icono1.src}
+                width="34"
+                height="34"
+                alt="hospital"/>
+            </div>
+            <h3>Tratamiento Holístico Personalizado</h3>
             <p>Elaboramos planes de tratamiento personalizados que integran terapias de vanguardia con modalidades naturales y complementarias. Nuestro enfoque principal es fortalecer su sistema inmunológico.</p>
-            <a href="/treatments" style="text-decoration: none;">Conocer Más</a>
+            <a href="/tratamientos">Conocer Más</a>
         </div>
-        <div class="serv1">
-            <img 
-            src={Icono2.src}
-            width="55"
-            height="55"
-            alt="hospital"/>
-             <h3>Rehabilitación Integrativa y Bienestar</h3>
+        <div class="serv1" data-accent="pink">
+            <div class="icon-wrap">
+                <img
+                src={Icono2.src}
+                width="34"
+                height="34"
+                alt="hospital"/>
+            </div>
+            <h3>Rehabilitación Integrativa y Bienestar</h3>
             <p>Nuestros programas de rehabilitación especializados están diseñados para restaurar su vitalidad y mejorar la calidad de vida. Ofrecemos apoyo integral a través de asesoría nutricional y fisioterapia.</p>
-            <a href="/treatments" style="text-decoration: none;">Ver Los Programas</a>
+            <a href="/tratamientos">Ver Los Programas</a>
         </div>
-        <div class="serv1">
-            <img 
-            src={Icono3.src}
-            width="55"
-            height="55"
-            alt="hospital"/>
+        <div class="serv1" data-accent="cyan">
+            <div class="icon-wrap">
+                <img
+                src={Icono3.src}
+                width="34"
+                height="34"
+                alt="hospital"/>
+            </div>
             <h3>Terapias de Apoyo y Orientación Nutricional</h3>
             <p>Complemente su proceso de sanación con nuestra gama de terapias de apoyo, que incluyen suplementos naturales cuidadosamente seleccionados, protocolos de desintoxicación y planes nutricionales personalizados.</p>
-            <a href="/treatments" style="text-decoration: none;">Ver Las Terapias</a>
+            <a href="/tratamientos">Ver Las Terapias</a>
         </div>
     </div>
 </section>
@@ -49,26 +55,38 @@ import Icono3 from '../../assets/icono3.png'
 <section class="hview">
     <div class="hview-grid">
         <div class="hv1">
-            <img 
+            <img
             src={Hospital.src}
             width="620"
             height="580"
             alt="hospital"
             />
-         
         </div>
         <div class="hv2">
-            <h2><span style="color: #16c6ce;">Atención Holística</span> <br>de Excelencia en Tijuana</h2>
-            <p>Ubicado en la prospera ciudad de Tijuana, Baja California, nuestro centro especializado en el tratamiento holístico del cáncer ofrece un ambiente de sanación único y transformador. Creemos que una recuperación óptima florece en un entorno de atención dedicada y personalizada..</p>
+            <h2><span class="highlight-text">Atención Holística</span> de Excelencia en Tijuana</h2>
+            <p>Ubicado en la próspera ciudad de Tijuana, Baja California, nuestro centro especializado en el tratamiento holístico del cáncer ofrece un ambiente de sanación único y transformador. Creemos que una recuperación óptima florece en un entorno de atención dedicada y personalizada.</p>
             <h3>Beneficios de Nuestro Tratamiento Presencial en Tijuana</h3>
-           <ul>
-                <li><p><i class="bi bi-check-circle"></i>Ambiente de Sanación Directo e Inmersivo</p></li>
-                <li><p><i class="bi bi-check-circle"></i>Atención Práctica y Personalizada</p></li>
-                <li><p><i class="bi bi-check-circle"></i>Acceso a Terapias y Tecnología de Vanguardia</p></li>
-                <li><p><i class="bi bi-check-circle"></i>Acompañamiento Médico por Especialistas</p></li>
-                <li><p><i class="bi bi-check-circle"></i>Sistema de Apoyo Integral</p></li>
+
+            <ul>
+                <li><span class="check-icon"></span>Ambiente de Sanación Directo e Inmersivo</li>
+                <li><span class="check-icon"></span>Atención Práctica y Personalizada</li>
+                <li><span class="check-icon"></span>Acceso a Terapias y Tecnología de Vanguardia</li>
+                <li><span class="check-icon"></span>Acompañamiento Médico por Especialistas</li>
+                <li><span class="check-icon"></span>Sistema de Apoyo Integral</li>
             </ul>
 
+            <a href="/nosotros">
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Conocer Más</span>
+                </button>
+            </a>
         </div>
     </div>
 </section>
+
+<script>
+    import "../../scripts/servicios.js"
+</script>

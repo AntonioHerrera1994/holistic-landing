@@ -1,136 +1,220 @@
 /********** Global **********/
-
 .faq{
-   box-sizing: border-box;
+    box-sizing: border-box;
     margin: 0;
-    padding: 2rem 6rem 4rem 6rem;
+    padding: 5rem 6rem;
     overflow: hidden;
-
+    background-color: #ffffff;
 }
 
 .faq-grid{
     margin-top: 2rem;
-    padding: 2rem;
-    display:grid;
+    display: grid;
     grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 4rem; 
+    gap: 4rem;
+    align-items: center;
 }
 
 /********** Imagen **********/
+.faq-izq{
+    position: relative;
+}
 
 .faq-izq img{
-        width: 100%;
-        height: 100%;
-        margin-left: -1rem;
-        border-radius: 26px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 26px;
+    display: block;
+    box-shadow: 0 25px 60px rgba(9,30,61,0.18);
+}
+
+.faq-badge{
+    position: absolute;
+    bottom: -1.5rem;
+    right: -1.5rem;
+    background: white;
+    border-radius: 20px;
+    padding: 1.4rem 1.6rem;
+    box-shadow: 0 15px 40px rgba(9,30,61,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: 220px;
+}
+
+.faq-badge span{
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #091E3D;
+}
+
+.faq-badge a{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    transition: transform 0.3s ease;
+}
+
+.faq-badge a:hover{
+    transform: translateY(-2px);
 }
 
 /********** FAQ **********/
-
 .accordion{
+    margin-right: 1.5rem;
+}
 
-  margin-right: 3.5rem;
- 
+.eyebrow{
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    background: rgba(22,198,206,0.1);
+    border: 1px solid #16C6CE;
+    color: #091E3D;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    font-family: "Roboto", sans-serif;
+}
+
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(237,27,151,0.25) 0%, rgba(237,27,151,0.25) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
 }
 
 .accordion h1{
- font-family: "Pontano Sans", sans-serif;
-    font-size: 44px;
-    line-height: 60px;
-    margin: 0;
-        font-weight: 500;
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 40px;
+    line-height: 52px;
+    margin: 0 0 2rem 0;
+    color: #091E3D;
+    font-weight: 500;
 }
 
-.accordion-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.185);
-    padding-bottom: 1rem;
-  }
-  
-  .accordion-button {
-     font-family: "Pontano Sans", sans-serif;
+.accordion-item{
+    border-bottom: 1px solid rgba(9,30,61,0.1);
+    padding-bottom: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+
+.accordion-button{
+    font-family: "Pontano Sans", sans-serif;
     width: 100%;
-    padding: 15px;
-    background-color: rgba(255, 255, 255, 0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 15px 0;
+    background-color: transparent;
     text-align: left;
     border: none;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 600;
-  }
+    color: #091E3D;
+    transition: color 0.3s ease;
+}
 
-  .accordion-button:hover {
-    color: #16c6ce;
-  }
-  
-  .accordion-content {
-  font-family: "Roboto", sans-serif;
-  color: rgba(0, 0, 0, 0.53);
-    line-height: 30px;
-    font-size: 17px;
-    padding: 0 15px;
-    max-height: 0;
+.accordion-button:hover{
+    color: #16C6CE;
+}
+
+.accordion-icon{
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(22,198,206,0.1);
+    color: #16C6CE;
+    transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), background 0.3s ease;
+}
+
+.accordion-item.active .accordion-icon{
+    transform: rotate(135deg);
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    color: white;
+}
+
+.accordion-item.active .accordion-button{
+    color: #091E3D;
+}
+
+.accordion-content{
     overflow: hidden;
-    transition: max-height 0.3s ease-out; /* Transición suave */
-    font-family: "Plus Jakarta Sans", sans-serif;
-    font-optical-sizing: auto;
+    max-height: 0;
+    transition: max-height 0.35s ease-out;
+}
+
+.accordion-content p{
+    font-family: "Roboto", sans-serif;
+    color: rgba(9,30,61,0.62);
+    line-height: 28px;
+    font-size: 16px;
+    padding: 0 0 15px 0;
+    margin: 0;
     text-align: justify;
-  }
-  
-  .accordion-item.active .accordion-content {
-    height: auto; /* Altura automática cuando está activo */
-  }
-  .accordion-item.active .accordion-button {
-color: #16c6ce;
-  }
-  
-  /********* Movil **********/
-  @media screen and (min-width:300px) and (max-width:800px) {
-    /********** Global **********/
+}
+
+/********* Movil **********/
+@media screen and (min-width:300px) and (max-width:800px){
     .faq{
-         box-sizing: border-box;
+        box-sizing: border-box;
         margin: 0;
         overflow: hidden;
-        padding: 5rem 2rem 2rem 2rem;
+        padding: 4rem 1.5rem;
     }
 
     .faq-grid{
-      margin-top: 1rem;
-      padding: 0;
-      grid-template-columns: repeat(1,minmax(0,1fr));
-      gap: 1rem; 
+        margin-top: 1rem;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        gap: 2.5rem;
     }
 
-    /********** Imagen **********/
-
-    .faq-img{
-      width: 100%;
-      height: 100%;
-      margin-left:0;
+    .faq-izq img{
+        width: 100%;
+        height: 260px;
     }
-    
-  /********** FAQ **********/
-    .accordion h1{
-         line-height: 50px;
-         font-size: 30px;
-         text-align: left;
-margin-top: 2rem;
+
+    .faq-badge{
+        position: static;
+        margin-top: 1rem;
+        max-width: 100%;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .accordion{
-      margin-left: 1rem;
-      margin-right: -1rem;
-      margin-top: 1rem;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 0;
     }
 
-    .accordion-item {
-     margin-left: -1rem;
+    .accordion h1{
+        line-height: 42px;
+        font-size: 28px;
+        margin-bottom: 1.5rem;
     }
 
-    .accordion-button {
-      font-size: 1.1rem;
+    .accordion-button{
+        font-size: 1rem;
     }
-
-    .accordion-content {
-      font-size: 1rem;
-    }
-  }
+}

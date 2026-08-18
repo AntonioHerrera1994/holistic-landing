@@ -1,74 +1,175 @@
 .eligenos{
     box-sizing: border-box;
     margin: 0;
-    padding: 4rem 6rem 4rem 6rem;
+    padding: 5rem 6rem;
     overflow: hidden;
-    background-color: #1cc6cf1b;
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(9,30,61,0.06) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
 }
 
 /********** Texto Principal **********/
+.eltxt{
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    text-align: center;
+}
+
+.eyebrow{
+    display: inline-block;
+    padding: 0.4rem 1.1rem;
+    background: rgba(22,198,206,0.1);
+    border: 1px solid #16C6CE;
+    color: #091E3D;
+    border-radius: 999px;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    font-family: "Roboto", sans-serif;
+}
+
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(237,27,151,0.25) 0%, rgba(237,27,151,0.25) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
+}
 
 .eligenos h2{
     font-family: "Pontano Sans", sans-serif;
-    font-size: 44px;
-      line-height: 60px;
-      text-transform: capitalize;
-          font-weight: 500;
+    font-size: 40px;
+    line-height: 52px;
+    text-transform: capitalize;
+    color: #091E3D;
+    font-weight: 500;
 }
 
 /********** Grid **********/
 .elgrid{
     display: grid;
-    grid-template-columns:repeat(3,minmax(0,1fr)) ;
+    grid-template-columns: repeat(3,minmax(0,1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /************ Cajas ***********/
-
 .elcaja1{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 3rem;
+    position: relative;
+    box-shadow: rgba(9,30,61,0.08) 0px 10px 34px 0px;
+    border: 1px solid rgba(9,30,61,0.06);
+    padding: 2.6rem 2.2rem 2.2rem 2.2rem;
     border-radius: 26px;
     background-color: white;
-    margin-top: 1rem;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.elcaja1:hover{
+    transform: translateY(-8px);
+    box-shadow: rgba(9,30,61,0.16) 0px 20px 45px 0px;
+}
+
+.elcaja1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+}
+
+.elcaja1[data-accent="cyan"]::before{
+    background: linear-gradient(90deg, #16C6CE, transparent);
+}
+.elcaja1[data-accent="pink"]::before{
+    background: linear-gradient(90deg, #ED1B97, transparent);
+}
+
+.ghost-number{
+    position: absolute;
+    top: -18px;
+    right: 4px;
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 110px;
+    font-weight: 700;
+    color: rgba(9,30,61,0.04);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+}
+
+.icon-wrap{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    margin-bottom: 1.6rem;
+    z-index: 1;
+}
+
+.elcaja1[data-accent="cyan"] .icon-wrap{
+    background: rgba(22,198,206,0.12);
+    color: #16C6CE;
+}
+.elcaja1[data-accent="pink"] .icon-wrap{
+    background: rgba(237,27,151,0.12);
+    color: #ED1B97;
 }
 
 .elgrid h3{
+    position: relative;
     font-family: "Pontano Sans", sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-        font-weight: 500;
+    font-size: 21px;
+    color: #091E3D;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-bottom: 0.9rem;
+    z-index: 1;
 }
 
 .elgrid p{
-     font-family: "Roboto", sans-serif;
-    margin-bottom: 2rem;
-     color: rgba(0, 0, 0, 0.53);
-    line-height: 30px;
-    font-size: 17px;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    margin-bottom: 0;
+    color: rgba(9,30,61,0.6);
+    line-height: 28px;
+    font-size: 16px;
     text-align: justify;
+    z-index: 1;
 }
 
 @media screen and (max-width:800px){
-     .eligenos{
-        box-sizing: border-box;
-        margin: 0;
-        overflow: hidden;
-        padding: 2rem 2rem 2rem 2rem;
+    .eligenos{
+        padding: 3rem 1.5rem;
     }
 
-    /********** Texto Principal **********/
+    .eltxt{
+        margin-bottom: 2.4rem;
+    }
 
-.eligenos h2{
- line-height: 50px;
-         font-size: 30px;
-   
-}
+    .eligenos h2{
+        line-height: 42px;
+        font-size: 28px;
+    }
 
-/********** Grid **********/
-.elgrid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    gap: 2rem;
-}
+    .elgrid{
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        gap: 1.6rem;
+    }
+
+    .elcaja1{
+        padding: 2.2rem 1.8rem 1.8rem 1.8rem;
+    }
+
+    .ghost-number{
+        font-size: 90px;
+        top: -14px;
+    }
 }

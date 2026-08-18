@@ -1,38 +1,56 @@
 ---
 import '../../styles/about/historia.css'
-import HospitalH from '../assets/grupo.jpeg'
+import VideoThumb from '../../assets/preview.jpeg'
 ---
 
 <section class="historia">
-
     <div class="hist-grid">
         <div class="his1">
-        <iframe width="560" height="550" src="https://www.youtube.com/embed/hFV4AbnKdzU?si=yUes9t5wwQK7FD35" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         
+            <button class="video-facade" id="openVideoModal" aria-haspopup="dialog" aria-label="Reproducir video de la clínica">
+                <img
+                    src={VideoThumb.src}
+                    alt="Holistic Cancer Treatments Coach — nuestra historia"
+                    class="video-thumb"
+                    loading="lazy"
+                />
+                <span class="play-btn" aria-hidden="true">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="white">
+                        <path d="M8 5v14l11-7z"></path>
+                    </svg>
+                </span>
+            </button>
         </div>
 
-      
         <div class="hist2">
-            <h2>Innovación y <span style="color: #16c6ce;">Sanación Holística: </span> Nuestra Historia</h2>
+            <h2>Innovación y <span class="highlight-text">Sanación Holística</span>: Nuestra Historia</h2>
             <p>Fundado en 2008 por un equipo visionario de profesionales médicos, Holistic Cancer Treatments Coach nació con una misión única: ofrecer un enfoque compasivo e integral para el cuidado del cáncer que trascendiera los métodos convencionales. Conscientes de la necesidad fundamental de tratamientos integrales que abordaran a la persona como un todo —mente, cuerpo y espíritu—, nuestros fundadores fueron pioneros en desarrollar un modelo único de oncología holística aquí mismo en Tijuana, Baja California.</p>
-           
-            <p>Hoy, nos enorgullece ser un centro líder en el tratamiento holístico del cáncer, innovando continuamente y expandiendo nuestro alcance, mientras mantenemos los principios fundacionales de empatía, pericia y sanación personalizada que han definido nuestra trayectoria desde el inicio. Nuestro compromiso es continuar con este legado, guiando a más pacientes hacia una salud y vitalidad renovadas.</p>
-            
-              <!-- From Uiverse.io by KINGFRESS --> 
-<!-- From Uiverse.io by cssbuttons-io --> 
-<button class="learn-more">
-    <span class="circle" aria-hidden="true">
-    <span class="icon arrow"></span>
-    </span>
-    <a href="https://wa.link/nai5wo" target="_blank">
-    <span class="button-text">Agenda <br>una cita</span>
-    </a>
-  </button>
 
-       <div class="movil">
-          <iframe width="560" height="550" src="https://www.youtube.com/embed/hFV4AbnKdzU?si=yUes9t5wwQK7FD35" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         
-        </div>
+            <p>Hoy, nos enorgullece ser un centro líder en el tratamiento holístico del cáncer, innovando continuamente y expandiendo nuestro alcance, mientras mantenemos los principios fundacionales de empatía, pericia y sanación personalizada que han definido nuestra trayectoria desde el inicio. Nuestro compromiso es continuar con este legado, guiando a más pacientes hacia una salud y vitalidad renovadas.</p>
+
+            <a href="https://wa.link/nai5wo" target="_blank">
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text">Agenda una Cita</span>
+                </button>
+            </a>
         </div>
     </div>
 </section>
+
+<div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="video-modal-backdrop" id="modalBackdrop"></div>
+    <div class="video-modal-content">
+        <button class="modal-close" id="closeVideoModal" aria-label="Cerrar video">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6 6 18M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="video-modal-player" id="videoModalPlayer"></div>
+    </div>
+</div>
+
+<script>
+    import "../../scripts/historia.js"
+</script>

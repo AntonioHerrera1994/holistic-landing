@@ -3,47 +3,71 @@ import '../styles/footer.css'
 import ImageLogo from '../assets/holistic-logo.png';
 ---
 
-<section class="footer">
-    <div class="footer-grid">
-        
-        <div class="footergrid1">
-            <div class="footer-logo">
-                <img 
+<footer class="footer">
+    <div class="footer-top">
+        <div class="footer-grid">
+
+            <div class="footer-brand">
+                <img
                 src={ImageLogo.src}
-                width="47%"
-                height="50%"
-                alt="favlash-logo"/>
-              </div>
-              <p>Discover a comprehensive and compassionate approach to cancer care that integrates traditional and alternative therapies. </p>
-        </div>
-        <div class="footergrid2">
-            <h3>contact Us</h3>
-            <ul>
-                <!-- <li><i class="bi bi-geo-alt-fill"></i>algun lugar de Tijuana, B.C. , Tijuana, Mexico</li>-->
-                <li><i class="bi bi-telephone-inbound-fill"></i><a href="tel:+526641942723" style="text-decoration: none;color:black">(664) 194-2723</a></li>
-                <li style="text-transform: none;"><i class="bi bi-envelope-paper-heart-fill"></i><a href="mailto:holisticancertreatment@gmail.com" style="text-decoration: none;color:black">holisticancertreatment@gmail.com</a></li>
-            </ul>
-        </div>
+                width="180"
+                alt="Holistic Cancer Coach logo"/>
+                <p>A comprehensive and compassionate approach to cancer care, integrating traditional and holistic therapies for your complete well-being.</p>
+                <div class="social-row">
+                    <a href="https://www.facebook.com/HolisticCancerTreatmentsCoachTijuana" target="_blank" aria-label="Facebook">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="https://www.instagram.com/holisticcancertreatmentscoach/" target="_blank" aria-label="Instagram">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="https://wa.link/nai5wo" target="_blank" aria-label="WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
 
-        <div class="footergrid3">
-         
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about-us">About Us</a></li>
+                    <li><a href="/treatments">Treatments</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/contact-us">Contact</a></li>
+                </ul>
+            </div>
 
-            <h3>Follow Us</h3>
-            <ul>
-                <li><a href="https://www.facebook.com/HolisticCancerTreatmentsCoachTijuana" target="_blank"><i class="bi bi-facebook"></i></a></li>
-                <li><a href="https://www.instagram.com/holisticcancertreatmentscoach/" target="_blank"><i class="bi bi-instagram"></i></a></li>
-                <li><a href="https://wa.link/nai5wo" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
-            </ul>
-        </div>
-        <div class="footergrid4">
-            <h3>Privacity</h3>
-            <ul>
-                <li>Privacy Policy</li>
-                <li>Terms and Conditions</li>
-            </ul>
-        </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>
+                        <i class="bi bi-geo-alt-fill"></i>
+                        <span>Tijuana, Baja California, Mexico</span>
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone-inbound-fill"></i>
+                        <a href="tel:+526641942723">(664) 194-2723</a>
+                    </li>
+                    <li>
+                        <i class="bi bi-envelope-paper-heart-fill"></i>
+                        <a href="mailto:holisticancertreatment@gmail.com">holisticancertreatment@gmail.com</a>
+                    </li>
+                </ul>
+            </div>
 
-        
+            <div class="footer-col">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="/privacy-policy">Privacy Policy</a></li>
+                    <li><a href="/terms-and-conditions">Terms and Conditions</a></li>
+                </ul>
+            </div>
+
+        </div>
     </div>
 
-</section>
+    <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Holistic Cancer Coach. All rights reserved.</p>
+        <p class="made-with">Tijuana, Baja California</p>
+    </div>
+</footer>

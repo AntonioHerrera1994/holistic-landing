@@ -1,90 +1,217 @@
 .servhero{
     box-sizing: border-box;
     margin: 0;
-    padding: 4rem 6rem 4rem 6rem;
+    padding: 8rem 6rem 8rem 6rem;
     overflow: hidden;
-    background-image: url('/src/assets/puntos.png');
-    background-size:  cover;
-    background-position: center;
+    position: relative;
+    background-color: #ffffff;
+    background-image: radial-gradient(rgba(9,30,61,0.06) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
 }
 
+.servh-inner{
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto;
+    text-align: center;
+}
 
 /************ Texto **********/
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
+}
+
+.servhero h1{
+    font-family: "Pontano Sans", sans-serif;
+    font-size: 46px;
+    line-height: 60px;
+    color: #091E3D;
+    font-weight: 500;
+}
 
 .servhero p{
     font-family: "Roboto", sans-serif;
-     color: rgba(0, 0, 0, 0.53);
+    color: rgba(9,30,61,0.6);
     line-height: 30px;
     font-size: 17px;
-    text-align: justify;
-    }
-    
-    .servhero h1{
-        font-family: "Pontano Sans", sans-serif;
-         font-size: 44px;
-    line-height: 60px;
-        font-weight: 500;
-    }
-
-
-/********** Grid **********/
-.servhgrid{
-    display: grid;
-    grid-template-columns:repeat(2,minmax(0,1fr)) ;
-    gap: 2rem;
-}
-
-/********** Slide de imagenes **********/
-.slider-container {
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    overflow: hidden;
-    position: relative;
-    height: 400px;
-  }
-  
-
-  @media screen and (min-width:801px){
-    .servhtxtmovil{
-      display: none;
-    }
-  }
-  
-  @media screen and (max-width:800px){
-    .servhero{
- box-sizing: border-box;
-        margin: 0;
-        overflow: hidden;
-        padding: 2rem 2rem 0 2rem;
-    
-}
-
-.slider-container iframe{
-  max-width: 100%;
-  height: 300px;
-}
-
-/************ Texto **********/
-
-
-    
-    .servhero h1{
- 
-         font-size: 40px;
     text-align: center;
-    }
-
-    .servhtxt{
-      display: none;
-    }
-
-
-/********** Grid **********/
-.servhgrid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    gap: 2rem;
+    max-width: 680px;
+    margin: 1.4rem auto 0 auto;
 }
 
-  }
+/************ Botones **********/
+.servh-buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.2rem;
+}
+
+.primary-cta{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    min-height: 4px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.primary-cta:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(22,198,206,0.3);
+}
+
+.ghost-cta{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 2px solid rgba(9,30,61,0.2);
+    background: transparent;
+    color: #091E3D;
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 1rem 1.8rem;
+    border-radius: 999px;
+    min-height: 44px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ghost-cta svg{
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+.ghost-cta:hover{
+    border-color: #16C6CE;
+    color: #16C6CE;
+}
+
+.ghost-cta:hover svg{
+    transform: scale(1.15);
+}
+
+/************ Modal de video **********/
+.video-modal{
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-modal.open{ display: flex; }
+
+.video-modal-backdrop{
+    position: absolute;
+    inset: 0;
+    background: rgba(9,30,61,0.9);
+    backdrop-filter: blur(6px);
+}
+
+.video-modal-content{
+    position: relative;
+    width: 92%;
+    max-width: 980px;
+    aspect-ratio: 16 / 9;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    z-index: 1;
+}
+
+.video-modal-player{
+    width: 100%;
+    height: 100%;
+    background: #000;
+}
+
+.video-modal-player iframe{
+    width: 100%;
+    height: 100%;
+    display: block;
+    border: 0;
+}
+
+.modal-close{
+    position: absolute;
+    top: -46px;
+    right: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.modal-close:hover{
+    background: rgba(255,255,255,0.25);
+}
+
+@media screen and (max-width:800px){
+    .servhero{
+        padding: 9rem 1.5rem 4rem 1.5rem;
+    }
+
+    .servhero h1{
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .servhero p{
+        font-size: 16px;
+        line-height: 27px;
+    }
+
+    .servh-buttons{
+        flex-direction: column;
+        width: 100%;
+        margin-top: 1.8rem;
+    }
+
+    .primary-cta, .ghost-cta{
+        width: 100%;
+    }
+
+    .servh-video-wrap{
+        justify-content: center;
+        margin-top: 2.5rem;
+    }
+
+    .video-facade{
+        max-width: 100%;
+    }
+
+    .video-modal-content{
+        width: 94%;
+    }
+
+    .modal-close{
+        top: -42px;
+        width: 34px;
+        height: 34px;
+    }
+}

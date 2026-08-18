@@ -3,30 +3,37 @@
     margin: 0;
     padding: 4rem 6rem 4rem 6rem;
     overflow: hidden;
+    background-color: white;
 }
-
 
 /************ Grid **********/
 .txtgrid{
     display: grid;
-    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    grid-template-columns: repeat(2,minmax(0,1fr));
     padding: 4rem;
     gap: 2rem;
 }
 
 .serviciosgrid{
     display: grid;
-    grid-template-columns:repeat(3,minmax(0,1fr)) ;
+    grid-template-columns: repeat(3,minmax(0,1fr));
     padding: 4rem;
     gap: 2rem;
 }
 
 /********** Texto **********/
+.highlight-text{
+    color: #091E3D;
+    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 35%;
+    background-position: 0 90%;
+}
 
 .txtgrid p{
-margin-right: 4rem;
-font-family: "Roboto", sans-serif;
-  color: rgba(0, 0, 0, 0.53);
+    margin-right: 4rem;
+    font-family: "Roboto", sans-serif;
+    color: rgba(9,30,61,0.65);
     line-height: 30px;
     font-size: 17px;
     text-align: justify;
@@ -37,104 +44,197 @@ font-family: "Roboto", sans-serif;
     font-size: 44px;
     line-height: 60px;
     margin-top: 1rem;
-        font-weight: 500;
+    color: #091E3D;
+    font-weight: 500;
 }
 
-
-
 /********** Cajas **********/
-
 .serv1{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 3rem;
+    position: relative;
+    box-shadow: rgba(9, 30, 61, 0.08) 0px 7px 29px 0px;
+    border: 1px solid rgba(9,30,61,0.06);
+    padding: 3rem 2.2rem 2.2rem 2.2rem;
     border-radius: 26px;
     margin-top: -4rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.serv1.in-view{
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.serv1:hover{
+    transform: translateY(-6px);
+    box-shadow: rgba(9, 30, 61, 0.14) 0px 14px 36px 0px;
+}
+
+.serv1::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.15s;
+}
+
+.serv1.in-view::before{
+    transform: scaleX(1);
+}
+
+.serv1[data-accent="cyan"]::before{
+    background: linear-gradient(90deg, #16C6CE, #091E3D);
+}
+.serv1[data-accent="pink"]::before{
+    background: linear-gradient(90deg, #ED1B97, #091E3D);
+}
+
+.icon-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 18px;
+    margin-bottom: 1.5rem;
+}
+
+.serv1[data-accent="cyan"] .icon-wrap{
+    background: rgba(22,198,206,0.12);
+}
+.serv1[data-accent="pink"] .icon-wrap{
+    background: rgba(237,27,151,0.12);
 }
 
 
 .servicios h3{
     font-family: "Pontano Sans", sans-serif;
     font-size: 22px;
-    font-weight: 700;
-        font-weight: 500;
+    color: #091E3D;
+    font-weight: 500;
 }
 
 .servicios a{
     font-family: "Roboto", sans-serif;
-    background-color:  #16c6ce;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
     display: flex;
-  justify-content: center; 
-  align-items: center; 
-  padding: .6rem;
-  border-radius: 26px;
-  color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    border-radius: 26px;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicios a:hover{
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(22,198,206,0.3);
 }
 
 .serv1 p{
     font-family: "Roboto", sans-serif;
-    margin-bottom: 2rem;
-     color: rgba(0, 0, 0, 0.53);
+    margin-bottom: 1rem;
+    color: rgba(9,30,61,0.62);
     line-height: 30px;
     font-size: 17px;
     text-align: justify;
 }
 
 /********** Vista Hospital **********/
+.hview{
+    background-color: white;
+}
 
 .hview-grid{
     display: grid;
-    grid-template-columns:repeat(2,minmax(0,1fr)) ;
+    grid-template-columns: repeat(2,minmax(0,1fr));
     gap: 2rem;
     padding: 0 6rem 5rem 6rem;
+    align-items: center;
 }
 
 /********** Imagen **********/
-
 .hv1 img{
-border-radius: 26px;
+    border-radius: 26px;
+    box-shadow: 0 20px 50px rgba(9,30,61,0.18);
 }
 
 /********** Texto **********/
-
 .hview h2{
     font-family: "Pontano Sans", sans-serif;
-     font-size: 44px;
+    font-size: 44px;
     line-height: 60px;
     margin: 0;
-        font-weight: 500;
+    color: #091E3D;
+    font-weight: 500;
 }
 
 .hview p{
     margin-right: 2.6rem;
     font-family: "Roboto", sans-serif;
     text-align: justify;
-     color: rgba(0, 0, 0, 0.53);
+    color: rgba(9,30,61,0.65);
     line-height: 30px;
     font-size: 17px;
-    }
+}
 
-    .hv2 h3{
-        font-family: "Roboto", sans-serif;
-        font-weight: 500;
-        font-size: 18px;
-            font-weight: 500;
-    }
+.hv2 h3{
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #091E3D;
+    margin-top: 1.5rem;
+}
 
-    .hv2 ul{
-        
-        list-style: none;
-        padding-left: 0;
+.hv2 ul{
+    list-style: none;
+    padding-left: 0;
     margin-left: 0;
-    
-    }
+    margin-top: 1rem;
+}
 
-    .hv2 .bi{
-       margin-right: .5rem;
-    }
+.hv2 li{
+    display: flex;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+    color: rgba(9,30,61,0.75);
+    font-size: 16px;
+    margin-bottom: 0.9rem;
+}
 
-    /*********** Boton **********/
-/* From Uiverse.io by KINGFRESS */ 
-/* From Uiverse.io by cssbuttons-io */ 
+.check-icon{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    background: rgba(22,198,206,0.15);
+    margin-right: 0.8rem;
+    position: relative;
+}
+
+.check-icon::before{
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 9px;
+    border-right: 2px solid #16C6CE;
+    border-bottom: 2px solid #16C6CE;
+    transform: rotate(45deg);
+    top: 4px;
+    left: 8px;
+}
+
+/*********** Boton **********/
 button {
     position: relative;
     display: inline-block;
@@ -146,44 +246,44 @@ button {
     background: transparent;
     padding: 0;
     font-size: inherit;
-    font-family: inherit;
     font-family: "Roboto", sans-serif;
-   }
-   
-   button.learn-more {
+}
+
+button.learn-more {
     width: 12rem;
     height: auto;
-   }
-   
-   button.learn-more .circle {
+    margin-top: 2rem;
+}
+
+button.learn-more .circle {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: relative;
     display: block;
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: #16c6ce;
+    background: linear-gradient(135deg, #ED1B97, #16C6CE);
     border-radius: 1.625rem;
-   }
-   
-   button.learn-more .circle .icon {
+}
+
+button.learn-more .circle .icon {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
     bottom: 0;
     margin: auto;
     background: #fff;
-   }
-   
-   button.learn-more .circle .icon.arrow {
+}
+
+button.learn-more .circle .icon.arrow {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     left: 0.625rem;
     width: 1.125rem;
     height: 0.125rem;
     background: none;
-   }
-   
-   button.learn-more .circle .icon.arrow::before {
+}
+
+button.learn-more .circle .icon.arrow::before {
     position: absolute;
     content: "";
     top: -0.29rem;
@@ -193,9 +293,9 @@ button {
     border-top: 0.125rem solid #fff;
     border-right: 0.125rem solid #fff;
     transform: rotate(45deg);
-   }
-   
-   button.learn-more .button-text {
+}
+
+button.learn-more .button-text {
     transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
     position: absolute;
     top: 0;
@@ -204,101 +304,83 @@ button {
     bottom: 0;
     padding: 0.75rem 0;
     margin: 0 0 0 1.85rem;
-    color: rgba(0, 0, 0, 0.688);
+    color: #091E3D!important;
     font-weight: 700;
     line-height: 1.6;
     text-align: center;
     text-transform: uppercase;
     font-family: "Roboto", sans-serif;
-   }
-   
-   button:hover .circle {
+}
+
+button:hover .circle {
     width: 100%;
-   }
-   
-   button:hover .circle .icon.arrow {
+}
+
+button:hover .circle .icon.arrow {
     background: #fff;
     transform: translate(1rem, 0);
-   }
-   
-   button:hover .button-text {
+}
+
+button:hover .button-text {
     color: #fff;
-   }
-    @media screen and (max-width:800px){
-        .servicios{
-            padding: 4rem 2rem;
-        }
-
-        /************ Grid **********/
-.txtgrid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    padding: 0;
-    gap:0;
-    margin-bottom: 2rem;
 }
 
-.serviciosgrid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    padding: 0;
-    gap: 2rem;
-}
-
-/********** Texto **********/
-
-.txtgrid p{
- 
-  margin: 0;
+@media screen and (max-width:800px){
+    .servicios{
+        padding: 4rem 2rem;
     }
-    
+
+    .txtgrid{
+        display: grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        padding: 0;
+        gap: 0;
+        margin-bottom: 2rem;
+    }
+
+    .serviciosgrid{
+        display: grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        padding: 0;
+        gap: 2rem;
+    }
+
+    .txtgrid p{
+        margin: 0;
+    }
+
     .servicios h2{
-     line-height: 50px;
-         font-size: 30px;
+        line-height: 50px;
+        font-size: 30px;
     }
 
-    /********** Cajas **********/
-
-.serv1{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    padding: 1.9rem;
-    border-radius: 26px;
-    margin-top: 0;
-}
-
-    /********** Vista Hospital **********/
-
-.hview-grid{
-    display: grid;
-    grid-template-columns:repeat(1,minmax(0,1fr)) ;
-    gap: 2rem;
-    padding:2rem;
-}
-
-/********** Imagen **********/
-
-.hv1 img{
-   max-width: 100%;
-   height: 350px;
+    .serv1{
+        padding: 2.4rem 1.6rem 1.9rem 1.6rem;
+        margin-top: 0;
     }
 
-    /********** Texto **********/
-
-.hview h2{
-
-  line-height: 50px;
-         font-size: 30px;
-  
-}
-
-.hview p{
-
-    margin-right: 0;
+    .hview-grid{
+        display: grid;
+        grid-template-columns: repeat(1,minmax(0,1fr));
+        gap: 2rem;
+        padding: 2rem;
     }
 
-
-button{
-    margin-top: 2rem;
-}
-        
+    .hv1 img{
+        max-width: 100%;
+        height: 350px;
     }
+
+    .hview h2{
+        line-height: 50px;
+        font-size: 30px;
+    }
+
+    .hview p{
+        margin-right: 0;
+    }
+
+    button.learn-more{
+        margin-top: 2rem;
+    }
+}
