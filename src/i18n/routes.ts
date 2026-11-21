@@ -10,6 +10,7 @@ export const routePairs: Array<{ en: string; es: string }> = [
   { en: '/thanatology', es: '/tanatologia' },
   { en: '/dental-prices', es: '/servicios-dentales' },
   { en: '/contact-us', es: '/contacto' },
+  { en: '/guide', es: '/guia' },
 ];
 
 const clean = (p: string) => (p.length > 1 ? p.replace(/\/+$/, '') : p);
@@ -51,5 +52,7 @@ export const nav = {
 };
 
 export const WHATSAPP = 'https://wa.link/nai5wo';
+// Número para mensajes prellenados (wa.me); es el mismo WhatsApp de wa.link/nai5wo.
+export const WHATSAPP_NUMBER = '526641942723';
 export const PHONE_DISPLAY = '(664) 194-2723';
 export const PHONE_TEL = 'tel:+526641942723';

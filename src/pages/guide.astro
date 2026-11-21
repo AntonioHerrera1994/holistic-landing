@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteNav from '../components/v2/SiteNav.astro';
+import GuideQuiz from '../components/v2/GuideQuiz.astro';
+import Footer from '../components/Footer.astro';
+import { guide } from '../i18n/guide';
+const t = guide.en;
+---
+
+<Layout title={t.seoTitle} description={t.seoDesc} lang="en">
+	<SiteNav lang="en" />
+	<main><GuideQuiz lang="en" /></main>
+	<Footer />
+</Layout>

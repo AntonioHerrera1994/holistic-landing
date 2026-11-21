@@ -8,6 +8,8 @@ interface Props { lang?: Lang }
 const { lang = 'en' } = Astro.props;
 const t = home[lang];
 const treatments = lang === 'es' ? '/tratamientos' : '/treatments';
+const guideHref = lang === 'es' ? '/guia' : '/guide';
+const guideTxt = lang === 'es' ? ['¿No sabes por dónde empezar?', 'Haz la guía de 2 minutos'] : ['Not sure where to start?', 'Take the 2-minute guide'];
 // h1: [línea1, palabra, palabra-enfatizada, palabra]
 const words = [...t.h1[0].split(' '), t.h1[1], `*${t.h1[2]}`, t.h1[3]];
 ---
@@ -30,6 +32,11 @@ const words = [...t.h1[0].split(' '), t.h1[1], `*${t.h1[2]}`, t.h1[3]];
       </a>
       <a href={treatments} class="link-arrow">{t.cta2}</a>
     </div>
+    <a href={guideHref} class="hhero-guide" data-in style="--d:680ms">
+      <span class="hg-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span>
+      <span><span class="hg-q">{guideTxt[0]}</span> <strong>{guideTxt[1]}</strong></span>
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
     <p class="hhero-note" data-in style="--d:720ms">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
       {t.note}
@@ -90,6 +97,18 @@ const words = [...t.h1[0].split(' '), t.h1[1], `*${t.h1[2]}`, t.h1[3]];
   @keyframes wIn { to { opacity: 1; transform: none; filter: none; } }
   .hhero-lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.65; color: var(--ink-2); margin: 0; max-width: 54ch; }
   .hhero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; color: var(--ink); }
+  .hhero-guide {
+    display: inline-flex; align-items: center; gap: 12px; width: fit-content; max-width: 100%; box-sizing: border-box;
+    padding: 8px 16px 8px 8px; border-radius: 999px; background: var(--paper); border: 1px solid var(--line);
+    color: var(--ink); text-decoration: none; font-size: 14.5px; line-height: 1.35;
+    transition: border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .hhero-guide:hover { border-color: var(--brand); transform: translateY(-2px); }
+  .hhero-guide strong { font: 600 14.5px/1.35 var(--font-display); color: var(--brand); }
+  .hg-q { color: var(--ink-2); }
+  .hg-ico { width: 34px; height: 34px; border-radius: 50%; background: var(--brand); color: #fff; display: grid; place-items: center; flex-shrink: 0; }
+  .hg-ico svg { animation: hgSpin 6s var(--ease) infinite; }
+  @keyframes hgSpin { 0%, 70% { transform: rotate(0); } 85% { transform: rotate(40deg); } 100% { transform: rotate(0); } }
   .hhero-note { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: 13.5px; color: var(--ink-2); }
   .hhero-note svg { color: var(--brand); }
 

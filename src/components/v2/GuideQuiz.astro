@@ -1,0 +1,383 @@
+---
+/**
+ * Guía de orientación — 6 preguntas (ES /guia, EN /guide).
+ * La guía NO diagnostica ni indica tratamientos: sugiere qué valoración o servicio
+ * explorar y siempre remite a la valoración médica.
+ * Privacidad: las respuestas viven solo en el navegador. No se guardan, no se mandan
+ * a analytics y solo salen si el paciente decide enviar el resumen por WhatsApp.
+ */
+import { guide, type GuideLang } from '../../i18n/guide';
+import { WHATSAPP, WHATSAPP_NUMBER, PHONE_DISPLAY, PHONE_TEL } from '../../i18n/routes';
+
+interface Props { lang?: GuideLang }
+const { lang = 'es' } = Astro.props;
+const t = guide[lang];
+const total = t.questions.length;
+const arrow = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+
+const data = {
+  total,
+  stepOf: t.stepOf,
+  next: t.next,
+  seeResult: t.seeResult,
+  results: t.results,
+  why: t.why,
+  labels: Object.fromEntries(t.questions.map((q) => [q.id, Object.fromEntries(q.options.map((o) => [o.id, o.label]))])),
+  r: { eyebrow: t.result.eyebrow, primary: t.result.primary, secondary: t.result.secondary, why: t.result.why, more: t.result.more },
+  wa: t.wa,
+  waNumber: WHATSAPP_NUMBER,
+};
+---
+
+<section class="gq" data-gq-lang={lang}>
+  <div class="gq-intro">
+    <span class="eyebrow-v2" data-in>{t.eyebrow}</span>
+    <h1 class="h-display gq-title" data-in style="--d:80ms">{`${t.h1[0]} ${t.h1[1]} `}<em>{t.h1[2]}</em></h1>
+    <p class="gq-lead" data-in style="--d:160ms">{t.lead}</p>
+    <ul class="gq-points" data-in style="--d:240ms">
+      {t.points.map((p) => (
+        <li>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>
+          {p}
+        </li>
+      ))}
+    </ul>
+    <p class="gq-emergency" data-in style="--d:300ms"><i class="bi bi-telephone" aria-hidden="true"></i>{t.emergency}</p>
+  </div>
+
+  <div class="gq-card" data-gq>
+    <div class="gq-top">
+      <svg class="gq-compass" viewBox="0 0 48 48" aria-hidden="true">
+        <circle cx="24" cy="24" r="21" class="gq-c-ring" />
+        <circle cx="24" cy="24" r="21" class="gq-c-prog" pathLength="100" />
+        <g class="gq-needle"><path d="M24 9l4 15h-8z" class="n-a" /><path d="M24 39l-4-15h8z" class="n-b" /></g>
+        <circle cx="24" cy="24" r="2.4" class="n-c" />
+      </svg>
+      <div class="gq-top-txt">
+        <span class="gq-count" aria-live="polite">{t.stepOf.replace('{n}', '1').replace('{t}', String(total))}</span>
+        <div class="gq-bar" aria-hidden="true"><span></span></div>
+      </div>
+    </div>
+
+    <noscript><p class="gq-help">{t.noscript} <a href={WHATSAPP}>WhatsApp</a></p></noscript>
+
+    <form class="gq-form" novalidate>
+      {t.questions.map((q, i) => (
+        <fieldset class="gq-step" data-step={i} hidden={i > 0}>
+          <legend class="gq-q" tabindex="-1">{q.title}</legend>
+          {q.help && <p class="gq-help">{q.help}</p>}
+          <div class="gq-opts">
+            {q.options.map((o) => (
+              <label class="gq-opt">
+                <input type="radio" name={q.id} value={o.id} />
+                <span class="gq-dot" aria-hidden="true"></span>
+                <span class="gq-txt">
+                  <span class="gq-lbl">{o.label}</span>
+                  {o.hint && <span class="gq-hint">{o.hint}</span>}
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+    </form>
+
+    <div class="gq-nav">
+      <button type="button" class="gq-back" disabled>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+        {t.back}
+      </button>
+      <button type="button" class="btn gq-next" disabled><span>{t.next}</span><Fragment set:html={arrow} /></button>
+    </div>
+
+    <div class="gq-result" hidden tabindex="-1">
+      <h2 class="gq-r-title">{t.result.title}</h2>
+      <p class="gq-r-intro">{t.result.intro}</p>
+
+      <div class="gq-alert" data-onco-no hidden>
+        <i class="bi bi-info-circle" aria-hidden="true"></i>
+        <div><strong>{t.result.oncoNo.title}</strong><p>{t.result.oncoNo.text}</p></div>
+      </div>
+
+      <div class="gq-picks"></div>
+
+      <p class="gq-note" data-onco-skip hidden>{t.result.oncoSkip}</p>
+      <p class="gq-note" data-zoom hidden><i class="bi bi-camera-video" aria-hidden="true"></i>{t.result.zoomNote}</p>
+
+      <div class="gq-r-actions">
+        <a class="btn gq-wa" href={WHATSAPP} target="_blank" rel="noopener"><i class="bi bi-whatsapp" aria-hidden="true"></i>{t.result.send}</a>
+        <a class="link-arrow" href={PHONE_TEL}>{t.result.call}: {PHONE_DISPLAY}</a>
+      </div>
+      <p class="gq-small">{t.result.sendNote}</p>
+      <button type="button" class="gq-restart">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+        {t.restart}
+      </button>
+      <p class="gq-disc">{t.result.disclaimer}</p>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="gq-data" set:html={JSON.stringify(data)} />
+
+<script>
+  type Ans = Record<string, string>;
+  const root = document.querySelector<HTMLElement>('[data-gq]');
+  const raw = document.getElementById('gq-data');
+  if (root && raw) {
+    const D = JSON.parse(raw.textContent || '{}');
+    const form = root.querySelector('form')!;
+    const steps = [...root.querySelectorAll<HTMLFieldSetElement>('.gq-step')];
+    const back = root.querySelector<HTMLButtonElement>('.gq-back')!;
+    const next = root.querySelector<HTMLButtonElement>('.gq-next')!;
+    const nextLbl = next.querySelector('span')!;
+    const nav = root.querySelector<HTMLElement>('.gq-nav')!;
+    const count = root.querySelector<HTMLElement>('.gq-count')!;
+    const result = root.querySelector<HTMLElement>('.gq-result')!;
+    const picks = root.querySelector<HTMLElement>('.gq-picks')!;
+    const wa = root.querySelector<HTMLAnchorElement>('.gq-wa')!;
+    let cur = 0;
+    let pointer = false;
+    let timer = 0;
+
+    const answers = (): Ans => {
+      const a: Ans = {};
+      new FormData(form).forEach((v, k) => (a[k] = String(v)));
+      return a;
+    };
+    const answered = (i: number) => !!steps[i]?.querySelector('input:checked');
+
+    function progress(i: number, done = false) {
+      const p = done ? 1 : i / D.total;
+      root!.style.setProperty('--p', String(p));
+      root!.style.setProperty('--rot', `${p * 360}deg`);
+    }
+
+    function show(i: number, focus = true) {
+      steps.forEach((s, k) => {
+        s.hidden = k !== i;
+        s.classList.toggle('in', k === i);
+      });
+      cur = i;
+      count.textContent = D.stepOf.replace('{n}', String(i + 1)).replace('{t}', String(D.total));
+      back.disabled = i === 0;
+      next.disabled = !answered(i);
+      nextLbl.textContent = i === D.total - 1 ? D.seeResult : D.next;
+      progress(i);
+      if (focus) {
+        steps[i].querySelector<HTMLElement>('legend')?.focus({ preventScroll: true });
+        const top = root!.getBoundingClientRect().top;
+        if (top < 0 || top > window.innerHeight * 0.6) root!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // --- Lógica de orientación (no es diagnóstico) ---
+    function compute(a: Ans) {
+      const byGoal: Record<string, string> = { nutrition: 'nutrition', sidefx: 'support', dental: 'dental', emotional: 'thanatology', eol: 'thanatology' };
+      let primary = byGoal[a.goal] || 'valuation';
+      let primaryWhy = D.why[a.goal] || D.why.general;
+      if (a.stage === 'prevention' && a.goal === 'sidefx') { primary = 'valuation'; primaryWhy = D.why.general; }
+
+      let secondary = '';
+      let secondaryWhy = '';
+      if (a.stage === 'advanced' && primary !== 'thanatology') { secondary = 'thanatology'; secondaryWhy = D.why.advanced; }
+      else if (a.stage === 'treatment' && !['support', 'thanatology'].includes(primary)) { secondary = 'support'; secondaryWhy = D.why.treatment; }
+      else if (primary !== 'valuation') { secondary = 'valuation'; secondaryWhy = D.why.general; }
+
+      return { primary, primaryWhy, secondary, secondaryWhy };
+    }
+
+    function card(id: string, why: string, main: boolean) {
+      const r = D.results[id];
+      const el = document.createElement('article');
+      el.className = 'gq-pick' + (main ? ' main' : '');
+      const tag = document.createElement('span'); tag.className = 'gq-pick-tag'; tag.textContent = main ? D.r.primary : D.r.secondary;
+      const h = document.createElement('h3'); h.textContent = r.name;
+      const who = document.createElement('span'); who.className = 'gq-pick-who'; who.textContent = r.who;
+      const p = document.createElement('p'); p.textContent = r.text;
+      const w = document.createElement('p'); w.className = 'gq-pick-why';
+      const b = document.createElement('strong'); b.textContent = D.r.why + ': ';
+      w.append(b, why);
+      const a = document.createElement('a'); a.className = 'link-arrow'; a.href = r.href; a.textContent = D.r.more;
+      el.append(tag, h, who, p, w, a);
+      return el;
+    }
+
+    function showResult() {
+      const a = answers();
+      const res = compute(a);
+      picks.replaceChildren(card(res.primary, res.primaryWhy, true));
+      if (res.secondary) picks.append(card(res.secondary, res.secondaryWhy, false));
+
+      result.querySelector<HTMLElement>('[data-onco-no]')!.hidden = !(a.onco === 'no' && a.stage !== 'prevention');
+      result.querySelector<HTMLElement>('[data-onco-skip]')!.hidden = a.onco !== 'skip';
+      result.querySelector<HTMLElement>('[data-zoom]')!.hidden = a.mode !== 'zoom';
+
+      // Resumen para WhatsApp: solo sale si el paciente decide enviarlo.
+      const lines = [D.wa.hello];
+      for (const k of Object.keys(D.wa.labels)) if (a[k]) lines.push(`• ${D.wa.labels[k]}: ${D.labels[k][a[k]]}`);
+      const names = [res.primary, res.secondary].filter(Boolean).map((id) => D.results[id].name).join(' / ');
+      lines.push(`${D.wa.interest}: ${names}`, D.wa.close);
+      wa.href = `https://wa.me/${D.waNumber}?text=${encodeURIComponent(lines.join('\n'))}`;
+
+      form.hidden = true;
+      nav.hidden = true;
+      result.hidden = false;
+      count.textContent = D.r.eyebrow;
+      progress(D.total, true);
+      root!.classList.add('done');
+      result.focus({ preventScroll: true });
+      root!.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function go() {
+      if (!answered(cur)) return;
+      if (cur < D.total - 1) show(cur + 1);
+      else showResult();
+    }
+
+    form.addEventListener('pointerdown', () => (pointer = true));
+    form.addEventListener('keydown', (e) => {
+      pointer = false;
+      if (e.key === 'Enter') { e.preventDefault(); go(); }
+    });
+    form.addEventListener('change', () => {
+      next.disabled = !answered(cur);
+      clearTimeout(timer);
+      // Avanza solo con clic/toque; con teclado (flechas) espera a "Siguiente".
+      if (pointer) timer = window.setTimeout(go, 380);
+      pointer = false;
+    });
+    next.addEventListener('click', go);
+    back.addEventListener('click', () => { clearTimeout(timer); if (cur > 0) show(cur - 1); });
+    root.querySelector('.gq-restart')!.addEventListener('click', () => {
+      form.reset();
+      form.hidden = false;
+      nav.hidden = false;
+      result.hidden = true;
+      root.classList.remove('done');
+      show(0);
+    });
+    show(0, false);
+  }
+</script>
+
+<style>
+  .gq {
+    font-family: var(--font-body);
+    background: var(--cream);
+    padding: 150px var(--pad-x) clamp(80px, 9vw, 130px);
+    display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(30px, 6vw, 90px); align-items: start;
+    min-height: 92svh; box-sizing: border-box;
+  }
+  [data-in] { animation: gqIn .9s var(--ease) both; animation-delay: var(--d, 0ms); }
+  @keyframes gqIn { from { transform: translateY(22px); } }
+
+  .gq-intro { display: grid; gap: 22px; position: sticky; top: 130px; }
+  .gq-title { font-size: clamp(44px, 6vw, 88px); margin: 0; }
+  .gq-lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.65; color: var(--ink-2); margin: 0; max-width: 46ch; }
+  .gq-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  .gq-points li { display: flex; gap: 10px; align-items: flex-start; color: var(--ink); font-size: 15.5px; line-height: 1.5; }
+  .gq-points svg { color: var(--brand); flex-shrink: 0; margin-top: 2px; }
+  .gq-emergency { display: inline-flex; gap: 8px; align-items: center; margin: 0; font-size: 13.5px; color: var(--ink-2); }
+  .gq-emergency i { color: var(--brand); }
+
+  /* Tarjeta */
+  .gq-card {
+    --p: 0; --rot: 0deg;
+    background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: clamp(24px, 3.4vw, 44px); box-shadow: 0 30px 60px -40px rgba(9, 30, 61, .35);
+    scroll-margin-top: 110px; min-width: 0;
+    animation: gqIn 1.1s var(--ease) both; animation-delay: 120ms;
+  }
+  .gq-top { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+  .gq-compass { width: 48px; height: 48px; flex-shrink: 0; }
+  .gq-c-ring { fill: none; stroke: var(--line); stroke-width: 2; }
+  .gq-c-prog {
+    fill: none; stroke: var(--brand); stroke-width: 2.4; stroke-linecap: round;
+    stroke-dasharray: 100; stroke-dashoffset: calc(100 - var(--p) * 100);
+    transform: rotate(-90deg); transform-origin: 24px 24px; transition: stroke-dashoffset .7s var(--ease);
+  }
+  .gq-needle { transform-origin: 24px 24px; transform: rotate(var(--rot)); transition: transform .9s cubic-bezier(.34, 1.56, .64, 1); }
+  .n-a { fill: var(--brand); } .n-b { fill: rgba(9, 30, 61, .25); } .n-c { fill: var(--ink); }
+  .gq-top-txt { flex: 1; display: grid; gap: 10px; }
+  .gq-count { font: 600 13px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .gq-bar { height: 4px; border-radius: 4px; background: var(--line); overflow: hidden; }
+  .gq-bar span { display: block; height: 100%; width: calc(var(--p) * 100%); background: var(--brand); border-radius: inherit; transition: width .7s var(--ease); }
+
+  .gq-form[hidden], .gq-nav[hidden], .gq-step[hidden], .gq-result[hidden], [data-onco-no][hidden], .gq-note[hidden] { display: none; }
+  .gq-step { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 14px; }
+  .gq-step.in { animation: gqStep .55s var(--ease) both; }
+  @keyframes gqStep { from { opacity: 0; transform: translateX(26px); } }
+  .gq-q { font: 500 clamp(24px, 2.6vw, 34px)/1.15 var(--font-display); color: var(--ink); padding: 0; margin-bottom: 4px; outline: none; }
+  .gq-help { margin: -4px 0 6px; color: var(--ink-2); font-size: 14.5px; line-height: 1.55; }
+  .gq-opts { display: grid; gap: 10px; }
+
+  .gq-opt {
+    position: relative; display: flex; align-items: center; gap: 14px;
+    padding: 16px 18px; border-radius: var(--radius-sm); border: 1.5px solid var(--line); background: #fff;
+    cursor: pointer; transition: border-color .25s var(--ease), background-color .25s var(--ease), transform .25s var(--ease);
+  }
+  @media (hover: hover) { .gq-opt:hover { border-color: rgba(10, 122, 128, .55); transform: translateX(3px); } }
+  .gq-opt input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .gq-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid rgba(9, 30, 61, .3); flex-shrink: 0; display: grid; place-items: center; transition: border-color .25s; }
+  .gq-dot::after { content: ''; width: 10px; height: 10px; border-radius: 50%; background: var(--brand); transform: scale(0); transition: transform .3s cubic-bezier(.34, 1.56, .64, 1); }
+  .gq-txt { display: grid; gap: 3px; }
+  .gq-lbl { font: 500 16.5px/1.3 var(--font-display); color: var(--ink); }
+  .gq-hint { font-size: 13.5px; color: var(--ink-3); }
+  .gq-opt:has(input:checked) { border-color: var(--brand); background: var(--brand-soft); }
+  .gq-opt:has(input:checked) .gq-dot { border-color: var(--brand); }
+  .gq-opt:has(input:checked) .gq-dot::after { transform: scale(1); }
+  .gq-opt:has(input:focus-visible) { outline: 3px solid var(--ink); outline-offset: 2px; }
+
+  .gq-nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 26px; }
+  .gq-back, .gq-restart {
+    display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 10px 4px;
+    font: 600 15px/1 var(--font-display); color: var(--ink); cursor: pointer;
+  }
+  .gq-back:disabled { opacity: .35; cursor: default; }
+  .gq-back:not(:disabled):hover, .gq-restart:hover { color: var(--brand); }
+  .gq-next:disabled { opacity: .45; cursor: not-allowed; }
+
+  /* Resultado */
+  .gq-result { display: grid; gap: 16px; outline: none; animation: gqStep .6s var(--ease) both; }
+  .gq-r-title { font: 500 clamp(28px, 3vw, 40px)/1.12 var(--font-display); color: var(--ink); margin: 0; }
+  .gq-r-intro { margin: 0; color: var(--ink-2); line-height: 1.6; }
+  .gq-alert { display: flex; gap: 14px; padding: 18px 20px; border-radius: var(--radius-sm); background: #fff; border: 1.5px solid var(--brand); }
+  .gq-alert i { color: var(--brand); font-size: 20px; }
+  .gq-alert strong { font: 600 16px/1.3 var(--font-display); color: var(--ink); }
+  .gq-alert p { margin: 6px 0 0; color: var(--ink-2); font-size: 14.5px; line-height: 1.6; }
+  .gq-picks { display: grid; gap: 14px; }
+  .gq-picks :global(.gq-pick) { display: grid; gap: 8px; padding: 22px; border-radius: var(--radius-sm); border: 1px solid var(--line); background: #fff; animation: gqStep .6s var(--ease) both; }
+  .gq-picks :global(.gq-pick + .gq-pick) { animation-delay: .12s; }
+  .gq-picks :global(.gq-pick.main) { border: 1.5px solid var(--brand); box-shadow: 0 20px 40px -30px rgba(10, 122, 128, .6); }
+  .gq-picks :global(.gq-pick-tag) { font: 600 12px/1 var(--font-display); letter-spacing: .1em; text-transform: uppercase; color: var(--brand); }
+  .gq-picks :global(h3) { font: 500 clamp(22px, 2.2vw, 28px)/1.15 var(--font-display); color: var(--ink); margin: 2px 0 0; }
+  .gq-picks :global(.gq-pick:not(.main) h3) { font-size: 20px; }
+  .gq-picks :global(.gq-pick-who) { font-size: 14px; color: var(--ink-3); }
+  .gq-picks :global(p) { margin: 0; color: var(--ink-2); line-height: 1.6; font-size: 15px; }
+  .gq-picks :global(.gq-pick-why) { padding: 10px 14px; border-radius: 12px; background: var(--cream); font-size: 14px; }
+  .gq-picks :global(.gq-pick-why strong) { color: var(--ink); font-weight: 600; }
+  .gq-picks :global(.link-arrow) { width: fit-content; margin-top: 4px; color: var(--ink); }
+  .gq-note { display: flex; gap: 10px; margin: 0; font-size: 14px; line-height: 1.6; color: var(--ink-2); }
+  .gq-note i { color: var(--brand); }
+  .gq-r-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; margin-top: 6px; color: var(--ink); }
+  .gq-small { margin: -4px 0 0; font-size: 13px; color: var(--ink-3); }
+  .gq-restart { width: fit-content; padding-left: 0; }
+  .gq-disc { margin: 4px 0 0; padding-top: 16px; border-top: 1px solid var(--line); font-size: 12.5px; line-height: 1.6; color: var(--ink-3); }
+
+  @media (max-width: 960px) {
+    .gq { grid-template-columns: 1fr; padding-top: 130px; min-height: 0; }
+    .gq-intro { position: static; }
+  }
+  @media (max-width: 560px) {
+    .gq { padding-top: 116px; gap: 30px; }
+    .gq-card { padding: 22px 18px; border-radius: 22px; }
+    .gq-opt { padding: 14px 14px; }
+    .gq-nav { position: sticky; bottom: 12px; background: var(--paper); padding-top: 10px; }
+    .gq-r-actions .btn { width: 100%; justify-content: center; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gq-step.in, .gq-result, .gq-card, [data-in] { animation: none; }
+  }
+</style>
