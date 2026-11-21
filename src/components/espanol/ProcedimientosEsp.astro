@@ -1,4 +1,6 @@
 ---
+import MotionArt from '../v2/MotionArt.astro'
+const artKind: Record<string, string> = { wholebody: "heat", chelation: "chelation", anticancer: "support", stemcell: "cells", autoimmune: "shield", autoinmune: "shield", extracorporeal: "blood" };
 import '../../styles/services-styles/procedimientos.css'
 import ImgdrEsp from '../../assets/dr-enriquez.png'
 
@@ -13,9 +15,9 @@ const procedures = [
         html: `<p style="text-align: justify; margin:0;">
         La <b>Hipertermia Corporal Total (HCT)</b> es una terapia complementaria utilizada junto con el tratamiento del cáncer y otras afecciones como la Enfermedad de Lyme. En oncología, la HCT utiliza una fuente de calor externa para aumentar la temperatura de los tejidos como parte de un plan de tratamiento integral.
         <br>
-        El término 'hipertermia' se aplica al uso de diferentes técnicas en combinación con otros tratamientos contra el cáncer (particularmente la quimioterapia y la radioterapia), siempre bajo supervisión médica.
+        El término 'hipertermia' se aplica al uso de diferentes técnicas en combinación con otros tratamientos oncológicos (particularmente la quimioterapia y la radioterapia), siempre bajo supervisión médica.
         <br><br>
-        Es bien sabido que las células cancerosas tienen una tasa metabólica más alta que las células normales, lo cual es parte de por qué esta terapia se utiliza como enfoque complementario. Algunas características fisiológicas relevantes para entender su aplicación son:
+        Es bien sabido que las células tumorales tienen una tasa metabólica más alta que las células normales, lo cual es parte de por qué esta terapia se utiliza como enfoque complementario. Algunas características fisiológicas relevantes para entender su aplicación son:
         <ul>
             <li><b>1)</b> Los vasos sanguíneos dentro de los tumores tienen una capacidad limitada de dilatarse para disipar el calor.</li>
             <li><b>2)</b> Los vasos sanguíneos de los tumores tienden a ser más tortuosos, lo que puede prolongar la exposición al calor intratumoral en comparación con el tejido normal.</li>
@@ -31,7 +33,7 @@ const procedures = [
         img: ImgdrEsp,
         // REVISAR: eliminé por completo la mención de EM, Alzheimer y autismo — la FDA ha tomado acción legal directa contra empresas que vinculan quelación con autismo. Este punto no debe reintroducirse sin respaldo clínico y revisión legal explícita.
         html: `<p style="text-align: justify; margin:0;">
-        La <b>quelación</b> es el proceso mediante el cual se remueven o eliminan metales y minerales tóxicos del cuerpo. El proceso más común y eficaz utiliza EDTA (ácido etilendiaminotetraacético), un aminoácido sintético que se ha utilizado por más de 65 años para tratar la intoxicación por plomo y ayudar a eliminar placa que contribuye a problemas circulatorios.
+        La <b>quelación</b> es el proceso mediante el cual se remueven o eliminan metales y minerales tóxicos del cuerpo. El proceso más común y eficaz utiliza EDTA (ácido etilendiaminotetraacético), un aminoácido sintético que se ha utilizado por más de 65 años para tratar la intoxicación por plomo.
         <br><br>
         En nuestra clínica, la quelación con EDTA se utiliza en combinación con enzimas proteolíticas, apoyo de desintoxicación, nutrición y soporte al sistema inmunológico, siempre como parte de un plan más amplio bajo supervisión médica.
         </p>`
@@ -71,9 +73,9 @@ const procedures = [
         img: ImgdrEsp,
         // REVISAR: suavicé "rectificación de la condición de raíz" a lenguaje de abordaje integral, sin implicar corrección/cura definitiva.
         html: `<p style="text-align: justify; margin:0;">
-        En nuestra clínica, aplicamos la misma filosofía integral que utilizamos en el cuidado del cáncer para apoyar a pacientes con trastornos autoinmunes — combinando tratamientos complementarios diseñados para apoyar el manejo de síntomas como parte de un plan integral y personalizado.
+        En nuestra clínica, aplicamos la misma filosofía integral que utilizamos en la atención oncológica para apoyar a pacientes con trastornos autoinmunes — combinando tratamientos complementarios diseñados para apoyar el manejo de síntomas como parte de un plan integral y personalizado.
         <br><br>
-        Entendemos que navegar el sistema de seguros puede ser un desafío. Muchas pólizas cubren segundas opiniones o tratamientos alternativos. Nuestro enlace en EE. UU. está disponible para guiarlo paso a paso en la presentación de su reclamo y ayudarlo a entender los beneficios de su cobertura.
+        Entendemos que navegar el sistema de seguros puede ser un desafío. Algunas pólizas podrían cubrir parte de una segunda opinión o ciertos servicios; la cobertura depende por completo de su plan. Nuestro enlace en EE. UU. está disponible para guiarlo paso a paso en la presentación de su reclamo y ayudarlo a entender los beneficios de su cobertura.
         </p>`
     },
     {
@@ -84,7 +86,7 @@ const procedures = [
         img: ImgdrEsp,
         // REVISAR: quité por completo el lenguaje "bombas inteligentes" y "gemelos genéticos enfermos" — framing militar/mecanístico de alto riesgo. Reescrito en términos descriptivos generales del procedimiento, sin claim de eficacia específico.
         html: `<p style="text-align: justify; margin:0;">
-        La aféresis es un procedimiento en el que se extrae sangre (de forma similar a una donación) y se procesa para separar sus componentes. Mediante el proceso de Fotoféresis Extracorpórea (FEC), se utilizan ciertas células para desarrollar una Vacuna Autóloga de Células Dendríticas (VACD) — una preparación personalizada elaborada a partir de la propia sangre del paciente.
+        La aféresis es un procedimiento en el que se extrae sangre (de forma similar a una donación) y se procesa para separar sus componentes. Mediante el proceso de Fotoféresis Extracorpórea (FEC), se utilizan ciertas células para elaborar una preparación autóloga de células dendríticas — una preparación personalizada elaborada a partir de la propia sangre del paciente.
         <br><br>
         Este enfoque autólogo (derivado del propio paciente) forma parte de nuestro programa integral y se administra bajo estricta supervisión médica, como uno de los componentes de un plan de tratamiento más amplio y personalizado.
         </p>`
@@ -112,8 +114,8 @@ const procedures = [
         {procedures.map((proc, i) => (
             <div class={`tab-content ${i === 0 ? "active" : ""}`} id={proc.id}>
                 <div class="tabp-grid">
-                    <div class="tabp-image">
-                        <img src={proc.img.src} width="100%" alt={proc.label} />
+                    <div class="tabp-image tabp-art">
+                        <MotionArt kind={artKind[proc.id]} />
                     </div>
                     <div class="tabp-body">
                         <div class="fact-row">

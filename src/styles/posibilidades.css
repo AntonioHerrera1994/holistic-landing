@@ -3,7 +3,7 @@
     margin: 0;
     padding: 4rem 4rem 4rem 4rem;
     overflow: hidden;
-    background-color: rgba(22,198,206,0.07);
+    background-color: rgba(10,122,128,0.07);
     margin-bottom: 6rem;
 }
 
@@ -19,7 +19,7 @@
 /************ Texto **********/
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.35) 0%, rgba(10,122,128,0.35) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -27,7 +27,7 @@
 
 .posib p{
     font-family: "Roboto", sans-serif;
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
     line-height: 30px;
     font-size: 17px;
     text-align: justify;
@@ -69,7 +69,7 @@ button.learn-more .circle {
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     border-radius: 1.625rem;
 }
 
@@ -133,7 +133,7 @@ button:hover .button-text { color: #fff; }
 .reserva-inner{
     border-radius: 30px;
     padding: 3.5rem;
-    background: linear-gradient(135deg, #091E3D 0%, #0f3a63 45%, #0a7d8c 100%);
+    background: #091E3D;
     max-width: 1100px;
     margin: 0 auto;
     box-shadow: 0 25px 60px rgba(9,30,61,0.25);
@@ -152,9 +152,9 @@ button:hover .button-text { color: #fff; }
 
 .save-badge{
     display: inline-block;
-    background: rgba(237,27,151,0.18);
-    border: 1px solid #ED1B97;
-    color: #ED1B97;
+    background: rgba(10,122,128,0.18);
+    border: 1px solid var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
     font-family: "Roboto", sans-serif;
     font-size: 13px;
     font-weight: 700;
@@ -220,7 +220,7 @@ button:hover .button-text { color: #fff; }
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.35s ease;

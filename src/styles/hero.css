@@ -23,7 +23,7 @@
 .blob-1{
     width: 420px;
     height: 420px;
-    background: #16C6CE;
+    background: var(--brand, #0A7A80);
     top: -120px;
     left: -100px;
     animation: float1 18s ease-in-out infinite;
@@ -31,7 +31,7 @@
 .blob-2{
     width: 360px;
     height: 360px;
-    background: #ED1B97;
+    background: var(--brand, #0A7A80);
     bottom: -100px;
     right: 8%;
     animation: float2 22s ease-in-out infinite;
@@ -67,9 +67,9 @@
 .eyebrow{
     display: inline-block;
     padding: 0.4rem 1.1rem;
-    background: rgba(237,27,151,0.15);
-    border: 1px solid #ED1B97;
-    color: #ED1B97;
+    background: rgba(10,122,128,0.15);
+    border: 1px solid var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
     border-radius: 999px;
     font-size: 13px;
     letter-spacing: 0.05em;
@@ -122,13 +122,13 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #16C6CE;
+    background: var(--brand, #0A7A80);
     margin-right: 10px;
     flex-shrink: 0;
 }
 .chip-1{ animation-delay: 0s; }
 .chip-2{ animation-delay: 0.5s; margin-right: 2rem; }
-.chip-2::before{ background: #ED1B97; }
+.chip-2::before{ background: var(--brand, #0A7A80); }
 .chip-3{ animation-delay: 1s; }
 
 @keyframes floaty{
@@ -169,7 +169,7 @@ button.learn-more .circle {
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     border-radius: 1.625rem;
 }
 
@@ -248,8 +248,8 @@ button:hover .button-text {
     transition: all 0.3s ease;
 }
 .ghost-button:hover{
-    border-color: #16C6CE;
-    background: rgba(22,198,206,0.1);
+    border-color: var(--brand, #0A7A80);
+    background: rgba(10,122,128,0.1);
 }
 
 /********** Numeros **********/
@@ -265,7 +265,7 @@ button:hover .button-text {
     align-items: center;
     background: rgba(9,30,61,0.75);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(22,198,206,0.3);
+    border: 1px solid rgba(10,122,128,0.3);
     border-radius: 32px;
     z-index: 10;
     margin-top: -4rem;

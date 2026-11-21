@@ -1,0 +1,178 @@
+---
+/**
+ * Secciones del home rediseñado (después del explorador de servicios):
+ * marquee, bento "nuestro enfoque", teaser de Tanatología, odontología y CTA final.
+ * Prop `part` decide qué bloque renderizar para poder ordenarlos en la página.
+ */
+import Hospital from '../../assets/opt/clinica.webp';
+import { home, type Lang } from '../../i18n/content';
+import { WHATSAPP, PHONE_DISPLAY, PHONE_TEL } from '../../i18n/routes';
+
+interface Props { lang?: Lang; part: 'marquee' | 'why' | 'closing' }
+const { lang = 'en', part } = Astro.props;
+const t = home[lang];
+const leafIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C9 6 6 9 6 13a6 6 0 0 0 12 0c0-4-3-7-6-11z"/></svg>`;
+const arrow = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+---
+
+{part === 'marquee' && (
+  <div class="mq" aria-hidden="true">
+    <div class="mq-track">
+      {[0, 1].map(() => (
+        <div class="mq-group">
+          {t.marquee.map((m) => (<span class="mq-item"><Fragment set:html={leafIcon} />{m}</span>))}
+        </div>
+      ))}
+    </div>
+  </div>
+)}
+
+{part === 'why' && (
+  <section class="why">
+    <div class="why-head" data-reveal>
+      <span class="eyebrow-v2">{t.whyEyebrow}</span>
+      <h2 class="h-display">{t.whyTitle[0]}<br /><em>{t.whyTitle[1]}</em></h2>
+    </div>
+    <div class="bento">
+      <article class="b b-main" data-reveal>
+        <svg class="b-main-art" viewBox="0 0 200 200" aria-hidden="true">
+          <circle cx="80" cy="100" r="62" /><circle cx="120" cy="100" r="62" />
+        </svg>
+        <h3>{t.why.main.t}</h3>
+        <p>{t.why.main.p}</p>
+      </article>
+      <article class="b b-stat b-since" data-reveal style="--d:80ms">
+        {/* REVISAR: "Since 2008" viene de la sección Historia. El contador viejo decía "20 años" — confirmar el dato real. */}
+        <span class="b-k">{t.why.since.k}</span><p>{t.why.since.p}</p>
+      </article>
+      <article class="b b-stat b-lang" data-reveal style="--d:140ms">
+        <span class="b-k">{t.why.lang.k}</span><p>{t.why.lang.p}</p>
+      </article>
+      <article class="b b-img" data-reveal style="--d:200ms">
+        <img src={Hospital.src} alt={lang === 'es' ? 'Nuestra clínica en Tijuana' : 'Our clinic in Tijuana'} loading="lazy" />
+      </article>
+      <article class="b b-pillars" data-reveal style="--d:120ms">
+        <h3>{t.why.pillarsTitle}</h3>
+        <div class="pillars" role="tablist">
+          {t.why.pillars.map((p, i) => (
+            <button class:list={['pill', { on: i === 0 }]} role="tab" aria-selected={i === 0 ? 'true' : 'false'} data-i={i}>{p.k}</button>
+          ))}
+        </div>
+        <div class="pillar-text">
+          {t.why.pillars.map((p, i) => (<p data-i={i} hidden={i !== 0}>{p.p}</p>))}
+        </div>
+      </article>
+      <article class="b b-stat b-modes" data-reveal style="--d:180ms">
+        <span class="b-k">{t.why.modes.k}</span><p>{t.why.modes.p}</p>
+      </article>
+    </div>
+  </section>
+)}
+
+{part === 'closing' && (
+  <section class="cl">
+    <h2 class="h-display" data-reveal>{t.closing.title[0]}<br /><em>{t.closing.title[1]}</em></h2>
+    <p data-reveal style="--d:80ms">{t.closing.text}</p>
+    <div class="cl-actions" data-reveal style="--d:140ms">
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="btn"><i class="bi bi-whatsapp"></i>{t.closing.cta}</a>
+      <span>{t.closing.call}{' '}<a href={PHONE_TEL}>{PHONE_DISPLAY}</a></span>
+    </div>
+    <p class="cl-disc">{t.disclaimer}</p>
+  </section>
+)}
+
+<style>
+  /* ---------- Marquee ---------- */
+  .mq { background: var(--ink); color: #fff; overflow: hidden; padding: 22px 0; font-family: var(--font-display); }
+  .mq-track { display: flex; width: max-content; animation: mq 38s linear infinite; }
+  .mq:hover .mq-track { animation-play-state: paused; }
+  .mq-group { display: flex; }
+  .mq-item { display: inline-flex; align-items: center; gap: 18px; padding: 0 28px; font-size: clamp(22px, 2.4vw, 34px);  white-space: nowrap; }
+  .mq-item :global(svg) { color: var(--brand); }
+  @keyframes mq { to { transform: translateX(-50%); } }
+
+  /* ---------- Bento ---------- */
+  .why { background: var(--cream); padding: clamp(80px, 11vw, 150px) var(--pad-x); font-family: var(--font-body); }
+  .why-head { max-width: 1320px; margin: 0 auto 50px; display: grid; gap: 18px; }
+  .why-head .h-display { font-size: clamp(40px, 5.6vw, 78px); }
+  .bento {
+    max-width: 1320px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(200px, auto);
+    grid-template-areas:
+      'main main since lang'
+      'main main img modes'
+      'pill pill img modes';
+    gap: 16px;
+  }
+  .b {
+    position: relative;
+    border-radius: var(--radius);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 28px;
+    overflow: hidden;
+    display: flex; flex-direction: column; justify-content: flex-end; gap: 10px;
+    transition: transform 0.5s var(--ease), box-shadow 0.5s var(--ease);
+  }
+  .b:hover { transform: translateY(-4px); box-shadow: 0 24px 50px -30px rgba(9,30,61,.45); }
+  .b h3 { font: 400 clamp(24px, 2.2vw, 32px)/1.1 var(--font-display); margin: 0; color: var(--ink); }
+  .b p { margin: 0; color: var(--ink-2); line-height: 1.6; font-size: 15.5px; }
+  .b-main { grid-area: main; background: var(--ink); border-color: var(--ink); }
+  .b-main h3 { color: #fff; font-size: clamp(32px, 3.4vw, 50px); max-width: 14ch; }
+  .b-main p { color: rgba(255,255,255,.72); max-width: 46ch; }
+  .b-main-art { position: absolute; top: 24px; right: 24px; width: 46%; }
+  .b-main-art circle { fill: none; stroke: var(--brand); stroke-width: 1.6; }
+  .b-main-art circle:last-child { animation: drift 6s ease-in-out infinite alternate; }
+  @keyframes drift { to { transform: translateX(-26px); } }
+  .b-k { font: 400 clamp(34px, 3.4vw, 52px)/1 var(--font-display); color: var(--ink); letter-spacing: -0.02em; }
+  .b-img { padding: 0; grid-area: img; min-height: 260px; }
+  .b-since { grid-area: since; }
+  .b-lang { grid-area: lang; }
+  .b-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .b-pillars { grid-area: pill; justify-content: space-between; }
+  .pillars { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  .pill {
+    font: 600 14px/1 var(--font-display); padding: 11px 18px; border-radius: 999px; cursor: pointer;
+    border: 1px solid var(--line); background: #fff; color: var(--ink);
+    transition: background-color .3s var(--ease), color .3s var(--ease);
+  }
+  .pill.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+  .pillar-text p { animation: fadeUp .5s var(--ease); }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(6px); } }
+  .b-modes { grid-area: modes; background: var(--brand-soft); border-color: transparent; }
+
+  /* ---------- Closing ---------- */
+  .cl { background: var(--cream); padding: clamp(90px, 12vw, 170px) var(--pad-x) 70px; text-align: center; font-family: var(--font-body); }
+  .cl .h-display { font-size: clamp(44px, 7vw, 108px); }
+  .cl > p { color: var(--ink-2); font-size: 17px; line-height: 1.6; max-width: 52ch; margin: 22px auto 30px; }
+  .cl-actions { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; color: var(--ink-2); }
+  .cl-actions a:not(.btn) { color: var(--ink); font-weight: 700; }
+  .cl-disc { margin: 70px auto 0 !important; font-size: 12.5px !important; color: var(--ink-2) !important; max-width: 90ch !important; line-height: 1.6; }
+
+  @media (max-width: 1000px) {
+    .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: 'main main' 'since lang' 'img modes' 'pill pill'; }
+  }
+  @media (max-width: 620px) {
+    .bento { grid-auto-rows: auto; grid-template-columns: 1fr; grid-template-areas: 'main' 'since' 'lang' 'pill' 'modes' 'img'; }
+    .b-main { min-height: 380px; }
+    .b-stat { min-height: 150px; }
+    .b-img { min-height: 240px; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.b-pillars').forEach((card) => {
+    const pills = card.querySelectorAll<HTMLButtonElement>('.pill');
+    const texts = card.querySelectorAll<HTMLElement>('.pillar-text p');
+    pills.forEach((p) => {
+      const go = () => {
+        pills.forEach((x) => { x.classList.toggle('on', x === p); x.setAttribute('aria-selected', String(x === p)); });
+        texts.forEach((tx) => (tx.hidden = tx.dataset.i !== p.dataset.i));
+      };
+      p.addEventListener('click', go);
+      p.addEventListener('mouseenter', go);
+    });
+  });
+</script>

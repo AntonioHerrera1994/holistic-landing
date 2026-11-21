@@ -49,12 +49,12 @@ nav.force-solid{
     bottom: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: #16c6ce;
+    color: var(--brand, #0A7A80);
 }
 .nav-links a:hover::after{
     width: 100%;
@@ -66,7 +66,7 @@ nav.force-solid{
     border-radius: 12px;
     color: white;
     z-index: 1;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     position: relative;
     font-weight: 400;
     font-size: 17px;
@@ -79,7 +79,7 @@ nav.force-solid{
 
 .btn-escritorio:hover{
     transform: translateY(-2px);
-    box-shadow: 4px 12px 24px -3px rgba(22,198,206,0.4);
+    box-shadow: 4px 12px 24px -3px rgba(10,122,128,0.4);
     color: #e8e8e8;
 }
 

@@ -1,23 +1,24 @@
 ---
-import Navbar from '../components/Navbar.astro';
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Servicios from '../components/Servicios.astro';
-import Posibilidades from '../components/Posibilidades.astro';
-
-import Testimonios from '../components/Testimonios.astro';
+import SiteNav from '../components/v2/SiteNav.astro';
+import HomeHero from '../components/v2/HomeHero.astro';
+import ServicePanels from '../components/v2/ServicePanels.astro';
+import HomeSections from '../components/v2/HomeSections.astro';
+import ExpertsSlider from '../components/v2/ExpertsSlider.astro';
 import Footer from '../components/Footer.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import { home } from '../i18n/content';
+const t = home.en;
 ---
 
-<Layout>
-	<Navbar />
-	<Hero />
-	<Servicios />
-	<Posibilidades />
-
-	<Testimonios />
+<Layout title={t.seoTitle} description={t.seoDesc} lang="en">
+	<SiteNav lang="en" />
+	<main>
+		<HomeHero lang="en" />
+		<HomeSections lang="en" part="marquee" />
+		<ServicePanels lang="en" />
+		<HomeSections lang="en" part="why" />
+		<ExpertsSlider lang="en" />
+		<HomeSections lang="en" part="closing" />
+	</main>
 	<Footer />
 </Layout>

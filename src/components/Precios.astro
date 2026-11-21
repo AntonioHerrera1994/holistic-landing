@@ -71,7 +71,8 @@ const categories = ["All", ...new Set(procedures.map(p => p.category))];
 
     <p class="results-count" id="resultsCount">Showing {procedures.length} of {procedures.length} procedures</p>
 
-      <div class="pricing-grid" id="pricingGrid">
+      <h2 id="pricing-h2" class="sr-only">Procedure prices</h2>
+    <div class="pricing-grid" id="pricingGrid" aria-labelledby="pricing-h2">
         {procedures.map((procedure) => {
             const savings = procedure.us - procedure.biodental;
             const message = encodeURIComponent(`Hi! I'd like to schedule an appointment for: ${procedure.name}`);

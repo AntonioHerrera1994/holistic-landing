@@ -1,0 +1,14 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteNav from '../components/v2/SiteNav.astro';
+import ThanatologyPage from '../components/v2/ThanatologyPage.astro';
+import Footer from '../components/Footer.astro';
+import { thanatology } from '../i18n/content';
+const t = thanatology.en;
+---
+
+<Layout title={t.seoTitle} description={t.seoDesc} lang="en">
+	<SiteNav lang="en" />
+	<main><ThanatologyPage lang="en" /></main>
+	<Footer />
+</Layout>

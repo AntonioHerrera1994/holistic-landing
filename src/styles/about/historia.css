@@ -4,7 +4,7 @@
     padding: 4rem 6rem 4rem 6rem;
     overflow: hidden;
     position: relative;
-    background: linear-gradient(135deg, #091E3D 0%, #0d2c52 55%, #0a4a5c 100%);
+    background: #091E3D;
 }
 
 /********** Blobs decorativos (rompen la planitud del azul) **********/
@@ -22,7 +22,7 @@
 .historia::before{
     width: 380px;
     height: 380px;
-    background: #16C6CE;
+    background: var(--brand, #0A7A80);
     top: -140px;
     right: 5%;
 }
@@ -30,7 +30,7 @@
 .historia::after{
     width: 320px;
     height: 320px;
-    background: #ED1B97;
+    background: var(--brand, #0A7A80);
     bottom: -120px;
     left: -80px;
 }
@@ -84,7 +84,7 @@
     width: 78px;
     height: 78px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -115,7 +115,7 @@
 /********** Texto **********/
 .historia .highlight-text{
     color: white;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.5) 0%, rgba(22,198,206,0.5) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.5) 0%, rgba(10,122,128,0.5) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -172,7 +172,7 @@ button.learn-more .circle {
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     border-radius: 1.625rem;
 }
 

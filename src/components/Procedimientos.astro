@@ -1,4 +1,6 @@
 ---
+import MotionArt from './v2/MotionArt.astro'
+const artKind: Record<string, string> = { wholebody: "heat", chelation: "chelation", anticancer: "support", stemcell: "cells", autoimmune: "shield", autoinmune: "shield", extracorporeal: "blood" };
 import '../styles/services-styles/procedimientos.css'
 import Imgdr from '../assets/dr-enriquez.png'
 
@@ -13,9 +15,9 @@ const procedures = [
         html: `<p style="text-align: justify; margin:0;">
         <b>Whole-Body Hyperthermia (WBH)</b> is a complementary therapy used alongside treatment for cancer and other conditions such as Lyme Disease. In oncology, WBH uses an external heat source to raise tissue temperature as part of an integrative treatment plan.
         <br>
-        The term 'hyperthermia' applies to the use of different techniques in combination with other cancer treatments (particularly chemotherapy and radiation therapy), always under medical supervision.
+        The term 'hyperthermia' applies to the use of different techniques in combination with other oncology treatments (particularly chemotherapy and radiation therapy), always under medical supervision.
         <br><br>
-        Cancer cells are known to have a higher metabolic rate than normal cells, which is part of why this therapy is used as a complementary approach. A few physiological characteristics are relevant to understanding how it's applied:
+        Tumor cells are known to have a higher metabolic rate than normal cells, which is part of why this therapy is used as a complementary approach. A few physiological characteristics are relevant to understanding how it's applied:
         <ul>
             <li><b>1)</b> Blood vessels within tumors have a limited ability to dilate to dissipate heat.</li>
             <li><b>2)</b> Blood vessels within tumors tend to be more tortuous, which can prolong intra-tumoral heat exposure compared to normal tissue.</li>
@@ -31,7 +33,7 @@ const procedures = [
         img: Imgdr,
         // REVISAR: eliminé por completo la mención de MS, Alzheimer's y autismo — la FDA ha tomado acción legal directa contra empresas que vinculan quelación con autismo. Este punto no debe reintroducirse sin respaldo clínico y revisión legal explícita.
         html: `<p style="text-align: justify; margin:0;">
-        <b>Chelation (key-LAY-shun)</b> is the process of removing or eliminating toxic metals and minerals from the body. The most common and effective chelation process uses EDTA (ethylene diamine tetra-acetic acid), a synthetic amino acid that has been used for over 65 years to treat lead poisoning and to help clear plaque contributing to circulatory issues.
+        <b>Chelation (key-LAY-shun)</b> is the process of removing or eliminating toxic metals and minerals from the body. The most common and effective chelation process uses EDTA (ethylene diamine tetra-acetic acid), a synthetic amino acid that has been used for over 65 years to treat lead poisoning.
         <br><br>
         At our clinic, EDTA chelation is used in combination with proteolytic enzymes, detoxification support, nutrition, and immune system support, always as part of a broader, medically supervised plan.
         </p>`
@@ -71,9 +73,9 @@ const procedures = [
         img: Imgdr,
         // REVISAR: suavicé "rectify the condition at its root" a lenguaje de abordaje integral, sin implicar corrección/cura definitiva.
         html: `<p style="text-align: justify; margin:0;">
-        At our clinic, we apply the same integrative philosophy used in cancer care to support patients with autoimmune disorders — combining complementary treatments designed to support symptom management as part of a comprehensive, personalized plan.
+        At our clinic, we apply the same integrative philosophy used in our oncology care to support patients with autoimmune disorders — combining complementary treatments designed to support symptom management as part of a comprehensive, personalized plan.
         <br><br>
-        We understand navigating insurance can be a challenge. Many policies cover second opinions or alternative treatments. Our US liaison is available to guide you step-by-step in filing a claim and understanding your coverage benefits.
+        We understand navigating insurance can be a challenge. Some policies may cover part of a second opinion or certain services; coverage depends entirely on your plan. Our US liaison is available to guide you step-by-step in filing a claim and understanding your coverage benefits.
         </p>`
     },
     {
@@ -84,7 +86,7 @@ const procedures = [
         img: Imgdr,
         // REVISAR: quité por completo el lenguaje "smart bombs" y "target their sick genetic twins" — framing militar/mecanístico de alto riesgo. Reescribí en términos descriptivos generales del procedimiento, sin claim de eficacia específico.
         html: `<p style="text-align: justify; margin:0;">
-        Apheresis is a procedure where blood is drawn (similar to a blood donation) and processed to separate its components. Through the process of Extracorporeal Photopheresis (ECPP), select cells are used to develop an Autologous Dendritic Cell Vaccine (ADCV) — a personalized preparation made from the patient's own blood.
+        Apheresis is a procedure where blood is drawn (similar to a blood donation) and processed to separate its components. Through the process of Extracorporeal Photopheresis (ECPP), select cells are used to prepare an autologous dendritic cell preparation — a personalized preparation made from the patient's own blood.
         <br><br>
         This autologous (self-derived) approach is part of our integrative program and is administered under close medical supervision as one component of a broader, personalized treatment plan.
         </p>`
@@ -113,8 +115,8 @@ const procedures = [
         {procedures.map((proc, i) => (
             <div class={`tab-content ${i === 0 ? "active" : ""}`} id={proc.id}>
                 <div class="tabp-grid">
-                    <div class="tabp-image">
-                        <img src={proc.img.src} width="100%" alt={proc.label} />
+                    <div class="tabp-image tabp-art">
+                        <MotionArt kind={artKind[proc.id]} />
                     </div>
                     <div class="tabp-body">
                         <div class="fact-row">

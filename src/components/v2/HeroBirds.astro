@@ -1,0 +1,78 @@
+---
+/**
+ * Motion graphic de fondo para el hero de Tratamientos:
+ * aves volando (aleteo + trayectoria), una rama que se dibuja y partículas flotando.
+ * Tono bajo (opaco) para no competir con el texto.
+ */
+const FLIGHTS = [
+  { d: 'M-120 380 C240 220 560 420 880 250 S1300 150 1580 280', dur: 24, begin: 0, s: 1 },
+  { d: 'M-120 300 C200 160 520 330 840 190 S1260 120 1580 200', dur: 30, begin: 5, s: 0.7 },
+  { d: 'M-120 460 C260 360 620 500 960 360 S1320 300 1580 380', dur: 27, begin: 11, s: 0.85 },
+];
+---
+<div class="birds" aria-hidden="true">
+  <svg viewBox="0 0 1440 600" preserveAspectRatio="xMidYMid slice">
+    <!-- rama que se dibuja (derecha) -->
+    <g class="sprig">
+      <path pathLength="1" d="M1440 520 C1340 470 1260 400 1220 300 C1200 250 1196 200 1210 150" />
+      <path pathLength="1" d="M1300 445 C1282 412 1290 380 1322 362 C1336 396 1328 426 1300 445 Z" />
+      <path pathLength="1" d="M1244 360 C1212 344 1200 314 1214 284 C1246 296 1258 328 1244 360 Z" />
+      <path pathLength="1" d="M1226 250 C1254 236 1282 244 1296 272 C1266 286 1238 278 1226 250 Z" />
+      <path pathLength="1" d="M1212 190 C1188 174 1182 148 1196 124 C1220 138 1226 166 1212 190 Z" />
+    </g>
+    <!-- sol / halo (izquierda) -->
+    <g class="halo">
+      <circle cx="150" cy="230" r="70" pathLength="1" />
+      <circle cx="150" cy="230" r="110" pathLength="1" />
+    </g>
+    <!-- aves -->
+    {FLIGHTS.map((f) => (
+      <g opacity="0">
+        <set attributeName="opacity" to="1" begin={`${f.begin}s`} />
+        <animateMotion dur={`${f.dur}s`} begin={`${f.begin}s`} repeatCount="indefinite" path={f.d} />
+        <g transform={`scale(${f.s})`}>
+          <g class="bird">
+            <path class="wing l" d="M0 0 C-8 -12 -22 -18 -40 -12 C-26 -10 -12 -4 0 6 Z" />
+            <path class="wing r" d="M0 0 C8 -12 22 -18 40 -12 C26 -10 12 -4 0 6 Z" />
+            <ellipse cx="0" cy="2" rx="4" ry="7" />
+          </g>
+        </g>
+      </g>
+    ))}
+    <!-- partículas -->
+    {[[300, 480], [520, 140], [760, 520], [1040, 110], [1180, 520], [420, 300]].map(([x, y], i) => (
+      <circle class="mote" cx={x} cy={y} r={3 + (i % 3)} style={`--l:${i * 0.9}s`} />
+    ))}
+  </svg>
+</div>
+
+<style>
+  .birds { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .32; }
+  .birds svg { width: 100%; height: 100%; display: block; }
+  .birds * { transform-box: view-box; }
+  .sprig path, .halo circle {
+    fill: none; stroke: #0A7A80; stroke-width: 2; stroke-linecap: round;
+    stroke-dasharray: 1; stroke-dashoffset: 1; animation: bDraw 3.2s cubic-bezier(.22,1,.36,1) forwards;
+  }
+  .sprig path:nth-child(n+2) { animation-delay: 1.2s; fill: rgba(10,122,128,.12); }
+  .halo circle { stroke: #091E3D; stroke-width: 1.4; }
+  .halo circle + circle { stroke-dasharray: .02 .03; stroke-dashoffset: 0; animation: bSpin 60s linear infinite; transform-origin: 150px 230px; }
+  .sprig { transform-origin: 1440px 520px; animation: bSway 7s ease-in-out 3s infinite alternate; }
+  @keyframes bDraw { to { stroke-dashoffset: 0; } }
+  @keyframes bSpin { to { transform: rotate(360deg); } }
+  @keyframes bSway { from { transform: rotate(0); } to { transform: rotate(-2.5deg); } }
+
+  .bird path, .bird ellipse { fill: #091E3D; }
+  .birds .wing { transform-box: fill-box; }
+  .wing.l { transform-origin: 100% 75%; }
+  .wing.r { transform-origin: 0% 75%; }
+  .wing.l { animation: flapL .9s ease-in-out infinite; }
+  .wing.r { animation: flapR .9s ease-in-out infinite; }
+  @keyframes flapL { 0%, 100% { transform: rotate(0) scaleY(1); } 50% { transform: rotate(-28deg) scaleY(.55); } }
+  @keyframes flapR { 0%, 100% { transform: rotate(0) scaleY(1); } 50% { transform: rotate(28deg) scaleY(.55); } }
+
+  .mote { fill: #0A7A80; opacity: .5; animation: bFloat 7s ease-in-out infinite; animation-delay: var(--l); }
+  @keyframes bFloat { 50% { transform: translateY(-24px); opacity: .15; } }
+
+  @media (prefers-reduced-motion: reduce) { .birds { display: none; } }
+</style>

@@ -1,0 +1,114 @@
+---
+/**
+ * <head> único para todo el sitio.
+ * Corrige: og:url apuntaba a una imagen, no había canonical ni hreflang,
+ * viewport sin initial-scale, misma description en todas las páginas,
+ * y no había datos estructurados de la clínica.
+ */
+import '../../styles/tokens.css';
+import { SITE, pairFor } from '../../i18n/routes';
+
+interface Props {
+  title: string;
+  description: string;
+  lang?: 'en' | 'es';
+  image?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  lang = 'en',
+  image = `${SITE}/og-clinic.jpg`,
+  type = 'website',
+  noindex = false,
+} = Astro.props;
+
+const path = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, '') : '/';
+const canonical = `${SITE}${path === '/' ? '/' : path}`;
+const pair = pairFor(path);
+
+const clinicSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalClinic',
+  name: 'Holistic Cancer Treatments Coach',
+  url: SITE,
+  logo: `${SITE}/holisticsvf.svg`,
+  image,
+  telephone: '+52-664-194-2723',
+  email: 'holisticancertreatment@gmail.com',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Tijuana',
+    addressRegion: 'Baja California',
+    addressCountry: 'MX',
+  },
+  availableLanguage: ['es', 'en'],
+  sameAs: [
+    'https://www.facebook.com/HolisticCancerTreatmentsCoachTijuana',
+    'https://www.instagram.com/holisticcancertreatmentscoach/',
+  ],
+};
+---
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex, follow" />}
+<link rel="canonical" href={canonical} />
+{pair && (
+  <>
+    <link rel="alternate" hreflang="en" href={`${SITE}${pair.en}`} />
+    <link rel="alternate" hreflang="es" href={`${SITE}${pair.es}`} />
+    <link rel="alternate" hreflang="x-default" href={`${SITE}${pair.en}`} />
+  </>
+)}
+
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content="Holistic Cancer Treatments Coach" />
+<meta property="og:locale" content={lang === 'es' ? 'es_MX' : 'en_US'} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={image} />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="icon" type="image/svg+xml" href="/holisticsvf.svg" />
+<meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#F5F1EA" />
+
+<link rel="preload" href="/fonts/pontano-sans.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/roboto.woff2" as="font" type="font/woff2" crossorigin />
+<!-- Fuentes e íconos sin bloquear el render (mejora FCP/LCP) -->
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" media="print" onload="this.media='all'" />
+<noscript>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+</noscript>
+
+<script type="application/ld+json" set:html={JSON.stringify(clinicSchema)} />
+
+<!-- Google tag (gtag.js)
+     REVISAR (legal): en un sitio de salud, GA registra qué páginas de tratamiento visita cada persona.
+     Recomendado: banner de consentimiento + Consent Mode v2 antes de cargar GA. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPHBXRB980"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-DPHBXRB980', { anonymize_ip: true });
+</script>
+
+<!-- Reveal-on-scroll global (respeta prefers-reduced-motion vía CSS) -->
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    var els = document.querySelectorAll('[data-reveal]');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('is-in'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('is-in'); io.unobserve(en.target); } });
+    }, { threshold: 0.14, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  });
+</script>

@@ -1,0 +1,88 @@
+---
+/**
+ * Motion graphic de fondo para el hero de Nosotros (cuidado holístico):
+ * tres círculos Mente·Cuerpo·Espíritu que "respiran", un loto que se dibuja,
+ * hojas que flotan y una órbita punteada. Tono bajo para no competir con el texto.
+ */
+const petals = [
+  'M0 0 C-14 -30 -14 -64 0 -92 C14 -64 14 -30 0 0 Z',
+  'M0 0 C-30 -18 -54 -44 -60 -78 C-34 -70 -12 -44 0 0 Z',
+  'M0 0 C30 -18 54 -44 60 -78 C34 -70 12 -44 0 0 Z',
+  'M0 0 C-40 -4 -78 -18 -100 -44 C-64 -46 -30 -30 0 0 Z',
+  'M0 0 C40 -4 78 -18 100 -44 C64 -46 30 -30 0 0 Z',
+];
+const leaves = [
+  { x: 980, y: 120, r: -20, s: 1, l: 0 },
+  { x: 640, y: 560, r: 30, s: 0.8, l: 2.5 },
+  { x: 120, y: 160, r: 10, s: 0.7, l: 4 },
+  { x: 1300, y: 600, r: -40, s: 0.9, l: 1.2 },
+];
+---
+<div class="hol" aria-hidden="true">
+  <svg viewBox="0 0 1440 760" preserveAspectRatio="xMidYMid slice">
+    <!-- Mente · Cuerpo · Espíritu -->
+    <g class="trio">
+      <circle class="dr" cx="60" cy="560" r="120" />
+      <circle class="dr b" cx="140" cy="560" r="120" />
+      <circle class="dr" cx="100" cy="630" r="120" />
+    </g>
+    <circle class="orbit" cx="100" cy="590" r="210" />
+    <!-- Loto -->
+    <g transform="translate(1180 730)">
+      <g class="lotus">
+        {petals.map((d, i) => <path class="dr petal" d={d} style={`--n:${i}`} />)}
+      </g>
+      <path class="dr water" d="M-170 18 C-120 4 -80 32 -30 18 S60 4 110 18 S170 30 200 18" style="--n:5" />
+    </g>
+    <!-- hojas flotando -->
+    {leaves.map((lf) => (
+      <g transform={`translate(${lf.x} ${lf.y}) rotate(${lf.r}) scale(${lf.s})`}>
+        <g class="leaf" style={`--l:${lf.l}s`}>
+          <path d="M0 0 C10 -26 34 -40 60 -40 C56 -14 34 4 0 0 Z" />
+          <path class="vein" d="M0 0 C18 -12 36 -24 54 -36" />
+        </g>
+      </g>
+    ))}
+    {[[420, 120], [1120, 420], [560, 380], [1340, 160], [300, 470]].map(([x, y], i) => (
+      <circle class="mote" cx={x} cy={y} r={3 + (i % 3)} style={`--l:${i * 1.1}s`} />
+    ))}
+  </svg>
+</div>
+
+<style>
+  .hol { position: absolute; inset: 0; pointer-events: none; z-index: 0; opacity: .3; }
+  .hol svg { width: 100%; height: 100%; display: block; }
+  .dr { fill: none; stroke: #091E3D; stroke-width: 1.6; stroke-linecap: round; stroke-dasharray: var(--len); }
+  .dr.b { stroke: #0A7A80; stroke-width: 2; }
+  .hol.ready .dr { animation: hDraw 3s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--n, 0) * 180ms); }
+  @keyframes hDraw { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+
+  .trio { transform-box: fill-box; transform-origin: center; animation: breathe 8s ease-in-out infinite; }
+  @keyframes breathe { 0%, 100% { transform: scale(.96) rotate(0); } 50% { transform: scale(1.04) rotate(8deg); } }
+  .orbit { fill: none; stroke: #091E3D; stroke-opacity: .5; stroke-width: 1.2; stroke-dasharray: 2 10; transform-box: fill-box; transform-origin: center; animation: hSpin 80s linear infinite; }
+  @keyframes hSpin { to { transform: rotate(360deg); } }
+
+  .petal { fill: rgba(10,122,128,.10); stroke: #0A7A80; stroke-width: 2; }
+  .lotus { transform-box: fill-box; transform-origin: 50% 100%; animation: bloom 6s ease-in-out 3s infinite; }
+  @keyframes bloom { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05, .97); } }
+  .water { stroke: #0A7A80; }
+
+  .leaf path { fill: rgba(10,122,128,.14); stroke: #0A7A80; stroke-width: 1.6; }
+  .leaf .vein { fill: none; }
+  .leaf { animation: drift 9s ease-in-out infinite; animation-delay: var(--l); }
+  @keyframes drift { 0%, 100% { transform: translate(0, 0) rotate(0); } 50% { transform: translate(18px, -26px) rotate(14deg); } }
+
+  .mote { fill: #0A7A80; opacity: .5; animation: hFloat 7s ease-in-out infinite; animation-delay: var(--l); }
+  @keyframes hFloat { 50% { transform: translateY(-22px); opacity: .15; } }
+
+  @media (prefers-reduced-motion: reduce) { .hol * { animation: none !important; } .dr { stroke-dasharray: none; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.hol').forEach((root) => {
+    root.querySelectorAll<SVGGeometryElement>('.dr').forEach((el) => {
+      try { const l = el.getTotalLength(); if (l > 0) el.style.setProperty('--len', l.toFixed(1) + 'px'); } catch (e) {}
+    });
+    root.classList.add('ready');
+  });
+</script>

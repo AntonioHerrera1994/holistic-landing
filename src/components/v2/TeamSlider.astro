@@ -1,0 +1,261 @@
+---
+/**
+ * Slider del equipo (hero de Nosotros/About).
+ * - Tarjetas compactas, 2 visibles (1.6 en móvil), avance automático con dots.
+ * - Clic / toque en una tarjeta abre un popover pequeño con la info (no cubre la página).
+ *   En móvil se muestra como hoja inferior compacta.
+ * - Pista animada "Haz clic / Toca una tarjeta…" para invitar a interactuar.
+ */
+import { WHATSAPP } from '../../i18n/routes';
+
+interface Member { img: ImageMetadata; role: string; name: string; badge: string; bio: string }
+interface Props { team: Member[]; lang?: 'en' | 'es' }
+const { team, lang = 'en' } = Astro.props;
+const t = lang === 'es'
+  ? { hintClick: 'Haz clic en una tarjeta y conoce a tu especialista', hintTap: 'Toca una tarjeta y conoce a tu especialista', more: 'Ver perfil', close: 'Cerrar', cta: 'Agendar con el equipo', label: 'Equipo' }
+  : { hintClick: 'Click a card to meet your specialist', hintTap: 'Tap a card to meet your specialist', more: 'View profile', close: 'Close', cta: 'Book with our team', label: 'Team' };
+---
+
+<div class="tm" data-tm aria-label={t.label}>
+  <p class="tm-hint">
+    <span class="tm-hand" aria-hidden="true">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 11V5.5a1.5 1.5 0 0 1 3 0V10m0-1.5a1.5 1.5 0 0 1 3 0V11m0-1a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1-6 6h-1a6 6 0 0 1-4.6-2.2L4.3 15.6a1.5 1.5 0 0 1 2.3-1.9L9 16" />
+      </svg>
+      <span class="tm-ripple"></span>
+    </span>
+    <span class="tm-hint-click">{t.hintClick}</span>
+    <span class="tm-hint-tap">{t.hintTap}</span>
+  </p>
+
+  <div class="tm-viewport">
+    <div class="tm-track">
+      {team.map((m, i) => (
+        <button class="tm-card" type="button" data-i={i} aria-haspopup="dialog" aria-controls={`tm-pop-${lang}-${i}`} aria-label={`${m.name} — ${t.more}`}>
+          <img src={m.img.src} alt="" loading="lazy" />
+          <span class="tm-badge">{m.badge}</span>
+          <span class="tm-plus" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+          </span>
+          <span class="tm-info">
+            <strong>{m.name}</strong>
+            <small>{m.role}</small>
+            <em>{t.more} →</em>
+          </span>
+        </button>
+      ))}
+    </div>
+  </div>
+  <div class="tm-dots" aria-hidden="true"></div>
+
+  {team.map((m, i) => (
+    <div class="tm-pop" id={`tm-pop-${lang}-${i}`} role="dialog" aria-modal="false" aria-label={m.name} hidden>
+      <button class="tm-close" type="button" aria-label={t.close}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12" /></svg>
+      </button>
+      <div class="tm-pop-head">
+        <img src={m.img.src} alt={m.name} loading="lazy" />
+        <div>
+          <span class="tm-pop-badge">{m.badge}</span>
+          <strong>{m.name}</strong>
+          <small>{m.role}</small>
+        </div>
+      </div>
+      <p>{m.bio}</p>
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="btn tm-pop-cta">{t.cta}</a>
+    </div>
+  ))}
+</div>
+
+<style>
+  .tm { position: relative; width: 100%; max-width: 470px; justify-self: end; font-family: var(--font-body, 'Roboto', sans-serif); }
+
+  /* ---- pista ---- */
+  .tm-hint {
+    display: flex; align-items: center; gap: 10px; margin: 0 0 14px; width: fit-content;
+    padding: 8px 14px 8px 8px; border-radius: 999px; background: #fff; border: 1px solid rgba(9,30,61,.1);
+    box-shadow: 0 8px 20px -12px rgba(9,30,61,.35);
+    font: 600 13.5px/1.25 var(--font-display, 'Pontano Sans', sans-serif); color: #091E3D;
+  }
+  .tm-hand { position: relative; width: 34px; height: 34px; border-radius: 50%; background: var(--brand, #0A7A80); color: #fff; display: grid; place-items: center; flex: none; }
+  .tm-hand svg { animation: tap 2s ease-in-out infinite; }
+  .tm-ripple { position: absolute; inset: 0; border-radius: 50%; border: 2px solid var(--brand, #0A7A80); animation: ripple 2s ease-out infinite; }
+  @keyframes tap { 0%, 60%, 100% { transform: translate(0, 0) scale(1); } 30% { transform: translate(1px, 3px) scale(.9); } }
+  @keyframes ripple { 0%, 25% { transform: scale(1); opacity: 0; } 35% { opacity: .8; } 100% { transform: scale(1.9); opacity: 0; } }
+  .tm-hint-tap { display: none; }
+  @media (hover: none) { .tm-hint-click { display: none; } .tm-hint-tap { display: inline; } }
+
+  /* ---- slider ---- */
+  .tm-viewport { overflow: hidden; padding: 6px 4px 14px; margin: -6px -4px 0; }
+  .tm-track {
+    --per: 2;
+    display: flex; gap: 14px;
+    transition: transform .9s cubic-bezier(.22,1,.36,1);
+  }
+  .tm-card {
+    position: relative; flex: 0 0 calc((100% - 14px * (var(--per) - 1)) / var(--per)); flex-shrink: 0; min-width: 0;
+    aspect-ratio: 4 / 5; padding: 0; border: 0; border-radius: 18px; overflow: hidden; cursor: pointer;
+    background: #dfe6e8; text-align: left; color: #fff;
+    box-shadow: 0 14px 30px -18px rgba(9,30,61,.55);
+    transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tm-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .6s cubic-bezier(.22,1,.36,1); }
+  .tm-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,30,61,.88), rgba(9,30,61,0) 55%); }
+  .tm-card:hover, .tm-card:focus-visible { transform: translateY(-4px); box-shadow: 0 20px 36px -18px rgba(9,30,61,.7); }
+  .tm-card:hover img { transform: scale(1.05); }
+  .tm-card:active { transform: scale(.97); }
+  .tm-card:focus-visible { outline: 3px solid var(--brand, #0A7A80); outline-offset: 3px; }
+  .tm-card.is-open { outline: 3px solid var(--brand, #0A7A80); outline-offset: 3px; }
+
+  .tm-badge {
+    position: absolute; z-index: 1; top: 10px; left: 10px; max-width: calc(100% - 56px);
+    background: rgba(9,30,61,.65); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+    font: 700 10.5px/1 var(--font-display, 'Pontano Sans', sans-serif); letter-spacing: .06em; text-transform: uppercase;
+    padding: 6px 9px; border-radius: 999px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .tm-plus {
+    position: absolute; z-index: 1; top: 8px; right: 8px; width: 32px; height: 32px; border-radius: 50%;
+    display: grid; place-items: center; background: #fff; color: #091E3D;
+  }
+  .tm-plus::before { content: ''; position: absolute; inset: 0; border-radius: 50%; box-shadow: 0 0 0 0 rgba(255,255,255,.7); animation: plusPulse 2.4s ease-out infinite; }
+  .tm-card:nth-child(2) .tm-plus::before { animation-delay: .6s; }
+  .tm-card:nth-child(3) .tm-plus::before { animation-delay: 1.2s; }
+  .tm-card:nth-child(4) .tm-plus::before { animation-delay: 1.8s; }
+  @keyframes plusPulse { 0% { box-shadow: 0 0 0 0 rgba(255,255,255,.75); } 100% { box-shadow: 0 0 0 14px rgba(255,255,255,0); } }
+  .tm-card.is-open .tm-plus { transform: rotate(45deg); background: var(--brand, #0A7A80); color: #fff; }
+  .tm-plus { transition: transform .3s ease, background-color .3s ease; }
+
+  .tm-info { position: absolute; z-index: 1; left: 12px; right: 12px; bottom: 12px; display: grid; gap: 3px; }
+  .tm-info strong { font: 600 15.5px/1.2 var(--font-display, 'Pontano Sans', sans-serif); }
+  .tm-info small { font-size: 12px; line-height: 1.3; opacity: .82; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .tm-info em { font: 700 11.5px/1 var(--font-display, 'Pontano Sans', sans-serif); font-style: normal; color: #7fd3d8; margin-top: 4px; letter-spacing: .04em; }
+
+  .tm-dots { display: flex; justify-content: center; gap: 8px; }
+  .tm-dots :global(span) { width: 8px; height: 8px; border-radius: 999px; background: rgba(9,30,61,.18); cursor: pointer; transition: width .4s ease, background-color .4s ease; }
+  .tm-dots :global(span.on) { width: 28px; background: var(--brand, #0A7A80); }
+
+  /* ---- popover ---- */
+  .tm-pop {
+    font-family: var(--font-body, 'Roboto', sans-serif);
+    position: absolute; z-index: 20; left: 50%; top: 52px; width: min(340px, calc(100% - 16px));
+    transform: translateX(-50%); transform-origin: var(--ox, 50%) 0;
+    background: #fff; color: #091E3D; border-radius: 20px; padding: 18px;
+    box-shadow: 0 30px 60px -20px rgba(9,30,61,.45), 0 0 0 1px rgba(9,30,61,.06);
+    animation: popIn .35s cubic-bezier(.22,1,.36,1);
+  }
+  .tm-pop[hidden] { display: none; }
+  @keyframes popIn { from { opacity: 0; transform: translateX(-50%) translateY(10px) scale(.94); } }
+  .tm-close {
+    position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; border-radius: 50%; border: 0; cursor: pointer;
+    background: rgba(9,30,61,.06); color: #091E3D; display: grid; place-items: center;
+  }
+  .tm-close:hover { background: rgba(9,30,61,.12); }
+  .tm-pop-head { display: flex; gap: 12px; align-items: center; padding-right: 30px; }
+  .tm-pop-head img { width: 64px; height: 64px; border-radius: 16px; object-fit: cover; object-position: top; flex: none; }
+  .tm-pop-head div { display: grid; gap: 3px; }
+  .tm-pop-badge { font: 700 10.5px/1 var(--font-display, 'Pontano Sans', sans-serif); letter-spacing: .1em; text-transform: uppercase; color: var(--brand, #0A7A80); }
+  .tm-pop-head strong { font: 600 18px/1.2 var(--font-display, 'Pontano Sans', sans-serif); }
+  .tm-pop-head small { font-size: 12.5px; color: rgba(9,30,61,.6); line-height: 1.3; }
+  .tm-pop p { margin: 14px 0 16px; font-size: 14.5px; line-height: 1.6; color: rgba(9,30,61,.75); text-align: left; max-width: none; }
+  .tm-pop-cta { width: 100%; justify-content: center; padding: 13px 18px; box-sizing: border-box; }
+
+  @media (max-width: 900px) {
+    .tm { justify-self: center; max-width: 520px; }
+    .tm-hint { margin-left: auto; margin-right: auto; }
+  }
+  @media (max-width: 600px) {
+    .tm-track { --per: 1.6; }
+    .tm-info strong { font-size: 14px; }
+    /* hoja inferior compacta: no cubre toda la pantalla */
+    .tm-pop {
+      position: fixed; left: 12px; right: 12px; top: auto; bottom: 12px; width: auto;
+      transform: none; max-height: 60vh; overflow: auto; border-radius: 22px; z-index: 1100;
+      animation: sheetUp .35s cubic-bezier(.22,1,.36,1);
+    }
+    @keyframes sheetUp { from { opacity: 0; transform: translateY(30px); } }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tm-hand svg, .tm-ripple, .tm-plus::before { animation: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tm]').forEach((root) => {
+    const track = root.querySelector<HTMLElement>('.tm-track')!;
+    const cards = Array.from(root.querySelectorAll<HTMLButtonElement>('.tm-card'));
+    const pops = Array.from(root.querySelectorAll<HTMLElement>('.tm-pop'));
+    const dotsWrap = root.querySelector<HTMLElement>('.tm-dots');
+    const vp = root.querySelector<HTMLElement>('.tm-viewport')!;
+    // el foco/scrollIntoView puede desplazar el contenedor oculto: lo regresamos a 0
+    vp.addEventListener('scroll', () => { if (vp.scrollLeft) vp.scrollLeft = 0; });
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0, timer: number | undefined, paused = false, open = -1;
+
+    const per = () => parseFloat(getComputedStyle(track).getPropertyValue('--per')) || 2;
+    const positions = () => Math.max(1, Math.ceil(cards.length - per() + 1));
+
+    const renderDots = () => {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = '';
+      for (let n = 0; n < positions(); n++) {
+        const d = document.createElement('span');
+        d.classList.toggle('on', n === i);
+        d.addEventListener('click', () => { go(n); restart(); });
+        dotsWrap.appendChild(d);
+      }
+    };
+    const go = (n: number) => {
+      i = (n + positions()) % positions();
+      track.style.transform = `translateX(${-(cards[i]?.offsetLeft || 0)}px)`;
+      dotsWrap?.querySelectorAll('span').forEach((d, k) => d.classList.toggle('on', k === i));
+    };
+    const restart = () => {
+      window.clearInterval(timer);
+      if (!reduce) timer = window.setInterval(() => { if (!paused && open < 0) go(i + 1); }, 4200);
+    };
+
+    const close = () => {
+      if (open < 0) return;
+      pops[open].hidden = true;
+      cards[open].classList.remove('is-open');
+      cards[open].setAttribute('aria-expanded', 'false');
+      open = -1;
+    };
+    const show = (n: number) => {
+      if (open === n) { close(); return; }
+      close();
+      open = n;
+      // si la tarjeta no está visible, desliza hasta ella
+      const maxStart = positions() - 1;
+      if (n < i || n > i + Math.floor(per()) - 1) go(Math.min(n, maxStart));
+      cards[n].classList.add('is-open');
+      cards[n].setAttribute('aria-expanded', 'true');
+      // en móvil la hoja inferior va al <body> para quedar por encima de todo
+      if (window.matchMedia('(max-width: 600px)').matches) { if (pops[n].parentElement !== document.body) document.body.appendChild(pops[n]); }
+      else if (pops[n].parentElement !== root) root.appendChild(pops[n]);
+      pops[n].hidden = false;
+      pops[n].querySelector<HTMLElement>('.tm-close')?.focus({ preventScroll: true });
+    };
+
+    cards.forEach((c, n) => c.addEventListener('click', (e) => { e.stopPropagation(); show(n); }));
+    pops.forEach((p) => {
+      p.addEventListener('click', (e) => e.stopPropagation());
+      p.querySelector('.tm-close')?.addEventListener('click', () => { const n = open; close(); cards[n]?.focus(); });
+    });
+    document.addEventListener('click', close);
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && open >= 0) { const n = open; close(); cards[n]?.focus(); } });
+
+    root.addEventListener('mouseenter', () => (paused = true));
+    root.addEventListener('mouseleave', () => (paused = false));
+    let x0: number | null = null;
+    track.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; paused = true; }, { passive: true });
+    track.addEventListener('touchend', (e) => {
+      if (x0 !== null) { const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { close(); go(i + (dx < 0 ? 1 : -1)); } }
+      x0 = null; paused = false; restart();
+    });
+    window.addEventListener('resize', () => { if (i >= positions()) i = 0; renderDots(); go(i); });
+
+    renderDots(); go(0); restart();
+  });
+</script>

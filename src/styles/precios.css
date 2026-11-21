@@ -22,7 +22,7 @@
 
 .subtitle{
     font-family: "Roboto", sans-serif;
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
     font-size: 17px;
     text-align: center;
     margin-top: 0.8rem;
@@ -50,10 +50,11 @@
     left: 1rem;
     top: 50%;
     transform: translateY(-50%);
-    color: rgba(9,30,61,0.4);
+    color: rgba(9,30,61,0.72);
 }
 
 .search-wrap input{
+    box-sizing: border-box;
     width: 100%;
     padding: 0.9rem 1rem 0.9rem 2.8rem;
     border: 2px solid rgba(9,30,61,0.1);
@@ -66,7 +67,7 @@
 }
 
 .search-wrap input:focus{
-    border-color: #16C6CE;
+    border-color: var(--brand, #0A7A80);
 }
 
 .category-filters{
@@ -91,21 +92,21 @@
 }
 
 .filter-pill.active{
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     border-color: transparent;
 }
 
 .filter-pill:hover:not(.active){
-    border-color: #16C6CE;
-    color: #16C6CE;
+    border-color: var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
 }
 
 .results-count{
     text-align: center;
     font-family: "Roboto", sans-serif;
     font-size: 14px;
-    color: rgba(9,30,61,0.45);
+    color: rgba(9,30,61,0.72);
     margin-bottom: 1.5rem;
 }
 
@@ -138,12 +139,12 @@
 .pricing-card:hover{
     transform: translateY(-6px);
     box-shadow: 0 18px 45px rgba(9,30,61,0.16);
-    border-color: rgba(22,198,206,0.4);
+    border-color: rgba(10,122,128,0.4);
 }
 
 .category-tag{
     display: inline-block;
-    background: rgba(22,198,206,0.1);
+    background: rgba(10,122,128,0.1);
     color: #091E3D;
     font-family: "Roboto", sans-serif;
     font-size: 11px;
@@ -193,8 +194,8 @@
     font-family: "Roboto", sans-serif;
 }
 
-.biodental .price-label{ color: #16C6CE; }
-.us .price-label{ color: #ED1B97; }
+.biodental .price-label{ color: var(--brand, #0A7A80); }
+.us .price-label{ color: var(--brand, #0A7A80); }
 
 .price-value{
     font-size: 1.3rem;
@@ -204,7 +205,7 @@
 
 .biodental .price-value{ color: #091E3D; }
 .us .price-value{
-    color: rgba(9,30,61,0.4);
+    color: rgba(9,30,61,0.72);
     text-decoration: line-through;
     text-decoration-thickness: 1.5px;
 }
@@ -230,7 +231,7 @@
     align-items: center;
     justify-content: center;
     padding: 0.7rem;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     border-radius: 10px;
     color: white;
     font-weight: 700;
@@ -240,13 +241,13 @@
 
 .savings-badge.neutral{
     background: rgba(9,30,61,0.06);
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
 }
 
 .no-results{
     text-align: center;
     font-family: "Roboto", sans-serif;
-    color: rgba(9,30,61,0.5);
+    color: rgba(9,30,61,0.72);
     padding: 3rem 0;
     font-size: 16px;
 }
@@ -254,7 +255,7 @@
 .disclaimer{
     font-family: "Roboto", sans-serif;
     font-size: 12px;
-    color: rgba(9,30,61,0.4);
+    color: rgba(9,30,61,0.72);
     text-align: center;
     margin-top: 2rem;
 }
@@ -273,18 +274,18 @@
     font-size: 1.05rem;
     font-weight: 700;
     color: white;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     border: none;
     border-radius: 999px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 15px 35px rgba(22,198,206,0.3);
+    box-shadow: 0 15px 35px rgba(10,122,128,0.3);
     font-family: "Roboto", sans-serif;
 }
 
 .cta-button:hover{
     transform: translateY(-3px);
-    box-shadow: 0 20px 45px rgba(22,198,206,0.4);
+    box-shadow: 0 20px 45px rgba(10,122,128,0.4);
 }
 
 .cta-button svg{
@@ -304,7 +305,7 @@
 
 @media (max-width: 801px){
     .pricing-container{
-        padding: 3rem 1.2rem;
+        padding: 7.5rem 1.2rem 3rem;
     }
 
     .main-title{
@@ -313,12 +314,12 @@
     }
 
     .controls-bar{
-        top: 60px;
+        top: 84px;
     }
 
     .pricing-grid{
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
     }
 
     .category-filters{
@@ -342,7 +343,7 @@
     font-family: "Roboto", sans-serif;
     font-size: 13px;
     font-weight: 600;
-    color: #16C6CE;
+    color: var(--brand, #0A7A80);
     opacity: 0;
     transform: translateY(-4px);
     transition: opacity 0.3s ease, transform 0.3s ease;

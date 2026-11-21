@@ -1,0 +1,159 @@
+---
+/**
+ * Mapa animado: se dibuja la costa de California/Baja California, cae un pin en Tijuana,
+ * la cámara se acerca levemente al pin y la foto de la clínica aparece con un fundido suave.
+ * Se reproduce una vez al entrar en pantalla, con transición suave (fundido) a la foto.
+ */
+import Clinic from '../../assets/opt/clinica.webp';
+interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+
+// Proyección equirectangular simple → viewBox 600x400
+const W = 600, H = 400, LON0 = -121, LON1 = -110, LAT0 = 34.5, LAT1 = 27;
+const P = (lon: number, lat: number): [number, number] => [
+  +(((lon - LON0) / (LON1 - LON0)) * W).toFixed(1),
+  +(((LAT0 - lat) / (LAT0 - LAT1)) * H).toFixed(1),
+];
+const pts = (arr: number[][]) => arr.map(([lo, la]) => P(lo, la).join(' ')).join(' L');
+
+// Costa del Pacífico (de norte a sur) y Golfo de California
+const land = 'M' + pts([
+  [-121.2, 34.6], [-120.6, 34.55], [-120.47, 34.45], [-119.7, 34.4], [-119.2, 34.15], [-118.8, 34.02], [-118.5, 34.0],
+  [-118.42, 33.78], [-118.2, 33.74], [-117.9, 33.6], [-117.7, 33.46], [-117.38, 33.2], [-117.27, 32.85], [-117.24, 32.68],
+  [-117.12, 32.53], [-117.06, 32.35], [-116.88, 32.05], [-116.62, 31.85], [-116.68, 31.55], [-116.3, 31.0],
+  [-115.95, 30.5], [-115.8, 30.1], [-115.2, 29.6], [-114.6, 29.1], [-114.2, 28.6], [-114.1, 28.0], [-115.1, 27.85],
+  [-114.4, 27.3], [-114.1, 26.9],
+  [-112.4, 26.9], [-112.27, 27.34], [-112.8, 27.9], [-113.55, 28.95], [-114.3, 29.8], [-114.7, 30.4], [-114.84, 31.0], [-114.8, 31.75],
+  [-114.55, 31.65], [-113.5, 31.3], [-112.9, 30.6], [-112.2, 29.4], [-111.6, 28.3], [-111.0, 27.9], [-109.9, 27.6],
+  [-109.9, 34.6],
+]) + ' Z';
+const border = 'M' + pts([[-117.12, 32.53], [-114.72, 32.72], [-111.07, 31.33], [-109.9, 31.33]]);
+const [tx, ty] = P(-117.02, 32.52);
+const cities = [
+  { n: 'Los Angeles', p: P(-118.25, 34.05), dx: 10, dy: -8, end: false },
+  { n: 'San Diego', p: P(-117.16, 32.72), dx: -8, dy: -6, end: true },
+  { n: 'Ensenada', p: P(-116.6, 31.86), dx: 10, dy: 4, end: false },
+  { n: 'Mexicali', p: P(-115.47, 32.62), dx: 10, dy: 4, end: false },
+];
+const ox = ((tx / W) * 100).toFixed(2) + '%';
+const oy = ((ty / H) * 100).toFixed(2) + '%';
+const t = lang === 'es'
+  ? { ocean: 'Océano Pacífico', usa: 'EE. UU.', mx: 'MÉXICO', cap: 'Nuestra clínica · Tijuana, B.C.', alt: 'Fachada de la clínica en Tijuana' }
+  : { ocean: 'Pacific Ocean', usa: 'USA', mx: 'MEXICO', cap: 'Our clinic · Tijuana, B.C.', alt: 'Our clinic building in Tijuana' };
+---
+
+<div class="mapr" data-mapr style={`--ox:${ox}; --oy:${oy}`}>
+  <div class="mapr-cam">
+    <svg viewBox={`0 0 ${W} ${H}`} class="mapr-svg" aria-hidden="true">
+      <defs>
+        <pattern id="mapGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+          <path d="M30 0H0V30" fill="none" stroke="rgba(9,30,61,.07)" stroke-width="1" />
+        </pattern>
+      </defs>
+      <rect width={W} height={H} fill="#D7E9EB" />
+      <rect width={W} height={H} fill="url(#mapGrid)" />
+      <path class="land" d={land} pathLength="1" />
+      <path class="border" d={border} />
+      <text class="lbl ocean" x="60" y="300">{t.ocean}</text>
+      <text class="lbl country" x="440" y="70">{t.usa}</text>
+      <text class="lbl country" x="420" y="330">{t.mx}</text>
+      {cities.map((c) => (
+        <g class="city">
+          <circle cx={c.p[0]} cy={c.p[1]} r="3" />
+          <text x={c.p[0] + c.dx} y={c.p[1] + c.dy} text-anchor={c.end ? 'end' : 'start'}>{c.n}</text>
+        </g>
+      ))}
+      <g class="pin" transform={`translate(${tx} ${ty})`}>
+        <circle class="pulse" r="10" />
+        <circle class="pulse p2" r="10" />
+        <g class="drop">
+          <path d="M0 0 C-4 -8 -14 -14 -14 -26 A14 14 0 0 1 14 -26 C14 -14 4 -8 0 0 Z" />
+          <circle cy="-26" r="5" fill="#fff" />
+        </g>
+        <text class="pin-lbl" x="18" y="-22">Tijuana</text>
+      </g>
+    </svg>
+  </div>
+  <img class="mapr-photo" src={Clinic.src} alt={t.alt} loading="lazy" />
+  <span class="mapr-cap"><i class="bi bi-geo-alt-fill"></i>{t.cap}</span>
+</div>
+
+<style>
+  .mapr {
+    position: relative; aspect-ratio: 3 / 2; border-radius: 26px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(9,30,61,0.18); margin-bottom: 1.6rem; background: #D7E9EB;
+    isolation: isolate;
+  }
+  .mapr-cam { position: absolute; inset: 0; transform-origin: var(--ox) var(--oy); transition: transform 3s cubic-bezier(.45,0,.2,1); }
+  .mapr-svg { width: 100%; height: 100%; display: block; }
+
+  .land { fill: #FBF9F5; paint-order: stroke; stroke: #091E3D; stroke-width: 1.4; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; fill-opacity: 0; }
+  .border { fill: none; stroke: #091E3D; stroke-opacity: .45; stroke-width: 1.2; stroke-dasharray: 5 5; opacity: 0; }
+  .lbl { font: 600 11px 'Pontano Sans', sans-serif; letter-spacing: .14em; fill: rgba(9,30,61,.4); opacity: 0; }
+  .lbl.ocean { font-style: italic; letter-spacing: .08em; }
+  .city { opacity: 0; }
+  .city circle { fill: #091E3D; }
+  .city text { font: 500 11px 'Roboto', sans-serif; fill: rgba(9,30,61,.7); }
+  .pin { opacity: 0; }
+  .drop path { fill: #0A7A80; }
+  .pin-lbl { font: 700 13px 'Pontano Sans', sans-serif; fill: #091E3D; }
+  .pulse { fill: none; stroke: #0A7A80; stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+
+  /* Paso 1: dibuja el mapa */
+  .mapr.s1 .land { animation: mDraw 2s cubic-bezier(.22,1,.36,1) forwards, mFill .8s ease 1.2s forwards; }
+  .mapr.s1 .border, .mapr.s1 .lbl, .mapr.s1 .city { animation: mFade .8s ease 1.2s forwards; }
+  /* Paso 2: cae el pin */
+  .mapr.s2 .pin { opacity: 1; }
+  .mapr.s2 .drop { animation: mDrop .7s cubic-bezier(.3,1.5,.5,1) both; }
+  .mapr.s2 .pulse { animation: mPulse 1.8s ease-out .5s infinite; }
+  .mapr.s2 .pulse.p2 { animation-delay: 1.4s; }
+  /* Paso 3: zoom + foto */
+  .mapr.s3 .mapr-cam { transform: scale(1.7); }
+  .mapr-photo {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2;
+    opacity: 0; transform: scale(1.06); filter: blur(6px);
+    transform-origin: var(--ox) var(--oy);
+    transition: opacity 1.8s ease .9s, transform 2.6s cubic-bezier(.22,1,.36,1) .9s, filter 1.8s ease .9s;
+  }
+  .mapr.s3 .mapr-photo { opacity: 1; transform: none; filter: none; }
+  .mapr-cap {
+    position: absolute; z-index: 3; display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 999px; font: 600 13px/1 'Pontano Sans', sans-serif;
+    opacity: 0; transform: translateY(8px); transition: opacity .5s ease, transform .5s ease;
+  }
+  .mapr-cap { left: 16px; bottom: 16px; padding: 11px 15px; background: rgba(251,249,245,.92); color: #091E3D; backdrop-filter: blur(8px); }
+  .mapr-cap i { color: #0A7A80; }
+  .mapr.s4 .mapr-cap { opacity: 1; transform: none; }
+
+  @keyframes mDraw { to { stroke-dashoffset: 0; } }
+  @keyframes mFill { to { fill-opacity: 1; } }
+  @keyframes mFade { to { opacity: 1; } }
+  @keyframes mDrop { from { transform: translateY(-60px); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes mPulse { 0% { opacity: .7; transform: scale(.6); } 100% { opacity: 0; transform: scale(3); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mapr-photo { opacity: 1; transform: none; filter: none; transition: none; }
+    .mapr-cap { opacity: 1; transform: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-mapr]').forEach((el) => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let timers: number[] = [];
+    const play = () => {
+      timers.forEach(clearTimeout); timers = [];
+      el.classList.remove('s1', 's2', 's3', 's4');
+      void el.offsetWidth;
+      el.classList.add('s1');
+      timers.push(window.setTimeout(() => el.classList.add('s2'), 2100));
+      timers.push(window.setTimeout(() => el.classList.add('s3'), 3600));
+      timers.push(window.setTimeout(() => el.classList.add('s4'), 6000));
+    };
+    if (reduce) { el.classList.add('s1', 's2', 's3', 's4'); return; }
+    const io = new IntersectionObserver((en) => {
+      if (en[0].isIntersecting) { play(); io.disconnect(); }
+    }, { threshold: 0.4 });
+    io.observe(el);
+  });
+</script>

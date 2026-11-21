@@ -18,9 +18,9 @@
     display: block;
     width: fit-content;
     padding: 0.4rem 1.1rem;
-    background: rgba(237,27,151,0.1);
-    border: 1px solid #ED1B97;
-    color: #ED1B97;
+    background: rgba(10,122,128,0.1);
+    border: 1px solid var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
     border-radius: 999px;
     font-size: 13px;
     letter-spacing: 0.05em;
@@ -32,7 +32,7 @@
 
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.35) 0%, rgba(10,122,128,0.35) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -93,7 +93,7 @@
 
 .contact-card:hover{
     transform: translateX(6px);
-    border-color: rgba(22,198,206,0.35);
+    border-color: rgba(10,122,128,0.35);
     box-shadow: 0 10px 28px rgba(9,30,61,0.12);
 }
 
@@ -105,7 +105,7 @@
     width: 46px;
     height: 46px;
     border-radius: 14px;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
 }
 
@@ -116,7 +116,7 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.04em;
-    color: rgba(9,30,61,0.45);
+    color: rgba(9,30,61,0.72);
 }
 
 .contact-value{
@@ -176,8 +176,8 @@
 .hub-form textarea:focus{
     outline: none;
     background: white;
-    border-color: #16C6CE;
-    box-shadow: 0 0 0 3px rgba(22,198,206,0.12);
+    border-color: var(--brand, #0A7A80);
+    box-shadow: 0 0 0 3px rgba(10,122,128,0.12);
 }
 
 .hub-form textarea{
@@ -192,7 +192,7 @@
     gap: 0.6rem;
     width: 100%;
     padding: 1.1rem;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     border: none;
     border-radius: 12px;
@@ -205,7 +205,7 @@
 
 .hub-form button[type="submit"]:hover{
     transform: translateY(-2px);
-    box-shadow: 0 15px 35px rgba(22,198,206,0.35);
+    box-shadow: 0 15px 35px rgba(10,122,128,0.35);
 }
 
 .hub-form button[type="submit"]:hover svg{
@@ -226,8 +226,8 @@
 .success-message{
     text-align: center;
     padding: 2.5rem 1.5rem;
-    background: rgba(22,198,206,0.08);
-    border: 2px solid #16C6CE;
+    background: rgba(10,122,128,0.08);
+    border: 2px solid var(--brand, #0A7A80);
     border-radius: 18px;
     animation: slideDown 0.5s ease;
 }

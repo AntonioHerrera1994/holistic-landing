@@ -5,7 +5,7 @@ import ImgDFaqs from '../../assets/img3.webp'
 const faqs = [
     {
         q: "¿El tratamiento holístico del cáncer es una alternativa a las terapias convencionales?",
-        a: "No, nuestros tratamientos holísticos están diseñados para complementar y potenciar las terapias convencionales contra el cáncer, no para reemplazarlas. Nos enfocamos en integrar enfoques que apoyen su bienestar general y fortalezcan su cuerpo durante el tratamiento."
+        a: "No, nuestros tratamientos holísticos están diseñados para complementar y potenciar las terapias oncológicas convencionales, no para reemplazarlas. Nos enfocamos en integrar enfoques que apoyen su bienestar general y fortalezcan su cuerpo durante el tratamiento."
     },
     {
         q: "¿Qué debo saber sobre viajar a su clínica en Tijuana?",
@@ -61,7 +61,7 @@ const faqSchema = {
 
             <div class="accordion">
                 <span class="eyebrow">Preguntas Frecuentes</span>
-                <h1>Preguntas <span class="highlight-text">Frecuentes</span></h1>
+                <h2>Preguntas <span class="highlight-text">Frecuentes</span></h2>
 
                 {faqs.map((item, i) => (
                     <div class={`accordion-item ${i === 0 ? "active" : ""}`}>

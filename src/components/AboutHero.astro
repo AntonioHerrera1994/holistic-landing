@@ -1,17 +1,19 @@
 ---
+import TeamSlider from './v2/TeamSlider.astro'
+import HeroHolistic from './v2/HeroHolistic.astro'
 import '../styles/about/abouthero.css'
 import DrHenriquez from '../assets/doctor.webp'
-import Nutritionist from '../assets/equipo2.png'
-import Gloria from '../assets/gloria.png'
-import DraDentista from '../assets/equipo1.png'
+import Nutritionist from '../assets/opt/equipo2.webp'
+import Gloria from '../assets/opt/gloria.webp'
+import DraDentista from '../assets/opt/equipo1.webp'
 
 const team = [
     {
         img: DrHenriquez,
-        role: "Medical Director & Holistic Cancer Specialist",
+        role: "Medical Director · Integrative Medicine", // REVISAR: "Cancer/Oncology Specialist" requiere cédula de especialidad; usar solo si la tiene
         name: "Dr. Jose A. Henriquez",
         badge: "Medical Director",
-        bio: "Dr. Jose A. Henriquez is internationally recognized for his many years of work in metabolic therapies for cancer and other diseases, and is a proven leader in the field of Whole Body Hyperthermia."
+        bio: "Dr. Jose A. Henriquez has many years of experience in metabolic therapies and Whole Body Hyperthermia, applied as complementary approaches within personalized, medically supervised plans."
     },
     {
         img: Nutritionist,
@@ -23,9 +25,9 @@ const team = [
     {
         img: Gloria,
         role: "Treatment Advisor Clinic",
-        name: "LCC. Gloría Alejo",
+        name: "LCC. Gloria Alejo",
         badge: "Patient Care",
-        bio: "With years of dedicated experience in patient care coordination, Gloría ensures every patient receives compassionate guidance and access to the right medical resources throughout their treatment journey."
+        bio: "With years of dedicated experience in patient care coordination, Gloria ensures every patient receives compassionate guidance and access to the right medical resources throughout their treatment journey."
     },
     {
         img: DraDentista,
@@ -38,38 +40,25 @@ const team = [
 ---
 
 <section class="ahero">
-    <span class="eyebrow">Our Team</span>
-    <h1>Meet the Pillars of Your <span class="highlight-text">Healing</span> Journey</h1>
-    <p>We are more than just a clinic; we are a dedicated family committed to your holistic well-being. Our multidisciplinary professionals bring together a wealth of experience in medical treatment, psychological support, and seamless administrative care, all united by a singular goal: to guide you with integrity and empathy through your cancer journey.</p>
+    <HeroHolistic />
+    <div class="ahero-grid">
+        <div class="ahero-copy">
+        <span class="eyebrow">Our Team</span>
+        <h1>Meet the Pillars of Your <span class="highlight-text">Healing</span> Journey</h1>
+        <p>We are more than just a clinic; we are a dedicated family committed to your holistic well-being. Our multidisciplinary professionals bring together a wealth of experience in medical treatment, psychological support, and seamless administrative care, all united by a singular goal: to guide you with integrity and empathy through your treatment journey.</p>
 
-    <div class="trust-chips">
-        <span>Multidisciplinary Team</span>
-        <span>Personalized Care Plans</span>
-        <span>Bilingual Support</span>
-    </div>
+        <div class="trust-chips">
+            <span>Multidisciplinary Team</span>
+            <span>Personalized Care Plans</span>
+            <span>Bilingual Support</span>
+        </div>
 
-    <div class="ahero-buttons">
-        <a href="/contact-us" class="primary-cta">Schedule a Consultation</a>
-        <a href="/treatments" class="ghost-cta">View Our Treatments</a>
-    </div>
-</section>
-
-<section class="ateam">
-    <div class="atgrid">
-        {team.map((member) => (
-            <div class="presentation-card" style={`background-image: url('${member.img.src}')`}>
-                <span class="specialty-badge">{member.badge}</span>
-                <button class="tap-hint" aria-label="Show bio">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 5v14M5 12h14"></path>
-                    </svg>
-                </button>
-                <div class="content">
-                    <h2 class="name">{member.role}<br /><span>{member.name}</span></h2>
-                    <p class="description">{member.bio}</p>
-                </div>
-            </div>
-        ))}
+        <div class="ahero-buttons">
+            <a href="/contact-us" class="primary-cta">Schedule a Consultation</a>
+            <a href="/treatments" class="ghost-cta">View Our Treatments</a>
+        </div>
+        </div>
+        <TeamSlider team={team} lang="en" />
     </div>
 </section>
 

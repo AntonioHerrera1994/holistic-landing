@@ -8,7 +8,7 @@
 
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.35) 0%, rgba(10,122,128,0.35) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -16,7 +16,7 @@
 
 /************ Texto **********/
 .testim p{
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
     line-height: 30px;
     font-size: 17px;
     font-family: "Roboto", sans-serif;
@@ -65,7 +65,7 @@
 }
 
 .arrow-btn:hover{
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     border-color: transparent;
     transform: translateY(-2px);
@@ -108,7 +108,7 @@
     left: 1.8rem;
     font-family: "Pontano Sans", serif;
     font-size: 64px;
-    color: #16C6CE;
+    color: var(--brand, #0A7A80);
     opacity: 0.35;
     line-height: 1;
 }
@@ -148,7 +148,7 @@
 .dot.active{
     width: 26px;
     border-radius: 999px;
-    background: linear-gradient(90deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
 }
 
 @media screen and (max-width:800px){

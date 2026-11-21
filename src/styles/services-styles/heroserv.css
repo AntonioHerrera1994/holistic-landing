@@ -19,7 +19,7 @@
 /************ Texto **********/
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.35) 0%, rgba(10,122,128,0.35) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -35,7 +35,7 @@
 
 .servhero p{
     font-family: "Roboto", sans-serif;
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
     line-height: 30px;
     font-size: 17px;
     text-align: center;
@@ -56,7 +56,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -70,7 +70,7 @@
 
 .primary-cta:hover{
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(22,198,206,0.3);
+    box-shadow: 0 10px 24px rgba(10,122,128,0.3);
 }
 
 .ghost-cta{
@@ -98,8 +98,8 @@
 }
 
 .ghost-cta:hover{
-    border-color: #16C6CE;
-    color: #16C6CE;
+    border-color: var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
 }
 
 .ghost-cta:hover svg{

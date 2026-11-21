@@ -19,9 +19,9 @@
 .eyebrow{
     display: inline-block;
     padding: 0.4rem 1.1rem;
-    background: rgba(237,27,151,0.1);
-    border: 1px solid #ED1B97;
-    color: #ED1B97;
+    background: rgba(10,122,128,0.1);
+    border: 1px solid var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
     border-radius: 999px;
     font-size: 13px;
     letter-spacing: 0.05em;
@@ -33,7 +33,7 @@
 
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.35) 0%, rgba(10,122,128,0.35) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -52,7 +52,7 @@
     margin-right: 5rem;
     font-family: "Roboto", sans-serif;
     text-align: justify;
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
     line-height: 30px;
     font-size: 17px;
     max-width: 800px;
@@ -70,7 +70,7 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    background: rgba(22,198,206,0.08);
+    background: rgba(10,122,128,0.08);
     color: #091E3D;
     font-family: "Roboto", sans-serif;
     font-size: 14px;
@@ -84,7 +84,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #16C6CE;
+    background: var(--brand, #0A7A80);
 }
 
 /********** Botones **********/
@@ -99,7 +99,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     font-family: "Roboto", sans-serif;
     font-weight: 700;
@@ -113,7 +113,7 @@
 
 .primary-cta:hover{
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(22,198,206,0.3);
+    box-shadow: 0 10px 24px rgba(10,122,128,0.3);
 }
 
 .ghost-cta{
@@ -133,8 +133,8 @@
 }
 
 .ghost-cta:hover{
-    border-color: #16C6CE;
-    color: #16C6CE;
+    border-color: var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
 }
 
 /********** Grid equipo **********/
@@ -225,7 +225,7 @@
     font-weight: 400;
     display: block;
     margin-top: 4px;
-    color: #16C6CE;
+    color: var(--brand, #0A7A80);
 }
 
 .description {
@@ -313,4 +313,30 @@
     .tap-hint{
         display: flex;
     }
+}
+/* =========================================================
+   Rediseño: hero en 2 columnas + slider de equipo (auto, dots)
+   ========================================================= */
+.ahero{
+    position: relative;
+    padding: 9rem 5rem 5rem 5rem;
+}
+.ahero-grid{
+    position: relative;
+    z-index: 1;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 3.5rem;
+    align-items: center;
+}
+.ahero-copy p{ margin-right: 0; }
+.ahero-copy h1{ font-size: 42px; line-height: 54px; }
+
+@media (max-width: 1200px){
+    .ahero{ padding: 8rem 2rem 4rem; }
+}
+@media (max-width: 900px){
+    .ahero-grid{ grid-template-columns: 1fr; }
 }

@@ -40,17 +40,17 @@
 }
 
 .social-row a:hover{
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     transform: translateY(-3px);
 }
 
 /************ Columnas **********/
-.footer-col h3{
+.footer-col h2, .footer-col h3{
     font-family: "Pontano Sans", sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     font-size: 15px;
-    color: #16C6CE;
+    color: var(--brand, #0A7A80);
     font-weight: 500;
     margin-bottom: 1.5rem;
 }
@@ -79,11 +79,11 @@
 }
 
 .footer-col li a:hover{
-    color: #16C6CE;
+    color: var(--brand, #0A7A80);
 }
 
 .footer-col .bi{
-    color: #ED1B97;
+    color: var(--brand, #0A7A80);
     font-size: 15px;
     margin-top: 3px;
     flex-shrink: 0;
@@ -127,3 +127,6 @@
         padding: 1.4rem 2rem;
     }
 }
+/* contraste AA sobre fondo navy */
+.footer-col h2, .footer-col h3{ color: #7fd3d8; }
+.footer-bottom p{ color: rgba(255,255,255,0.72); }

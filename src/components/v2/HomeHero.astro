@@ -1,0 +1,144 @@
+---
+import Clinic from '../../assets/opt/clinica.webp';
+import ClinicSm from '../../assets/opt/clinica-700.webp';
+import { home, type Lang } from '../../i18n/content';
+import { WHATSAPP } from '../../i18n/routes';
+
+interface Props { lang?: Lang }
+const { lang = 'en' } = Astro.props;
+const t = home[lang];
+const treatments = lang === 'es' ? '/tratamientos' : '/treatments';
+// h1: [línea1, palabra, palabra-enfatizada, palabra]
+const words = [...t.h1[0].split(' '), t.h1[1], `*${t.h1[2]}`, t.h1[3]];
+---
+
+<section class="hhero">
+  <div class="hhero-copy">
+    <span class="eyebrow-v2" data-in>{t.eyebrow}</span>
+    <h1 class="h-display hhero-title" aria-label={t.h1.join(' ')}>
+      {words.map((w, i) => (
+        <span class="w" aria-hidden="true" style={`--i:${i}`}>
+          {w.startsWith('*') ? <em>{w.slice(1)}</em> : w}
+        </span>
+      ))}
+    </h1>
+    <p class="hhero-lead" data-in style="--d:500ms">{t.lead}</p>
+    <div class="hhero-actions" data-in style="--d:620ms">
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="btn">
+        {t.cta}
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+      </a>
+      <a href={treatments} class="link-arrow">{t.cta2}</a>
+    </div>
+    <p class="hhero-note" data-in style="--d:720ms">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+      {t.note}
+    </p>
+  </div>
+
+  <div class="hhero-visual">
+    <div class="hhero-arch">
+      <img src={Clinic.src} srcset={`${ClinicSm.src} 700w, ${Clinic.src} 1400w`} sizes="(max-width: 960px) 92vw, 560px" alt={lang === 'es' ? 'Instalaciones de la clínica en Tijuana' : 'Our clinic in Tijuana'} width="760" height="900" fetchpriority="high" />
+    </div>
+
+    <svg class="hhero-ring" viewBox="0 0 200 200" aria-hidden="true">
+      <defs><path id="ringPath" d="M100 100 m-78 0 a78 78 0 1 1 156 0 a78 78 0 1 1 -156 0" /></defs>
+      <circle cx="100" cy="100" r="100" />
+      <text><textPath href="#ringPath">{t.ring}</textPath></text>
+      <g class="ring-mark" transform="translate(100 100)">
+        <path d="M0 -18 C-12 -4 -10 8 0 18 C10 8 12 -4 0 -18Z" />
+      </g>
+    </svg>
+
+    <a href={t.heroCard.href} class="hhero-card">
+      <span class="k">{t.heroCard.k}</span>
+      <span class="t">{t.heroCard.t}</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9" /></svg>
+    </a>
+  </div>
+</section>
+
+<style>
+  .hhero {
+    min-height: 100svh;
+    box-sizing: border-box;
+    padding: 150px var(--pad-x) 70px;
+    background: var(--cream);
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+    gap: clamp(30px, 5vw, 80px);
+    align-items: center;
+    font-family: var(--font-body);
+    position: relative;
+    overflow: hidden;
+  }
+  .hhero-copy { display: grid; gap: 26px; max-width: 720px; }
+  /* entrada sin opacity:0 para no retrasar LCP */
+  [data-in] { animation: inUp .9s var(--ease) both; animation-delay: var(--d, 0ms); }
+  .hhero-visual { animation: inUp 1.1s var(--ease) both; }
+  @keyframes inUp { from { transform: translateY(22px); } }
+  .hhero-title { font-size: clamp(48px, 7.4vw, 112px); }
+  .hhero-title .w {
+    display: inline-block;
+    margin-right: 0.22em;
+    opacity: 0;
+    transform: translateY(0.5em) rotate(2deg);
+    filter: blur(6px);
+    animation: wIn 1s var(--ease) forwards;
+    animation-delay: calc(120ms + var(--i) * 85ms);
+  }
+  @keyframes wIn { to { opacity: 1; transform: none; filter: none; } }
+  .hhero-lead { font-size: clamp(16px, 1.3vw, 19px); line-height: 1.65; color: var(--ink-2); margin: 0; max-width: 54ch; }
+  .hhero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 26px; color: var(--ink); }
+  .hhero-note { display: inline-flex; align-items: center; gap: 8px; margin: 0; font-size: 13.5px; color: var(--ink-2); }
+  .hhero-note svg { color: var(--brand); }
+
+  .hhero-visual { position: relative; justify-self: end; width: min(100%, 560px); }
+  .hhero-arch {
+    aspect-ratio: 0.82;
+    border-radius: 999px 999px var(--radius) var(--radius);
+    overflow: hidden;
+    background: var(--ink);
+  }
+  .hhero-arch img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.06); animation: slowZoom 18s ease-in-out infinite alternate; }
+  @keyframes slowZoom { to { transform: scale(1.14); } }
+
+  .hhero-ring {
+    position: absolute; left: -54px; top: 18%;
+    width: 150px; height: 150px;
+    animation: spin 26s linear infinite;
+  }
+  .hhero-ring circle { fill: var(--paper); }
+  .hhero-ring text { font: 700 12.2px var(--font-body); letter-spacing: 0.2em; fill: var(--ink); }
+  .hhero-ring .ring-mark path { fill: var(--brand); }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .hhero-card {
+    position: absolute; right: -10px; bottom: 34px;
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 16px 14px 14px;
+    background: rgba(251, 249, 245, 0.88);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,.7);
+    border-radius: 18px;
+    color: var(--ink);
+    text-decoration: none;
+    box-shadow: 0 20px 40px -18px rgba(9,30,61,.45);
+    transition: transform 0.4s var(--ease);
+    max-width: 300px;
+  }
+  .hhero-card:hover { transform: translateY(-4px); }
+  .hhero-card .k {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    background: var(--brand); color: #fff; padding: 6px 9px; border-radius: 999px;
+  }
+  .hhero-card .t { font-weight: 600; font-size: 14.5px; line-height: 1.3; }
+
+  @media (max-width: 960px) {
+    .hhero { grid-template-columns: 1fr; padding-top: 130px; min-height: 0; }
+    .hhero-visual { justify-self: center; width: min(100%, 460px); }
+    .hhero-ring { left: -18px; width: 110px; height: 110px; }
+    .hhero-card { right: 8px; }
+  }
+</style>

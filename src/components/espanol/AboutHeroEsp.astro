@@ -1,17 +1,19 @@
 ---
+import TeamSlider from '../v2/TeamSlider.astro'
+import HeroHolistic from '../v2/HeroHolistic.astro'
 import '../../styles/about/abouthero.css'
 import DrHenriquez from '../../assets/doctor.webp'
-import Nutrioioga from '../../assets/equipo2.png'
-import Gloria from '../../assets/gloria.png'
-import DraDentista from '../../assets/equipo1.png'
+import Nutrioioga from '../../assets/opt/equipo2.webp'
+import Gloria from '../../assets/opt/gloria.webp'
+import DraDentista from '../../assets/opt/equipo1.webp'
 
 const team = [
     {
         img: DrHenriquez,
-        role: "Director Médico y Especialista en Oncología Holística",
+        role: "Director Médico · Medicina Integrativa", // REVISAR: "Especialista en Oncología" requiere cédula de especialidad; usar solo si la tiene
         name: "Dr. Jose A. Henriquez",
         badge: "Director Médico",
-        bio: "El Dr. José A. Henríquez cuenta con reconocimiento internacional por su larga trayectoria en el uso de terapias metabólicas complementarias para el cáncer y otras enfermedades, y es un referente en el campo de la Hipertermia Corporal Total."
+        bio: "El Dr. José A. Henríquez cuenta con una amplia trayectoria en terapias metabólicas e Hipertermia Corporal Total, aplicadas como enfoques complementarios dentro de planes personalizados y supervisados médicamente."
     },
     {
         img: Nutrioioga,
@@ -23,9 +25,9 @@ const team = [
     {
         img: Gloria,
         role: "Asesora de Tratamientos",
-        name: "LCC. Gloría Alejo",
+        name: "LCC. Gloria Alejo",
         badge: "Atención al Paciente",
-        bio: "Con años de trayectoria dedicada a la coordinación de atención al paciente, Gloría se asegura de que cada paciente reciba orientación compasiva y acceso a los recursos médicos adecuados a lo largo de su tratamiento."
+        bio: "Con años de trayectoria dedicada a la coordinación de atención al paciente, Gloria se asegura de que cada paciente reciba orientación compasiva y acceso a los recursos médicos adecuados a lo largo de su tratamiento."
     },
     {
         img: DraDentista,
@@ -38,38 +40,25 @@ const team = [
 ---
 
 <section class="ahero">
-    <span class="eyebrow">Nuestro Equipo</span>
-    <h1>Conozca a los Pilares de Su Proceso de <span class="highlight-text">Sanación</span></h1>
-    <p>Somos más que una clínica; somos una familia comprometida con su bienestar integral. Nuestro equipo multidisciplinario reúne una vasta experiencia en tratamiento médico, apoyo psicológico y una gestión administrativa impecable, todos unidos por un único objetivo: acompañarlo con integridad y empatía a lo largo de su proceso oncológico.</p>
+    <HeroHolistic />
+    <div class="ahero-grid">
+        <div class="ahero-copy">
+        <span class="eyebrow">Nuestro Equipo</span>
+        <h1>Conozca a los Pilares de Su Proceso de <span class="highlight-text">Sanación</span></h1>
+        <p>Somos más que una clínica; somos una familia comprometida con su bienestar integral. Nuestro equipo multidisciplinario reúne una vasta experiencia en tratamiento médico, apoyo psicológico y una gestión administrativa impecable, todos unidos por un único objetivo: acompañarlo con integridad y empatía a lo largo de su proceso oncológico.</p>
 
-    <div class="trust-chips">
-        <span>Equipo Multidisciplinario</span>
-        <span>Planes Personalizados</span>
-        <span>Atención Bilingüe</span>
-    </div>
+        <div class="trust-chips">
+            <span>Equipo Multidisciplinario</span>
+            <span>Planes Personalizados</span>
+            <span>Atención Bilingüe</span>
+        </div>
 
-    <div class="ahero-buttons">
-        <a href="/contacto" class="primary-cta">Agendar una Consulta</a>
-        <a href="/tratamientos" class="ghost-cta">Ver Nuestros Tratamientos</a>
-    </div>
-</section>
-
-<section class="ateam">
-    <div class="atgrid">
-        {team.map((member) => (
-            <div class="presentation-card" style={`background-image: url('${member.img.src}')`}>
-                <span class="specialty-badge">{member.badge}</span>
-                <button class="tap-hint" aria-label="Mostrar biografía">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 5v14M5 12h14"></path>
-                    </svg>
-                </button>
-                <div class="content">
-                    <h2 class="name">{member.role}<br /><span>{member.name}</span></h2>
-                    <p class="description">{member.bio}</p>
-                </div>
-            </div>
-        ))}
+        <div class="ahero-buttons">
+            <a href="/contacto" class="primary-cta">Agendar una Consulta</a>
+            <a href="/tratamientos" class="ghost-cta">Ver Nuestros Tratamientos</a>
+        </div>
+        </div>
+        <TeamSlider team={team} lang="es" />
     </div>
 </section>
 

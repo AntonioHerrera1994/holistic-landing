@@ -1,0 +1,217 @@
+---
+/**
+ * Navbar flotante (pill) bilingüe.
+ * - Switch ES/EN segmentado que lleva a la MISMA página en el otro idioma.
+ * - Nuevo item: Tanatología / Thanatology.
+ * - Un solo botón de color (var(--brand)).
+ */
+import Logo from '../../assets/holistic-logo.png';
+import { nav, alternatePath, WHATSAPP } from '../../i18n/routes';
+
+interface Props { lang?: 'en' | 'es' }
+const { lang = 'en' } = Astro.props;
+
+const path = Astro.url.pathname.length > 1 ? Astro.url.pathname.replace(/\/+$/, '') : '/';
+const items = nav[lang];
+const home = lang === 'es' ? '/inicio' : '/';
+const enHref = lang === 'en' ? path : alternatePath(path, 'en');
+const esHref = lang === 'es' ? path : alternatePath(path, 'es');
+const cta = lang === 'es' ? 'Agenda tu cita' : 'Book a visit';
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
+---
+
+<header class="snav" id="snav" data-lang={lang}>
+  <div class="snav-bar">
+    <a href={home} class="snav-logo" aria-label="Holistic Cancer Treatments Coach — home">
+      <img src={Logo.src} alt="Holistic Cancer Treatments Coach" width="160" height="66" />
+    </a>
+
+    <nav class="snav-links" aria-label={lang === 'es' ? 'Principal' : 'Main'}>
+      {items.map((it) => (
+        <a href={it.href} class:list={[{ active: isActive(it.href) }]} aria-current={isActive(it.href) ? 'page' : undefined}>
+          {it.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="snav-right">
+      <div class="lang-switch" role="group" aria-label={lang === 'es' ? 'Idioma' : 'Language'} data-active={lang}>
+        <span class="lang-thumb" aria-hidden="true"></span>
+        <a href={esHref} hreflang="es" lang="es" aria-current={lang === 'es' ? 'true' : undefined} title="Español">ES</a>
+        <a href={enHref} hreflang="en" lang="en" aria-current={lang === 'en' ? 'true' : undefined} title="English">EN</a>
+      </div>
+      <a href={WHATSAPP} target="_blank" rel="noopener" class="btn snav-cta">{cta}</a>
+      <button class="snav-burger" id="snavBurger" aria-label="Menu" aria-expanded="false" aria-controls="snavSheet">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="snav-sheet" id="snavSheet" hidden>
+    {items.map((it, i) => (
+      <a href={it.href} style={`--i:${i}`}>{it.label}</a>
+    ))}
+    <a href={WHATSAPP} target="_blank" rel="noopener" class="btn">{cta}</a>
+  </div>
+</header>
+
+<style>
+  .snav {
+    position: fixed;
+    inset: 14px 0 auto 0;
+    z-index: 1000;
+    padding: 0 clamp(12px, 3vw, 32px);
+    pointer-events: none;
+    font-family: var(--font-body);
+  }
+  .snav-bar {
+    pointer-events: auto;
+    max-width: 1320px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 8px 8px 8px 20px;
+    border-radius: 999px;
+    background: rgba(251, 249, 245, 0.78);
+    backdrop-filter: blur(16px) saturate(1.4);
+    -webkit-backdrop-filter: blur(16px) saturate(1.4);
+    border: 1px solid rgba(9, 30, 61, 0.08);
+    box-shadow: 0 10px 30px -12px rgba(9, 30, 61, 0.18);
+    transition: box-shadow 0.4s var(--ease), background-color 0.4s var(--ease);
+  }
+  .snav.scrolled .snav-bar { background: rgba(251, 249, 245, 0.94); box-shadow: 0 16px 40px -14px rgba(9, 30, 61, 0.28); }
+  .snav-logo { flex-shrink: 0; }
+  .snav-logo img { height: 64px; width: auto; max-width: none; display: block; margin: -10px 0 -10px -14px; }
+
+  .snav-links { display: flex; gap: 4px; }
+  .snav-links a {
+    position: relative;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 14.5px;
+    font-weight: 500;
+    padding: 10px 14px;
+    border-radius: 999px;
+    transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+  }
+  .snav-links a:hover { background: var(--brand-soft); }
+  .snav-links a.active { color: var(--brand); }
+  .snav-links a.active::after {
+    content: '';
+    position: absolute;
+    left: 50%; bottom: 4px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--brand);
+    transform: translateX(-50%);
+  }
+
+  .snav-right { display: flex; align-items: center; gap: 10px; }
+
+  /* ---- ES/EN segmentado ---- */
+  .lang-switch {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: #fff;
+  }
+  .lang-switch a {
+    position: relative;
+    z-index: 1;
+    width: 38px;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: color 0.3s var(--ease);
+  }
+  .lang-switch a[aria-current='true'] { color: #fff; }
+  .lang-thumb {
+    position: absolute;
+    top: 4px; bottom: 4px; left: 4px;
+    width: calc(50% - 4px);
+    border-radius: 999px;
+    background: var(--ink);
+    transition: transform 0.45s var(--ease);
+  }
+  .lang-switch[data-active='en'] .lang-thumb { transform: translateX(100%); }
+  .lang-switch:hover .lang-thumb { box-shadow: 0 4px 12px -4px rgba(9,30,61,.5); }
+
+  .snav-cta { padding: 13px 22px; font-size: 14px; }
+
+  .snav-burger {
+    display: none;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--ink);
+    cursor: pointer;
+    position: relative;
+  }
+  .snav-burger span {
+    position: absolute; left: 14px; right: 14px; height: 2px; background: #fff; border-radius: 2px;
+    transition: transform 0.35s var(--ease), top 0.35s var(--ease);
+  }
+  .snav-burger span:first-child { top: 19px; }
+  .snav-burger span:last-child { top: 26px; }
+  .snav.open .snav-burger span:first-child { top: 22px; transform: rotate(45deg); }
+  .snav.open .snav-burger span:last-child { top: 22px; transform: rotate(-45deg); }
+
+  .snav-sheet {
+    pointer-events: auto;
+    max-width: 1320px;
+    margin: 10px auto 0;
+    padding: 18px;
+    border-radius: 26px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    box-shadow: 0 30px 60px -20px rgba(9,30,61,.35);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .snav-sheet[hidden] { display: none; }
+  .snav-sheet a:not(.btn) {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--ink);
+    text-decoration: none;
+    padding: 8px 6px;
+    border-bottom: 1px solid var(--line);
+    animation: sheetIn 0.5s var(--ease) both;
+    animation-delay: calc(var(--i) * 45ms);
+  }
+  .snav-sheet .btn { margin-top: 14px; justify-content: center; }
+  @keyframes sheetIn { from { opacity: 0; transform: translateY(10px); } }
+
+  @media (max-width: 1180px) {
+    .snav-links { display: none; }
+    .snav-burger { display: block; }
+  }
+  @media (max-width: 560px) {
+    .snav-cta { display: none; }
+    .snav-logo img { height: 52px; }
+  }
+</style>
+
+<script>
+  const root = document.getElementById('snav');
+  const burger = document.getElementById('snavBurger');
+  const sheet = document.getElementById('snavSheet');
+  const onScroll = () => root?.classList.toggle('scrolled', window.scrollY > 30);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  burger?.addEventListener('click', () => {
+    const open = !root?.classList.contains('open');
+    root?.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', String(open));
+    if (sheet) sheet.hidden = !open;
+  });
+</script>

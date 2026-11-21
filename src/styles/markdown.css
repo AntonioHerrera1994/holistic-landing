@@ -8,15 +8,17 @@
 
 }
 
-.postcontent h2{
+.postcontent h1, .postcontent h2{
   text-align: center;
   font-family: "Pontano Sans", sans-serif;
 }
 
-.postcontent h3{
+.postcontent h3, .postcontent .post-h2{
+  text-align: left;
+  font-size: 1.17em;
  font-weight: 700;
   font-family: "Pontano Sans", sans-serif;
-  color: #07a2bd;
+  color: #0A7A80;
 }
 
 .postcontent li{
@@ -65,7 +67,7 @@
    font-family: "Roboto", sans-serif;
  margin-left: -5rem;
    font-size: 17px;
-    color: #07a2bd;
+    color: #0A7A80;
 }
 
 .breadcrumb a{
@@ -93,7 +95,7 @@ img{
    font-family: "Roboto", sans-serif;
  margin-left: 0;
    font-size: 13px;
-    color: #07a2bd;
+    color: #0A7A80;
     
 }
 

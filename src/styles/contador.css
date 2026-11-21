@@ -26,10 +26,10 @@
 }
 
 .counter-card[data-accent="cyan"]::before{
-    background: linear-gradient(90deg, #16C6CE, transparent);
+    background: linear-gradient(90deg, var(--brand, #0A7A80), transparent);
 }
 .counter-card[data-accent="pink"]::before{
-    background: linear-gradient(90deg, #ED1B97, transparent);
+    background: linear-gradient(90deg, var(--brand, #0A7A80), transparent);
 }
 
 .counter-card:hover{
@@ -49,12 +49,12 @@
 }
 
 .counter-card[data-accent="cyan"] .counter-icon{
-    background: rgba(22,198,206,0.15);
-    color: #16C6CE;
+    background: rgba(10,122,128,0.15);
+    color: var(--brand, #0A7A80);
 }
 .counter-card[data-accent="pink"] .counter-icon{
-    background: rgba(237,27,151,0.15);
-    color: #ED1B97;
+    background: rgba(10,122,128,0.15);
+    color: var(--brand, #0A7A80);
 }
 
 .counter-title{

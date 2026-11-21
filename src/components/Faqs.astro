@@ -5,7 +5,7 @@ import ImgDFaqs from '../assets/img3.webp'
 const faqs = [
     {
         q: "Is holistic cancer treatment an alternative to conventional therapies?",
-        a: "No, our holistic treatments are designed to complement and enhance conventional cancer therapies, not replace them. We focus on integrating approaches to support your overall well-being and strengthen your body during treatment."
+        a: "No, our holistic treatments are designed to complement and enhance conventional oncology treatments, not replace them. We focus on integrating approaches to support your overall well-being and strengthen your body during treatment."
     },
     {
         q: "What should I know about traveling to your clinic in Tijuana?",
@@ -62,7 +62,7 @@ const faqSchema = {
 
             <div class="accordion">
                 <span class="eyebrow">FAQ</span>
-                <h1>Frequently <span class="highlight-text">Asked</span> Questions</h1>
+                <h2>Frequently <span class="highlight-text">Asked</span> Questions</h2>
 
                 {faqs.map((item, i) => (
                     <div class={`accordion-item ${i === 0 ? "active" : ""}`}>

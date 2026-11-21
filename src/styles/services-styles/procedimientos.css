@@ -10,9 +10,9 @@
 .eyebrow{
     display: inline-block;
     padding: 0.4rem 1.1rem;
-    background: rgba(237,27,151,0.1);
-    border: 1px solid #ED1B97;
-    color: #ED1B97;
+    background: rgba(10,122,128,0.1);
+    border: 1px solid var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
     border-radius: 999px;
     font-size: 13px;
     letter-spacing: 0.05em;
@@ -28,7 +28,7 @@
 
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.35) 0%, rgba(10,122,128,0.35) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -46,7 +46,7 @@
 
 .procedimientos > p{
     font-family: "Roboto", sans-serif;
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
     line-height: 30px;
     font-size: 17px;
     margin: 0 auto 3rem auto;
@@ -88,14 +88,14 @@
 .tab-icon{
     display: flex;
     align-items: center;
-    color: #16C6CE;
+    color: var(--brand, #0A7A80);
 }
 
 .tab-btn.active{
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     border-color: transparent;
-    box-shadow: 0 8px 20px rgba(22,198,206,0.3);
+    box-shadow: 0 8px 20px rgba(10,122,128,0.3);
 }
 
 .tab-btn.active .tab-icon{
@@ -103,8 +103,8 @@
 }
 
 .tab-btn:hover:not(.active){
-    border-color: #16C6CE;
-    color: #16C6CE;
+    border-color: var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
 }
 
 /********** Contenido **********/
@@ -134,6 +134,30 @@
     align-items: start;
 }
 
+.tabp-art{
+    position: relative;
+    aspect-ratio: 1 / 0.92;
+    border-radius: 22px;
+    background-color: #fff;
+    background-image: radial-gradient(rgba(9,30,61,0.09) 1.2px, transparent 1.2px);
+    background-size: 20px 20px;
+    border: 1px solid rgba(9,30,61,0.08);
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+}
+.tabp-art::before{
+    content: '';
+    position: absolute;
+    width: 66%;
+    aspect-ratio: 1;
+    border-radius: 46% 54% 58% 42% / 44% 46% 54% 56%;
+    background: rgba(10,122,128,0.08);
+    animation: artBlob 14s ease-in-out infinite;
+}
+@keyframes artBlob{ 50%{ border-radius: 58% 42% 44% 56% / 52% 58% 42% 48%; transform: rotate(14deg); } }
+.tabp-art .ma{ position: relative; width: 80%; }
+
 .tabp-image img{
     width: 100%;
     border-radius: 18px;
@@ -150,14 +174,14 @@
 }
 
 .fact-chip{
-    background: rgba(22,198,206,0.08);
+    background: rgba(10,122,128,0.08);
     color: #091E3D;
     font-family: "Roboto", sans-serif;
     font-size: 13px;
     font-weight: 600;
     padding: 0.5rem 1rem;
     border-radius: 999px;
-    border: 1px solid rgba(22,198,206,0.25);
+    border: 1px solid rgba(10,122,128,0.25);
 }
 
 /********** Texto descripción **********/
@@ -197,7 +221,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #16C6CE;
+    background: var(--brand, #0A7A80);
 }
 
 /********** Botón compartir **********/
@@ -218,20 +242,20 @@
 }
 
 .share-btn:hover{
-    border-color: #ED1B97;
-    color: #ED1B97;
+    border-color: var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
 }
 
 .share-btn.copied{
-    border-color: #16C6CE;
-    color: #16C6CE;
+    border-color: var(--brand, #0A7A80);
+    color: var(--brand, #0A7A80);
 }
 
 /********** Disclaimer **********/
 .disclaimer{
     font-family: "Roboto", sans-serif;
     font-size: 13px;
-    color: rgba(9,30,61,0.45);
+    color: rgba(9,30,61,0.72);
     text-align: center;
     max-width: 800px;
     margin: 3rem auto 0 auto;

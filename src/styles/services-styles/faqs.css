@@ -54,7 +54,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     font-family: "Roboto", sans-serif;
     font-size: 13px;
@@ -77,8 +77,8 @@
 .eyebrow{
     display: inline-block;
     padding: 0.4rem 1.1rem;
-    background: rgba(22,198,206,0.1);
-    border: 1px solid #16C6CE;
+    background: rgba(10,122,128,0.1);
+    border: 1px solid var(--brand, #0A7A80);
     color: #091E3D;
     border-radius: 999px;
     font-size: 13px;
@@ -91,13 +91,13 @@
 
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(237,27,151,0.25) 0%, rgba(237,27,151,0.25) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.25) 0%, rgba(10,122,128,0.25) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
 }
 
-.accordion h1{
+.accordion h1, .accordion h2{
     font-family: "Pontano Sans", sans-serif;
     font-size: 40px;
     line-height: 52px;
@@ -131,7 +131,7 @@
 }
 
 .accordion-button:hover{
-    color: #16C6CE;
+    color: var(--brand, #0A7A80);
 }
 
 .accordion-icon{
@@ -142,14 +142,14 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: rgba(22,198,206,0.1);
-    color: #16C6CE;
+    background: rgba(10,122,128,0.1);
+    color: var(--brand, #0A7A80);
     transition: transform 0.35s cubic-bezier(0.65, 0, 0.35, 1), background 0.3s ease;
 }
 
 .accordion-item.active .accordion-icon{
     transform: rotate(135deg);
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
 }
 
@@ -208,7 +208,7 @@
         margin-top: 0;
     }
 
-    .accordion h1{
+    .accordion h1, .accordion h2{
         line-height: 42px;
         font-size: 28px;
         margin-bottom: 1.5rem;

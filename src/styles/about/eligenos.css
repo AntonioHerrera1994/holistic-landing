@@ -18,8 +18,8 @@
 .eyebrow{
     display: inline-block;
     padding: 0.4rem 1.1rem;
-    background: rgba(22,198,206,0.1);
-    border: 1px solid #16C6CE;
+    background: rgba(10,122,128,0.1);
+    border: 1px solid var(--brand, #0A7A80);
     color: #091E3D;
     border-radius: 999px;
     font-size: 13px;
@@ -32,7 +32,7 @@
 
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(237,27,151,0.25) 0%, rgba(237,27,151,0.25) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.25) 0%, rgba(10,122,128,0.25) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -83,10 +83,10 @@
 }
 
 .elcaja1[data-accent="cyan"]::before{
-    background: linear-gradient(90deg, #16C6CE, transparent);
+    background: linear-gradient(90deg, var(--brand, #0A7A80), transparent);
 }
 .elcaja1[data-accent="pink"]::before{
-    background: linear-gradient(90deg, #ED1B97, transparent);
+    background: linear-gradient(90deg, var(--brand, #0A7A80), transparent);
 }
 
 .ghost-number{
@@ -115,12 +115,12 @@
 }
 
 .elcaja1[data-accent="cyan"] .icon-wrap{
-    background: rgba(22,198,206,0.12);
-    color: #16C6CE;
+    background: rgba(10,122,128,0.12);
+    color: var(--brand, #0A7A80);
 }
 .elcaja1[data-accent="pink"] .icon-wrap{
-    background: rgba(237,27,151,0.12);
-    color: #ED1B97;
+    background: rgba(10,122,128,0.12);
+    color: var(--brand, #0A7A80);
 }
 
 .elgrid h3{
@@ -138,7 +138,7 @@
     position: relative;
     font-family: "Roboto", sans-serif;
     margin-bottom: 0;
-    color: rgba(9,30,61,0.6);
+    color: rgba(9,30,61,0.72);
     line-height: 28px;
     font-size: 16px;
     text-align: justify;
@@ -173,3 +173,4 @@
         top: -14px;
     }
 }
+.ghost-number::before{ content: attr(data-num); }

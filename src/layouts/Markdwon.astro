@@ -1,50 +1,43 @@
 ---
+import SeoHead from '../components/v2/SeoHead.astro';
 import Navbar from "../components/Navbar.astro"
 import Footer from "../components/Footer.astro"
 
 import '../styles/markdown.css'
 const { frontmatter } = Astro.props;
+const iso = (d) => { const t = Date.parse(d); return isNaN(t) ? undefined : new Date(t).toISOString().slice(0, 10); };
+const articleSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: frontmatter.title,
+  description: frontmatter.description,
+  image: frontmatter.image?.url ? new URL(frontmatter.image.url, 'https://holisticancercoach.com').href : undefined,
+  datePublished: iso(frontmatter.pubDate) ?? iso(frontmatter.date),
+  author: { '@type': 'Organization', name: 'Holistic Cancer Treatments Coach' },
+  publisher: { '@type': 'Organization', name: 'Holistic Cancer Treatments Coach', logo: { '@type': 'ImageObject', url: 'https://holisticancercoach.com/holisticsvf.svg' } },
+  mainEntityOfPage: new URL(Astro.url.pathname, 'https://holisticancercoach.com').href,
+};
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DPHBXRB980"></script>
-<script is:inline>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DPHBXRB980');
-</script>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/holisticsvf.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-		<style>
-			@import url('https://fonts.googleapis.com/css2?family=Pontano+Sans:wght@300..700&display=swap');
-			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-			</style>
-		<title>Holistic Cancer Treatment</title>
-		<meta name="description" content="Discover a comprehensive and compassionate approach to cancer care that integrates traditional and alternative therapies.">
-		  <meta property="og:image" content={frontmatter.image.url}> 
-  			<meta property="og:url" content={frontmatter.description}> 
-  		<meta property="og:type" content="website">
+		<SeoHead lang="en" type="article" title={frontmatter.title} description={frontmatter.description} image={frontmatter.image?.url ? new URL(frontmatter.image.url, "https://holisticancercoach.com").href : undefined} />
+		<script type="application/ld+json" set:html={JSON.stringify(articleSchema)} />
 	</head>
 	<body>
 		<Navbar solid/>
 
 		
+    <main>
     <div class="postcontent">
              <span class="breadcrumb"><a href="/blog">Blog</a> / {frontmatter.title}</span>
 				<div class="img-cont">
-<img src={frontmatter.image.url} width="100%" alt={frontmatter.image.alt} style="margin-top:2rem;"/>
+<img src={frontmatter.image.url} width="1200" height="675" alt={frontmatter.title} fetchpriority="high" style="margin-top:2rem;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;"/>
 				</div>
                 
-                <h2 style="font-size:2rem;">{frontmatter.title}</h2>
-                <p style="font-size:1rem;font-weight:bold;text-align: center;color:#07a2bd;">{frontmatter.author}</p>
+                <h1 style="font-size:2rem;">{frontmatter.title}</h1>
+                <p style="font-size:1rem;font-weight:bold;text-align: center;color:#0A7A80;">{frontmatter.author}</p>
              
 				<div class="audio">
 
@@ -56,7 +49,7 @@ const { frontmatter } = Astro.props;
 						<span>Listen to it</span>
 					</div>
 					<audio controls preload="metadata">
-						<source src={frontmatter.audio} type="audio/mpeg" />
+						<source src={frontmatter.audio} type={frontmatter.audio.endsWith(".wav") ? "audio/wav" : "audio/mpeg"} />
 						Tu navegador no soporta el elemento de audio.
 					</audio>
 				</div>
@@ -64,6 +57,7 @@ const { frontmatter } = Astro.props;
 			</div>
                 <slot />
             </div>
+		</main>
 	<Footer />
 	</body>
 </html>

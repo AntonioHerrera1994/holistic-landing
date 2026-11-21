@@ -24,7 +24,7 @@
 /********** Texto **********/
 .highlight-text{
     color: #091E3D;
-    background-image: linear-gradient(120deg, rgba(22,198,206,0.35) 0%, rgba(22,198,206,0.35) 100%);
+    background-image: linear-gradient(120deg, rgba(10,122,128,0.35) 0%, rgba(10,122,128,0.35) 100%);
     background-repeat: no-repeat;
     background-size: 100% 35%;
     background-position: 0 90%;
@@ -87,10 +87,10 @@
 }
 
 .serv1[data-accent="cyan"]::before{
-    background: linear-gradient(90deg, #16C6CE, #091E3D);
+    background: var(--brand, #0A7A80);
 }
 .serv1[data-accent="pink"]::before{
-    background: linear-gradient(90deg, #ED1B97, #091E3D);
+    background: var(--brand, #0A7A80);
 }
 
 .icon-wrap{
@@ -104,10 +104,10 @@
 }
 
 .serv1[data-accent="cyan"] .icon-wrap{
-    background: rgba(22,198,206,0.12);
+    background: rgba(10,122,128,0.12);
 }
 .serv1[data-accent="pink"] .icon-wrap{
-    background: rgba(237,27,151,0.12);
+    background: rgba(10,122,128,0.12);
 }
 
 
@@ -120,7 +120,7 @@
 
 .servicios a{
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -135,7 +135,7 @@
 
 .servicios a:hover{
     transform: translateY(-2px);
-    box-shadow: 0 10px 24px rgba(22,198,206,0.3);
+    box-shadow: 0 10px 24px rgba(10,122,128,0.3);
 }
 
 .serv1 p{
@@ -217,7 +217,7 @@
     height: 22px;
     min-width: 22px;
     border-radius: 50%;
-    background: rgba(22,198,206,0.15);
+    background: rgba(10,122,128,0.15);
     margin-right: 0.8rem;
     position: relative;
 }
@@ -227,8 +227,8 @@
     position: absolute;
     width: 5px;
     height: 9px;
-    border-right: 2px solid #16C6CE;
-    border-bottom: 2px solid #16C6CE;
+    border-right: 2px solid var(--brand, #0A7A80);
+    border-bottom: 2px solid var(--brand, #0A7A80);
     transform: rotate(45deg);
     top: 4px;
     left: 8px;
@@ -262,7 +262,7 @@ button.learn-more .circle {
     margin: 0;
     width: 3rem;
     height: 3rem;
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     border-radius: 1.625rem;
 }
 

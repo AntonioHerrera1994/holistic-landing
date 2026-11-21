@@ -27,7 +27,7 @@
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: rgba(9,30,61,0.5);
+    color: rgba(9,30,61,0.72);
     transition: all 0.3s ease;
 }
 
@@ -38,10 +38,10 @@
 }
 
 .tab-btn.active{
-    background: linear-gradient(135deg, #ED1B97, #16C6CE);
+    background: var(--brand, #0A7A80);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(22,198,206,0.3);
+    box-shadow: 0 10px 20px rgba(10,122,128,0.3);
 }
 
 .tab-btn:not(.active):hover{
@@ -91,7 +91,7 @@
 }
 
 .chips span{
-    background: rgba(22,198,206,0.1);
+    background: rgba(10,122,128,0.1);
     color: #091E3D;
     font-family: "Roboto", sans-serif;
     font-size: 13px;

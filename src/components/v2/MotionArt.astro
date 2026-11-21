@@ -1,0 +1,353 @@
+---
+/**
+ * Ilustraciones animadas (motion graphics) en SVG puro.
+ * Cada una se "dibuja" al aparecer y luego queda en un loop sutil.
+ * Uso: <MotionArt kind="heat" active />  — `active` agrega la clase .on (arranca la animación).
+ * Kinds: plan, heat, leaf, heart, tooth, cells, candle, chelation, support, shield, blood
+ */
+interface Props { kind: string; active?: boolean; class?: string }
+const { kind, active = true, class: cls = '' } = Astro.props;
+
+const c = (cx: number, cy: number, r: number) =>
+  `M${cx - r} ${cy} a${r} ${r} 0 1 0 ${2 * r} 0 a${r} ${r} 0 1 0 ${-2 * r} 0`;
+const hex = (cx: number, cy: number, r: number, rot = -90) =>
+  'M' + Array.from({ length: 6 }, (_, i) => {
+    const a = ((rot + i * 60) * Math.PI) / 180;
+    return `${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`;
+  }).join(' L') + ' Z';
+const ray = (cx: number, cy: number, r1: number, r2: number, deg: number) => {
+  const a = (deg * Math.PI) / 180;
+  return `M${(cx + r1 * Math.cos(a)).toFixed(1)} ${(cy + r1 * Math.sin(a)).toFixed(1)} L${(cx + r2 * Math.cos(a)).toFixed(1)} ${(cy + r2 * Math.sin(a)).toFixed(1)}`;
+};
+const PLAN = 'M70 300 C140 300 130 200 200 200 C270 200 260 110 330 110';
+const LOOP = 'M120 150 H280 A40 40 0 0 1 320 190 V250 A40 40 0 0 1 280 290 H120 A40 40 0 0 1 80 250 V190 A40 40 0 0 1 120 150 Z';
+const ORBIT = 'M80 200 a120 46 0 1 0 240 0 a120 46 0 1 0 -240 0';
+---
+
+<svg viewBox="0 0 400 400" class:list={['ma', cls, { on: active }]} data-kind={kind} aria-hidden="true">
+  {kind === 'plan' && (
+    <g>
+      <path class="fl" d={c(200, 205, 130)} />
+      <path class="grid-orbit" d={c(200, 205, 160)} />
+      <path class="d b" style="--n:0" d={PLAN} />
+      <path class="d" style="--n:1" d="M200 200 C255 200 262 290 330 290" />
+      <path class="d" style="--n:1" d="M200 200 C150 200 150 110 96 110" />
+      {[[70, 300, 16], [200, 200, 26], [330, 110, 19], [330, 290, 16], [96, 110, 14]].map(([x, y, r], i) => (
+        <>
+          <circle class="ring" cx={x} cy={y} r={r} style={`--n:${i + 2}; --l:${i * 0.5}s`} />
+          <path class="d node" style={`--n:${i + 2}`} d={c(x, y, r)} />
+        </>
+      ))}
+      <path class="d b" style="--n:7" d="M321 110 L328 117 L340 104" />
+      <path class="d" style="--n:7" d="M190 200 L210 200 M200 190 L200 210" />
+      <circle r="7" class="traveler" opacity="0">
+        <set attributeName="opacity" to="1" begin="1.6s" />
+        <animateMotion dur="3.4s" begin="1.6s" repeatCount="indefinite" path={PLAN} />
+      </circle>
+    </g>
+  )}
+
+  {kind === 'heat' && (
+    <g>
+      <path class="fl" d={c(185, 175, 82)} />
+      <g class="spin" style="transform-origin:185px 175px">
+        {Array.from({ length: 12 }, (_, i) => (
+          <path class="d" style={`--n:${1 + (i % 6) * 0.4}`} d={ray(185, 175, i % 2 ? 84 : 80, i % 2 ? 100 : 112, i * 30)} />
+        ))}
+      </g>
+      <path class="d b" style="--n:0" d={c(185, 175, 58)} />
+      {[300, 330, 360].map((y, i) => (
+        <path class="flow" style={`--l:${i * 0.4}s`} d={`M40 ${y} C70 ${y - 16} 100 ${y + 16} 130 ${y} S190 ${y - 16} 220 ${y} S280 ${y + 16} 310 ${y}`} />
+      ))}
+      <rect class="d" style="--n:3" x="332" y="110" width="26" height="150" rx="13" />
+      <rect class="mercury" x="339" y="150" width="12" height="110" rx="6" />
+      <circle class="bulb" cx="345" cy="272" r="20" />
+      {[130, 160, 190, 220].map((y) => <path class="d thin" style="--n:4" d={`M362 ${y} L372 ${y}`} />)}
+    </g>
+  )}
+
+  {kind === 'leaf' && (
+    <g>
+      <g class="sway" style="transform-origin:100px 310px">
+        <path class="fl" d="M100 310 C100 190 190 95 315 90 C318 215 230 310 100 310 Z" />
+        <path class="d b" style="--n:0" d="M100 310 C100 190 190 95 315 90 C318 215 230 310 100 310 Z" />
+        <path class="d" style="--n:1" d="M100 310 C165 245 230 170 305 100" />
+        <path class="d" style="--n:2" d="M168 246 C166 222 168 205 172 188 M168 246 C190 250 212 248 232 240" />
+        <path class="d" style="--n:3" d="M232 172 C232 156 236 140 242 128 M232 172 C250 172 266 168 280 160" />
+      </g>
+      <g class="sway rev" style="transform-origin:300px 300px">
+        <path class="fl" d="M300 300 C300 260 320 236 352 232 C356 266 336 296 300 300 Z" />
+        <path class="d" style="--n:4" d="M300 300 C300 260 320 236 352 232 C356 266 336 296 300 300 Z M300 300 C318 280 332 262 348 238" />
+      </g>
+      <path class="d" style="--n:1" d="M100 310 L70 340" />
+      <path class="drop" d="M322 112 C316 122 312 128 312 134 A10 10 0 0 0 332 134 C332 128 328 122 322 112 Z" />
+      {[[70, 150, 6], [120, 90, 4], [360, 180, 5]].map(([x, y, r], i) => (
+        <circle class="bob dot" cx={x} cy={y} r={r} style={`--l:${i * 0.7}s`} />
+      ))}
+    </g>
+  )}
+
+  {kind === 'heart' && (
+    <g>
+      <g class="beat" style="transform-origin:200px 220px">
+        <path class="fl" d="M200 312 C120 262 82 214 100 166 C118 120 176 116 200 160 C224 116 282 120 300 166 C318 214 280 262 200 312 Z" />
+        <path class="d" style="--n:0" d="M200 312 C120 262 82 214 100 166 C118 120 176 116 200 160 C224 116 282 120 300 166 C318 214 280 262 200 312 Z" />
+      </g>
+      <path class="d b" style="--n:1" d="M30 214 L150 214 L168 176 L190 256 L212 196 L226 214 L370 214" />
+      <path class="scan" d="M30 214 L150 214 L168 176 L190 256 L212 196 L226 214 L370 214" />
+      <circle class="ring" cx="200" cy="220" r="110" style="--n:2; --l:0s" />
+    </g>
+  )}
+
+  {kind === 'tooth' && (
+    <g>
+      <path class="fl" d="M142 108 C108 108 94 140 100 178 C106 218 124 238 130 282 C135 318 152 330 164 300 C174 272 180 246 200 246 C220 246 226 272 236 300 C248 330 265 318 270 282 C276 238 294 218 300 178 C306 140 292 108 258 108 C234 108 222 124 200 124 C178 124 166 108 142 108 Z" />
+      <path class="d" style="--n:0" d="M142 108 C108 108 94 140 100 178 C106 218 124 238 130 282 C135 318 152 330 164 300 C174 272 180 246 200 246 C220 246 226 272 236 300 C248 330 265 318 270 282 C276 238 294 218 300 178 C306 140 292 108 258 108 C234 108 222 124 200 124 C178 124 166 108 142 108 Z" />
+      <path class="d" style="--n:1" d="M136 156 C138 138 150 128 166 128" />
+      <g class="twinkle" style="transform-origin:322px 96px"><path class="d b" style="--n:2" d="M322 70 L322 122 M296 96 L348 96" /></g>
+      <g class="twinkle" style="transform-origin:82px 250px; --l:.8s"><path class="d b" style="--n:3" d="M82 236 L82 264 M68 250 L96 250" /></g>
+      <g class="sway" style="transform-origin:200px 124px">
+        <path class="d b" style="--n:3" d="M200 124 C196 100 206 84 230 78 C232 100 222 116 200 124 Z" />
+      </g>
+      {[[250, 340, 6], [280, 360, 4], [150, 352, 5]].map(([x, y, r], i) => (
+        <circle class="rise dot-o" cx={x} cy={y} r={r} style={`--l:${i * 0.9}s`} />
+      ))}
+    </g>
+  )}
+
+  {kind === 'cells' && (
+    <g>
+      <g class="spin slow" style="transform-origin:204px 200px">
+        <path class="grid-orbit" d={c(204, 200, 165)} />
+        <circle class="dot" cx="204" cy="35" r="6" /><circle class="dot b" cx="369" cy="200" r="5" /><circle class="dot" cx="60" cy="280" r="4" />
+      </g>
+      <g class="split-l">
+        <path class="fl" d={c(165, 200, 70)} />
+        <path class="d" style="--n:0" d={c(165, 200, 70)} />
+        <path class="d nucleus" style="--n:2" d={c(152, 192, 22)} />
+      </g>
+      <g class="split-r">
+        <path class="fl" d={c(243, 200, 70)} />
+        <path class="d b" style="--n:1" d={c(243, 200, 70)} />
+        <path class="d nucleus" style="--n:3" d={c(256, 208, 22)} />
+      </g>
+    </g>
+  )}
+
+  {kind === 'candle' && (
+    <g>
+      <circle class="glow" cx="200" cy="150" r="70" />
+      <path class="d" style="--n:0" d="M96 250 C96 322 146 350 200 350 C254 350 304 322 304 250" />
+      <path class="d" style="--n:1" d="M120 262 C130 300 160 320 200 322 C240 320 270 300 280 262" />
+      <path class="fl" d="M172 330 L172 205 L228 205 L228 330 Z" />
+      <path class="d" style="--n:2" d="M172 330 L172 205 L228 205 L228 330 Z" />
+      <path class="d" style="--n:3" d="M200 205 L200 188" />
+      <g class="flicker" style="transform-origin:200px 184px">
+        <path class="flame" d="M200 184 C176 160 186 128 200 96 C214 128 224 160 200 184 Z" />
+        <path class="flame-in" d="M200 180 C192 168 194 152 200 138 C206 152 208 168 200 180 Z" />
+      </g>
+      {[[186, 80, 3], [214, 70, 2.5], [200, 56, 2]].map(([x, y, r], i) => (
+        <circle class="rise dot" cx={x} cy={y} r={r} style={`--l:${i * 1.1}s`} />
+      ))}
+    </g>
+  )}
+
+  {kind === 'chelation' && (
+    <g>
+      <path class="fl" d={hex(200, 200, 78)} />
+      <g class="spin slow" style="transform-origin:200px 200px">
+        <path class="d b" style="--n:0" d={hex(200, 200, 78)} />
+        <path class="d" style="--n:1" d={hex(200, 200, 44, -60)} />
+        {Array.from({ length: 6 }, (_, i) => (
+          <path class="d" style={`--n:${2 + i * 0.3}`} d={ray(200, 200, 78, 104, -90 + i * 60)} />
+        ))}
+        {Array.from({ length: 6 }, (_, i) => {
+          const a = ((-90 + i * 60) * Math.PI) / 180;
+          return <circle class="dot" cx={200 + 110 * Math.cos(a)} cy={200 + 110 * Math.sin(a)} r="6" />;
+        })}
+      </g>
+      {Array.from({ length: 7 }, (_, i) => {
+        const a = ((i * 51 + 20) * Math.PI) / 180;
+        return <circle class="absorb" cx="200" cy="200" r="5" style={`--dx:${(Math.cos(a) * 175).toFixed(0)}px; --dy:${(Math.sin(a) * 175).toFixed(0)}px; --l:${(i * 0.45).toFixed(2)}s`} />;
+      })}
+    </g>
+  )}
+
+  {kind === 'support' && (
+    <g>
+      {[0, 60, 120].map((rot, i) => (
+        <g transform={`rotate(${rot} 200 200)`}>
+          <path class="d thin" style={`--n:${i}`} d={ORBIT} />
+          <circle r="7" class={i === 1 ? 'traveler' : 'traveler ink'} opacity="0">
+            <set attributeName="opacity" to="1" begin={`${1.4 + i * 0.2}s`} />
+            <animateMotion dur={`${4 + i}s`} begin={`${1.4 + i * 0.2}s`} repeatCount="indefinite" path={ORBIT} />
+          </circle>
+        </g>
+      ))}
+      <g class="beat" style="transform-origin:200px 202px">
+        <path class="heart-fill" d="M200 236 C168 216 154 198 162 178 C170 160 192 160 200 176 C208 160 230 160 238 178 C246 198 232 216 200 236 Z" />
+      </g>
+      <circle class="ring" cx="200" cy="200" r="60" style="--n:3; --l:0s" />
+    </g>
+  )}
+
+  {kind === 'shield' && (
+    <g>
+      <circle class="ring" cx="200" cy="210" r="110" style="--n:1; --l:0s" />
+      <circle class="ring" cx="200" cy="210" r="110" style="--n:1; --l:1.2s" />
+      <path class="fl" d="M200 90 L300 130 V210 C300 270 255 310 200 330 C145 310 100 270 100 210 V130 Z" />
+      <path class="d" style="--n:0" d="M200 90 L300 130 V210 C300 270 255 310 200 330 C145 310 100 270 100 210 V130 Z" />
+      <path class="d" style="--n:1" d="M200 114 L278 146 V210 C278 258 244 290 200 306 C156 290 122 258 122 210 V146 Z" />
+      <path class="d b" style="--n:2" d="M160 210 L190 240 L245 180" />
+      <g class="spin slow" style="transform-origin:200px 210px">
+        <circle class="dot" cx="200" cy="40" r="5" /><circle class="dot b" cx="370" cy="210" r="6" /><circle class="dot" cx="60" cy="300" r="4" />
+      </g>
+    </g>
+  )}
+
+  {kind === 'blood' && (
+    <g>
+      <path class="d" style="--n:0" d={LOOP} />
+      {[0, 1, 2, 3, 4].map((i) => (
+        <circle r="6" class={i % 2 ? 'traveler ink' : 'traveler'} opacity="0">
+          <set attributeName="opacity" to="1" begin={`${1.2 + i * 0.9}s`} />
+          <animateMotion dur="4.5s" begin={`${1.2 + i * 0.9}s`} repeatCount="indefinite" path={LOOP} />
+        </circle>
+      ))}
+      <g class="bob" style="--l:0s">
+        <path class="flame" d="M200 40 C186 64 174 80 174 98 A26 26 0 0 0 226 98 C226 80 214 64 200 40 Z" />
+      </g>
+      <path class="d" style="--n:1" d="M200 126 L200 150" />
+      <rect class="fl" x="160" y="196" width="80" height="48" rx="10" />
+      <rect class="d b" style="--n:2" x="160" y="196" width="80" height="48" rx="10" />
+      {[-60, -30, 0, 30, 60].map((dx, i) => (
+        <path class="beam" style={`--l:${i * 0.25}s`} d={`M${200 + dx * 0.5} 190 L${200 + dx} 168`} />
+      ))}
+      {[-60, -30, 0, 30, 60].map((dx, i) => (
+        <path class="beam" style={`--l:${i * 0.25 + 0.6}s`} d={`M${200 + dx * 0.5} 250 L${200 + dx} 272`} />
+      ))}
+    </g>
+  )}
+</svg>
+
+<style>
+  .ma { width: 100%; height: auto; overflow: visible; display: block; }
+  .ma g { transform-box: view-box; }
+
+  /* trazos que se dibujan */
+  .d {
+    fill: none; stroke: var(--ink, #091E3D); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+    /* --len lo calcula el script (getTotalLength). Si no existe, el trazo se ve completo (fallback seguro). */
+    stroke-dasharray: var(--len);
+  }
+  .d.b { stroke: var(--brand, #0A7A80); stroke-width: 4; }
+  .d.thin { stroke-width: 1.6; opacity: .55; }
+  .d.node { fill: #fff; }
+  .d.nucleus { stroke-width: 2.4; }
+  .ma.ready.on .d { animation: maDraw 1.5s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--n, 0) * 110ms); }
+  @keyframes maDraw { from { stroke-dashoffset: var(--len); } to { stroke-dashoffset: 0; } }
+
+  /* rellenos suaves */
+  .fl { fill: var(--brand-soft, rgba(10,122,128,.1)); opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .on .fl { animation: maFill .9s cubic-bezier(.22,1,.36,1) .3s forwards; }
+  @keyframes maFill { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: none; } }
+
+  .grid-orbit { fill: none; stroke: var(--ink, #091E3D); stroke-opacity: .14; stroke-width: 1.2; stroke-dasharray: 3 7; }
+  .dot { fill: var(--ink, #091E3D); }
+  .dot.b, .bulb, .mercury, .traveler, .flame, .heart-fill, .absorb { fill: var(--brand, #0A7A80); }
+  .traveler.ink { fill: var(--ink, #091E3D); }
+  .flame-in { fill: #fff; opacity: .55; }
+  .dot-o { fill: none; stroke: var(--brand, #0A7A80); stroke-width: 2; }
+
+  /* ---- loops (arrancan después del dibujo) ---- */
+  .on .spin { animation: maSpin 24s linear 1.2s infinite; }
+  .on .spin.slow { animation-duration: 40s; }
+  @keyframes maSpin { to { transform: rotate(360deg); } }
+
+  .on .sway { animation: maSway 5s ease-in-out 1.2s infinite alternate; }
+  .on .sway.rev { animation-direction: alternate-reverse; animation-duration: 4s; }
+  @keyframes maSway { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+
+  .on .beat { animation: maBeat 1.4s ease-in-out 1.4s infinite; }
+  @keyframes maBeat { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.07); } 30% { transform: scale(.98); } 45% { transform: scale(1.04); } }
+
+  .ring { fill: none; stroke: var(--brand, #0A7A80); stroke-width: 2; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .on .ring { animation: maRing 2.6s ease-out infinite; animation-delay: calc(1.4s + var(--l, 0s)); }
+  @keyframes maRing { 0% { opacity: .55; transform: scale(.8); } 100% { opacity: 0; transform: scale(1.7); } }
+
+  .scan { fill: none; stroke: var(--brand, #0A7A80); stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: calc(var(--len) * .1) calc(var(--len) * .9); opacity: 0; }
+  .ma.ready.on .scan { animation: maScan 2.2s linear 1.6s infinite; }
+  @keyframes maScan { 0% { stroke-dashoffset: var(--len); opacity: 1; } 100% { stroke-dashoffset: 0; opacity: 1; } }
+
+  .flow { fill: none; stroke: var(--brand, #0A7A80); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 16 14; opacity: 0; }
+  .on .flow { animation: maFlowIn .8s ease forwards 1s, maFlow 2.4s linear infinite; animation-delay: calc(1s + var(--l, 0s)), var(--l, 0s); }
+  @keyframes maFlowIn { to { opacity: .7; } }
+  @keyframes maFlow { to { stroke-dashoffset: -60; } }
+
+  .mercury { transform-box: fill-box; transform-origin: 50% 100%; transform: scaleY(.2); }
+  .on .mercury { animation: maMerc 3.2s ease-in-out 1s infinite alternate; }
+  @keyframes maMerc { to { transform: scaleY(1); } }
+
+  .drop { fill: var(--brand, #0A7A80); opacity: 0; }
+  .on .drop { animation: maDrop 2.8s ease-in 1.4s infinite; }
+  @keyframes maDrop { 0% { opacity: 0; transform: translateY(0); } 15% { opacity: 1; } 80% { opacity: 1; transform: translateY(150px); } 100% { opacity: 0; transform: translateY(170px); } }
+
+  .on .bob { animation: maBob 3.4s ease-in-out infinite; animation-delay: var(--l, 0s); }
+  @keyframes maBob { 50% { transform: translateY(-10px); } }
+
+  .rise { opacity: 0; }
+  .on .rise { animation: maRise 3.6s ease-out infinite; animation-delay: calc(1.2s + var(--l, 0s)); }
+  @keyframes maRise { 0% { opacity: 0; transform: translateY(0); } 20% { opacity: 1; } 100% { opacity: 0; transform: translateY(-70px); } }
+
+  .twinkle { transform-box: view-box; }
+  .on .twinkle { animation: maTwinkle 2.4s ease-in-out infinite; animation-delay: calc(1.4s + var(--l, 0s)); }
+  @keyframes maTwinkle { 0%, 100% { transform: scale(1) rotate(0); } 50% { transform: scale(.6) rotate(45deg); } }
+
+  .glow { fill: var(--brand, #0A7A80); opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .on .glow { animation: maGlow 3s ease-in-out 1s infinite; }
+  @keyframes maGlow { 0%, 100% { opacity: .08; transform: scale(.9); } 50% { opacity: .18; transform: scale(1.1); } }
+
+  .flicker { opacity: 0; }
+  .on .flicker { animation: maFadeIn .6s ease 1s forwards, maFlicker 1.6s ease-in-out 1.6s infinite; }
+  @keyframes maFadeIn { to { opacity: 1; } }
+  @keyframes maFlicker { 0%, 100% { transform: scale(1, 1) skewX(0); } 30% { transform: scale(.94, 1.08) skewX(2deg); } 60% { transform: scale(1.04, .95) skewX(-2deg); } }
+
+  .split-l, .split-r { transform-box: view-box; }
+  .on .split-l { animation: maSplitL 4.5s ease-in-out 1.6s infinite; }
+  .on .split-r { animation: maSplitR 4.5s ease-in-out 1.6s infinite; }
+  @keyframes maSplitL { 50% { transform: translateX(-22px); } }
+  @keyframes maSplitR { 50% { transform: translateX(22px); } }
+
+  .absorb { opacity: 0; }
+  .on .absorb { animation: maAbsorb 3.2s cubic-bezier(.5,0,.3,1) infinite; animation-delay: calc(1.4s + var(--l, 0s)); }
+  @keyframes maAbsorb {
+    0% { opacity: 0; transform: translate(var(--dx), var(--dy)); }
+    15% { opacity: 1; }
+    80% { opacity: 1; transform: translate(0, 0) scale(.6); }
+    100% { opacity: 0; transform: translate(0, 0) scale(0); }
+  }
+
+  .beam { fill: none; stroke: var(--brand, #0A7A80); stroke-width: 3; stroke-linecap: round; opacity: 0; }
+  .on .beam { animation: maBeam 1.8s ease-in-out infinite; animation-delay: calc(1.6s + var(--l, 0s)); }
+  @keyframes maBeam { 0%, 100% { opacity: .1; } 50% { opacity: .9; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .d { stroke-dasharray: none; } .fl { opacity: 1; } .flicker { opacity: 1; }
+  }
+</style>
+
+<script>
+  // Mide cada trazo para la animación de dibujo. Independiente de pathLength (más compatible).
+  const measure = () => {
+    document.querySelectorAll<SVGSVGElement>('svg.ma:not(.ready)').forEach((svg) => {
+      svg.querySelectorAll<SVGGeometryElement>('.d, .scan').forEach((el) => {
+        try {
+          const len = el.getTotalLength();
+          if (len > 0) el.style.setProperty('--len', len.toFixed(1) + 'px');
+        } catch (e) { /* sin --len el trazo se muestra completo */ }
+      });
+      svg.classList.add('ready');
+    });
+  };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', measure); else measure();
+</script>
